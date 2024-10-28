@@ -1,11 +1,12 @@
-#ifndef LOWTRAFFIC_H
-#define LOWTRAFFIC_H
+#ifndef HIGHTRAFFIC_H
+#define HIGHTRAFFIC_H
 
 #include "TrafficState.h"
+#include "Road.h"
 #include <iostream>
 using namespace std;
 
-class LowTraffic : public TrafficState
+class HighTraffic : public TrafficState
 {
     public:
     void adjustTrafficImpact(Road* road) override;
