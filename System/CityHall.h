@@ -2,18 +2,20 @@
 #define CITYHALL_H
 
 #include "SatisfactionHandler.h"
-//#include "CityMap.h"
-
+#include "CityMap.h"
+ 
 class CityHall{
     private:
         static CityHall* cityHall; // Singleton
         //PoliticalSystem* politicalSystem; (CAN'T DO THIS ONE YET)
         SatisfactionHandler* chainOfResponsibility;
-        //CityMap* cityMapReference; (CAN'T DO THIS ONE YET)
+        CityMap* cityMapReference;
 
         int currPopulation;
         int popeCoins;
         int citySatisfaction;
+        int chainHandleCounter;
+        int chainHandleCounterMax;
     protected:
         CityHall(); // Singleton
     public:
@@ -29,6 +31,7 @@ class CityHall{
         void calculateCitySatisfaction();
         void calculateHousedSatisfaction();
         void calculateHomelessness();
+        int calculatePopeCoins();
 };
 
 #endif
