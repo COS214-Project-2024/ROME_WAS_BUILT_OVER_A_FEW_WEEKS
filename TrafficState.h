@@ -10,8 +10,8 @@ class TrafficState
 {
     public:
     virtual ~TrafficState() = default;
-    virtual void calculateTraffic(Road* road) = 0;
-    virtual void handleNewlyAddedBuilding(Road* road) = 0;
+    virtual void adjustTrafficImpact(Road* road) = 0;
+    virtual int getTrafficLevel() const = 0;
 };
 
 #endif
