@@ -1,17 +1,15 @@
 #ifndef DEMOCRACY_H
-#define DEMOCRACY_H
-
-#include <string>
-#include <vector>
-
+#define DEMOCRACY_
 #include "PoliticalSystem.h"
 
 class Democracy : public PoliticalSystem { 
 public:
     Democracy();
-    Democracy(std::string name, std::vector<std::string> politicalParties);
-    void addPoliticalParty(std::string party);
-    void removePoliticalParty(std::string party);
+    virtual int getTaxRateResidential();
+    virtual int getTaxRateCommercial();
+    virtual int getTaxRateIndustrial();
+    virtual double getBudgetSplit();
+    virtual int getCitizenSatisfactionImpact();
     ~Democracy();
 };
 

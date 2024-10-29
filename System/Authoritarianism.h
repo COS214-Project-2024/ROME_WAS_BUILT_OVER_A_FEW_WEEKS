@@ -1,16 +1,15 @@
 #ifndef AUTHORITARIANISM_H
 #define AUTHORITARIANISM_H
-
-#include <string>
-#include <vector>
 #include "PoliticalSystem.h"   
 
 class Authoritarianism : public PoliticalSystem {
 public:
     Authoritarianism();
-    Authoritarianism(std::string name, std::vector<std::string> politicalParties);
-    void addPoliticalParty(std::string party);
-    void removePoliticalParty(std::string party);
+    virtual int getTaxRateResidential();
+    virtual int getTaxRateCommercial();
+    virtual int getTaxRateIndustrial();
+    virtual double getBudgetSplit();
+    virtual int getCitizenSatisfactionImpact();
     ~Authoritarianism();
 };
 
