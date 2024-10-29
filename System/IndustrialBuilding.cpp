@@ -4,13 +4,13 @@
 #include "IndustrialBuilding.h"
 
 
-IndustrialBuilding::IndustrialBuilding(int radiusOfEffect) : RadiusBuilding(radiusOfEffect) {
+IndustrialBuilding::IndustrialBuilding()  {
 
 }
 
 void IndustrialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     CityStructure::placeStructure(x, y, cityMap);
-    cityMap->addIndustrialBuilding(this);
+    cityMap->addBuilding(this);
 }
 
 
