@@ -2,10 +2,11 @@
 #define ROAD_H
 
 #include "CityStructure.h"
+#include "TrafficState.h"
 
 class Road : public CityStructure {
     private:
-        int trafficState; // USE STATE DP in future
+        TrafficState* trafficState; // USE STATE DP in future
     public:
         Road();
         void placeStructure(int x, int y, CityMap* cityMap);
@@ -13,7 +14,7 @@ class Road : public CityStructure {
         void calculateTraffic();
         ~Road();
         void newBuildingWasAdded();
-
+        void setTrafficState(TrafficState* state);
         
 };
 
