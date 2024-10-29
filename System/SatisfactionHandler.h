@@ -9,7 +9,8 @@ class SatisfactionHandler{
         float chanceOfPopulationChange;
         float incomeAffectionRate;
     public:
-        virtual void handle(int curSatisfaction, CityHall* cityHall);
+        virtual float handleTax(int curSatisfaction, CityHall* cityHall);
+        virtual void handlePopulation(int curSatisfaction, CityHall* cityHall);
         void addHandler(SatisfactionHandler* nextHandler);
 };
 

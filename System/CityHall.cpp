@@ -1,4 +1,7 @@
 #include "CityHall.h"
+#include "LowSatisfactionHandler.h"
+#include "MediumSatisfactionHandler.h"
+#include "HighSatisfactionHandler.h"
 
 CityHall* CityHall::cityHall = 0;
 
@@ -8,6 +11,12 @@ CityHall::CityHall(){
     citySatisfaction = 100;
     railway = new Railway();
     airport = new Airport();
+
+    // Set up the Chain of Responsibility
+    LowSatisfactionHandler* lowHandler = new LowSatisfactionHandler(nullptr);
+    MediumSatisfactionHandler* mediumHandler = new MediumSatisfactionHandler(lowHandler);
+    HighSatisfactionHandler* highHandler = new HighSatisfactionHandler(mediumHandler);
+    this->chainOfResponsibility = highHandler;
 }
 
 // SINGLETON
@@ -44,6 +53,18 @@ void CityHall::immigrate(){
     numCitizens += 1;
 }
 
+int CityHall::getNumCitizens(){
+    return numCitizens;
+}
+
+int CityHall::getCityCapacity(){
+    return cityCapacity;
+}
+
+int CityHall::getNumResidentialBuildings(){
+    return numResidentialBuildings;
+}
+
 int CityHall::getCurrSatisfaction(){
     return citySatisfaction;
 }
@@ -51,6 +72,10 @@ int CityHall::getCurrSatisfaction(){
 float CityHall::calculateSatisfaction(){
 
     return residentialSatisfaction + getRailwayBonus() + getAirportBonus() - calculateHomelessnessDeduction();
+}
+
+void CityHall::calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction){
+    residentialSatisfaction = numResidentialBuildings*residentialSatisfaction - oldSatisfaction + newSatisfaction;
 }
 
 float CityHall::getRailwayBonus(){
@@ -67,6 +92,14 @@ float CityHall::calculateHomelessnessDeduction(){
     // Homelessness will deduct in proportion to population percentage
     // For example if homelessness accounts for 10% of population, then there will be a 10% deduction
     return (numberHomelessPeople/cityCapacity)*100;
+}
+
+void CityHall::populationChange(int satisfactionLevel){
+    chainOfResponsibility->handlePopulation(citySatisfaction, this);
+}
+
+float CityHall::collectTaxes(int satisfactionLevel){
+    return chainOfResponsibility->handleTax(citySatisfaction, this);
 }
 
 int CityHall::getTaxRateResidential(){

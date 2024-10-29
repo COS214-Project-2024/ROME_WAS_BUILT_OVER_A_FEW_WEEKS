@@ -1,10 +1,13 @@
 #include "SatisfactionHandler.h"
 
-void SatisfactionHandler::handle(int curSatisfaction, CityHall* cityHall){
-    // This is the default case that will run if all satisfaction handlers skipped the request
-    // Start a countdown perhaps of when the player will lose.
-    // Or make them lose immediately. We'll still figure this out.
-    return; // Just adding this here in case the function gives shit for not having any code
+float SatisfactionHandler::handleTax(int curSatisfaction, CityHall* cityHall){
+    // Countdown maybe of when player loses?
+    return 0;
+}
+
+void SatisfactionHandler::handlePopulation(int curSatisfaction, CityHall *cityHall){
+    // Countdown maybe of when player loses?
+    return;
 }
 
 void SatisfactionHandler::addHandler(SatisfactionHandler *nextHandler){

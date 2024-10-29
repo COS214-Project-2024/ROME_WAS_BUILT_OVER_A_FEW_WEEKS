@@ -38,13 +38,19 @@ class CityHall{
         void death();
         void emigrate();
         void immigrate();
+        int getNumCitizens();
+        int getCityCapacity();
+        int getNumResidentialBuildings();
 
         int getCurrSatisfaction();
         float calculateSatisfaction();
-        void calculateHousedSatisfaction(); // Mediator can do this (this is the calculation we were talking about Vansh)
+        void calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction); // Mediator can do this (this is the calculation we were talking about Vansh)
         float getRailwayBonus();
         float getAirportBonus();
         float calculateHomelessnessDeduction();
+
+        void populationChange(int satisfactionLevel);
+        float collectTaxes(int satisfactionLevel);
 
         int getTaxRateResidential();
         int getTaxRateCommercial();

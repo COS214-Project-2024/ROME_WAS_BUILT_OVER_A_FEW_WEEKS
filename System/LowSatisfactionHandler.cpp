@@ -7,14 +7,14 @@ LowSatisfactionHandler::LowSatisfactionHandler(SatisfactionHandler *nextHandler)
     incomeAffectionRate = 0.6;
 }
 
-void LowSatisfactionHandler::handle(int curSatisfaction, CityHall *cityHall){
+void LowSatisfactionHandler::handlePopulation(int curSatisfaction, CityHall *cityHall){
         // Pass the request down the chain if satisfaction is lower than 80
     if (curSatisfaction < 40){
         if (nextHandler == NULL){
-            SatisfactionHandler::handle(curSatisfaction, cityHall);
+            SatisfactionHandler::handlePopulation(curSatisfaction, cityHall);
             return;
         }
-        nextHandler->handle(curSatisfaction, cityHall);
+        nextHandler->handlePopulation(curSatisfaction, cityHall);
     }
     
     // Random functions
@@ -30,7 +30,7 @@ void LowSatisfactionHandler::handle(int curSatisfaction, CityHall *cityHall){
     // If random number is below chanceOfPopulationChange then population should change
     if (changePopulation <= chanceOfPopulationChange){
         int numNewCitizenMultiplier = random2(gen)/100;
-        int numNewCitizens = cityHall->getCurrNumCitizens() * numNewCitizenMultiplier;
+        int numNewCitizens = cityHall->getNumCitizens() * numNewCitizenMultiplier;
 
         for (int i = 0; i < numNewCitizens; ){
             bool doDeath = random4(gen);
@@ -42,8 +42,23 @@ void LowSatisfactionHandler::handle(int curSatisfaction, CityHall *cityHall){
             }
         }
     }
+}
 
-    incomeAffectionRate += random3(gen)/100; // Money can be multiplied with 90% - 110%
-    // Get CityHall to calculate next income and then multiply that by above value.
-    // Then add that to popeCoin total.
+float LowSatisfactionHandler::handleTax(int curSatisfaction, CityHall *cityHall){
+    if (curSatisfaction < 40){
+        if (nextHandler == NULL){
+            return SatisfactionHandler::handleTax(curSatisfaction, cityHall);
+        }
+        return nextHandler->handleTax(curSatisfaction, cityHall);
+    }
+
+    // Return some tax value based on number of citizens, incomeAffectionRate
+    return 0;
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> random1(-10, 10);
+
+    incomeAffectionRate += random1(gen)/100;
+    return incomeAffectionRate*cityHall->getTaxRateResidential();
 }

@@ -109,6 +109,7 @@ int ResidentialComplex::calculateSatisfaction() {
 
     satisfaction = trafficSatisfaction + EmploymentSatisfaction + PowerSatisfaction + WaterSatisfaction + WasteSatisfaction + SewageSatisfaction + HealthSatisfaction + EducationSatisfaction + safetySatisfaction;
     // Additonal bonus for landmarks, railway level, airport level
+    cityMap->resSAtisfactionCHaged(this);
     return satisfaction;
 
 }

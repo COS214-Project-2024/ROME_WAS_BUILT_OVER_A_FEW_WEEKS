@@ -46,6 +46,8 @@ void CityMap::addRoad(Road* originator) {
 
 }
 
+
+
 void CityMap::addBuilding(CityStructure* originator) {
     // TELL ADJACENT ROADS TO ADJUST THEIR TRAFFIC BASED ON NEW BUILDING
     //then the roads will tell the residential complexes to adjust their satisfaction (CAN BE DONE USING MEDIATOR AS WELL)

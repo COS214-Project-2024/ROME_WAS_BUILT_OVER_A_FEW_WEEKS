@@ -6,7 +6,8 @@
 class LowSatisfactionHandler: public SatisfactionHandler{
     public:
         LowSatisfactionHandler(SatisfactionHandler* nextHandler);
-        void handle(int curSatisfaction, CityHall* cityHall) override;
+        float handleTax(int curSatisfaction, CityHall* cityHall) override;
+        void handlePopulation(int curSatisfaction, CityHall* cityHall) override;
 };
 
 #endif
