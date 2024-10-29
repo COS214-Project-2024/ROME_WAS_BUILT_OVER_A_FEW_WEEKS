@@ -3,8 +3,16 @@
 #include "CityMap.h"
 #include "Landmark.h"
 
-Landmark::Landmark(int radiusOfEffect) : RadiusBuilding(radiusOfEffect) {
+Landmark::Landmark(int radiusOfEffect) : radiusOfEffect(radiusOfEffect) {
 
+}
+
+Landmark::~Landmark() {
+    this->cityMap = nullptr;
+}
+
+int Landmark::getRadiusOfEffect() {
+    return this->radiusOfEffect;
 }
 
 void Landmark::placeStructure(int x, int y, CityMap* cityMap) {
@@ -12,7 +20,5 @@ void Landmark::placeStructure(int x, int y, CityMap* cityMap) {
     cityMap->addLandmark(this);
 }
 
-Landmark::~Landmark() {
-    this->cityMap = nullptr;
-}
+
 

@@ -1,11 +1,11 @@
 #ifndef INDUSTRIAL_BUILDING_H
 #define INDUSTRIAL_BUILDING_H
 
-#include "RadiusBuilding.h"
+#include "CityStructure.h"
 
-class IndustrialBuilding : public RadiusBuilding {
+class IndustrialBuilding : public CityStructure {
     public:
-        IndustrialBuilding(int radiusOfEffect);
+        IndustrialBuilding();
         void placeStructure(int x, int y, CityMap* cityMap);
         virtual ~IndustrialBuilding();
 };

@@ -4,6 +4,7 @@
 #include "CityStructure.h"
 #include "CommercialBuilding.h"
 #include "IndustrialBuilding.h"
+#include "Plant.h"
 #include "Landmark.h"
 #include "Road.h"
 
@@ -24,7 +25,7 @@ class CityMap {
         void addRoad(Road* originator);  // DECREASE TRAFFIC
         void addBuilding(CityStructure* originator); // INCREASE TRAFFIC
         void addCommercialBuilding(CommercialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addIndustrialBuilding(IndustrialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
+        void addIndustrialBuilding(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addLandmark(Landmark* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void removeStructure(int x, int y);
         // void printMap();
