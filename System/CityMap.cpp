@@ -97,7 +97,7 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
     
 }
 
-void CityMap::addIndustrialBuilding(IndustrialBuilding* originator) {
+void CityMap::addIndustrialBuilding(Plant* originator) {
     // call addBuilding to adjust the traffic
     //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
     // RADIUS WILL BE BIGGER IN THIS CASE

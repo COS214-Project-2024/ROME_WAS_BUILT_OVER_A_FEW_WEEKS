@@ -1,13 +1,17 @@
 #ifndef COMMERICAL_BUILDING_H
 #define COMMERICAL_BUILDING_H
 
-#include "RadiusBuilding.h"
+#include "CityStructure.h"
 
-class CommercialBuilding : public RadiusBuilding {
+class CommercialBuilding : public CityStructure {
+    private:
+        int radiusOfEffect;
     public:
         CommercialBuilding(int radiusOfEffect);
-        void placeStructure(int x, int y, CityMap* cityMap);
         virtual ~CommercialBuilding();
+        int getRadiusOfEffect();
+        void placeStructure(int x, int y, CityMap* cityMap);
+        
 
         
 };

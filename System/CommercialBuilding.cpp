@@ -4,8 +4,16 @@
 #include "CommercialBuilding.h"
 
 
-CommercialBuilding::CommercialBuilding(int radiusOfEffect) : RadiusBuilding(radiusOfEffect) {
+CommercialBuilding::CommercialBuilding(int radiusOfEffect) : radiusOfEffect(radiusOfEffect) {
 
+}
+
+CommercialBuilding::~CommercialBuilding() {
+    // EMPTY
+}
+
+int CommercialBuilding::getRadiusOfEffect() {
+    return this->radiusOfEffect;
 }
 
 void CommercialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
@@ -13,6 +21,3 @@ void CommercialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     cityMap->addCommercialBuilding(this);
 }
 
-CommercialBuilding::~CommercialBuilding() {
-    // EMPTY
-}
