@@ -3,13 +3,17 @@
 
 #include "SatisfactionHandler.h"
 #include "PoliticalSystem.h"
-#include "CityMap.h"
+#include "BoosterStructures.h"
+#include "Railway.h"
+#include "Airport.h"
  
 class CityHall{
     private:
         static CityHall* cityHall; // Singleton
         SatisfactionHandler* chainOfResponsibility;
         PoliticalSystem* politicalSystem;
+        Railway* railway;
+        Airport* airport;
 
         int numCitizens;
         int popeCoins;
@@ -23,8 +27,10 @@ class CityHall{
         int taxRateIndustrial;
         double budgetSplit;
         int citizenSatisfactionImpact;
+
     protected:
         CityHall(); // Singleton
+
     public:
         static CityHall* getInstance(); // Singleton
         void setPoliticalSystem(PoliticalSystem* politicalSystem);
@@ -38,8 +44,7 @@ class CityHall{
         void calculateHousedSatisfaction(); // Mediator can do this (this is the calculation we were talking about Vansh)
         float getRailwayBonus();
         float getAirportBonus();
-        void calculateHomelessness();
-        int calculatePopeCoins();
+        float calculateHomelessnessDeduction();
 
         int getTaxRateResidential();
         int getTaxRateCommercial();
