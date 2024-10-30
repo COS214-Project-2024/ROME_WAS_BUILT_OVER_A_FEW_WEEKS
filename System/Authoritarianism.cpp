@@ -17,11 +17,11 @@ int Authoritarianism::getTaxRateIndustrial(){
     return 120;
 }
 
-double Authoritarianism::getBudgetSplit(){
+double Authoritarianism::budgetSplitTaxes(){
     return 0.7;
 }
 
-int Authoritarianism::getCitizenSatisfactionImpact(){
+int Authoritarianism::politicalAffectOnSatisfaction(){
     random_device rd;
     mt19937 gen(rd());
     // Define the distribution range between -2 and 2 (inclusive)

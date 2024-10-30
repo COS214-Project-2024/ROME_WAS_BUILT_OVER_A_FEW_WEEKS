@@ -16,11 +16,11 @@ int Democracy::getTaxRateIndustrial(){
     return 100;
 }
 
-double Democracy::getBudgetSplit(){
+double Democracy::budgetSplitTaxes(){
     return 0.5;
 }
 
-int Democracy::getCitizenSatisfactionImpact(){
+int Democracy::politicalAffectOnSatisfaction(){
     random_device rd;
     mt19937 gen(rd());
     // Define the distribution range between -2 and 2 (inclusive)

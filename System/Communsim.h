@@ -8,8 +8,8 @@ public:
     virtual int getTaxRateResidential();
     virtual int getTaxRateCommercial();
     virtual int getTaxRateIndustrial();
-    virtual double getBudgetSplit();
-    virtual int getCitizenSatisfactionImpact();
+    virtual double budgetSplitTaxes();
+    virtual int politicalAffectOnSatisfaction();
     ~Communsim();
 };
 

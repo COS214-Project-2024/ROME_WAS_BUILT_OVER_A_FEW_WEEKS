@@ -17,11 +17,11 @@ int Communsim::getTaxRateIndustrial(){
     return 60;
 }
 
-double Communsim::getBudgetSplit(){
+double Communsim::budgetSplitTaxes(){
     return 0.3;
 }
 
-int Communsim::getCitizenSatisfactionImpact(){
+int Communsim::politicalAffectOnSatisfaction(){
     random_device rd;
     mt19937 gen(rd());
     // Define the distribution range between -2 and 2 (inclusive)
