@@ -22,12 +22,6 @@ class CityHall{
         int numResidentialBuildings;
         float residentialSatisfaction;
 
-        int taxRateResidential;
-        int taxRateCommercial;
-        int taxRateIndustrial;
-        double budgetSplit;
-        int citizenSatisfactionImpact;
-
     protected:
         CityHall(); // Singleton
 
@@ -57,6 +51,9 @@ class CityHall{
         int getTaxRateIndustrial();
         double getBudgetSplit(); // Higher the percentage the more money goes to the user
         int getCitizenSatisfactionImpact();
+
+        void budgetSplitTaxes(int collectedTaxes);
+        void politicalAffectOnSatisfaction(int satisfactionLevel);
         ~CityHall();
 };
 
