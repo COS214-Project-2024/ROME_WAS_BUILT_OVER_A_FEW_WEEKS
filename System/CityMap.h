@@ -27,7 +27,7 @@ class CityMap {
         void addCommercialBuilding(CommercialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addIndustrialBuilding(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addLandmark(Landmark* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void removeStructure(int x, int y);
+        virtual void removeStructure(int x, int y) {};
         // void printMap();
         ~CityMap();
 };

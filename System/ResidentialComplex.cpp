@@ -95,6 +95,7 @@ int ResidentialComplex::calculateTrafficSatisfaction() {
     trafficSatisfaction = newTrafficSatisfaction; 
     
     //return trafficSatisfaction;
+    return 0;
 }
 
 int ResidentialComplex::calculateSatisfaction() {

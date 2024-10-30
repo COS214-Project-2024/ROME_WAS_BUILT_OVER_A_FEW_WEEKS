@@ -10,7 +10,7 @@ public:
     virtual int getTaxRateIndustrial() = 0;
     virtual double getBudgetSplit() = 0; 
     virtual int getCitizenSatisfactionImpact() = 0; 
-    ~PoliticalSystem();
+    virtual ~PoliticalSystem();
 };
 
 #endif
