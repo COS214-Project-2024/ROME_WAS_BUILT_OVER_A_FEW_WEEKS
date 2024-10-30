@@ -2,6 +2,10 @@
 
 using namespace std;
 
+// SET-UP REQUIREMENTS SO FAR:
+// Create CityMap and CityHall.
+// CityHall needs reference to political system
+
 int main(){
 
     int x = 0;
