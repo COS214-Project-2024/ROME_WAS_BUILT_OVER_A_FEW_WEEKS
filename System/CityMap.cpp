@@ -21,9 +21,22 @@ std::vector<std::vector<CityStructure*>> CityMap::getMap() {
     return map;
 }
 
+void CityMap::setCityHall(CityHall* cityHall) {
+    this->cityHall = cityHall;
+}
+
 void CityMap::addStructure(int x, int y, CityStructure* structure) {
+
+    int deduction = structure->getCost();
+    if (cityHall->deductPopeCoins(deduction) == false) {
+        std::cout << "Not enough pope coins to place the structure" << std::endl;
+        return;
+    }
+
     // DO VALIDATION (is it supposed to be at y then x?)
     map.at(y).at(x) = structure;
+    
+    
 }
 
 void CityMap::addRoad(Road* originator) {
@@ -69,6 +82,13 @@ void CityMap::addBuilding(CityStructure* originator) {
 
 }
 
+void CityMap::addResidentialComplex(ResidentialComplex* originator) {
+    // call addBuilding to adjust the traffic
+    addBuilding(originator);
+
+    this->cityHall->increaseNumResidentialComplexes();
+}
+
 void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
     // call addBuilding to adjust the traffic
     //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
@@ -96,6 +116,8 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
             }
         }
     }
+
+    this->cityHall->increaseNumCommercialBuildings();
     
 }
 
@@ -126,6 +148,9 @@ void CityMap::addIndustrialBuilding(Plant* originator) {
             }
         }
     }
+
+    this->cityHall->increaseNumIndustrialBuildings();
+
 }
 
 void CityMap::addLandmark(Landmark* originator) {
@@ -166,3 +191,41 @@ CityMap::~CityMap() {
     map.clear();
 }
 
+void CityMap::removeStructure(int x, int y) {
+    // DO VALIDATION
+    if (map.at(y).at(x) == nullptr) {
+        std::cout << "No structure to remove" << std::endl;
+        return;
+    }
+
+    if (map.at(y).at(x) == cityHall) {
+        std::cout << "Cannot remove the city hall" << std::endl;
+        return;
+    }
+
+    int refund = map.at(y).at(x)->getCost();
+    cityHall->addPopeCoins(refund);
+
+    map.at(y).at(x) = nullptr;
+    
+}
+
+void CityMap::removeRoad(Road* originator) {
+    // TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW TRAFFIC
+    int x = originator->getX();
+    int y = originator->getY();
+
+    if (map.at(y).at(x+1) != nullptr) {
+        map.at(y).at(x+1)->roadWasRemoved();
+    }
+    if (map.at(y).at(x-1) != nullptr) {
+        map.at(y).at(x-1)->roadWasRemoved();
+    }
+    if (map.at(y+1).at(x) != nullptr) {
+        map.at(y+1).at(x)->roadWasRemoved();
+    }
+    if (map.at(y-1).at(x) != nullptr) {
+        map.at(y-1).at(x)->roadWasRemoved();
+    }
+
+}

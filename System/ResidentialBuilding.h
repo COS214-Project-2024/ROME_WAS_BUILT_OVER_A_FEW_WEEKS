@@ -2,6 +2,7 @@
 #define RESIDENTIAL_BUILDING_H
 
 #include "ResidentialComponent.h"
+#include <string>
 
 class ResidentialBuilding : public ResidentialComponent {
     private:
@@ -15,6 +16,8 @@ class ResidentialBuilding : public ResidentialComponent {
         int getCapacity(); // SAME AS calculateCapacity()
 
         int calculateCapacity();
+
+        virtual std::string getResidentialBuildingType() = 0;
 };
 
 #endif

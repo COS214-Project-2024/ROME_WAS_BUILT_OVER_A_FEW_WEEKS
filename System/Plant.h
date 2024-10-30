@@ -11,6 +11,7 @@ class Plant : public IndustrialBuilding {
         virtual ~Plant();
         int getRadiusOfEffect();
         void placeStructure(int x, int y, CityMap* cityMap);
+        virtual std::string getPlantType() = 0; // must return everything it is decorated with somehow
         
 };
 

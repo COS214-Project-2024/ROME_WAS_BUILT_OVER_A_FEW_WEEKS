@@ -2,6 +2,7 @@
 #include "LowSatisfactionHandler.h"
 #include "MediumSatisfactionHandler.h"
 #include "HighSatisfactionHandler.h"
+#include "CityMap.h"
 
 CityHall* CityHall::cityHall = 0;
 
@@ -62,7 +63,7 @@ int CityHall::getCityCapacity(){
 }
 
 int CityHall::getNumResidentialBuildings(){
-    return numResidentialBuildings;
+    return numResidentialComplexes;
 }
 
 int CityHall::getCurrSatisfaction(){
@@ -75,7 +76,7 @@ float CityHall::calculateSatisfaction(){
 }
 
 void CityHall::calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction){
-    residentialSatisfaction = numResidentialBuildings*residentialSatisfaction - oldSatisfaction + newSatisfaction;
+    residentialSatisfaction = numResidentialComplexes*residentialSatisfaction - oldSatisfaction + newSatisfaction;
 }
 
 float CityHall::getRailwayBonus(){
@@ -130,3 +131,55 @@ int CityHall::getCitizenSatisfactionImpact(){
 CityHall::~CityHall(){
     delete politicalSystem;
 }
+
+void CityHall::placeStructure(int x, int y, CityMap* cityMap) {
+    // call base class function which assigns it to the map
+    CityStructure::placeStructure(x, y, cityMap); 
+    this->cityMap->setCityHall(this);
+}
+
+void CityHall::removeStructure() {
+    cityMap->removeStructure(x, y);
+}
+
+void CityHall::increaseNumResidentialComplexes(){
+    numResidentialComplexes++;
+}
+void CityHall::decreaseNumResidentialComplexes(){
+    numResidentialComplexes--;
+}
+
+void CityHall::increaseNumCommercialBuildings(){
+    numCommercialBuildings++;
+}
+void CityHall::decreaseNumCommercialBuildings(){
+    numCommercialBuildings--;
+}
+
+void CityHall::increaseNumIndustrialBuildings(){
+    numIndustrialBuildings++;
+}
+void CityHall::decreaseNumIndustrialBuildings(){
+    numIndustrialBuildings--;
+}
+
+
+bool CityHall::addPopeCoins(int coins){
+    popeCoins = popeCoins + coins;
+
+    if (popeCoins > MAX_POPE_COINS){ // cap the coins
+        popeCoins = MAX_POPE_COINS;
+        return false;
+    }
+    return true;
+}
+
+bool CityHall::deductPopeCoins(int coins){
+    if (popeCoins - coins < 0){
+        return false;
+    }
+    popeCoins = popeCoins - coins;
+    return true;
+}
+
+

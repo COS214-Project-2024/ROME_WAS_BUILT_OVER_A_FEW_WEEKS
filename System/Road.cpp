@@ -20,9 +20,24 @@ void Road::placeStructure(int x, int y, CityMap* cityMap) {
     cityMap->addRoad(this);
 }
 
-void Road::removeStructure() {
-    cityMap->removeStructure(x, y);
+void Road::newBuildingWasAdded() {
+    calculateTraffic();
+    cityMap->addRoad(this); //logically doesnt make sense to call this function addRoad
 }
+
+
+void Road::removeStructure() {
+    CityStructure::removeStructure();
+    cityMap->removeRoad(this);
+
+}
+
+void Road::buildingWasRemoved() {
+    calculateTraffic();
+    cityMap->addRoad(this); //logically doesnt make sense to call this function addRoad
+}
+
+
 
 void Road::calculateTraffic() {
     // Check the squares around
@@ -48,9 +63,4 @@ void Road::calculateTraffic() {
     } else { // if 3 or 4 then high
         trafficState = 3; // HIGH
     }
-}
-
-void Road::newBuildingWasAdded() {
-    calculateTraffic();
-    cityMap->addRoad(this); //logically doesnt make sense to call this function addRoad
 }

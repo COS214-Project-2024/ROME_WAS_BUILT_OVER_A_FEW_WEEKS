@@ -9,10 +9,14 @@ class Road : public CityStructure {
     public:
         Road();
         void placeStructure(int x, int y, CityMap* cityMap);
+        void newBuildingWasAdded();
+
         void removeStructure();
+        void buildingWasRemoved();
+
         void calculateTraffic();
         ~Road();
-        void newBuildingWasAdded();
+        
 
         
 };

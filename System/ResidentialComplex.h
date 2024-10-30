@@ -23,13 +23,19 @@ class ResidentialComplex : public ResidentialComponent {
         int capacity;
     public:
         ResidentialComplex(ResidentialComponent* residential);
-        void placeStructure(int x, int y, CityMap* cityMap);
-        void removeStructure();
         ~ResidentialComplex();
+
+        void placeStructure(int x, int y, CityMap* cityMap);
         void newRoadWasAdded();
         void newCommercialBuildingWasAdded();
         void newIndustrialBuildingWasAdded();
         void newLandmarkWasAdded();
+
+        void removeStructure();
+        void roadWasRemoved();
+        void commercialBuildingWasRemoved();
+        void industrialBuildingWasRemoved();
+        void landmarkWasRemoved();
 
         int getCapacity(); // Retrieves the member variable capacity instead of recalculating it
 

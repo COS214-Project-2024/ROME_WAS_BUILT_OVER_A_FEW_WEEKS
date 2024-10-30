@@ -11,20 +11,16 @@ ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
     capacity = residential->calculateCapacity();
 }
 
-void ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
-    CityStructure::placeStructure(x, y, cityMap);
-    cityMap->addBuilding(this);
-}
-
-void ResidentialComplex::removeStructure() {
-    cityMap->removeStructure(x, y);
-}
-
 ResidentialComplex::~ResidentialComplex() {
     std::vector<ResidentialComponent*>::iterator it;
     for (it = residentialComponents.begin(); it != residentialComponents.end(); it++) {
         delete *it;
     }
+}
+
+void ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
+    CityStructure::placeStructure(x, y, cityMap);
+    cityMap->addResidentialComplex(this);
 }
 
 void ResidentialComplex::newRoadWasAdded() {
@@ -45,6 +41,33 @@ void ResidentialComplex::newIndustrialBuildingWasAdded() {  // FIX
 void ResidentialComplex::newLandmarkWasAdded() {
     satisfaction += 1;
 }
+
+// REMOVAL CODE
+
+void ResidentialComplex::removeStructure() {
+    CityStructure::removeStructure();
+    cityMap->removeResidentialComplex(this);
+}
+
+void ResidentialComplex::roadWasRemoved() {
+    calculateTrafficSatisfaction();
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::commercialBuildingWasRemoved() {
+    EmploymentSatisfaction -= 1;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::industrialBuildingWasRemoved() {
+    EmploymentSatisfaction -= 1;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::landmarkWasRemoved() {
+    satisfaction -= 1;
+}
+
 
 
 

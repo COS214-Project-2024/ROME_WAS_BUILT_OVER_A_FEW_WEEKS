@@ -21,3 +21,7 @@ void CommercialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     cityMap->addCommercialBuilding(this);
 }
 
+void CommercialBuilding::removeStructure() {
+    CityStructure::removeStructure();
+    cityMap->removeCommercialBuilding(this);
+}

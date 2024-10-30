@@ -11,6 +11,7 @@ class Landmark : public CityStructure {
         virtual ~Landmark();
         int getRadiusOfEffect();
         void placeStructure(int x, int y, CityMap* cityMap);
+        void removeStructure();
         
         
 };

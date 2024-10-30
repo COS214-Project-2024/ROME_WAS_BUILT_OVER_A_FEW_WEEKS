@@ -1,13 +1,14 @@
 #ifndef CITYHALL_H
 #define CITYHALL_H
 
+#include "CityStructure.h"
 #include "SatisfactionHandler.h"
 #include "PoliticalSystem.h"
 #include "BoosterStructures.h"
 #include "Railway.h"
 #include "Airport.h"
  
-class CityHall{
+class CityHall : public CityStructure{
     private:
         static CityHall* cityHall; // Singleton
         SatisfactionHandler* chainOfResponsibility;
@@ -16,17 +17,23 @@ class CityHall{
         Airport* airport;
 
         int numCitizens;
-        int popeCoins;
-        float citySatisfaction;
         int cityCapacity;
-        int numResidentialBuildings;
-        float residentialSatisfaction;
+        int numResidentialComplexes;
+        int numCommercialBuildings;
+        int numIndustrialBuildings;
+        int popeCoins;
+        static const int MAX_POPE_COINS = 1000000000000; // 1 trillion
 
-        int taxRateResidential;
-        int taxRateCommercial;
+        float citySatisfaction;
+        float residentialSatisfaction;
+        
+        int taxRateResidential; // @Denis, i think we could just use getters for these
+        int taxRateCommercial;  // Dont need to store it really
         int taxRateIndustrial;
         double budgetSplit;
         int citizenSatisfactionImpact;
+
+
 
     protected:
         CityHall(); // Singleton
@@ -58,6 +65,22 @@ class CityHall{
         double getBudgetSplit(); // Higher the percentage the more money goes to the user
         int getCitizenSatisfactionImpact();
         ~CityHall();
+
+        void placeStructure(int x, int y, CityMap* cityMap);
+        void removeStructure();
+
+        void increaseNumResidentialComplexes();
+        void decreaseNumResidentialComplexes();
+
+        void increaseNumCommercialBuildings();
+        void decreaseNumCommercialBuildings();
+
+        void increaseNumIndustrialBuildings();
+        void decreaseNumIndustrialBuildings();
+
+        bool addPopeCoins(int coins);
+        bool deductPopeCoins(int coins);
+        
 };
 
 #endif

@@ -20,5 +20,10 @@ void Landmark::placeStructure(int x, int y, CityMap* cityMap) {
     cityMap->addLandmark(this);
 }
 
+void Landmark::removeStructure() {
+    CityStructure::removeStructure();
+    cityMap->removeLandmark(this);
+}
+
 
 

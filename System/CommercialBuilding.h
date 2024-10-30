@@ -11,6 +11,7 @@ class CommercialBuilding : public CityStructure {
         virtual ~CommercialBuilding();
         int getRadiusOfEffect();
         void placeStructure(int x, int y, CityMap* cityMap);
+        void removeStructure();
         
 
         

@@ -19,6 +19,9 @@ void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
 
 void CityStructure::removeStructure() {
     cityMap->removeStructure(x, y);
+    this->x = -1;
+    this->y = -1;
+    this->cityMap = nullptr;
 }
 
 CityStructure::~CityStructure() {
@@ -32,4 +35,8 @@ int CityStructure::getX() {
 
 int CityStructure::getY() {
     return y;
+}
+
+int CityStructure::getCost() {
+    return cost;
 }
