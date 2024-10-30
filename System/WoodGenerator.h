@@ -8,8 +8,8 @@ class WoodGenerator : public GeneratorDecorator {
         WoodGenerator(){};
         WoodGenerator(Factory* factory);
         ~WoodGenerator();
-        void addToQueue(Material* material);
         int generate();
+        int generateWood();
 };
 
 #endif

@@ -8,8 +8,8 @@ class SteelGenerator : public GeneratorDecorator {
         SteelGenerator(){};
         SteelGenerator(Factory* factory);
         ~SteelGenerator();
-        void addToQueue(Material* material);
         int generate();
+        int generateSteel();
 };
 
 #endif

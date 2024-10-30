@@ -13,7 +13,6 @@ class GeneratorDecorator : public Factory {
         GeneratorDecorator(){};
         GeneratorDecorator(Factory* factory);
         virtual ~GeneratorDecorator();
-        virtual void addToQueue(Material* material) =0;
         virtual int generate() = 0;
 };
 

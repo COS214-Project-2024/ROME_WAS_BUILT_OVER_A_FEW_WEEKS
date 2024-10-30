@@ -9,8 +9,8 @@ class ConcreteGenerator : public GeneratorDecorator {
         ConcreteGenerator(){};
         ConcreteGenerator(Factory* factory);
         ~ConcreteGenerator();
-        void addToQueue(Material* material);
         int generate();
+        int generateConcrete();
 };
 
 #endif
