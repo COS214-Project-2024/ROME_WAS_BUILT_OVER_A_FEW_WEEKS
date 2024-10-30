@@ -52,8 +52,8 @@ class CityHall{
         double getBudgetSplit(); // Higher the percentage the more money goes to the user
         int getCitizenSatisfactionImpact();
 
-        void budgetSplitTaxes(int collectedTaxes);
-        void politicalAffectOnSatisfaction(int satisfactionLevel);
+        int budgetSplitTaxes(int collectedTaxes);
+        int politicalAffectOnSatisfaction(int satisfactionLevel);
         ~CityHall();
 };
 

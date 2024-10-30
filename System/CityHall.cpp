@@ -122,12 +122,14 @@ int CityHall::getCitizenSatisfactionImpact(){
     return politicalSystem->politicalAffectOnSatisfaction();;
 }
 
-void CityHall::budgetSplitTaxes(int collectedTaxes){
+int CityHall::budgetSplitTaxes(int collectedTaxes){
     popeCoins = popeCoins + collectedTaxes*getBudgetSplit();
+    return popeCoins;
 }
 
-void CityHall::politicalAffectOnSatisfaction(int satisfactionLevel){
+int CityHall::politicalAffectOnSatisfaction(int satisfactionLevel){
     citySatisfaction = satisfactionLevel + getCitizenSatisfactionImpact();
+    return citySatisfaction;
 }
 
 CityHall::~CityHall(){
