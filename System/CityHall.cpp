@@ -103,28 +103,31 @@ float CityHall::collectTaxes(int satisfactionLevel){
 }
 
 int CityHall::getTaxRateResidential(){
-    taxRateResidential = politicalSystem->getTaxRateResidential();
-    return taxRateResidential;
+    return politicalSystem->getTaxRateResidential();
 }
 
 int CityHall::getTaxRateCommercial(){
-    taxRateCommercial = politicalSystem->getTaxRateCommercial();
-    return taxRateCommercial;
+    return politicalSystem->getTaxRateCommercial();
 }
 
 int CityHall::getTaxRateIndustrial(){
-    taxRateIndustrial = politicalSystem->getTaxRateIndustrial();
-    return taxRateIndustrial;
+    return politicalSystem->getTaxRateIndustrial();;
 }
 
 double CityHall::getBudgetSplit(){
-    budgetSplit = politicalSystem->getBudgetSplit();
-    return budgetSplit;
+    return politicalSystem->budgetSplitTaxes();;
 }
 
 int CityHall::getCitizenSatisfactionImpact(){
-    citizenSatisfactionImpact = politicalSystem->getCitizenSatisfactionImpact();
-    return citizenSatisfactionImpact;
+    return politicalSystem->politicalAffectOnSatisfaction();;
+}
+
+void CityHall::budgetSplitTaxes(int collectedTaxes){
+    popeCoins = popeCoins + collectedTaxes*getBudgetSplit();
+}
+
+void CityHall::politicalAffectOnSatisfaction(int satisfactionLevel){
+    citySatisfaction = satisfactionLevel + getCitizenSatisfactionImpact();
 }
 
 CityHall::~CityHall(){
