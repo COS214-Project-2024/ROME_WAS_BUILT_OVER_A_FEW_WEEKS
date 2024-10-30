@@ -2,19 +2,17 @@
 #define FACTORY_H
 
 #include "IndustrialBuilding.h"
+#include "Material.h"
 
 #include <queue>
 
 class Factory : public IndustrialBuilding {
     protected:
         int itemQueueSize;
-        std::queue<int> itemQueue;
+        std::queue<Material*> itemQueue;
     public:
         Factory();
         virtual ~Factory();
-        
-        
-    
 };
 
 
