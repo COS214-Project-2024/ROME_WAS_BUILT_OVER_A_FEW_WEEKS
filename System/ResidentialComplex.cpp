@@ -71,7 +71,7 @@ int ResidentialComplex::calculateCapacity(){
 int ResidentialComplex::calculateTrafficSatisfaction() {
     // Traffic satisfaction depends on the traffic of the roads around the complex
     // Get the map
-    std::vector<std::vector<CityStructure*>> cityMap = this->cityMap->getMap();
+    std::vector<std::vector<CityStructure*> > cityMap = this->cityMap->getMap();
     int newTrafficSatisfaction = 0;
     // Check the squares around the complex
     // CHeck if it is road

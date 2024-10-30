@@ -2,6 +2,7 @@
 #define SATISFACTIONHANDLER_H
 
 #include "CityHall.h"
+class CityHall;
 
 class SatisfactionHandler{
     protected:

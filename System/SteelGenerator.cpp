@@ -33,5 +33,6 @@ int SteelGenerator::generate(){
     else{
         std::cout << "Steel Generator is empty" << std::endl;
     }
+    return 0;
 }
 

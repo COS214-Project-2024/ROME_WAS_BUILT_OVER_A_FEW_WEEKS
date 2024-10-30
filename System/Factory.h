@@ -3,7 +3,6 @@
 
 #include "IndustrialBuilding.h"
 #include "Material.h"
-
 #include <queue>
 
 class Factory : public IndustrialBuilding {

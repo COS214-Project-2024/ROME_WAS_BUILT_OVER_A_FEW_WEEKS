@@ -33,6 +33,7 @@ int WoodGenerator::generate(){
     else{
         std::cout << "Wood Generator is empty" << std::endl;
     }
+    return 0;
 }
    
 

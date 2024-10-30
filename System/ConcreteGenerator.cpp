@@ -33,5 +33,6 @@ int ConcreteGenerator::generate(){
     else{
         std::cout << "Concrete Generator is empty" << std::endl;
     }
+    return 0;
 }
 

@@ -13,13 +13,13 @@
 class CityMap {
     private: 
         // 2D array of CityStructures using vector
-        std::vector<std::vector<CityStructure*>> map;
+        std::vector<std::vector<CityStructure*> > map;
         int width;
         int height;
     public:
         CityMap();
         CityMap(int width, int height);
-        std::vector<std::vector<CityStructure*>> getMap();
+        std::vector<std::vector<CityStructure*> > getMap();
 
         void addStructure(int x, int y, CityStructure* structure);
         void addRoad(Road* originator);  // DECREASE TRAFFIC

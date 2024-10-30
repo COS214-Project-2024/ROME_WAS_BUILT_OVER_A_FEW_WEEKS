@@ -6,8 +6,8 @@
 class MediumSatisfactionHandler: public SatisfactionHandler{
     public:
         MediumSatisfactionHandler(SatisfactionHandler* nextHandler);
-        void handlePopulation(int curSatisfaction, CityHall* cityHall) override;
-        float handleTax(int curSatisfaction, CityHall* cityHall) override;
+        void handlePopulation(int curSatisfaction, CityHall* cityHall);
+        float handleTax(int curSatisfaction, CityHall* cityHall);
 };
 
 #endif
