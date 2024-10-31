@@ -114,4 +114,25 @@ int ResidentialComplex::calculateSatisfaction() {
 }
 
 
+// for cloning
+void ResidentialComplex::clone() const{
+    ResidentialComplex* newComplex = new ResidentialComplex();
+    newComplex->trafficSatisfaction = this->trafficSatisfaction;
+    newComplex->employmentSatisfaction = this->employmentSatisfaction;
+    newComplex->powerSatisfaction = this->powerSatisfaction;
+    newComplex->waterSatisfaction = this->waterSatisfaction;
+    newComplex->wasteSatisfaction = this->wasteSatisfaction;
+    newComplex->sewageSatisfaction = this->sewageSatisfaction;
+    newComplex->healthSatisfaction = this->healthSatisfaction;
+    newComplex->educationSatisfaction = this->educationSatisfaction;
+    newComplex->safetySatisfaction = this->safetySatisfaction;
+    newComplex->satisfaction = this->satisfaction;
+    newComplex->capacity = this->capacity;
 
+    for(const ResidentialComponent* component : residentialComponents)
+    {
+        newComplex->addResidentialComponent(component);
+    }
+
+    return newComplex;
+}

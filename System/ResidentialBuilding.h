@@ -15,6 +15,9 @@ class ResidentialBuilding : public ResidentialComponent {
         int getCapacity(); // SAME AS calculateCapacity()
 
         int calculateCapacity();
+
+        // clone method for prototype
+        ResidentialComponent* clone() const override;
 };
 
 #endif

@@ -38,6 +38,9 @@ class ResidentialComplex : public ResidentialComponent {
 
         int calculateTrafficSatisfaction();
         int calculateSatisfaction();
+
+        //clone method for prototype
+        ResidentialComponent* clone() const override();
 };
 
 #endif

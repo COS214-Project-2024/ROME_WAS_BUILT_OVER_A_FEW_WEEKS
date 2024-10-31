@@ -13,6 +13,9 @@ class ResidentialComponent : public CityStructure {
         // virtual void calculateStatisfaction() : NO NEED since it will be same for all in complex
         virtual int calculateCapacity() = 0; //composite function
 
+        //protype, added by Lufuno
+        virtual ResidentialComponent* clone() const = 0;
+
         
 
 };

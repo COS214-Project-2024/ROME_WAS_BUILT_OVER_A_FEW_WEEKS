@@ -29,3 +29,8 @@ int ResidentialBuilding::getCapacity() {
 int ResidentialBuilding::calculateCapacity() {
     return capacity;
 }
+
+// for cloning
+ResidentialBuilding* ResidentialBuilding::clone() const{
+    return new ResidentialBuilding(*this);
+}
