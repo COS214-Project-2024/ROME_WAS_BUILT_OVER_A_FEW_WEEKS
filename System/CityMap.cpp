@@ -25,16 +25,17 @@ void CityMap::setCityHall(CityHall* cityHall) {
     this->cityHall = cityHall;
 }
 
-void CityMap::addStructure(int x, int y, CityStructure* structure) {
+bool CityMap::addStructure(int x, int y, CityStructure* structure) {
 
     int deduction = structure->getCost();
     if (cityHall->deductPopeCoins(deduction) == false) {
         std::cout << "Not enough pope coins to place the structure" << std::endl;
-        return;
+        return false;
     }
 
     // DO VALIDATION (is it supposed to be at y then x?)
     map.at(y).at(x) = structure;
+    return true;
     
     
 }
@@ -228,4 +229,138 @@ void CityMap::removeRoad(Road* originator) {
         map.at(y-1).at(x)->roadWasRemoved();
     }
 
+}
+
+void CityMap::removeBuilding(CityStructure* originator) {
+    // TELL ADJACENT ROADS TO ADJUST THEIR TRAFFIC BASED ON NEW BUILDING
+    //then the roads will tell the residential complexes to adjust their satisfaction (CAN BE DONE USING MEDIATOR AS WELL)
+    int x = originator->getX();
+    int y = originator->getY();
+
+    if (map.at(y).at(x+1) != nullptr) {
+        map.at(y).at(x+1)->buildingWasRemoved();
+    }
+    if (map.at(y).at(x-1) != nullptr) {
+        map.at(y).at(x-1)->buildingWasRemoved();
+    }
+    if (map.at(y+1).at(x) != nullptr) {
+        map.at(y+1).at(x)->buildingWasRemoved();
+    }
+    if (map.at(y-1).at(x) != nullptr) {
+        map.at(y-1).at(x)->buildingWasRemoved();
+    }
+
+}   
+
+void CityMap::removeResidentialComplex(ResidentialComplex* originator) {
+    // call addBuilding to adjust the traffic
+    removeBuilding(originator);
+
+    this->cityHall->decreaseNumResidentialComplexes();
+}
+
+void CityMap::removeCommercialBuilding(CommercialBuilding* originator) {
+    // call addBuilding to adjust the traffic
+    //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
+    // RADIUS WILL BE BIGGER IN THIS CASE
+
+    removeBuilding(originator);
+
+    int x = originator->getX();
+    int y = originator->getY();
+    int radiusOfEffect = originator->getRadiusOfEffect();
+
+    // radius for radius buildings works as concentric squares
+    int leftCornerX , leftCornerY;
+    for (int i = 0; i < radiusOfEffect; i++) {
+        leftCornerX = x - i;
+        leftCornerY = y - i;
+    }
+
+    int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
+
+    for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
+        for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
+            if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
+                map.at(leftCornerY + i).at(leftCornerX + j)->commercialBuildingWasRemoved(); 
+            }
+        }
+    }
+
+    this->cityHall->decreaseNumCommercialBuildings();
+    
+}
+
+void CityMap::removeIndustrialBuilding(Plant* originator) {
+    // call addBuilding to adjust the traffic
+    //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
+    // RADIUS WILL BE BIGGER IN THIS CASE
+
+    removeBuilding(originator);
+
+    int x = originator->getX();
+    int y = originator->getY();
+    int radiusOfEffect = originator->getRadiusOfEffect();
+
+    // radius for radius buildings works as concentric squares
+    int leftCornerX , leftCornerY;
+    for (int i = 0; i < radiusOfEffect; i++) {
+        leftCornerX = x - i;
+        leftCornerY = y - i;
+    }
+
+    int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
+
+    for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
+        for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
+            if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
+                map.at(leftCornerY + i).at(leftCornerX + j)->industrialBuildingWasRemoved(); 
+            }
+        }
+    }
+
+    this->cityHall->decreaseNumIndustrialBuildings();
+
+}
+
+void CityMap::removeLandmark(Landmark* originator) {
+    // call addBuilding to adjust the traffic
+    //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
+    // RADIUS WILL BE BIGGER IN THIS CASE
+
+    removeBuilding(originator);
+
+    int x = originator->getX();
+    int y = originator->getY();
+    int radiusOfEffect = originator->getRadiusOfEffect();
+
+    // radius for radius buildings works as concentric squares
+    int leftCornerX , leftCornerY;
+    for (int i = 0; i < radiusOfEffect; i++) {
+        leftCornerX = x - i;
+        leftCornerY = y - i;
+    }
+
+    int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
+
+    for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
+        for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
+            if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
+                map.at(leftCornerY + i).at(leftCornerX + j)->landmarkWasRemoved(); 
+            }
+        }
+    }
+}
+
+
+void CityMap::addResidentialComponent(ResidentialComponent* residential) {
+    this->cityHall->increaseCapacity(residential->getCapacity());
+}
+
+void CityMap::removeResidentialComponent(ResidentialComponent* residential) {
+    this->cityHall->decreaseCapacity(residential->getCapacity());
+}
+
+void CityMap::aResidentialComponentChangedItsSatifaction(int oldSatisfaction, int newSatisfaction) {
+    cityHall->calculateResidentialSatisfaction(oldSatisfaction, newSatisfaction);
 }

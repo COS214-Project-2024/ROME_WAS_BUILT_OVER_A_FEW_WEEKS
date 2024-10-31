@@ -1,6 +1,8 @@
 #ifndef CITY_STRUCTURE_H
 #define CITY_STRUCTURE_H
 
+#include <string>
+
 class CityMap;
 
 class CityStructure {
@@ -11,9 +13,11 @@ class CityStructure {
         int cost;
     public:
         CityStructure();
+        virtual ~CityStructure();
+        virtual std::string getStructureType() = 0;
+
         virtual void placeStructure(int x, int y, CityMap* cityMap);
         virtual void removeStructure();
-        virtual ~CityStructure();
 
         virtual void newRoadWasAdded(){} ; // only affects residential complexes
         virtual void newBuildingWasAdded(){}; // only affects roads
@@ -30,6 +34,7 @@ class CityStructure {
         int getX();
         int getY();
         int getCost();
+
 };
 
 #endif

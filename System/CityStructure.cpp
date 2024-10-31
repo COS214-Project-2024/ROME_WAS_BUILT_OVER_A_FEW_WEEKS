@@ -11,10 +11,17 @@ CityStructure::CityStructure() {
 }
 
 void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
-    this->x = x;
-    this->y = y;
-    this->cityMap = cityMap;
-    cityMap->addStructure(x, y, this);
+    bool placed = cityMap->addStructure(x, y, this);
+    if (placed) {
+        this->x = x;
+        this->y = y;
+        this->cityMap = cityMap;
+    }
+    else {
+        std::cout << "Could not place the structure" << std::endl;
+    }
+    
+
 }
 
 void CityStructure::removeStructure() {

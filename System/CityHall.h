@@ -24,8 +24,9 @@ class CityHall : public CityStructure{
         int popeCoins;
         static const int MAX_POPE_COINS = 1000000000000; // 1 trillion
 
-        float citySatisfaction;
         float residentialSatisfaction;
+        float citySatisfaction;
+        
         
         int taxRateResidential; // @Denis, i think we could just use getters for these
         int taxRateCommercial;  // Dont need to store it really
@@ -48,6 +49,8 @@ class CityHall : public CityStructure{
         int getNumCitizens();
         int getCityCapacity();
         int getNumResidentialBuildings();
+        std::string getStructureType();
+        int getCost();
 
         int getCurrSatisfaction();
         float calculateSatisfaction();
@@ -80,6 +83,9 @@ class CityHall : public CityStructure{
 
         bool addPopeCoins(int coins);
         bool deductPopeCoins(int coins);
+
+        void increaseCapacity(int capacity);
+        void decreaseCapacity(int capacity);
         
 };
 

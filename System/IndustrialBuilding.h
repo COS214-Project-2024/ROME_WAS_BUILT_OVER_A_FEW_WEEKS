@@ -6,8 +6,11 @@
 class IndustrialBuilding : public CityStructure {
     public:
         IndustrialBuilding();
-        void placeStructure(int x, int y, CityMap* cityMap);
         virtual ~IndustrialBuilding();
+        std::string getStructureType();
+        
+        void placeStructure(int x, int y, CityMap* cityMap);
+
 };
 
 

@@ -70,13 +70,21 @@ int CityHall::getCurrSatisfaction(){
     return citySatisfaction;
 }
 
+std::string CityHall::getStructureType(){
+    return "CityHall";
+}
+
+int CityHall::getCost(){
+    return 0;
+}
+
 float CityHall::calculateSatisfaction(){
 
     return residentialSatisfaction + getRailwayBonus() + getAirportBonus() - calculateHomelessnessDeduction();
 }
 
 void CityHall::calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction){
-    residentialSatisfaction = numResidentialComplexes*residentialSatisfaction - oldSatisfaction + newSatisfaction;
+    residentialSatisfaction = (numResidentialComplexes*residentialSatisfaction - oldSatisfaction + newSatisfaction) / numResidentialComplexes;
 }
 
 float CityHall::getRailwayBonus(){
@@ -180,6 +188,15 @@ bool CityHall::deductPopeCoins(int coins){
     }
     popeCoins = popeCoins - coins;
     return true;
+}
+
+
+void CityHall::increaseCapacity(int capacity){
+    cityCapacity = cityCapacity + capacity;
+}
+
+void CityHall::decreaseCapacity(int capacity){
+    cityCapacity = cityCapacity - capacity;
 }
 
 

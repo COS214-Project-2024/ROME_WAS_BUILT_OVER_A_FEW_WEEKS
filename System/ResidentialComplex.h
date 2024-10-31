@@ -9,21 +9,22 @@ class ResidentialComplex : public ResidentialComponent {
     private:
         std::vector<ResidentialComponent*> residentialComponents;
 
-        int trafficSatisfaction; // 15
-        int EmploymentSatisfaction; //14
-        int PowerSatisfaction; //14
-        int WaterSatisfaction; //14
-        int WasteSatisfaction; // 14
-        int SewageSatisfaction; //14
-        int HealthSatisfaction; //5
-        int EducationSatisfaction; //5
-        int safetySatisfaction; //5
+        float trafficSatisfaction; // 15
+        float EmploymentSatisfaction; //14
+        float PowerSatisfaction; //14
+        float WaterSatisfaction; //14
+        float WasteSatisfaction; // 14
+        float SewageSatisfaction; //14
+        float HealthSatisfaction; //5
+        float EducationSatisfaction; //5
+        float safetySatisfaction; //5
 
-        int satisfaction; //total satisfaction of the complex
-        int capacity;
+        float satisfaction; //total satisfaction of the complex
+        int capacity; 
     public:
         ResidentialComplex(ResidentialComponent* residential);
         ~ResidentialComplex();
+        std::string getStructureType();
 
         void placeStructure(int x, int y, CityMap* cityMap);
         void newRoadWasAdded();
@@ -40,6 +41,7 @@ class ResidentialComplex : public ResidentialComponent {
         int getCapacity(); // Retrieves the member variable capacity instead of recalculating it
 
         void addResidentialComponent(ResidentialComponent* residential);
+        void removeResidentialComponent(ResidentialComponent* residential);
         int calculateCapacity();
 
         int calculateTrafficSatisfaction();

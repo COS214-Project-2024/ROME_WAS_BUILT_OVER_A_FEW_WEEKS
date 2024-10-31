@@ -27,7 +27,7 @@ class CityMap {
 
         void setCityHall(CityHall* cityHall);
 
-        void addStructure(int x, int y, CityStructure* structure);
+        bool addStructure(int x, int y, CityStructure* structure);
         void addBuilding(CityStructure* originator); // INCREASE TRAFFIC
 
         void addRoad(Road* originator);  // DECREASE TRAFFIC
@@ -46,10 +46,11 @@ class CityMap {
         void removeIndustrialBuilding(Plant* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
         void removeLandmark(Landmark* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
         void removePlant(Plant* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
-        
 
-        
-        
+        void addResidentialComponent(ResidentialComponent* residential);
+        void removeResidentialComponent(ResidentialComponent* residential);
+        void aResidentialComponentChangedItsSatifaction(int oldSatisfaction, int newSatisfaction);
+
 };
 
 #endif

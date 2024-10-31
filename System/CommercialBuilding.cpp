@@ -12,6 +12,10 @@ CommercialBuilding::~CommercialBuilding() {
     // EMPTY
 }
 
+std::string CommercialBuilding::getStructureType() {
+    return "Commercial";
+}
+
 int CommercialBuilding::getRadiusOfEffect() {
     return this->radiusOfEffect;
 }

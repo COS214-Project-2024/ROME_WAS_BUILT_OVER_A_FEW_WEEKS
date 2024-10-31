@@ -9,6 +9,8 @@ class CommercialBuilding : public CityStructure {
     public:
         CommercialBuilding(int radiusOfEffect);
         virtual ~CommercialBuilding();
+        std::string getStructureType();
+
         int getRadiusOfEffect();
         void placeStructure(int x, int y, CityMap* cityMap);
         void removeStructure();

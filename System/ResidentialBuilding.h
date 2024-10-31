@@ -9,15 +9,17 @@ class ResidentialBuilding : public ResidentialComponent {
         int capacity;
     public:
         ResidentialBuilding(int capacity);
+        ~ResidentialBuilding();
+        std::string getStructureType();
+
         void placeStructure(int x, int y, CityMap* cityMap);
         void removeStructure();
-        ~ResidentialBuilding();
 
         int getCapacity(); // SAME AS calculateCapacity()
 
         int calculateCapacity();
 
-        virtual std::string getResidentialBuildingType() = 0;
+        // virtual std::string getResidentialBuildingType() = 0;
 };
 
 #endif

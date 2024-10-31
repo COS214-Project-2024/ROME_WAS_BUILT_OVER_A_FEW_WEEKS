@@ -11,6 +11,10 @@ ResidentialBuilding::~ResidentialBuilding() {
     // EMPTY
 }
 
+std::string ResidentialBuilding::getStructureType() {
+    return "Residential";
+}
+
 void ResidentialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     // You cannot place a residential building on its own 
     //(because then you cant add more residential components to make a complex)

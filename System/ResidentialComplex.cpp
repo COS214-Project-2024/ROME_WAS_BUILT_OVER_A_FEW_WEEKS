@@ -18,6 +18,10 @@ ResidentialComplex::~ResidentialComplex() {
     }
 }
 
+std::string ResidentialComplex::getStructureType() {
+    return "Residential";
+}
+
 void ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
     CityStructure::placeStructure(x, y, cityMap);
     cityMap->addResidentialComplex(this);
@@ -77,6 +81,19 @@ int ResidentialComplex::getCapacity() {
 
 void ResidentialComplex::addResidentialComponent(ResidentialComponent* residential) {
     residentialComponents.push_back(residential);
+    cityMap->addResidentialComponent(this); // INFORM THE CITYMAP OF THE NEW CAPACITY
+    calculateCapacity(); // Recalculate the capacity of the complex and set the member variable
+}
+
+void ResidentialComplex::removeResidentialComponent(ResidentialComponent* residential) {
+    std::vector<ResidentialComponent*>::iterator it;
+    for (it = residentialComponents.begin(); it != residentialComponents.end(); it++) {
+        if (*it == residential) {
+            residentialComponents.erase(it);
+            break;
+        }
+    }
+    cityMap->removeResidentialComponent(this); // INFORM THE CITYMAP OF THE NEW CAPACITY
     calculateCapacity(); // Recalculate the capacity of the complex and set the member variable
 }
 
@@ -95,29 +112,45 @@ int ResidentialComplex::calculateTrafficSatisfaction() {
     // Traffic satisfaction depends on the traffic of the roads around the complex
     // Get the map
     std::vector<std::vector<CityStructure*>> cityMap = this->cityMap->getMap();
-    int newTrafficSatisfaction = 0;
+    int newTrafficSatisfaction = 15;
     // Check the squares around the complex
     // CHeck if it is road
     // If it is road, check the traffic state
 
     // USE TEMPLATE METHOD PATTERN
 
-    // if (cityMap.at(y).at(x+1) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
-    // if (cityMap.at(y).at(x-1) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
-    // if (cityMap.at(y+1).at(x) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
-    // if (cityMap.at(y-1).at(x) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
+    std::vector<Road*> roads;
 
+    if (cityMap.at(y).at(x+1)->getStructureType() == "Road") {
+        roads.push_back((Road*)cityMap.at(y).at(x+1));
+    }
+    if (cityMap.at(y).at(x-1)->getStructureType() == "Road") {
+        roads.push_back((Road*)cityMap.at(y).at(x-1));
+    }
+    if (cityMap.at(y+1).at(x)->getStructureType() == "Road") {
+        roads.push_back((Road*)cityMap.at(y+1).at(x));
+    }
+    if (cityMap.at(y-1).at(x)->getStructureType() == "Road") {
+        roads.push_back((Road*)cityMap.at(y-1).at(x));
+    }
+
+    std::vector<Road*>::iterator it;
+    for (it = roads.begin(); it != roads.end(); it++) {
+        int trafficLevel = (*it)->getTrafficLevel();
+        if (trafficLevel == 1) { // LOW TRAFFIC
+            newTrafficSatisfaction = newTrafficSatisfaction - 0;
+        }
+        else if (trafficLevel == 2) { // MEDIUM TRAFFIC
+            newTrafficSatisfaction += 2;
+        }
+        else if (trafficLevel == 3) { // HIGH TRAFFIC
+            newTrafficSatisfaction += 3.75;
+        }
+    }
+    
     trafficSatisfaction = newTrafficSatisfaction; 
     
-    //return trafficSatisfaction;
+    return trafficSatisfaction;
 }
 
 int ResidentialComplex::calculateSatisfaction() {
@@ -130,8 +163,10 @@ int ResidentialComplex::calculateSatisfaction() {
     // 6. Landmarks
     // 7. Facilities (Healthcare, education, security and entertainment) // entartainment can just be landmarks
 
+    int oldSatisfaction = satisfaction;
     satisfaction = trafficSatisfaction + EmploymentSatisfaction + PowerSatisfaction + WaterSatisfaction + WasteSatisfaction + SewageSatisfaction + HealthSatisfaction + EducationSatisfaction + safetySatisfaction;
     // Additonal bonus for landmarks, railway level, airport level
+    cityMap->aResidentialComponentChangedItsSatifaction(oldSatisfaction, satisfaction);
     return satisfaction;
 
 }
