@@ -3,22 +3,20 @@
 
 #include "IndustrialBuilding.h"
 #include "Material.h"
-
 #include <queue>
+#include <string>
+using namespace std;
+
 
 class Factory : public IndustrialBuilding {
     protected:
-        int itemQueueSize;
-        std::queue<Material*> itemQueue;
+        int qunatity;
+        string factoryType;
     public:
-        Factory();
-        virtual ~Factory();
-        
-        void addItemToQueue(Material* item);
-        void removeItemFromQueue();
-
-        
-    
+        Factory(){};
+        virtual ~Factory(){};
+        int getQuantity(){return this->qunatity;};
+        virtual string getFactoryType(){return factoryType;};
 };
 
 

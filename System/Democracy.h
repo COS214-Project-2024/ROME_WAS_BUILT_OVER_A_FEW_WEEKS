@@ -1,5 +1,5 @@
 #ifndef DEMOCRACY_H
-#define DEMOCRACY_
+#define DEMOCRACY_H
 #include "PoliticalSystem.h"
 
 class Democracy : public PoliticalSystem { 

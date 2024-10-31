@@ -1,17 +1,21 @@
 #ifndef PLANT_H
 #define PLANT_H
+#include <string>
+using namespace std;
 
 #include "IndustrialBuilding.h"
+class IndustrialBuilding;
 
 class Plant : public IndustrialBuilding {
-    private:
+    protected:
         int radiusOfEffect;
+        string plantType;
     public:
-        Plant();
-        virtual ~Plant();
-        int getRadiusOfEffect();
-        void placeStructure(int x, int y, CityMap* cityMap);
-        virtual std::string getPlantType() = 0; // must return everything it is decorated with somehow
+        Plant() {radiusOfEffect = 2;};
+        virtual ~Plant(){};
+        int getRadiusOfEffect() { return radiusOfEffect; };
+        void placeStructure(int x, int y, CityMap* cityMap) {};
+        virtual string getPlantType(){ return plantType;};
         
 };
 
