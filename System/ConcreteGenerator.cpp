@@ -1,9 +1,5 @@
 #include "ConcreteGenerator.h"
 
-ConcreteGenerator::ConcreteGenerator(Factory *factory){
-    this->factory = factory;
-}
-
 ConcreteGenerator::~ConcreteGenerator(){
     delete factory;
 }

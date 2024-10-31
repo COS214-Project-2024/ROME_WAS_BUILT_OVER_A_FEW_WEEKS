@@ -8,6 +8,10 @@
 #include "Concrete.h"
 #include "Steel.h"
 #include "Wood.h"
+#include "Plant.h"
+#include "PlantDecorator.h"
+#include "PowerPlant.h"
+#include "WaterPlant.h"
 
 
 using namespace std;
@@ -19,30 +23,14 @@ using namespace std;
 
 void testDecorator(){
     cout << "Testing Decorator" << endl;
-    Factory* factory = new Factory();
-    ConcreteGenerator* concreteGenerator = new ConcreteGenerator(factory);
-    SteelGenerator* steelGenerator = new SteelGenerator(factory);
-    WoodGenerator* woodGenerator = new WoodGenerator(factory);
-    
-    Material* concrete = new Concrete();
-    Material* steel = new Steel();
-    Material* wood = new Wood();
-    
-    concreteGenerator->addToQueue(concrete);
-    steelGenerator->addToQueue(steel);
-    woodGenerator->addToQueue(wood);
-    
-    concreteGenerator->generate();
-    steelGenerator->generate();
-    woodGenerator->generate();
-    
-    delete concrete;
-    delete steel;
-    delete wood;
-    delete concreteGenerator;
-    delete steelGenerator;
-    delete woodGenerator;
-    delete factory;
+    Plant* plant = new Plant();
+    Plant* powerPlant = new PowerPlant(plant);
+    Plant* waterPlant = new WaterPlant(powerPlant);
+    Plant* powerPlant2 = new PowerPlant(waterPlant);
+
+    cout << "Hello" << endl;
+    std::cout << powerPlant2->getPlantType() << std::endl;
+
     
 }
 

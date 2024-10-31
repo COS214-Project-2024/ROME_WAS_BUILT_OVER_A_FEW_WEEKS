@@ -9,8 +9,8 @@ class Factory : public IndustrialBuilding {
     protected:
         int qunatity;
     public:
-        Factory();
-        virtual ~Factory();
+        Factory(){};
+        virtual ~Factory(){};
         int getQuantity(){return this->qunatity;};
 };
 

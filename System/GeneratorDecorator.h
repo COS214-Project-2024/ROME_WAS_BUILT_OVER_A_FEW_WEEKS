@@ -11,9 +11,9 @@ class GeneratorDecorator : public Factory {
         
     public:
         GeneratorDecorator(){};
-        GeneratorDecorator(Factory* factory);
-        virtual ~GeneratorDecorator();
-        virtual int generate() = 0;
+        GeneratorDecorator(Factory* factory): factory(factory){};
+        virtual ~GeneratorDecorator(){};
+        virtual int generate(){return 0;};
 };
 
 #endif

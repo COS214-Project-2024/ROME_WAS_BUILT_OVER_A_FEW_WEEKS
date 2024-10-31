@@ -7,7 +7,7 @@
 class ConcreteGenerator : public GeneratorDecorator {
     public:
         ConcreteGenerator(){};
-        ConcreteGenerator(Factory* factory);
+        ConcreteGenerator(Factory* factory) : GeneratorDecorator(factory) {};
         ~ConcreteGenerator();
         int generate();
         int generateConcrete();

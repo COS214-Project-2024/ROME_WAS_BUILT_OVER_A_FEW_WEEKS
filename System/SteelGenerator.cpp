@@ -1,9 +1,5 @@
 #include "SteelGenerator.h"
 
-SteelGenerator::SteelGenerator(Factory *factory){
-    this->factory = factory;
-}
-
 SteelGenerator::~SteelGenerator(){
     delete factory;
 }

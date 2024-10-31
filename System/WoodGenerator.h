@@ -6,7 +6,7 @@
 class WoodGenerator : public GeneratorDecorator {
     public:
         WoodGenerator(){};
-        WoodGenerator(Factory* factory);
+        WoodGenerator(Factory* factory) : GeneratorDecorator(factory) {};
         ~WoodGenerator();
         int generate();
         int generateWood();
