@@ -1,7 +1,11 @@
 #include "HighTraffic.h"
 #include "Road.h"
 
-void HighTraffic::adjustTrafficImpact(Road* road)
+HighTraffic::HighTraffic()
+{
+}
+
+void HighTraffic::adjustTrafficImpact(Road *road)
 {
     cout << "High traffic in surrounding structures" << endl;
 }
