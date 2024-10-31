@@ -7,7 +7,16 @@
 
 ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
     addResidentialComponent(residential);
-    satisfaction = 100;
+    trafficSatisfaction = 0;
+    EmploymentSatisfaction = 0;
+    PowerSatisfaction = 0;
+    WaterSatisfaction = 0;
+    WasteSatisfaction = 0;
+    SewageSatisfaction = 0;
+    HealthSatisfaction = 5;
+    EducationSatisfaction = 5;
+    safetySatisfaction = 5;
+    satisfaction = 0;
     capacity = residential->calculateCapacity();
 }
 
@@ -33,17 +42,18 @@ void ResidentialComplex::newRoadWasAdded() {
 }
 
 void ResidentialComplex::newCommercialBuildingWasAdded() {
-    EmploymentSatisfaction += 1;
+    EmploymentSatisfaction = 14;
     calculateSatisfaction();
 }
 
 void ResidentialComplex::newIndustrialBuildingWasAdded() {  // FIX
-    EmploymentSatisfaction += 1;
+    EmploymentSatisfaction = 14;
     calculateSatisfaction();
 }
 
 void ResidentialComplex::newLandmarkWasAdded() {
-    satisfaction += 1;
+    bonusSatisfaction = bonusSatisfaction + 2;
+    calculateSatisfaction();
 }
 
 // REMOVAL CODE
@@ -59,7 +69,7 @@ void ResidentialComplex::roadWasRemoved() {
 }
 
 void ResidentialComplex::commercialBuildingWasRemoved() {
-    EmploymentSatisfaction -= 1;
+    EmploymentSatisfaction = 0;
     calculateSatisfaction();
 }
 
@@ -69,7 +79,8 @@ void ResidentialComplex::industrialBuildingWasRemoved() {
 }
 
 void ResidentialComplex::landmarkWasRemoved() {
-    satisfaction -= 1;
+    bonusSatisfaction = bonusSatisfaction - 2;
+    calculateSatisfaction();
 }
 
 
@@ -166,6 +177,9 @@ int ResidentialComplex::calculateSatisfaction() {
     int oldSatisfaction = satisfaction;
     satisfaction = trafficSatisfaction + EmploymentSatisfaction + PowerSatisfaction + WaterSatisfaction + WasteSatisfaction + SewageSatisfaction + HealthSatisfaction + EducationSatisfaction + safetySatisfaction;
     // Additonal bonus for landmarks, railway level, airport level
+    if (satisfaction + bonusSatisfaction > 100) {
+        satisfaction = 100;
+    }
     cityMap->aResidentialComponentChangedItsSatifaction(oldSatisfaction, satisfaction);
     return satisfaction;
 

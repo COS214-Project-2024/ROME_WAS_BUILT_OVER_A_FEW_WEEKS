@@ -21,6 +21,7 @@ class CityStructure {
 
         virtual void newRoadWasAdded(){} ; // only affects residential complexes
         virtual void newBuildingWasAdded(){}; // only affects roads
+        virtual void newResidentialComplexWasAdded(ResidentialComplex* complex){}; // only affects roads
         virtual void newCommercialBuildingWasAdded(){}; // only affects residential complexes
         virtual void newIndustrialBuildingWasAdded(){}; // only affects residential complexes
         virtual void newLandmarkWasAdded(){}; // only affects residential complexes

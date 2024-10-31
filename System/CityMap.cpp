@@ -87,6 +87,15 @@ void CityMap::addResidentialComplex(ResidentialComplex* originator) {
     // call addBuilding to adjust the traffic
     addBuilding(originator);
 
+    // notify all city structures in the map that a new residential complex was added
+    for (int i = 0; i < map.size(); i++) {
+        for (int j = 0; j < map[i].size(); j++) {
+            if (map.at(i).at(j) != nullptr) {
+                map.at(i).at(j)->newResidentialComplexWasAdded(originator); // could notify roads here instead of in addBuilding function
+            }
+        }
+    }
+
     this->cityHall->increaseNumResidentialComplexes();
 }
 

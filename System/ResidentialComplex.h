@@ -18,6 +18,7 @@ class ResidentialComplex : public ResidentialComponent {
         float HealthSatisfaction; //5
         float EducationSatisfaction; //5
         float safetySatisfaction; //5
+        float bonusSatisfaction;
 
         float satisfaction; //total satisfaction of the complex
         int capacity; 
