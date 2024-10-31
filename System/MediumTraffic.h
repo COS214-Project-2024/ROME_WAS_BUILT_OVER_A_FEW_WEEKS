@@ -1,4 +1,3 @@
-
 #ifndef MEDIUMTRAFFIC_H
 #define MEDIUMTRAFFIC_H
 

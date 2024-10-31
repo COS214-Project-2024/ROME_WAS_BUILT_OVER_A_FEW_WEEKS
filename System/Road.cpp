@@ -3,6 +3,9 @@
 
 #include "Road.h"
 #include "CityMap.h"
+#include "LowTraffic.h"
+#include "MediumTraffic.h"
+#include "HighTraffic.h"
 
 
 Road::Road() : trafficState(0) {
@@ -61,11 +64,11 @@ void Road::calculateTraffic() {
 
     // Change the traffic state based on the number of structures around the road
     if (numStructuresAroundRoad <= 1) {          // if 0 or 1 then low
-        setTrafficState(new LowTrafficState());
+        setTrafficState(new LowTraffic());
     } else if (numStructuresAroundRoad == 2) {   // if 2 then medium
-        setTrafficState(new MediumTrafficState());
+        setTrafficState(new MediumTraffic());
     } else { // if 3 or 4 then high
-        setTrafficState(new HighTrafficState());
+        setTrafficState(new HighTraffic());
     }
 }
 

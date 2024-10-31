@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "ResidentialComponent.h"
+#include "CityMap.h"
 
 class ResidentialComplex : public ResidentialComponent {
     private:

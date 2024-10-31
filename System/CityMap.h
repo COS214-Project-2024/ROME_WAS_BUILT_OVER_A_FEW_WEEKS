@@ -23,7 +23,7 @@ class CityMap {
         CityMap();
         CityMap(int width, int height);
         ~CityMap();
-        std::vector<std::vector<CityStructure*>> getMap();
+        std::vector<std::vector<CityStructure*> > getMap();
 
         void setCityHall(CityHall* cityHall);
 
@@ -35,7 +35,7 @@ class CityMap {
         void addCommercialBuilding(CommercialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addIndustrialBuilding(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addLandmark(Landmark* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addPlant(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
+        // void addPlant(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
 
         void removeStructure(int x, int y);
         void removeBuilding(CityStructure* originator); // DECREASE TRAFFIC
@@ -45,7 +45,7 @@ class CityMap {
         void removeCommercialBuilding(CommercialBuilding* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
         void removeIndustrialBuilding(Plant* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
         void removeLandmark(Landmark* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
-        void removePlant(Plant* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
+        // void removePlant(Plant* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
 
         void addResidentialComponent(ResidentialComponent* residential);
         void removeResidentialComponent(ResidentialComponent* residential);

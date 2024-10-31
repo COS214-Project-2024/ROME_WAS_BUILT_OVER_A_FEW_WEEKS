@@ -122,7 +122,7 @@ int ResidentialComplex::calculateCapacity(){
 int ResidentialComplex::calculateTrafficSatisfaction() {
     // Traffic satisfaction depends on the traffic of the roads around the complex
     // Get the map
-    std::vector<std::vector<CityStructure*>> cityMap = this->cityMap->getMap();
+    std::vector< std::vector<CityStructure*> > map = this->cityMap->getMap();
     int newTrafficSatisfaction = 15;
     // Check the squares around the complex
     // CHeck if it is road
@@ -132,17 +132,17 @@ int ResidentialComplex::calculateTrafficSatisfaction() {
 
     std::vector<Road*> roads;
 
-    if (cityMap.at(y).at(x+1)->getStructureType() == "Road") {
-        roads.push_back((Road*)cityMap.at(y).at(x+1));
+    if (map.at(y).at(x+1)->getStructureType() == "Road") {
+        roads.push_back((Road*)map.at(y).at(x+1));
     }
-    if (cityMap.at(y).at(x-1)->getStructureType() == "Road") {
-        roads.push_back((Road*)cityMap.at(y).at(x-1));
+    if (map.at(y).at(x-1)->getStructureType() == "Road") {
+        roads.push_back((Road*)map.at(y).at(x-1));
     }
-    if (cityMap.at(y+1).at(x)->getStructureType() == "Road") {
-        roads.push_back((Road*)cityMap.at(y+1).at(x));
+    if (map.at(y+1).at(x)->getStructureType() == "Road") {
+        roads.push_back((Road*)map.at(y+1).at(x));
     }
-    if (cityMap.at(y-1).at(x)->getStructureType() == "Road") {
-        roads.push_back((Road*)cityMap.at(y-1).at(x));
+    if (map.at(y-1).at(x)->getStructureType() == "Road") {
+        roads.push_back((Road*)map.at(y-1).at(x));
     }
 
     std::vector<Road*>::iterator it;

@@ -22,7 +22,7 @@ class CityHall : public CityStructure{
         int numCommercialBuildings;
         int numIndustrialBuildings;
         int popeCoins;
-        static const int MAX_POPE_COINS = 1000000000000; // 1 trillion
+        static const int MAX_POPE_COINS = 1000000; // 1 million
 
         float residentialSatisfaction;
         float citySatisfaction;
