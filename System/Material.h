@@ -9,7 +9,6 @@ class Material {
     public:
         virtual int getProductionTimeInMinutes() = 0;
         virtual std::string getMaterialName() = 0;
-        virtual ~Material(){};
 };
 
 #endif

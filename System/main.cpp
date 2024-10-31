@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "Factory.h"
 #include "GeneratorDecorator.h"
 #include "ConcreteGenerator.h"
@@ -14,7 +15,6 @@
 #include "WaterPlant.h"
 #include "WastePlant.h"
 #include "SewagePlant.h"
-
 
 #include "CityMap.h"
 #include "CityHall.h"
@@ -59,7 +59,6 @@ using namespace std;
 // SET-UP REQUIREMENTS SO FAR:
 // Create CityMap and CityHall.
 // CityHall needs reference to political system
-
 
 void testDecorator(){
     cout << "Testing Plants" << endl;

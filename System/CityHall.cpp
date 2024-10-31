@@ -14,7 +14,7 @@ CityHall::CityHall(){
     airport = new Airport();
 
     // Set up the Chain of Responsibility
-    LowSatisfactionHandler* lowHandler = new LowSatisfactionHandler(NULL);
+    LowSatisfactionHandler* lowHandler = new LowSatisfactionHandler(nullptr);
     MediumSatisfactionHandler* mediumHandler = new MediumSatisfactionHandler(lowHandler);
     HighSatisfactionHandler* highHandler = new HighSatisfactionHandler(mediumHandler);
     this->chainOfResponsibility = highHandler;
