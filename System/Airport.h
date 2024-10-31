@@ -6,6 +6,7 @@
 class Airport: public BoosterStructures{
     public:
         Airport();
+
 };
 
 #endif
