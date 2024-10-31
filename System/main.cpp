@@ -7,7 +7,7 @@ using namespace std;
 // CityHall needs reference to political system
 
 int main(){
-
+    cout << "Testing main" << endl;
   
     return 0;
 }
