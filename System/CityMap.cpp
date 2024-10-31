@@ -208,10 +208,10 @@ void CityMap::removeStructure(int x, int y) {
         return;
     }
 
-    if (map.at(y).at(x) == cityHall) {
-        std::cout << "Cannot remove the city hall" << std::endl;
-        return;
-    }
+    // if (map.at(y).at(x) == cityHall) {
+    //     std::cout << "Cannot remove the city hall" << std::endl;
+    //     return;
+    // }
 
     int refund = map.at(y).at(x)->getCost();
     cityHall->addPopeCoins(refund);

@@ -7,6 +7,8 @@
 #include "BoosterStructures.h"
 #include "Railway.h"
 #include "Airport.h"
+
+class SatisfactionHandler;
  
 class CityHall : public CityStructure{
     private:

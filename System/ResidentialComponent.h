@@ -7,7 +7,7 @@
 
 class ResidentialComponent : public CityStructure {
     public:
-        // virtual ~ResidentialComponent();
+        virtual ~ResidentialComponent(){};
         virtual std::string getStructureType() = 0;
 
         virtual void placeStructure(int x, int y, CityMap* cityMap) = 0;

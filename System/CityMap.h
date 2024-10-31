@@ -12,10 +12,13 @@
 
 #include <vector>
 
+class CityStructure;
+class ResidentialComplex;
+
 class CityMap {
     private: 
         // 2D array of CityStructures using vector
-        std::vector<std::vector<CityStructure*>> map;
+        std::vector<std::vector<CityStructure*> > map;
         CityHall* cityHall;
         int width;
         int height;
