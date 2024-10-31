@@ -12,4 +12,12 @@ int WoodGenerator::generateWood(){
     return 100;
 }
 
+string WoodGenerator::getFactoryType(){
+    return setWoodGenerator();
+}
 
+
+string WoodGenerator::setWoodGenerator(){
+    factoryType = "|Wood Factory|" + factory->getFactoryType();
+    return this->factoryType;
+}

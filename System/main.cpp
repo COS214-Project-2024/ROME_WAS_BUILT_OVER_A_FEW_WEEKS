@@ -12,6 +12,8 @@
 #include "PlantDecorator.h"
 #include "PowerPlant.h"
 #include "WaterPlant.h"
+#include "WastePlant.h"
+#include "SewagePlant.h"
 
 
 using namespace std;
@@ -22,16 +24,24 @@ using namespace std;
 
 
 void testDecorator(){
-    cout << "Testing Decorator" << endl;
+    cout << "Testing Plants" << endl;
     Plant* plant = new Plant();
     Plant* powerPlant = new PowerPlant(plant);
     Plant* waterPlant = new WaterPlant(powerPlant);
     Plant* powerPlant2 = new PowerPlant(waterPlant);
+    Plant* wastePlant = new WastePlant(powerPlant2);
+    Plant* sewagePlant = new SewagePlant(wastePlant);
 
-    cout << "Hello" << endl;
-    std::cout << powerPlant2->getPlantType() << std::endl;
+    std::cout << sewagePlant->getPlantType() << std::endl;
 
-    
+    cout << "\nTesting Generators" << endl;
+    Factory* factory = new Factory();
+    Factory* concreteFactory = new ConcreteGenerator(factory);
+    Factory* steelFactory = new SteelGenerator(concreteFactory);
+    Factory* woodFactory = new WoodGenerator(steelFactory);
+
+
+    std::cout << woodFactory->getFactoryType() << std::endl;
 }
 
 int main(){

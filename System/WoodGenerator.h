@@ -6,10 +6,12 @@
 class WoodGenerator : public GeneratorDecorator {
     public:
         WoodGenerator(){};
-        WoodGenerator(Factory* factory) : GeneratorDecorator(factory) {};
+        WoodGenerator(Factory* factory) : GeneratorDecorator(factory) {this->factory = factory;};
         ~WoodGenerator();
         int generate();
         int generateWood();
+        string getFactoryType();
+        string setWoodGenerator();
 };
 
 #endif

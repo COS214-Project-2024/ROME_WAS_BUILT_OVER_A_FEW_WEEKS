@@ -7,10 +7,12 @@
 class ConcreteGenerator : public GeneratorDecorator {
     public:
         ConcreteGenerator(){};
-        ConcreteGenerator(Factory* factory) : GeneratorDecorator(factory) {};
+        ConcreteGenerator(Factory* factory) : GeneratorDecorator(factory) {this->factory = factory;};
         ~ConcreteGenerator();
         int generate();
         int generateConcrete();
+        string getFactoryType();
+        string setConcreteGenerator();
 };
 
 #endif
