@@ -2,6 +2,9 @@
 #define INDUSTRIAL_BUILDING_H
 
 #include "CityStructure.h"
+#include "CityMap.h"
+
+class CityMap;
 
 class IndustrialBuilding : public CityStructure {
     public:

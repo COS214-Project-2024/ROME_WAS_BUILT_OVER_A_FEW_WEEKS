@@ -6,14 +6,23 @@
 #include "CommercialBuilding.h"
 #include "IndustrialBuilding.h"
 #include "ResidentialComplex.h"
+#include "ResidentialComponent.h"
 #include "Plant.h"
 #include "Landmark.h"
 #include "Road.h"
 
 #include <vector>
 
+class CityHall;
 class CityStructure;
+class CommercialBuilding;
+class IndustrialBuilding;
 class ResidentialComplex;
+class ResidentialComponent;
+class Plant;
+class Landmark;
+class Road;
+
 
 class CityMap {
     private: 

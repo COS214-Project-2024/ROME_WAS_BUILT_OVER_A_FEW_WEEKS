@@ -2,6 +2,12 @@
 #define LANDMARK_H
 
 #include "CityStructure.h"
+#include "CityMap.h"
+#include "ResidentialComplex.h"
+
+class ResidentialComplex;
+
+class CityMap;
 
 class Landmark : public CityStructure {
     private:

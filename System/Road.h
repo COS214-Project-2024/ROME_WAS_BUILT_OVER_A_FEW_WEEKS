@@ -3,6 +3,11 @@
 
 #include "CityStructure.h"
 #include "TrafficState.h"
+#include "ResidentialComplex.h"
+
+class ResidentialComplex;
+
+class CityMap;
 
 class Road : public CityStructure {
     private:

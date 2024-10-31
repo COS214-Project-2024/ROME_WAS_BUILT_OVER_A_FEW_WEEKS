@@ -2,7 +2,10 @@
 #define RESIDENTIAL_BUILDING_H
 
 #include "ResidentialComponent.h"
+#include "CityMap.h"
 #include <string>
+
+class CityMap;
 
 class ResidentialBuilding : public ResidentialComponent {
     private:

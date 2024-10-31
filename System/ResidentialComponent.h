@@ -4,6 +4,9 @@
 #include <string>
 
 #include "CityStructure.h"
+#include "CityMap.h"
+
+class CityMap;
 
 class ResidentialComponent : public CityStructure {
     public:
