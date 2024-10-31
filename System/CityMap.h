@@ -1,16 +1,6 @@
 #ifndef CITY_MAP_H
 #define CITY_MAP_H
 
-#include "CityHall.h"
-#include "CityStructure.h"
-#include "CommercialBuilding.h"
-#include "IndustrialBuilding.h"
-#include "ResidentialComplex.h"
-#include "ResidentialComponent.h"
-#include "Plant.h"
-#include "Landmark.h"
-#include "Road.h"
-
 #include <vector>
 
 class CityHall;

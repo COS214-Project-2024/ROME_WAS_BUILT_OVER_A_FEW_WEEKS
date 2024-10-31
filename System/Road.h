@@ -2,11 +2,9 @@
 #define ROAD_H
 
 #include "CityStructure.h"
-#include "TrafficState.h"
-#include "ResidentialComplex.h"
 
+class TrafficState;
 class ResidentialComplex;
-
 class CityMap;
 
 class Road : public CityStructure {

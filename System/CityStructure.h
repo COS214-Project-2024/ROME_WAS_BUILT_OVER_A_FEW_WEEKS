@@ -1,11 +1,9 @@
 #ifndef CITY_STRUCTURE_H
 #define CITY_STRUCTURE_H
 
-#include "ResidentialComplex.h"
-#include "CityMap.h"
-
 #include <string>
 
+class ResidentialComplex;
 class CityMap;
 
 class CityStructure {

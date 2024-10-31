@@ -3,6 +3,9 @@
 #include "MediumSatisfactionHandler.h"
 #include "HighSatisfactionHandler.h"
 #include "CityMap.h"
+#include "Railway.h"
+#include "Airport.h"
+#include "PoliticalSystem.h"
 
 CityHall* CityHall::cityHall = 0;
 

@@ -4,6 +4,7 @@
 #include "CityMap.h"
 #include "ResidentialComponent.h"
 #include "ResidentialComplex.h"
+#include "Road.h"
 
 ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
     addResidentialComponent(residential);

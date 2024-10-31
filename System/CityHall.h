@@ -2,17 +2,15 @@
 #define CITYHALL_H
 
 #include "CityStructure.h"
-#include "SatisfactionHandler.h"
-#include "PoliticalSystem.h"
-#include "BoosterStructures.h"
-#include "Railway.h"
-#include "Airport.h"
-#include "CityMap.h"
 
 class SatisfactionHandler;
+class PoliticalSystem;
 class CityMap;
+class Railway;
+class Airport;
+
  
-class CityHall : public CityStructure{
+class CityHall: public CityStructure{
     private:
         static CityHall* cityHall; // Singleton
         SatisfactionHandler* chainOfResponsibility;

@@ -4,8 +4,6 @@
 #include <vector>
 
 #include "ResidentialComponent.h"
-#include "CityMap.h"
-#include "CityMap.h"
 
 class CityMap;
 class ResidentialComponent;

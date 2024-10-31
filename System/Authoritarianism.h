@@ -1,5 +1,6 @@
 #ifndef AUTHORITARIANISM_H
 #define AUTHORITARIANISM_H
+
 #include "PoliticalSystem.h"   
 
 class Authoritarianism : public PoliticalSystem {

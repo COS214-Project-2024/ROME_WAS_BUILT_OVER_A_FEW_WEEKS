@@ -1,5 +1,4 @@
-#include <iostream>
-
+#include "Apartment.h"
 #include "Apartment.h"
 
 Apartment::Apartment(int capacity) : ResidentialBuilding(DEFAULT_APARTMENT_CAPACITY) {

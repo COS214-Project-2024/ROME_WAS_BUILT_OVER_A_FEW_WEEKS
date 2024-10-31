@@ -1,8 +1,16 @@
 #include <iostream> 
 #include <vector>
 
+#include "CityHall.h"
 #include "CityStructure.h"
-#include "CityMap.h"
+#include "CommercialBuilding.h"
+#include "IndustrialBuilding.h"
+#include "ResidentialComplex.h"
+#include "ResidentialComponent.h"
+#include "Plant.h"
+#include "Landmark.h"
+#include "Road.h"
+
 
 const int DEFAULT_HEIGHT = 20;
 const int DEFAULT_WIDTH = 20;
