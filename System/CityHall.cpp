@@ -136,6 +136,7 @@ double CityHall::getBudgetSplit(){
 
 int CityHall::getCitizenSatisfactionImpact(){
     citizenSatisfactionImpact = politicalSystem->getCitizenSatisfactionImpact();
+    citySatisfaction += citizenSatisfactionImpact;
     return citizenSatisfactionImpact;
 }
 
