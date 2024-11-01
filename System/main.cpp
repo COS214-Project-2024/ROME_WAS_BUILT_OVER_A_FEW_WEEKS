@@ -87,28 +87,59 @@ int main(){
     cout << "Hello, World!" << endl;
 
     // CREATE CITY MAP
+    cout << "\nCREATE CITY MAP" << endl;
     CityMap* cityMap = new CityMap();
 
     // CREATE AND PLACE CITY HALL
+    cout << "\nCREATE AND PLACE CITY HALL" << endl;
     CityHall* cityHall = CityHall::getInstance();
     cityHall->placeStructure(0, 0, cityMap);
 
     // CREATE AND PLACE ROADS
+    cout << "\nCREATE AND PLACE ROADS" << endl;
     Road* road1 = new Road();
     road1->placeStructure(0, 1, cityMap);
+    Road* road2 = new Road();
+    road2->placeStructure(1, 1, cityMap);
+    Road* road3 = new Road();
+    road3->placeStructure(2, 1, cityMap);
+
 
     // CREATE AND PLACE RESIDENTIAL COMPLEXES 
-    cout << "\nCreating Residential Complexes" << endl;
+    cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
     ResidentialBuilding* house1 = new House();
-    cout << "House Capacity: " << house1->getCapacity() << endl;
     ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
-    cout << "Residential Complex Capacity: " <<  endl;
-    residentialComplex1->placeStructure(1, 1, cityMap);
+    residentialComplex1->placeStructure(1, 2, cityMap);
 
     //print states
+    cout << "\nPRINT STATES" << endl;
     cityHall->printCityHallState();
     cout << endl;
     residentialComplex1->printResidentialComplexState();
+
+    // CREATE AND PLACE COMMERCIAL BUILDINGS
+    cout << "\nCREATE AND PLACE COMMERCIAL BUILDINGS" << endl;
+    CommercialBuilding* shop1 = new Shop();
+    shop1->placeStructure(2, 2, cityMap);
+
+    //print states
+    cout << "\nPRINT STATES" << endl;
+    cityHall->printCityHallState();
+    cout << endl;
+    residentialComplex1->printResidentialComplexState();
+
+    // // CREATE AND PLACE INDUSTRIAL BUILDINGS
+    // cout << "\nCREATE AND PLACE INDUSTRIAL BUILDINGS" << endl;
+    // Plant* factory1 = new Factory();
+    // factory1->placeStructure(3, 2, cityMap);
+
+    // CREATE AND PLACE LANDMARKS
+    cout << "\nCREATE AND PLACE LANDMARKS" << endl;
+    Landmark* colosseum = new Colosseum();
+    colosseum->placeStructure(0, 2, cityMap);
+
+
+
 
 
     

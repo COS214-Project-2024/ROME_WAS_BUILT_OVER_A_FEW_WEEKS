@@ -18,7 +18,7 @@ CityHall::CityHall(){
     numResidentialComplexes = 0;
     numCommercialBuildings = 0;
     numIndustrialBuildings = 0;
-    popeCoins = 10000;
+    popeCoins = 1000000;
     residentialSatisfaction = 0;
     citySatisfaction = 100;
     
@@ -119,7 +119,10 @@ float CityHall::getAirportBonus(){
 }
 
 float CityHall::calculateHomelessnessDeduction(){
-    int numberHomelessPeople = cityCapacity - numCitizens;
+    int numberHomelessPeople = 0;
+    if (numCitizens > cityCapacity){
+        numberHomelessPeople = numCitizens - cityCapacity;
+    }
 
     // Homelessness will deduct in proportion to population percentage
     // For example if homelessness accounts for 10% of population, then there will be a 10% deduction

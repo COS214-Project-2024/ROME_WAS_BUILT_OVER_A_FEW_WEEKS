@@ -55,12 +55,13 @@ bool CityMap::addStructure(int x, int y, CityStructure* structure) {
         std::cout << "There is already a structure at this location" << std::endl;
         return false;
     }
-
+    
     // VALIDATE IF THERE IS AN ADJACENT ROAD (DOESN'T APPLY TO CITY HALL)
     bool hasAdjacentRoad = true;
     std::string currStructure = structure->getStructureType();
 
     if (currStructure != "CityHall"  && currStructure != "Road") {
+        std::cout << "Checking for adjacent road" << std::endl;
         hasAdjacentRoad = false;
         int maxY = map.size();
         if (maxY == 0) {
@@ -155,6 +156,11 @@ void CityMap::addBuilding(CityStructure* originator) {
 
 void CityMap::addResidentialComplex(ResidentialComplex* originator) {
     this->cityHall->increaseNumResidentialComplexes();
+
+    int addedCapacity = originator->getCapacity();                          // I THINK THIS SHOULD WORK
+    std::cout << "added capacity: " << addedCapacity << std::endl;
+    this->cityHall->increaseCapacity(addedCapacity);
+
     // call addBuilding to adjust the traffic
     addBuilding(originator);
     std::cout << "RR" << std::endl;
@@ -174,6 +180,7 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
     // call addBuilding to adjust the traffic
     //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
     // RADIUS WILL BE BIGGER IN THIS CASE
+    this->cityHall->increaseNumCommercialBuildings();
 
     addBuilding(originator);
 
@@ -188,6 +195,7 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
         leftCornerY = y - i;
     }
 
+
     int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
 
     for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
@@ -198,7 +206,7 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
         }
     }
 
-    this->cityHall->increaseNumCommercialBuildings();
+    
     
 }
 
@@ -206,6 +214,8 @@ void CityMap::addIndustrialBuilding(Plant* originator) {
     // call addBuilding to adjust the traffic
     //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
     // RADIUS WILL BE BIGGER IN THIS CASE
+
+    this->cityHall->increaseNumIndustrialBuildings();
 
     addBuilding(originator);
 
@@ -230,7 +240,7 @@ void CityMap::addIndustrialBuilding(Plant* originator) {
         }
     }
 
-    this->cityHall->increaseNumIndustrialBuildings();
+    
 
 }
 

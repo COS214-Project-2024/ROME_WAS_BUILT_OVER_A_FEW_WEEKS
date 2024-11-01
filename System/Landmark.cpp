@@ -41,5 +41,9 @@ void Landmark::newResidentialComplexWasAdded(ResidentialComplex* complex) {
     }
 }
 
+std::string Landmark::getStructureType() {
+    return "Landmark";
+}
+
 
 

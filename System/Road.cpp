@@ -55,9 +55,26 @@ void Road::calculateTraffic() {
     int numStructuresAroundRoad = 0;
     
     // Check the square around and check if there are any structures
-    CheckAdjacent checkAdjacent;
-    numStructuresAroundRoad = checkAdjacent.checkAdjacent(cityMap->getMap(), x, y);
-    
+    std::vector<std::vector<CityStructure*> > map = cityMap->getMap();
+    int maxY = map.size();
+    if (maxY == 0) { return; }  // Empty map
+    int maxX = map.at(0).size();  // Assume all rows are the same size
+    // Check (y - 1, x)
+    if (y - 1 >= 0 && y - 1 < maxY && x >= 0 && x < maxX && map.at(y - 1).at(x) != nullptr && map.at(y - 1).at(x)->getStructureType() != "Road") {
+        numStructuresAroundRoad++;
+    }
+    // Check (y, x - 1)
+    if (y >= 0 && y < maxY && x - 1 >= 0 && x - 1 < maxX && map.at(y).at(x - 1) != nullptr && map.at(y).at(x - 1)->getStructureType() != "Road") {
+        numStructuresAroundRoad++;
+    }
+    // Check (y + 1, x)
+    if (y + 1 >= 0 && y + 1 < maxY && x >= 0 && x < maxX && map.at(y + 1).at(x) != nullptr && map.at(y + 1).at(x)->getStructureType() != "Road") {
+        numStructuresAroundRoad++;
+    }
+    // Check (y, x + 1)
+    if (y >= 0 && y < maxY && x + 1 >= 0 && x + 1 < maxX && map.at(y).at(x + 1) != nullptr && map.at(y).at(x + 1)->getStructureType() != "Road") {
+        numStructuresAroundRoad++;
+    }
 
     std:: cout << "setting traffic state" << std::endl;
     // Change the traffic state based on the number of structures around the road

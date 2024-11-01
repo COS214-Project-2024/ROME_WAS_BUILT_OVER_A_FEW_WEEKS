@@ -149,7 +149,7 @@ int ResidentialComplex::calculateTrafficSatisfaction() {
 
     if (y - 1 >= 0 && y - 1 < maxY && x >= 0 && x < maxX && map.at(y - 1).at(x) != nullptr && map.at(y - 1).at(x)->getStructureType() == "Road") {
         std::cout << "A" << std::endl;
-        roads.push_back((Road*)map.at(y).at(x+1));
+        roads.push_back((Road*)map.at(y-1).at(x));
     }
     if (y >= 0 && y < maxY && x - 1 >= 0 && x - 1 < maxX && map.at(y).at(x-1) != nullptr &&  map.at(y).at(x-1)->getStructureType() == "Road") {
         std::cout << "B" << std::endl;
@@ -161,12 +161,18 @@ int ResidentialComplex::calculateTrafficSatisfaction() {
     }
     if (y >= 0 && y < maxY && x + 1 >= 0 && x + 1 < maxX && map.at(y).at(x+1) != nullptr && map.at(y).at(x+1)->getStructureType() == "Road") {
         std::cout << "D" << std::endl;
-        roads.push_back((Road*)map.at(y-1).at(x));
+        roads.push_back((Road*)map.at(y).at(x+1));
     }
+    //print out roads
+    for (int i = 0; i < roads.size(); i++) {
+        std::cout << "Road: " << roads[i]->getStructureType() << std::endl;
+    }
+
     std::cout << "Number of roads: " <<  std::endl;
     std::vector<Road*>::iterator it;
     for (it = roads.begin(); it != roads.end(); it++) {
         int trafficLevel = (*it)->getTrafficLevel();
+        std::cout << "Traffic level: " << trafficLevel << std::endl;
         if (trafficLevel == 1) { // LOW TRAFFIC
             newTrafficSatisfaction = newTrafficSatisfaction - 0;
         }
