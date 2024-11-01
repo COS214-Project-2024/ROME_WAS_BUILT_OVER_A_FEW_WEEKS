@@ -138,6 +138,23 @@ int main(){
     Landmark* colosseum = new Colosseum();
     colosseum->placeStructure(0, 2, cityMap);
 
+    // PLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK
+    cout << "\nPLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK" << endl;
+    ResidentialBuilding* house2 = new House();
+    ResidentialComplex* residentialComplex2 = new ResidentialComplex(house2);
+    residentialComplex2->placeStructure(1, 0, cityMap);
+
+    //print states
+    cout << "\nPRINT STATES" << endl;
+    cityHall->printCityHallState();
+    cout << endl;
+    residentialComplex1->printResidentialComplexState();
+    cout << endl;
+    residentialComplex2->printResidentialComplexState();
+
+
+
+
 
 
 

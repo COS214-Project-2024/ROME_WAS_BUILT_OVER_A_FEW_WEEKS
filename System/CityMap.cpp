@@ -266,8 +266,13 @@ void CityMap::addLandmark(Landmark* originator) {
 
     for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
         for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
+            try {
+            std::cout << "jjj" << std::endl;
             if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
                 map.at(leftCornerY + i).at(leftCornerX + j)->newLandmarkWasAdded(); 
+            }
+            } catch (const std::out_of_range& oor) {
+                std::cerr << "Out of Range error: " << oor.what() << '\n';
             }
         }
     }
