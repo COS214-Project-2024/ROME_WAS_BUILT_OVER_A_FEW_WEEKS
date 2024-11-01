@@ -50,13 +50,15 @@
 #include "Pantheon.h"
 #include "Park.h"
 
-
+// GRAPHICS
+#include <SFML/Graphics.hpp>
 
 
 
 
 using namespace std;
 
+=======
 // SET-UP REQUIREMENTS SO FAR:
 // Create CityMap and CityHall.
 // CityHall needs reference to political system
@@ -155,14 +157,6 @@ int main(){
 
 
 
-
-
-
-
-    
-
-    
-
     std::vector<std::vector<CityStructure*> > map = cityMap->getMap();
     cout << "City Map: " << map.size() << endl;
     for(int i = 0; i < map.size(); i++){
@@ -176,11 +170,11 @@ int main(){
         cout << endl;
     }
 
-    // testDecorator();
 
 
     cout << "Bye!" << endl; 
     
   
+
     return 0;
 }
