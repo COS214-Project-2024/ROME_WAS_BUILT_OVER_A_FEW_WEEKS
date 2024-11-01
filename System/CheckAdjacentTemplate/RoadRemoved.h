@@ -2,7 +2,8 @@
 #define ROAD_REMOVED_H
 
 #include "CheckAdjacent.h"
-#include "CityStructure.h"
+#include "../CityStructures/CityStructure.h"
+#include "../CityMap.h"
 
 
 class RoadRemoved : public CheckAdjacent {
