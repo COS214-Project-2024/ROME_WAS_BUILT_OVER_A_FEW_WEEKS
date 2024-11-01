@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "CityStructure.h"
-#include "CityMap.h"
+#include "../CityMap.h"
 
 
 CityStructure::CityStructure() {
