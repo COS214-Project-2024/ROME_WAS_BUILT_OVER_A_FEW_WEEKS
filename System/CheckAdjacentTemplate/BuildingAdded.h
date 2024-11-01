@@ -2,7 +2,7 @@
 #define BUILDING_ADDED_H
 
 #include "CheckAdjacent.h"
-#include "CityStructure.h"
+#include "../CityStructures/CityStructure.h"
 
 
 class BuildingAdded : public CheckAdjacent {

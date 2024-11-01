@@ -1,7 +1,7 @@
 #ifndef CITYHALL_H
 #define CITYHALL_H
 
-#include "CityStructure.h"
+#include "CityStructures/CityStructure.h"
 
 class SatisfactionHandler;
 class PoliticalSystem;

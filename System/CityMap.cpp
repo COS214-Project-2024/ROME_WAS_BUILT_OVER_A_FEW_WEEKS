@@ -2,20 +2,20 @@
 #include <vector>
 
 #include "CityHall.h"
-#include "CityStructure.h"
-#include "CommercialBuilding.h"
-#include "IndustrialBuilding.h"
-#include "ResidentialComplex.h"
-#include "ResidentialComponent.h"
-#include "Plant.h"
-#include "Landmark.h"
-#include "Road.h"
+#include "CityStructures/CityStructure.h"
+#include "CityStructures/Commercial/CommercialBuilding.h"
+#include "CityStructures/Industrial/IndustrialBuilding.h"
+#include "CityStructures/Residential/ResidentialComplex.h"
+#include "CityStructures/Residential/ResidentialComponent.h"
+#include "CityStructures/Industrial/Plant.h"
+#include "CityStructures/Landmark/Landmark.h"
+#include "CityStructures/Road/Road.h"
 
-#include "CheckAdjacent.h"
-#include "BuildingAdded.h"
-#include "BuildingRemoved.h"
-#include "RoadAdded.h"
-#include "RoadRemoved.h"
+#include "CheckAdjacentTemplate/CheckAdjacent.h"
+#include "CheckAdjacentTemplate/BuildingAdded.h"
+#include "CheckAdjacentTemplate/BuildingRemoved.h"
+#include "CheckAdjacentTemplate/RoadAdded.h"
+#include "CheckAdjacentTemplate/RoadRemoved.h"
 
 
 const int DEFAULT_HEIGHT = 20;
