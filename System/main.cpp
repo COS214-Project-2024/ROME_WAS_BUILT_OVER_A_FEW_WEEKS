@@ -49,54 +49,34 @@
 #include "Pantheon.h"
 #include "Park.h"
 
-
+// GRAPHICS
+#include <SFML/Graphics.hpp>
 
 
 
 
 using namespace std;
 
-// SET-UP REQUIREMENTS SO FAR:
-// Create CityMap and CityHall.
-// CityHall needs reference to political system
 
-// void testDecorator(){
-//     cout << "Testing Plants" << endl;
-//     Plant* plant = new Plant();
-//     Plant* powerPlant = new PowerPlant(plant);
-//     Plant* waterPlant = new WaterPlant(powerPlant);
-//     Plant* powerPlant2 = new PowerPlant(waterPlant);
-//     Plant* wastePlant = new WastePlant(powerPlant2);
-//     Plant* sewagePlant = new SewagePlant(wastePlant);
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
 
-//     std::cout << sewagePlant->getPlantType() << std::endl;
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
 
-//     cout << "\nTesting Generators" << endl;
-//     Factory* factory = new Factory();
-//     Factory* concreteFactory = new ConcreteGenerator(factory);
-//     Factory* steelFactory = new SteelGenerator(concreteFactory);
-//     Factory* woodFactory = new WoodGenerator(steelFactory);
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
 
-
-//     std::cout << woodFactory->getFactoryType() << std::endl;
-// }
-
-int main(){
-
-    // CREATE CITY MAP
-    CityMap* cityMap = new CityMap(20, 20);
-
-    // CREATE AND PLACE ROADS
-    Road* road1 = new Road();
-    road1->placeStructure(0, 1, cityMap);
-
-    // CREATE AND PLACE CITY HALL
-    CityHall* cityHall = CityHall::getInstance();
-    cityHall->placeStructure(0, 0, cityMap);
-
-    // testDecorator();
-
-    
-  
     return 0;
 }
