@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "CityHall.h"
 #include "LowSatisfactionHandler.h"
 #include "MediumSatisfactionHandler.h"
@@ -7,10 +9,10 @@
 #include "Airport.h"
 #include "PoliticalSystem.h"
 
-CityHall* CityHall::cityHall = 0;
+CityHall* CityHall::cityHall = nullptr;
 
 CityHall::CityHall(){
-    popeCoins = 100;
+    popeCoins = 10000;
     numCitizens = 0;
     citySatisfaction = 100;
     railway = new Railway();
@@ -25,7 +27,7 @@ CityHall::CityHall(){
 
 // SINGLETON
 CityHall *CityHall::getInstance(){
-    if (cityHall == 0){
+    if (cityHall == nullptr){
         cityHall = new CityHall();
     }
 
@@ -145,8 +147,9 @@ CityHall::~CityHall(){
 
 void CityHall::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
+    cityMap->setCityHall(this);
     CityStructure::placeStructure(x, y, cityMap); 
-    this->cityMap->setCityHall(this);
+    
 }
 
 void CityHall::removeStructure() {
@@ -187,9 +190,11 @@ bool CityHall::addPopeCoins(int coins){
 
 bool CityHall::deductPopeCoins(int coins){
     if (popeCoins - coins < 0){
+        std::cout << "Not enough pope coins" << std::endl;
         return false;
     }
     popeCoins = popeCoins - coins;
+    std::cout << "remaining " << popeCoins << " pope coins" << std::endl;
     return true;
 }
 

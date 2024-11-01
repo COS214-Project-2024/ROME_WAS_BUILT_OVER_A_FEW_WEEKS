@@ -7,9 +7,12 @@
 #include "MediumTraffic.h"
 #include "HighTraffic.h"
 
+#include "CheckAdjacent.h" 
 
-Road::Road() : trafficState(0) {
 
+Road::Road() : trafficState(new LowTraffic()) {
+    cityMap = nullptr;
+    cost = 100;
 }
 
 Road::~Road() {
@@ -47,21 +50,16 @@ void Road::buildingWasRemoved() {
 
 
 void Road::calculateTraffic() {
+    std::cout << "calculating traffic" << std::endl;
     // Check the squares around
     int numStructuresAroundRoad = 0;
-    if ((cityMap->getMap()).at(y).at(x+1) != nullptr  && (cityMap->getMap()).at(y).at(x+1)->getStructureType() != "Road") {
-        numStructuresAroundRoad++;
-    }
-    if ((cityMap->getMap()).at(y).at(x-1) != nullptr && (cityMap->getMap()).at(y).at(x-1)->getStructureType() != "Road") {
-        numStructuresAroundRoad++;
-    }
-    if ((cityMap->getMap()).at(y+1).at(x) != nullptr && (cityMap->getMap()).at(y+1).at(x)->getStructureType() != "Road") {
-        numStructuresAroundRoad++;
-    }
-    if ((cityMap->getMap()).at(y-1).at(x) != nullptr && (cityMap->getMap()).at(y-1).at(x)->getStructureType() != "Road") {
-        numStructuresAroundRoad++;
-    }
+    
+    // Check the square around and check if there are any structures
+    CheckAdjacent checkAdjacent;
+    numStructuresAroundRoad = checkAdjacent.checkAdjacent(cityMap->getMap(), x, y);
+    
 
+    std:: cout << "setting traffic state" << std::endl;
     // Change the traffic state based on the number of structures around the road
     if (numStructuresAroundRoad <= 1) {          // if 0 or 1 then low
         setTrafficState(new LowTraffic());
@@ -70,6 +68,8 @@ void Road::calculateTraffic() {
     } else { // if 3 or 4 then high
         setTrafficState(new HighTraffic());
     }
+    std:: cout << "done calculating traffic" << std::endl;
+    std:: cout << "new traffic level: " << getTrafficLevel() << std::endl;
 }
 
 void Road::setTrafficState(TrafficState* state) {

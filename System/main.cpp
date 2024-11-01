@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "Factory.h"
 #include "GeneratorDecorator.h"
@@ -83,19 +84,41 @@ using namespace std;
 
 int main(){
 
-    // CREATE CITY MAP
-    CityMap* cityMap = new CityMap(20, 20);
+    cout << "Hello, World!" << endl;
 
-    // CREATE AND PLACE ROADS
-    Road* road1 = new Road();
-    road1->placeStructure(0, 1, cityMap);
+    // CREATE CITY MAP
+    CityMap* cityMap = new CityMap();
 
     // CREATE AND PLACE CITY HALL
     CityHall* cityHall = CityHall::getInstance();
     cityHall->placeStructure(0, 0, cityMap);
 
+    // CREATE AND PLACE ROADS
+    Road* road1 = new Road();
+    road1->placeStructure(0, 1, cityMap);
+
+
+    
+
+    
+
+    std::vector<std::vector<CityStructure*> > map = cityMap->getMap();
+    cout << "City Map: " << map.size() << endl;
+    for(int i = 0; i < map.size(); i++){
+        for(int j = 0; j < map[i].size(); j++){
+            if(map[i][j] != nullptr){
+                cout << map[i][j]->getStructureType() << " ";
+            }else{
+                cout << "NULL ";
+            }
+        }
+        cout << endl;
+    }
+
     // testDecorator();
 
+
+    cout << "Bye!" << endl; 
     
   
     return 0;

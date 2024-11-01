@@ -11,6 +11,12 @@
 #include "Landmark.h"
 #include "Road.h"
 
+#include "CheckAdjacent.h"
+#include "BuildingAdded.h"
+#include "BuildingRemoved.h"
+#include "RoadAdded.h"
+#include "RoadRemoved.h"
+
 
 const int DEFAULT_HEIGHT = 20;
 const int DEFAULT_WIDTH = 20;
@@ -31,15 +37,27 @@ std::vector<std::vector<CityStructure*>> CityMap::getMap() {
 
 void CityMap::setCityHall(CityHall* cityHall) {
     this->cityHall = cityHall;
+    // std::cout << "Placing the city hall" << std::endl;
+    // std::cout << "cityHall: " << cityHall->getStructureType()<< std::endl;
 }
 
 bool CityMap::addStructure(int x, int y, CityStructure* structure) {
-
+    std::cout << "citymap addStructure" << std::endl;
     int deduction = structure->getCost();
+    std::cout << "deduction: " << deduction << std::endl;
     if (cityHall->deductPopeCoins(deduction) == false) {
         std::cout << "Not enough pope coins to place the structure" << std::endl;
         return false;
     }
+    if (y < 0 || y >= map.size() || x < 0 || x >= map[y].size()) {
+    std::cout << "Invalid location" << std::endl;
+    return false;
+    }
+    if (map.at(y).at(x) != nullptr) {
+        std::cout << "There is already a structure at this location" << std::endl;
+        return false;
+    }
+    
 
     // DO VALIDATION (is it supposed to be at y then x?)
     map.at(y).at(x) = structure;
@@ -52,19 +70,10 @@ void CityMap::addRoad(Road* originator) {
     // TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW TRAFFIC
     int x = originator->getX();
     int y = originator->getY();
-
-    if (map.at(y).at(x+1) != nullptr) {
-        map.at(y).at(x+1)->newRoadWasAdded();
-    }
-    if (map.at(y).at(x-1) != nullptr) {
-        map.at(y).at(x-1)->newRoadWasAdded();
-    }
-    if (map.at(y+1).at(x) != nullptr) {
-        map.at(y+1).at(x)->newRoadWasAdded();
-    }
-    if (map.at(y-1).at(x) != nullptr) {
-        map.at(y-1).at(x)->newRoadWasAdded();
-    }
+    
+    // Calls newRoadWasAdded on all adjacent residential complexes (with appropriate bounds checking)
+    RoadAdded roadAdded;
+    roadAdded.checkAdjacent(map, x, y);
 
 }
 
@@ -76,18 +85,10 @@ void CityMap::addBuilding(CityStructure* originator) {
     int x = originator->getX();
     int y = originator->getY();
 
-    if (map.at(y).at(x+1) != nullptr) {
-        map.at(y).at(x+1)->newBuildingWasAdded();
-    }
-    if (map.at(y).at(x-1) != nullptr) {
-        map.at(y).at(x-1)->newBuildingWasAdded();
-    }
-    if (map.at(y+1).at(x) != nullptr) {
-        map.at(y+1).at(x)->newBuildingWasAdded();
-    }
-    if (map.at(y-1).at(x) != nullptr) {
-        map.at(y-1).at(x)->newBuildingWasAdded();
-    }
+    // Calls newBuildingWasAdded on all adjacent roads (with appropriate bounds checking)
+    BuildingAdded buildingAdded;
+    buildingAdded.checkAdjacent(map, x, y);
+    
 
 }
 
@@ -233,18 +234,9 @@ void CityMap::removeRoad(Road* originator) {
     int x = originator->getX();
     int y = originator->getY();
 
-    if (map.at(y).at(x+1) != nullptr) {
-        map.at(y).at(x+1)->roadWasRemoved();
-    }
-    if (map.at(y).at(x-1) != nullptr) {
-        map.at(y).at(x-1)->roadWasRemoved();
-    }
-    if (map.at(y+1).at(x) != nullptr) {
-        map.at(y+1).at(x)->roadWasRemoved();
-    }
-    if (map.at(y-1).at(x) != nullptr) {
-        map.at(y-1).at(x)->roadWasRemoved();
-    }
+    // Calls roadWasRemoved on all adjacent residential complexes (with appropriate bounds checking)
+    RoadRemoved roadRemoved;
+    roadRemoved.checkAdjacent(map, x, y);
 
 }
 
@@ -254,18 +246,9 @@ void CityMap::removeBuilding(CityStructure* originator) {
     int x = originator->getX();
     int y = originator->getY();
 
-    if (map.at(y).at(x+1) != nullptr) {
-        map.at(y).at(x+1)->buildingWasRemoved();
-    }
-    if (map.at(y).at(x-1) != nullptr) {
-        map.at(y).at(x-1)->buildingWasRemoved();
-    }
-    if (map.at(y+1).at(x) != nullptr) {
-        map.at(y+1).at(x)->buildingWasRemoved();
-    }
-    if (map.at(y-1).at(x) != nullptr) {
-        map.at(y-1).at(x)->buildingWasRemoved();
-    }
+    // Calls buildingWasRemoved on all adjacent roads (with appropriate bounds checking)
+    BuildingRemoved buildingRemoved;
+    buildingRemoved.checkAdjacent(map, x, y);
 
 }   
 
