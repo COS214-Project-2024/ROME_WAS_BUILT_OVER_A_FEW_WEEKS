@@ -43,18 +43,48 @@ void CityMap::setCityHall(CityHall* cityHall) {
 
 bool CityMap::addStructure(int x, int y, CityStructure* structure) {
     std::cout << "citymap addStructure" << std::endl;
+
     int deduction = structure->getCost();
     std::cout << "deduction: " << deduction << std::endl;
-    if (cityHall->deductPopeCoins(deduction) == false) {
-        std::cout << "Not enough pope coins to place the structure" << std::endl;
-        return false;
-    }
     if (y < 0 || y >= map.size() || x < 0 || x >= map[y].size()) {
     std::cout << "Invalid location" << std::endl;
     return false;
     }
+
     if (map.at(y).at(x) != nullptr) {
         std::cout << "There is already a structure at this location" << std::endl;
+        return false;
+    }
+
+    // int maxY = map.size();
+    // if (maxY == 0) {
+    //     return 0; // Empty map
+    // }
+    // int maxX = map.at(0).size();  // Assume all rows are the same size
+    // bool hasAdjacentRoad = false;
+
+    // // Check (y - 1, x)
+    // if (y - 1 >= 0 && y - 1 < maxY && x >= 0 && x < maxX && map.at(y - 1).at(x) != nullptr) {
+    //     map
+    // }
+
+    // // Check (y, x - 1)
+    // if (y >= 0 && y < maxY && x - 1 >= 0 && x - 1 < maxX && map.at(y).at(x - 1) != nullptr) {
+
+    // }
+
+    // // Check (y + 1, x)
+    // if (y + 1 >= 0 && y + 1 < maxY && x >= 0 && x < maxX && map.at(y + 1).at(x) != nullptr) {
+
+    // }
+
+    // // Check (y, x + 1)
+    // if (y >= 0 && y < maxY && x + 1 >= 0 && x + 1 < maxX && map.at(y).at(x + 1) != nullptr) {
+
+    // }
+
+    if (cityHall->deductPopeCoins(deduction) == false) {
+        std::cout << "Not enough pope coins to place the structure" << std::endl;
         return false;
     }
     
