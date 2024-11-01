@@ -1,9 +1,9 @@
 # Compiler
 CXX = g++
 # Compiler flags
-CXXFLAGS = -g -Wall
+CXXFLAGS = -g -Wall -IBoosterStructures -ICheckAdjacent -ICityStructure -ICityStructure/Industrial -ICityStructure/Commercial -ICityStructure/Residential -ICityStructure/Landmark -ICityStructure/Road -IFactory -IPoliticalSystem -ISatisfactionHandler
 # Executable name
-TARGET = program
+TARGET = program 
 
 # Source files
 SOURCES = \
