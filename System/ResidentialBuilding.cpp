@@ -27,9 +27,14 @@ void ResidentialBuilding::removeStructure() {
 }
 
 int ResidentialBuilding::getCapacity() {
+    std::cout << "Getting capacity BUILDING" << capacity << std::endl;
     return capacity;
 }
 
 int ResidentialBuilding::calculateCapacity() {
     return capacity;
+}
+
+int ResidentialBuilding::getCost() {
+    return cost;
 }

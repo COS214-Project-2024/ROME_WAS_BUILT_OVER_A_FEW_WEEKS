@@ -2,7 +2,7 @@
 
 #include "Estate.h"
 
-Estate::Estate(int capacity) : ResidentialBuilding(DEFAULT_ESTATE_CAPACITY) {
+Estate::Estate() : ResidentialBuilding(DEFAULT_ESTATE_CAPACITY) {
     this->cost = DEFAULT_ESTATE_COST;
 }
 

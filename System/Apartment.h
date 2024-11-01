@@ -8,7 +8,7 @@ class Apartment : public ResidentialBuilding {
         static const int DEFAULT_APARTMENT_CAPACITY = 100;
         static const int DEFAULT_APARTMENT_COST = 10000;
     public:
-        Apartment(int capacity);
+        Apartment();
         ~Apartment();
 
         std::string getResidentialBuildingType();

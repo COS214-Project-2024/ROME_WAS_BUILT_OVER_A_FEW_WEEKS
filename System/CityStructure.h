@@ -35,7 +35,7 @@ class CityStructure {
 
         int getX();
         int getY();
-        int getCost();
+        virtual int getCost();
 
 };
 

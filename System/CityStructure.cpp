@@ -11,6 +11,7 @@ CityStructure::CityStructure() {
 }
 
 void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
+    std::cout << "Placing the structure" << std::endl;
     bool placed = cityMap->addStructure(x, y, this);
     if (placed) {
         this->x = x;
@@ -45,5 +46,6 @@ int CityStructure::getY() {
 }
 
 int CityStructure::getCost() {
+    std::cout << "Getting cost" << cost << std::endl;
     return cost;
 }

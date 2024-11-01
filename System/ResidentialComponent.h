@@ -20,6 +20,7 @@ class ResidentialComponent : public CityStructure {
 
         // virtual void calculateStatisfaction() : NO NEED since it will be same for all in complex
         virtual int calculateCapacity() = 0; //composite function
+        virtual int getCost() = 0;
 
         
 

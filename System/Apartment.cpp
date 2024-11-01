@@ -1,7 +1,7 @@
 #include "Apartment.h"
 #include "Apartment.h"
 
-Apartment::Apartment(int capacity) : ResidentialBuilding(DEFAULT_APARTMENT_CAPACITY) {
+Apartment::Apartment() : ResidentialBuilding(DEFAULT_APARTMENT_CAPACITY) {
     this->cost = DEFAULT_APARTMENT_COST;
 }
 

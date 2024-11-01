@@ -7,9 +7,12 @@
 #include "MediumTraffic.h"
 #include "HighTraffic.h"
 
+#include "CheckAdjacent.h" 
 
-Road::Road() : trafficState(0) {
 
+Road::Road() : trafficState(new LowTraffic()) {
+    cityMap = nullptr;
+    cost = 100;
 }
 
 Road::~Road() {
@@ -47,21 +50,33 @@ void Road::buildingWasRemoved() {
 
 
 void Road::calculateTraffic() {
+    std::cout << "calculating traffic" << std::endl;
     // Check the squares around
     int numStructuresAroundRoad = 0;
-    if ((cityMap->getMap()).at(y).at(x+1) != nullptr  && (cityMap->getMap()).at(y).at(x+1)->getStructureType() != "Road") {
+    
+    // Check the square around and check if there are any structures
+    std::vector<std::vector<CityStructure*> > map = cityMap->getMap();
+    int maxY = map.size();
+    if (maxY == 0) { return; }  // Empty map
+    int maxX = map.at(0).size();  // Assume all rows are the same size
+    // Check (y - 1, x)
+    if (y - 1 >= 0 && y - 1 < maxY && x >= 0 && x < maxX && map.at(y - 1).at(x) != nullptr && map.at(y - 1).at(x)->getStructureType() != "Road") {
         numStructuresAroundRoad++;
     }
-    if ((cityMap->getMap()).at(y).at(x-1) != nullptr && (cityMap->getMap()).at(y).at(x-1)->getStructureType() != "Road") {
+    // Check (y, x - 1)
+    if (y >= 0 && y < maxY && x - 1 >= 0 && x - 1 < maxX && map.at(y).at(x - 1) != nullptr && map.at(y).at(x - 1)->getStructureType() != "Road") {
         numStructuresAroundRoad++;
     }
-    if ((cityMap->getMap()).at(y+1).at(x) != nullptr && (cityMap->getMap()).at(y+1).at(x)->getStructureType() != "Road") {
+    // Check (y + 1, x)
+    if (y + 1 >= 0 && y + 1 < maxY && x >= 0 && x < maxX && map.at(y + 1).at(x) != nullptr && map.at(y + 1).at(x)->getStructureType() != "Road") {
         numStructuresAroundRoad++;
     }
-    if ((cityMap->getMap()).at(y-1).at(x) != nullptr && (cityMap->getMap()).at(y-1).at(x)->getStructureType() != "Road") {
+    // Check (y, x + 1)
+    if (y >= 0 && y < maxY && x + 1 >= 0 && x + 1 < maxX && map.at(y).at(x + 1) != nullptr && map.at(y).at(x + 1)->getStructureType() != "Road") {
         numStructuresAroundRoad++;
     }
 
+    std:: cout << "setting traffic state" << std::endl;
     // Change the traffic state based on the number of structures around the road
     if (numStructuresAroundRoad <= 1) {          // if 0 or 1 then low
         setTrafficState(new LowTraffic());
@@ -70,6 +85,8 @@ void Road::calculateTraffic() {
     } else { // if 3 or 4 then high
         setTrafficState(new HighTraffic());
     }
+    std:: cout << "done calculating traffic" << std::endl;
+    std:: cout << "new traffic level: " << getTrafficLevel() << std::endl;
 }
 
 void Road::setTrafficState(TrafficState* state) {

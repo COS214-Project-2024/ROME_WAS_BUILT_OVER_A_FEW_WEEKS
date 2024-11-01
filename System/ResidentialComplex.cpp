@@ -7,7 +7,7 @@
 #include "Road.h"
 
 ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
-    addResidentialComponent(residential);
+    residentialComponents.push_back(residential);
     trafficSatisfaction = 0;
     EmploymentSatisfaction = 0;
     PowerSatisfaction = 0;
@@ -17,8 +17,11 @@ ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
     HealthSatisfaction = 5;
     EducationSatisfaction = 5;
     safetySatisfaction = 5;
-    satisfaction = 0;
-    capacity = residential->calculateCapacity();
+    bonusSatisfaction = 0;
+
+    satisfaction = 15;
+    capacity = residential->getCapacity();
+    std::cout << "Residential Complex created" << std::endl;
 }
 
 ResidentialComplex::~ResidentialComplex() {
@@ -38,7 +41,9 @@ void ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
 }
 
 void ResidentialComplex::newRoadWasAdded() {
+    std::cout << "New road was added" << std::endl;
     calculateTrafficSatisfaction(); // sets the traffic satisfaction
+    std::cout << "Traffic satisfaction: " << std::endl;
     calculateSatisfaction();
 }
 
@@ -88,13 +93,17 @@ void ResidentialComplex::landmarkWasRemoved() {
 
 
 int ResidentialComplex::getCapacity() {
+    std::cout << "Getting capacity" << capacity << std::endl;
     return capacity;
 }
 
 void ResidentialComplex::addResidentialComponent(ResidentialComponent* residential) {
+    std::cout << "Adding Residential Component" << std::endl;
     residentialComponents.push_back(residential);
-    cityMap->addResidentialComponent(this); // INFORM THE CITYMAP OF THE NEW CAPACITY
+    std::cout << "Informing the city map" << std::endl;
     calculateCapacity(); // Recalculate the capacity of the complex and set the member variable
+    cityMap->addResidentialComponent(residential); // INFORM THE CITYMAP OF THE NEW CAPACITY
+    
 }
 
 void ResidentialComplex::removeResidentialComponent(ResidentialComponent* residential) {
@@ -110,6 +119,7 @@ void ResidentialComplex::removeResidentialComponent(ResidentialComponent* reside
 }
 
 int ResidentialComplex::calculateCapacity(){
+    std::cout << "IN capacity" << std::endl;
     // Calculate the capacity of the complex based on the capacity of the components
     std::vector<ResidentialComponent*>::iterator it;
     int totalCapacity = 0;
@@ -130,33 +140,47 @@ int ResidentialComplex::calculateTrafficSatisfaction() {
     // If it is road, check the traffic state
 
     // USE TEMPLATE METHOD PATTERN
-
+    std::cout << "Calculating traffic satisfaction" << std::endl;
     std::vector<Road*> roads;
+    int maxY = map.size();
+    if (maxY == 0) {  return 0; } // Empty map
+    int maxX = map.at(0).size();  // Assume all rows are the same size
+    
 
-    if (map.at(y).at(x+1)->getStructureType() == "Road") {
-        roads.push_back((Road*)map.at(y).at(x+1));
-    }
-    if (map.at(y).at(x-1)->getStructureType() == "Road") {
-        roads.push_back((Road*)map.at(y).at(x-1));
-    }
-    if (map.at(y+1).at(x)->getStructureType() == "Road") {
-        roads.push_back((Road*)map.at(y+1).at(x));
-    }
-    if (map.at(y-1).at(x)->getStructureType() == "Road") {
+    if (y - 1 >= 0 && y - 1 < maxY && x >= 0 && x < maxX && map.at(y - 1).at(x) != nullptr && map.at(y - 1).at(x)->getStructureType() == "Road") {
+        std::cout << "A" << std::endl;
         roads.push_back((Road*)map.at(y-1).at(x));
     }
+    if (y >= 0 && y < maxY && x - 1 >= 0 && x - 1 < maxX && map.at(y).at(x-1) != nullptr &&  map.at(y).at(x-1)->getStructureType() == "Road") {
+        std::cout << "B" << std::endl;
+        roads.push_back((Road*)map.at(y).at(x-1));
+    }
+    if (y + 1 >= 0 && y + 1 < maxY && x >= 0 && x < maxX && map.at(y + 1).at(x) != nullptr && map.at(y + 1).at(x)->getStructureType() == "Road") {
+        std::cout << "C" << std::endl;
+        roads.push_back((Road*)map.at(y+1).at(x));
+    }
+    if (y >= 0 && y < maxY && x + 1 >= 0 && x + 1 < maxX && map.at(y).at(x+1) != nullptr && map.at(y).at(x+1)->getStructureType() == "Road") {
+        std::cout << "D" << std::endl;
+        roads.push_back((Road*)map.at(y).at(x+1));
+    }
+    //print out roads
+    for (int i = 0; i < roads.size(); i++) {
+        std::cout << "Road: " << roads[i]->getStructureType() << std::endl;
+    }
 
+    std::cout << "Number of roads: " <<  std::endl;
     std::vector<Road*>::iterator it;
     for (it = roads.begin(); it != roads.end(); it++) {
         int trafficLevel = (*it)->getTrafficLevel();
+        std::cout << "Traffic level: " << trafficLevel << std::endl;
         if (trafficLevel == 1) { // LOW TRAFFIC
             newTrafficSatisfaction = newTrafficSatisfaction - 0;
         }
         else if (trafficLevel == 2) { // MEDIUM TRAFFIC
-            newTrafficSatisfaction += 2;
+            newTrafficSatisfaction -= 2;
         }
         else if (trafficLevel == 3) { // HIGH TRAFFIC
-            newTrafficSatisfaction += 3.75;
+            newTrafficSatisfaction -= 3.75;
         }
     }
     
@@ -186,5 +210,30 @@ int ResidentialComplex::calculateSatisfaction() {
 
 }
 
+int ResidentialComplex::getCost() {
+    std::vector <ResidentialComponent*>::iterator it;
+    int totalCost = 0;
+    for (it = residentialComponents.begin(); it != residentialComponents.end(); it++) {
+        if ((*it) != nullptr) {
+            totalCost += (*it)->getCost();
+        }
+    }
+    return totalCost;
+}
 
+void ResidentialComplex::printResidentialComplexState() {
+    std::cout << "Residential Complex State" << std::endl;
+    std::cout << "Traffic Satisfaction: " << trafficSatisfaction << std::endl;
+    std::cout << "Employment Satisfaction: " << EmploymentSatisfaction << std::endl;
+    std::cout << "Power Satisfaction: " << PowerSatisfaction << std::endl;
+    std::cout << "Water Satisfaction: " << WaterSatisfaction << std::endl;
+    std::cout << "Waste Satisfaction: " << WasteSatisfaction << std::endl;
+    std::cout << "Sewage Satisfaction: " << SewageSatisfaction << std::endl;
+    std::cout << "Health Satisfaction: " << HealthSatisfaction << std::endl;
+    std::cout << "Education Satisfaction: " << EducationSatisfaction << std::endl;
+    std::cout << "Safety Satisfaction: " << safetySatisfaction << std::endl;
+    std::cout << "Bonus Satisfaction: " << bonusSatisfaction << std::endl;
+    std::cout << "Total Satisfaction: " << satisfaction << std::endl;
+    std::cout << "Capacity: " << capacity << std::endl;
+}
 

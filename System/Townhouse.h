@@ -8,7 +8,7 @@ class Townhouse : public ResidentialBuilding {
         static const int DEFAULT_TOWNHOUSE_CAPACITY = 15;
         static const int DEFAULT_TOWNHOUSE_COST = 5000;
     public:
-        Townhouse(int capacity);
+        Townhouse();
         ~Townhouse();
 
         std::string getResidentialBuildingType();
