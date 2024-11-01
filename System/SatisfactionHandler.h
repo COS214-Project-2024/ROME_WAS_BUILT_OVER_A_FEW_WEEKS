@@ -3,6 +3,8 @@
 
 #include "CityHall.h"
 
+class CityHall;
+
 class SatisfactionHandler{
     protected:
         SatisfactionHandler *nextHandler;

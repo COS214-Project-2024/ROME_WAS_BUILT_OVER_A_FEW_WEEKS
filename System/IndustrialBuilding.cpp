@@ -8,13 +8,19 @@ IndustrialBuilding::IndustrialBuilding()  {
 
 }
 
+IndustrialBuilding::~IndustrialBuilding() {
+    cityMap = nullptr;
+}
+
+std::string IndustrialBuilding::getStructureType() {
+    return "Industrial";
+}
+
 void IndustrialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     CityStructure::placeStructure(x, y, cityMap);
     cityMap->addBuilding(this);
 }
 
 
-IndustrialBuilding::~IndustrialBuilding() {
-    cityMap = nullptr;
-}
+
 

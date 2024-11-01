@@ -2,19 +2,21 @@
 #define FACTORY_H
 
 #include "IndustrialBuilding.h"
-
+#include "Material.h"
 #include <queue>
+#include <string>
+using namespace std;
+
 
 class Factory : public IndustrialBuilding {
     protected:
-        int itemQueueSize;
-        std::queue<int> itemQueue;
+        int qunatity;
+        string factoryType;
     public:
-        Factory();
-        virtual ~Factory();
-        
-        
-    
+        Factory(){};
+        virtual ~Factory(){};
+        int getQuantity(){return this->qunatity;};
+        virtual string getFactoryType(){return factoryType;};
 };
 
 

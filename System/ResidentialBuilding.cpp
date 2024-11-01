@@ -11,6 +11,10 @@ ResidentialBuilding::~ResidentialBuilding() {
     // EMPTY
 }
 
+std::string ResidentialBuilding::getStructureType() {
+    return "Residential";
+}
+
 void ResidentialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     // You cannot place a residential building on its own 
     //(because then you cant add more residential components to make a complex)
@@ -23,9 +27,14 @@ void ResidentialBuilding::removeStructure() {
 }
 
 int ResidentialBuilding::getCapacity() {
+    std::cout << "Getting capacity BUILDING" << capacity << std::endl;
     return capacity;
 }
 
 int ResidentialBuilding::calculateCapacity() {
     return capacity;
+}
+
+int ResidentialBuilding::getCost() {
+    return cost;
 }

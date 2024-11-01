@@ -3,16 +3,29 @@
 
 #include "CityStructure.h"
 
+class TrafficState;
+class ResidentialComplex;
+class CityMap;
+
 class Road : public CityStructure {
     private:
-        int trafficState; // USE STATE DP in future
+        TrafficState* trafficState; // USE STATE DP in future
     public:
         Road();
-        void placeStructure(int x, int y, CityMap* cityMap);
-        void removeStructure();
-        void calculateTraffic();
         ~Road();
+        std::string getStructureType();
+
+        void placeStructure(int x, int y, CityMap* cityMap);
         void newBuildingWasAdded();
+
+        void removeStructure();
+        void buildingWasRemoved();
+
+        void calculateTraffic();
+
+        void setTrafficState(TrafficState* trafficState);
+        int getTrafficLevel();
+        
 
         
 };

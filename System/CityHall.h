@@ -1,13 +1,16 @@
 #ifndef CITYHALL_H
 #define CITYHALL_H
 
-#include "SatisfactionHandler.h"
-#include "PoliticalSystem.h"
-#include "BoosterStructures.h"
-#include "Railway.h"
-#include "Airport.h"
+#include "CityStructure.h"
+
+class SatisfactionHandler;
+class PoliticalSystem;
+class CityMap;
+class Railway;
+class Airport;
+
  
-class CityHall{
+class CityHall: public CityStructure{
     private:
         static CityHall* cityHall; // Singleton
         SatisfactionHandler* chainOfResponsibility;
@@ -16,17 +19,24 @@ class CityHall{
         Airport* airport;
 
         int numCitizens;
-        int popeCoins;
-        float citySatisfaction;
         int cityCapacity;
-        int numResidentialBuildings;
-        float residentialSatisfaction;
+        int numResidentialComplexes;
+        int numCommercialBuildings;
+        int numIndustrialBuildings;
+        int popeCoins;
+        static const int MAX_POPE_COINS = 1000000; // 1 million
 
-        int taxRateResidential;
-        int taxRateCommercial;
+        float residentialSatisfaction;
+        float citySatisfaction;
+        
+        
+        int taxRateResidential; // @Denis, i think we could just use getters for these
+        int taxRateCommercial;  // Dont need to store it really
         int taxRateIndustrial;
         double budgetSplit;
         int citizenSatisfactionImpact;
+
+
 
     protected:
         CityHall(); // Singleton
@@ -41,6 +51,8 @@ class CityHall{
         int getNumCitizens();
         int getCityCapacity();
         int getNumResidentialBuildings();
+        std::string getStructureType();
+        int getCost();
 
         int getCurrSatisfaction();
         float calculateSatisfaction();
@@ -58,6 +70,27 @@ class CityHall{
         double getBudgetSplit(); // Higher the percentage the more money goes to the user
         int getCitizenSatisfactionImpact();
         ~CityHall();
+
+        void placeStructure(int x, int y, CityMap* cityMap);
+        void removeStructure();
+
+        void increaseNumResidentialComplexes();
+        void decreaseNumResidentialComplexes();
+
+        void increaseNumCommercialBuildings();
+        void decreaseNumCommercialBuildings();
+
+        void increaseNumIndustrialBuildings();
+        void decreaseNumIndustrialBuildings();
+
+        bool addPopeCoins(int coins);
+        bool deductPopeCoins(int coins);
+
+        void increaseCapacity(int capacity);
+        void decreaseCapacity(int capacity);
+
+        void printCityHallState();
+        
 };
 
 #endif

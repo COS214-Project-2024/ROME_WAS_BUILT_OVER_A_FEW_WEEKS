@@ -1,4 +1,6 @@
 #include "Authoritarianism.h"
+#include "Authoritarianism.h"
+
 #include <random>
 using namespace std;
 

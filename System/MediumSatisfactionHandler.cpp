@@ -64,8 +64,7 @@ float MediumSatisfactionHandler::handleTax(int curSatisfaction, CityHall *cityHa
         return nextHandler->handleTax(curSatisfaction, cityHall);
     }
 
-    // Return some tax value based on number of citizens, incomeAffectionRate
-    return 0;
+
 
     std::random_device rd;
     std::mt19937 gen(rd());
