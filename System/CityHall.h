@@ -61,8 +61,8 @@ class CityHall: public CityStructure{
         float getAirportBonus();
         float calculateHomelessnessDeduction();
 
-        void populationChange(int satisfactionLevel);
-        float collectTaxes(int satisfactionLevel);
+        void populationChange(int satisfactionLevel); // CHAIN
+        float collectTaxes(int satisfactionLevel); // CHAIN
 
         int getTaxRateResidential();
         int getTaxRateCommercial();

@@ -59,5 +59,5 @@ float LowSatisfactionHandler::handleTax(int curSatisfaction, CityHall *cityHall)
     std::uniform_int_distribution<> random1(-10, 10);
 
     incomeAffectionRate += random1(gen)/100;
-    return incomeAffectionRate*cityHall->getTaxRateResidential();
+    return incomeAffectionRate*cityHall->getTaxRateResidential()*cityHall->getNumCitizens();
 }
