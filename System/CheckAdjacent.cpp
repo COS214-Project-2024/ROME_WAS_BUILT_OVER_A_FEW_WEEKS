@@ -6,6 +6,7 @@ int CheckAdjacent::checkAdjacent(std::vector<std::vector<CityStructure*> > map, 
 
     int maxY = map.size();
 
+
     if (maxY == 0) {
         return 0; // Empty map
     }
