@@ -97,6 +97,19 @@ int main(){
     Road* road1 = new Road();
     road1->placeStructure(0, 1, cityMap);
 
+    // CREATE AND PLACE RESIDENTIAL COMPLEXES 
+    cout << "\nCreating Residential Complexes" << endl;
+    ResidentialBuilding* house1 = new House();
+    cout << "House Capacity: " << house1->getCapacity() << endl;
+    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
+    cout << "Residential Complex Capacity: " <<  endl;
+    residentialComplex1->placeStructure(1, 1, cityMap);
+
+    //print states
+    cityHall->printCityHallState();
+    cout << endl;
+    residentialComplex1->printResidentialComplexState();
+
 
     
 

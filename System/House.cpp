@@ -2,7 +2,7 @@
 
 #include "House.h"
 
-House::House(int capacity) : ResidentialBuilding(DEFAULT_HOUSE_CAPACITY) {
+House::House() : ResidentialBuilding(DEFAULT_HOUSE_CAPACITY) {
     this->cost = DEFAULT_HOUSE_COST;
 }
 

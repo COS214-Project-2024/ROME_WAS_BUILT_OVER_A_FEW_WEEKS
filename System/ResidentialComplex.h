@@ -47,9 +47,12 @@ class ResidentialComplex : public ResidentialComponent {
         void addResidentialComponent(ResidentialComponent* residential);
         void removeResidentialComponent(ResidentialComponent* residential);
         int calculateCapacity();
+        int getCost();
 
         int calculateTrafficSatisfaction();
         int calculateSatisfaction();
+
+        void printResidentialComplexState();
 };
 
 #endif

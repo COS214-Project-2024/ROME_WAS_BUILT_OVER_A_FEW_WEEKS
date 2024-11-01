@@ -8,7 +8,7 @@ class Estate : public ResidentialBuilding {
         static const int DEFAULT_ESTATE_CAPACITY = 120;
         static const int DEFAULT_ESTATE_COST = 10000;
     public:
-        Estate(int capacity);
+        Estate();
         ~Estate();
         
         std::string getResidentialBuildingType();

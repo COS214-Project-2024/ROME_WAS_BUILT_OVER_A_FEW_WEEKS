@@ -46,5 +46,6 @@ int CityStructure::getY() {
 }
 
 int CityStructure::getCost() {
+    std::cout << "Getting cost" << cost << std::endl;
     return cost;
 }

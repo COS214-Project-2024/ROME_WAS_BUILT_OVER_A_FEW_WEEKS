@@ -88,6 +88,8 @@ class CityHall: public CityStructure{
 
         void increaseCapacity(int capacity);
         void decreaseCapacity(int capacity);
+
+        void printCityHallState();
         
 };
 

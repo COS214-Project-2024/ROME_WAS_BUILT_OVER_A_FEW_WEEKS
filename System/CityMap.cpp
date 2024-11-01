@@ -44,45 +44,73 @@ void CityMap::setCityHall(CityHall* cityHall) {
 bool CityMap::addStructure(int x, int y, CityStructure* structure) {
     std::cout << "citymap addStructure" << std::endl;
 
-    int deduction = structure->getCost();
-    std::cout << "deduction: " << deduction << std::endl;
+    // VALIDATE IF LOCATION IS IN BOUNDS
     if (y < 0 || y >= map.size() || x < 0 || x >= map[y].size()) {
     std::cout << "Invalid location" << std::endl;
     return false;
     }
 
+    // VALIDATE IF THERE IS ALREADY A STRUCTURE AT THE LOCATION
     if (map.at(y).at(x) != nullptr) {
         std::cout << "There is already a structure at this location" << std::endl;
         return false;
     }
 
-    // int maxY = map.size();
-    // if (maxY == 0) {
-    //     return 0; // Empty map
-    // }
-    // int maxX = map.at(0).size();  // Assume all rows are the same size
-    // bool hasAdjacentRoad = false;
+    // VALIDATE IF THERE IS AN ADJACENT ROAD (DOESN'T APPLY TO CITY HALL)
+    bool hasAdjacentRoad = true;
+    std::string currStructure = structure->getStructureType();
 
-    // // Check (y - 1, x)
-    // if (y - 1 >= 0 && y - 1 < maxY && x >= 0 && x < maxX && map.at(y - 1).at(x) != nullptr) {
-    //     map
-    // }
+    if (currStructure != "CityHall"  && currStructure != "Road") {
+        hasAdjacentRoad = false;
+        int maxY = map.size();
+        if (maxY == 0) {
+            return false; // Empty map
+        }
+        int maxX = map.at(0).size();  // Assume all rows are the same size
+        std::string structureType;
 
-    // // Check (y, x - 1)
-    // if (y >= 0 && y < maxY && x - 1 >= 0 && x - 1 < maxX && map.at(y).at(x - 1) != nullptr) {
+        // Check (y - 1, x)
+        if (y - 1 >= 0 && y - 1 < maxY && x >= 0 && x < maxX && map.at(y - 1).at(x) != nullptr) {
+            structureType = map.at(y - 1).at(x)->getStructureType();
+            if (structureType == "Road") {
+                hasAdjacentRoad = true;
+            }
+        }
 
-    // }
+        // Check (y, x - 1)
+        if (y >= 0 && y < maxY && x - 1 >= 0 && x - 1 < maxX && map.at(y).at(x - 1) != nullptr) {
+            structureType = map.at(y).at(x - 1)->getStructureType();
+            if (structureType == "Road") {
+                hasAdjacentRoad = true;
+            }
+        }
 
-    // // Check (y + 1, x)
-    // if (y + 1 >= 0 && y + 1 < maxY && x >= 0 && x < maxX && map.at(y + 1).at(x) != nullptr) {
+        // Check (y + 1, x)
+        if (y + 1 >= 0 && y + 1 < maxY && x >= 0 && x < maxX && map.at(y + 1).at(x) != nullptr) {
+            structureType = map.at(y + 1).at(x)->getStructureType();
+            if (structureType == "Road") {
+                hasAdjacentRoad = true;
+            }
+        }
 
-    // }
+        // Check (y, x + 1)
+        if (y >= 0 && y < maxY && x + 1 >= 0 && x + 1 < maxX && map.at(y).at(x + 1) != nullptr) {
+            structureType = map.at(y).at(x + 1)->getStructureType();
+            if (structureType == "Road") {
+                hasAdjacentRoad = true;
+            }
+        }
+    }
 
-    // // Check (y, x + 1)
-    // if (y >= 0 && y < maxY && x + 1 >= 0 && x + 1 < maxX && map.at(y).at(x + 1) != nullptr) {
-
-    // }
-
+    if (hasAdjacentRoad == false) {
+        std::cout << "Cannot place the structure without an adjacent road" << std::endl;
+        return false;
+    }
+    
+    // VALIDATE IF PLAYER HAS ENOUGH POPE COINS
+    int deduction = structure->getCost();
+    // std::cout << "structure type: " << structure->getStructureType() << std::endl;
+    std::cout << "deduction: " << deduction << std::endl;
     if (cityHall->deductPopeCoins(deduction) == false) {
         std::cout << "Not enough pope coins to place the structure" << std::endl;
         return false;
@@ -114,18 +142,22 @@ void CityMap::addBuilding(CityStructure* originator) {
     //then the roads will tell the residential complexes to adjust their satisfaction (CAN BE DONE USING MEDIATOR AS WELL)
     int x = originator->getX();
     int y = originator->getY();
+    std::cout << "x: " << x << " y: " << y << std::endl;
 
     // Calls newBuildingWasAdded on all adjacent roads (with appropriate bounds checking)
     BuildingAdded buildingAdded;
+    std::cout << "RR" << std::endl;
     buildingAdded.checkAdjacent(map, x, y);
+    std::cout << "RR" << std::endl;
     
 
 }
 
 void CityMap::addResidentialComplex(ResidentialComplex* originator) {
+    this->cityHall->increaseNumResidentialComplexes();
     // call addBuilding to adjust the traffic
     addBuilding(originator);
-
+    std::cout << "RR" << std::endl;
     // notify all city structures in the map that a new residential complex was added
     for (int i = 0; i < map.size(); i++) {
         for (int j = 0; j < map[i].size(); j++) {
@@ -135,7 +167,7 @@ void CityMap::addResidentialComplex(ResidentialComplex* originator) {
         }
     }
 
-    this->cityHall->increaseNumResidentialComplexes();
+    
 }
 
 void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
@@ -384,7 +416,11 @@ void CityMap::removeLandmark(Landmark* originator) {
 
 
 void CityMap::addResidentialComponent(ResidentialComponent* residential) {
-    this->cityHall->increaseCapacity(residential->getCapacity());
+    std::cout << "informing city hall" << std::endl;
+    int addedCapacity = residential->getCapacity();
+    std::cout << "added capacity: " << addedCapacity << std::endl;
+    this->cityHall->increaseCapacity(addedCapacity);
+    std::cout << "END informing city hall" << std::endl;
 }
 
 void CityMap::removeResidentialComponent(ResidentialComponent* residential) {
@@ -392,5 +428,6 @@ void CityMap::removeResidentialComponent(ResidentialComponent* residential) {
 }
 
 void CityMap::aResidentialComponentChangedItsSatifaction(int oldSatisfaction, int newSatisfaction) {
+    std::cout << "CHAIN OF RESPONSIBILITY" << std::endl;
     cityHall->calculateResidentialSatisfaction(oldSatisfaction, newSatisfaction);
 }

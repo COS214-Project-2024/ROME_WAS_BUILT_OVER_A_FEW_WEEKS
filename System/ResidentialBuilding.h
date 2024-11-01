@@ -8,7 +8,7 @@
 class CityMap;
 
 class ResidentialBuilding : public ResidentialComponent {
-    private:
+    protected:
         int capacity;
     public:
         ResidentialBuilding(int capacity);
@@ -21,6 +21,8 @@ class ResidentialBuilding : public ResidentialComponent {
         int getCapacity(); // SAME AS calculateCapacity()
 
         int calculateCapacity();
+
+        int getCost();
 
         // virtual std::string getResidentialBuildingType() = 0;
 };

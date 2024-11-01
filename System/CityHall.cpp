@@ -12,11 +12,24 @@
 CityHall* CityHall::cityHall = nullptr;
 
 CityHall::CityHall(){
-    popeCoins = 10000;
+    
     numCitizens = 0;
+    cityCapacity = 0;
+    numResidentialComplexes = 0;
+    numCommercialBuildings = 0;
+    numIndustrialBuildings = 0;
+    popeCoins = 10000;
+    residentialSatisfaction = 0;
     citySatisfaction = 100;
+    
     railway = new Railway();
     airport = new Airport();
+
+    taxRateResidential = 0;
+    taxRateCommercial = 0;
+    taxRateIndustrial = 0;
+    budgetSplit = 0;
+    citizenSatisfactionImpact = 0;
 
     // Set up the Chain of Responsibility
     LowSatisfactionHandler* lowHandler = new LowSatisfactionHandler(nullptr);
@@ -89,7 +102,12 @@ float CityHall::calculateSatisfaction(){
 }
 
 void CityHall::calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction){
+    std::cout << "Old residential satisfaction: " << residentialSatisfaction << std::endl;
+    std::cout << "numResidentialComplexes: " << numResidentialComplexes << std::endl;
+    std::cout << "oldSatisfaction: " << oldSatisfaction << std::endl;
+    std::cout << "newSatisfaction: " << newSatisfaction << std::endl;
     residentialSatisfaction = (numResidentialComplexes*residentialSatisfaction - oldSatisfaction + newSatisfaction) / numResidentialComplexes;
+    std::cout << "New residential satisfaction: " << residentialSatisfaction << std::endl;
 }
 
 float CityHall::getRailwayBonus(){
@@ -200,6 +218,7 @@ bool CityHall::deductPopeCoins(int coins){
 
 
 void CityHall::increaseCapacity(int capacity){
+    std::cout << "Increasing capacity" << std::endl;
     cityCapacity = cityCapacity + capacity;
 }
 
@@ -207,4 +226,21 @@ void CityHall::decreaseCapacity(int capacity){
     cityCapacity = cityCapacity - capacity;
 }
 
-
+void CityHall::printCityHallState(){
+    std::cout << "City Hall state" << std::endl;
+    std::cout << "Pope coins: " << popeCoins << std::endl;
+    std::cout << "Number of citizens: " << numCitizens << std::endl;
+    std::cout << "City capacity: " << cityCapacity << std::endl;
+    std::cout << "City satisfaction: " << citySatisfaction << std::endl;
+    std::cout << "Number of residential complexes: " << numResidentialComplexes << std::endl;
+    std::cout << "Number of commercial buildings: " << numCommercialBuildings << std::endl;
+    std::cout << "Number of industrial buildings: " << numIndustrialBuildings << std::endl;
+    std::cout << "Tax rate residential: " << taxRateResidential << std::endl;
+    std::cout << "Tax rate commercial: " << taxRateCommercial << std::endl;
+    std::cout << "Tax rate industrial: " << taxRateIndustrial << std::endl;
+    std::cout << "Budget split: " << budgetSplit << std::endl;
+    std::cout << "Citizen satisfaction impact: " << citizenSatisfactionImpact << std::endl;
+    std::cout << "Railway bonus: " << getRailwayBonus() << std::endl;
+    std::cout << "Airport bonus: " << getAirportBonus() << std::endl;
+    std::cout << "Homelessness deduction: " << calculateHomelessnessDeduction() << std::endl;
+}
