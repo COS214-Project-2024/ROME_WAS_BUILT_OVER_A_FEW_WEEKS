@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "CityMap.h"
+#include "../../CityMap.h"
 #include "Landmark.h"
 
 Landmark::Landmark(int radiusOfEffect) : radiusOfEffect(radiusOfEffect) {

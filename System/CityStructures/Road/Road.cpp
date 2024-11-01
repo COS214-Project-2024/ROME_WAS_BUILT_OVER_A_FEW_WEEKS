@@ -2,12 +2,12 @@
 #include <vector>
 
 #include "Road.h"
-#include "CityMap.h"
+#include "../../CityMap.h"
 #include "LowTraffic.h"
 #include "MediumTraffic.h"
 #include "HighTraffic.h"
 
-#include "CheckAdjacent.h" 
+#include "../../CheckAdjacentTemplate/CheckAdjacent.h" 
 
 
 Road::Road() : trafficState(new LowTraffic()) {

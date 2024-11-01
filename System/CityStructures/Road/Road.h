@@ -1,7 +1,7 @@
 #ifndef ROAD_H
 #define ROAD_H
 
-#include "CityStructure.h"
+#include "../CityStructure.h"
 
 class TrafficState;
 class ResidentialComplex;

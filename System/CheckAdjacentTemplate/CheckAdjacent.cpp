@@ -1,5 +1,5 @@
 #include "CheckAdjacent.h"
-#include "CityStructure.h"
+#include "../CityStructures/CityStructure.h"
 #include <iostream>
 
 int CheckAdjacent::checkAdjacent(std::vector<std::vector<CityStructure*> > map, int x, int y) {
