@@ -1,13 +1,13 @@
 #include <iostream>
 
 #include "CityHall.h"
-#include "LowSatisfactionHandler.h"
-#include "MediumSatisfactionHandler.h"
-#include "HighSatisfactionHandler.h"
+#include "SatisfactionHandler/LowSatisfactionHandler.h"
+#include "SatisfactionHandler/MediumSatisfactionHandler.h"
+#include "SatisfactionHandler/HighSatisfactionHandler.h"
 #include "CityMap.h"
-#include "Railway.h"
-#include "Airport.h"
-#include "PoliticalSystem.h"
+#include "BoosterStructures/Railway.h"
+#include "BoosterStructures/Airport.h"
+#include "PoliticalSystem/PoliticalSystem.h"
 
 CityHall* CityHall::cityHall = nullptr;
 

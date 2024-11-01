@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "CityMap.h"
+#include "../../CityMap.h"
 #include "ResidentialBuilding.h"
 
 ResidentialBuilding::ResidentialBuilding(int capacity) : capacity(capacity) {

@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 
-#include "CityMap.h"
+#include "../../CityMap.h"
 #include "ResidentialComponent.h"
 #include "ResidentialComplex.h"
-#include "Road.h"
+#include "../Road/Road.h"
 
 ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
     residentialComponents.push_back(residential);
