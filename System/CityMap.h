@@ -9,6 +9,7 @@ class CommercialBuilding;
 class IndustrialBuilding;
 class ResidentialComplex;
 class ResidentialComponent;
+class Warehouse;
 class Plant;
 class Landmark;
 class Road;
@@ -36,6 +37,7 @@ class CityMap {
         void addResidentialComplex(ResidentialComplex* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addCommercialBuilding(CommercialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addPlant(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
+        void addWarehouse(Warehouse* originator); // INCREASE TRAFFIC AND INCREASE STORAGE CAPACITY
         void addLandmark(Landmark* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addIndustrialBuilding(IndustrialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
 

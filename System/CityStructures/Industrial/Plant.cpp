@@ -4,9 +4,15 @@ int Plant::getRadiusOfEffect(){
     return this->radiusOfEffect;
 }
 
-void Plant::placeStructure(int x, int y, CityMap* cityMap) {
-    CityStructure::placeStructure(x, y, cityMap);
-    cityMap->addPlant(this);
+bool Plant::placeStructure(int x, int y, CityMap* cityMap) {
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        cityMap->addPlant(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 string Plant::getPlantType(){

@@ -17,7 +17,7 @@ class CityStructure {
         virtual ~CityStructure();
         virtual std::string getStructureType() = 0;
 
-        virtual void placeStructure(int x, int y, CityMap* cityMap);
+        virtual bool placeStructure(int x, int y, CityMap* cityMap);
         virtual void removeStructure();
 
         virtual void newRoadWasAdded(){} ; // only affects residential complexes

@@ -21,6 +21,9 @@ CityHall::CityHall(){
     popeCoins = 1000000;
     residentialSatisfaction = 0;
     citySatisfaction = 100;
+    maxWood = 1000;
+    maxSteel = 1000;
+    maxConcrete = 1000;
     
     railway = new Railway();
     airport = new Airport();
@@ -167,15 +170,33 @@ CityHall::~CityHall(){
     delete politicalSystem;
 }
 
-void CityHall::placeStructure(int x, int y, CityMap* cityMap) {
+bool CityHall::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
+    if(cityMap == nullptr){
+        std::cout << "CityMap is null" << std::endl;
+        return false;
+    }
     cityMap->setCityHall(this);
-    CityStructure::placeStructure(x, y, cityMap); 
+
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        cityMap->addStructure(x, y, this);
+        return true;
+    }
+    else {
+        return false;
+    }
     
 }
 
 void CityHall::removeStructure() {
     cityMap->removeStructure(x, y);
+}
+
+void CityHall::increaseStorageCapacity(){
+    maxWood += 100;
+    maxSteel += 100;
+    maxConcrete += 100;
 }
 
 void CityHall::increaseNumResidentialComplexes(){

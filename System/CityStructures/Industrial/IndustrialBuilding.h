@@ -12,7 +12,7 @@ class IndustrialBuilding : public CityStructure {
         virtual ~IndustrialBuilding();
         std::string getStructureType();
         
-        virtual void placeStructure(int x, int y, CityMap* cityMap);
+        virtual bool placeStructure(int x, int y, CityMap* cityMap);
 
 };
 

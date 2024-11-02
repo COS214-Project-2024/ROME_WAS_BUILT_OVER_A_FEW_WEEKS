@@ -15,7 +15,7 @@ class Plant : public IndustrialBuilding {
         Plant(int radiusOfEffect) : radiusOfEffect(radiusOfEffect) {};
         virtual ~Plant(){};
         int getRadiusOfEffect();
-        void placeStructure(int x, int y, CityMap* cityMap);
+        bool placeStructure(int x, int y, CityMap* cityMap);
         virtual string getPlantType();
         
 };
