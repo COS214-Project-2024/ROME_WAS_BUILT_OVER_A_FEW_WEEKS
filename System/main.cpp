@@ -1,57 +1,74 @@
 #include <iostream>
 #include <vector>
 
-#include "Factory.h"
-#include "GeneratorDecorator.h"
-#include "ConcreteGenerator.h"
-#include "SteelGenerator.h"
-#include "WoodGenerator.h"
-#include "Material.h"
-#include "Concrete.h"
-#include "Steel.h"
-#include "Wood.h"
-#include "Plant.h"
-#include "PlantDecorator.h"
-#include "PowerPlant.h"
-#include "WaterPlant.h"
-#include "WastePlant.h"
-#include "SewagePlant.h"
+// Booster Structures
+#include "./BoosterStructures/Airport.cpp"
+#include "./BoosterStructures/BoosterStructures.cpp"
+#include "./BoosterStructures/Railway.cpp"
 
-#include "CityMap.h"
-#include "CityHall.h"
+//Check adjacent template
+#include "./CheckAdjacentTemplate/CheckAdjacent.cpp"
 
-// BUILDING TYPES
-#include "CityStructure.h"  
-#include "Road.h"
-#include "ResidentialComplex.h"
-#include "ResidentialBuilding.h"
-#include "CommercialBuilding.h"
-#include "IndustrialBuilding.h"
-#include "Landmark.h"
+// City Structures - Residential
+#include "./CityStructures/Residential/Apartment.cpp"
+#include "./CityStructures/Residential/Estate.cpp"
+#include "./CityStructures/Residential/House.cpp"
+#include "./CityStructures/Residential/ResidentialBuilding.cpp"
+#include "./CityStructures/Residential/ResidentialComplex.cpp"
+#include "./CityStructures/Residential/Townhouse.cpp"
 
-// RESIDENTIAL BUILDING TYPES
-#include "House.h"
-#include "Apartment.h"
-#include "Townhouse.h"
-#include "Estate.h"
+// City Structures - Commercial
+#include "./CityStructures/Commercial/CommercialBuilding.cpp"
+#include "./CityStructures/Commercial/Mall.cpp"
+#include "./CityStructures/Commercial/Office.cpp"
+#include "./CityStructures/Commercial/Shop.cpp"
 
-// COMMERCIAL BUILDING TYPES
-#include "Shop.h"
-#include "Mall.h"
-#include "Office.h"
+// City Structures - Industrial
+#include "./CityStructures/Industrial/Concrete.cpp"
+#include "./CityStructures/Industrial/ConcreteGenerator.cpp"
+#include "./CityStructures/Industrial/Factory.cpp"
+#include "./CityStructures/Industrial/IndustrialBuilding.cpp"
+#include "./CityStructures/Industrial/Plant.cpp"
+#include "./CityStructures/Industrial/PowerPlant.cpp"
+#include "./CityStructures/Industrial/SewagePlant.cpp"
+#include "./CityStructures/Industrial/Steel.cpp"
+#include "./CityStructures/Industrial/SteelGenerator.cpp"
+#include "./CityStructures/Industrial/Warehouse.cpp"
+#include "./CityStructures/Industrial/WastePlant.cpp"
+#include "./CityStructures/Industrial/WaterPlant.cpp"
+#include "./CityStructures/Industrial/Wood.cpp"
+#include "./CityStructures/Industrial/WoodGenerator.cpp"
 
-// INDUSTRIAL BUILDING TYPES
-#include "Plant.h"
-#include "Factory.h"
-#include "Warehouse.h"
+// City Structures - Landmark
+#include "./CityStructures/Landmark/Colosseum.cpp"
+#include "./CityStructures/Landmark/Landmark.cpp"
+#include "./CityStructures/Landmark/Pantheon.cpp"
+#include "./CityStructures/Landmark/Park.cpp"
 
-// LANDMARK TYPES
-#include "Colosseum.h"
-#include "Pantheon.h"
-#include "Park.h"
+// City Structures - Road
+#include "./CityStructures/Road/HighTraffic.cpp"
+#include "./CityStructures/Road/LowTraffic.cpp"
+#include "./CityStructures/Road/MediumTraffic.cpp"
+#include "./CityStructures/Road/Road.cpp"
 
-// GRAPHICS
-#include <SFML/Graphics.hpp>
+// Political System
+#include "./PoliticalSystem/Authoritarianism.cpp"
+#include "./PoliticalSystem/Communsim.cpp"
+#include "./PoliticalSystem/Democracy.cpp"
+#include "./PoliticalSystem/PoliticalSystem.cpp"
+
+// Satisfaction Handlers
+#include "./SatisfactionHandler/HighSatisfactionHandler.cpp"
+#include "./SatisfactionHandler/LowSatisfactionHandler.cpp"
+#include "./SatisfactionHandler/MediumSatisfactionHandler.cpp"
+#include "./SatisfactionHandler/SatisfactionHandler.cpp"
+
+// Core City Classes
+#include "CityHall.cpp"
+#include "CityMap.cpp"
+#include "./CityStructures/CityStructure.cpp"
+
+
 
 
 
@@ -172,7 +189,7 @@ int main(){
 
     cout << "Bye!" << endl; 
 
-    // =====================
+    /*// =====================
     // === GRAPHICS PART ===
     // =====================
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
@@ -194,7 +211,7 @@ int main(){
     }
     // =====================
 
-    
+    */
   
 
     return 0;

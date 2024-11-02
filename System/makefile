@@ -13,6 +13,7 @@ SOURCES = \
     ./BoosterStructures/BoosterStructures.cpp \
     CityHall.cpp \
     CityMap.cpp \
+	./CheckAdjacentTemplate/CheckAdjacent.cpp \
     ./CityStructures/CityStructure.cpp \
     ./CityStructures/Landmark/Colosseum.cpp \
     ./CityStructures/Commercial/CommercialBuilding.cpp \
