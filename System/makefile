@@ -83,17 +83,23 @@ CXX = g++
 CXXFLAGS = -g -IBoosterStructures -ICheckAdjacentTemplate -ICityStructures \
            -ICityStructures/Road -ICityStructures/Industrial -ICityStructures/Residential \
            -ICityStructures/Commercial -ICityStructures/Landmark -IFactory -IPoliticalSystem \
-           -ISatisfactionHandler -I../SFML-2.6.1/include
-
-# SFML library paths and flags
-LDFLAGS = -L../SFML-2.6.1/lib -lsfml-graphics -lsfml-window -lsfml-system
-
-# SFML DLL files (adjust the path if they are elsewhere)
-SFML_DLLS = ../SFML-2.6.1/bin/sfml-graphics-2.dll ../SFML-2.6.1/bin/sfml-window-2.dll ../SFML-2.6.1/bin/sfml-system-2.dll
+           -ISatisfactionHandler
 
 # Output directories in the root folder
 BUILD_DIR = ../build
 BIN_DIR = ../bin
+
+# Detect platform
+ifeq ($(shell uname), Darwin)
+    # macOS configuration with .dylib files
+    CXXFLAGS += -I../SFML-2.6.1/macOS/include
+    LDFLAGS = -L../SFML-2.6.1/macOS/lib -lsfml-graphics -lsfml-window -lsfml-system
+else
+    # Windows configuration with .dll files
+    CXXFLAGS += -I../SFML-2.6.1/Windows/include
+    LDFLAGS = -L../SFML-2.6.1/Windows/lib -lsfml-graphics -lsfml-window -lsfml-system
+    SFML_DLLS = ../SFML-2.6.1/Windows/bin/sfml-graphics-2.dll ../SFML-2.6.1/Windows/bin/sfml-window-2.dll ../SFML-2.6.1/Windows/bin/sfml-system-2.dll
+endif
 
 # Source files
 SOURCES = $(wildcard *.cpp) $(wildcard BoosterStructures/*.cpp) \
@@ -112,8 +118,11 @@ TARGET = $(BIN_DIR)/program
 # Build target
 $(TARGET): $(OBJECTS) | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS) $(LDFLAGS)
-	# Copy SFML DLLs to the bin directory
+
+	# Copy SFML DLLs to the bin directory for Windows only
+ifneq ($(shell uname), Darwin)
 	cp $(SFML_DLLS) $(BIN_DIR)
+endif
 
 # Rule to compile each .cpp file into an .o file in the build directory
 $(BUILD_DIR)/%.o: %.cpp | create_build_dirs
@@ -145,3 +154,4 @@ clean:
 # Run the program
 run: $(TARGET)
 	./$(TARGET)
+
