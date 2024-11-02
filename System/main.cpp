@@ -144,6 +144,8 @@ int main(){
     ResidentialComplex* residentialComplex2 = new ResidentialComplex(house2);
     residentialComplex2->placeStructure(3, 1, cityMap);
 
+    residentialComplex2->addResidentialComponent(new House());
+
     //print states
     cout << "\nPRINT STATES" << endl;
     cityHall->printCityHallState();
