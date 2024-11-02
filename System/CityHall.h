@@ -24,6 +24,12 @@ class CityHall: public CityStructure{
         int numCommercialBuildings;
         int numIndustrialBuildings;
         int popeCoins;
+        int wood;
+        int steel;
+        int concrete;
+        int maxWood;
+        int maxSteel;
+        int maxConcrete;
         static const int MAX_POPE_COINS = 1000000; // 1 million
 
         float residentialSatisfaction;
@@ -71,8 +77,9 @@ class CityHall: public CityStructure{
         int getCitizenSatisfactionImpact();
         ~CityHall();
 
-        void placeStructure(int x, int y, CityMap* cityMap);
+        bool placeStructure(int x, int y, CityMap* cityMap);
         void removeStructure();
+        void increaseStorageCapacity();
 
         void increaseNumResidentialComplexes();
         void decreaseNumResidentialComplexes();
@@ -85,6 +92,14 @@ class CityHall: public CityStructure{
 
         bool addPopeCoins(int coins);
         bool deductPopeCoins(int coins);
+
+        bool addWood(int wood);
+        bool deductWood(int wood);
+        bool addSteel(int steel);
+        bool deductSteel(int steel);
+        bool addConcrete(int concrete);
+        bool deductConcrete(int concrete);
+        
 
         void increaseCapacity(int capacity);
         void decreaseCapacity(int capacity);

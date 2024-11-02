@@ -10,12 +10,14 @@
 #include "CityStructures/Industrial/Plant.h"
 #include "CityStructures/Landmark/Landmark.h"
 #include "CityStructures/Road/Road.h"
+#include "CityStructures/Industrial/Warehouse.h"
 
 #include "CheckAdjacentTemplate/CheckAdjacent.h"
 #include "CheckAdjacentTemplate/BuildingAdded.h"
 #include "CheckAdjacentTemplate/BuildingRemoved.h"
 #include "CheckAdjacentTemplate/RoadAdded.h"
 #include "CheckAdjacentTemplate/RoadRemoved.h"
+#include "CityMap.h"
 
 
 const int DEFAULT_HEIGHT = 20;
@@ -116,6 +118,23 @@ bool CityMap::addStructure(int x, int y, CityStructure* structure) {
         std::cout << "Not enough pope coins to place the structure" << std::endl;
         return false;
     }
+
+    //VALIDATE IF PLAYER HAS ENOUGH RESOURCES
+    int woodCost = structure->getWoodCost();
+    int steelCost = structure->getSteelCost();
+    int concreteCost = structure->getConcreteCost();
+    if (cityHall->deductWood(woodCost) == false) {
+        std::cout << "Not enough wood to place the structure" << std::endl;
+        return false;
+    }
+    if (cityHall->deductSteel(steelCost) == false) {
+        std::cout << "Not enough steel to place the structure" << std::endl;
+        return false;
+    }
+    if (cityHall->deductConcrete(concreteCost) == false) {
+        std::cout << "Not enough concrete to place the structure" << std::endl;
+        return false;
+    }
     
 
     // DO VALIDATION (is it supposed to be at y then x?)
@@ -162,7 +181,7 @@ void CityMap::addResidentialComplex(ResidentialComplex* originator) {
     this->cityHall->increaseCapacity(addedCapacity);
 
     // call addBuilding to adjust the traffic
-    addBuilding(originator);
+    addBuilding(static_cast<CityStructure*>(originator));
     std::cout << "RR" << std::endl;
     // notify all city structures in the map that a new residential complex was added
     for (int i = 0; i < map.size(); i++) {
@@ -210,7 +229,13 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
     
 }
 
-void CityMap::addIndustrialBuilding(Plant* originator) {
+void CityMap::addIndustrialBuilding(IndustrialBuilding* originator) {
+    // call addBuilding to adjust the traffic
+    this->cityHall->increaseNumIndustrialBuildings();
+    addBuilding(originator);
+}
+
+void CityMap::addPlant(Plant* originator) {
     // call addBuilding to adjust the traffic
     //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
     // RADIUS WILL BE BIGGER IN THIS CASE
@@ -243,6 +268,14 @@ void CityMap::addIndustrialBuilding(Plant* originator) {
     
 
 }
+
+void CityMap::addWarehouse(Warehouse* originator) {
+    // call addBuilding to adjust the traffic
+    this->cityHall->increaseNumIndustrialBuildings();
+    addBuilding(originator);
+    this->cityHall->increaseStorageCapacity();
+}
+
 
 void CityMap::addLandmark(Landmark* originator) {
     // call addBuilding to adjust the traffic

@@ -4,6 +4,9 @@
 
 Office::Office() : CommercialBuilding(DEFAULT_OFFICE_RADIUS) {
     this->cost = DEFAULT_OFFICE_COST;
+    this->woodCost = 300;
+    this->steelCost = 300;
+    this->concreteCost = 300;
 }
 
 Office::~Office() {

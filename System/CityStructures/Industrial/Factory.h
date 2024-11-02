@@ -13,7 +13,7 @@ class Factory : public IndustrialBuilding {
         int qunatity;
         string factoryType;
     public:
-        Factory(){};
+        Factory(){cost = 1000; woodCost = 0; steelCost = 0; concreteCost = 0;};
         virtual ~Factory(){};
         int getQuantity(){return this->qunatity;};
         virtual string getFactoryType(){return factoryType;};

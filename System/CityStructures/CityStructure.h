@@ -12,12 +12,15 @@ class CityStructure {
         int y;
         CityMap* cityMap; // MEDIATOR
         int cost;
+        int woodCost;
+        int steelCost;
+        int concreteCost;
     public:
         CityStructure();
         virtual ~CityStructure();
         virtual std::string getStructureType() = 0;
 
-        virtual void placeStructure(int x, int y, CityMap* cityMap);
+        virtual bool placeStructure(int x, int y, CityMap* cityMap);
         virtual void removeStructure();
 
         virtual void newRoadWasAdded(){} ; // only affects residential complexes
@@ -36,6 +39,10 @@ class CityStructure {
         int getX();
         int getY();
         virtual int getCost();
+        int getWoodCost();
+        int getSteelCost();
+        int getConcreteCost();
+        
 
 };
 
