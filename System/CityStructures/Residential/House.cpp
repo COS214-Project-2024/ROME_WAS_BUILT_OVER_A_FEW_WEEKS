@@ -4,6 +4,9 @@
 
 House::House() : ResidentialBuilding(DEFAULT_HOUSE_CAPACITY) {
     this->cost = DEFAULT_HOUSE_COST;
+    this->woodCost = 50;
+    this->steelCost = 50;
+    this->concreteCost = 50;
 }
 
 House::~House() {

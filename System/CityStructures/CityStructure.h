@@ -12,6 +12,9 @@ class CityStructure {
         int y;
         CityMap* cityMap; // MEDIATOR
         int cost;
+        int woodCost;
+        int steelCost;
+        int concreteCost;
     public:
         CityStructure();
         virtual ~CityStructure();
@@ -36,6 +39,10 @@ class CityStructure {
         int getX();
         int getY();
         virtual int getCost();
+        int getWoodCost();
+        int getSteelCost();
+        int getConcreteCost();
+        
 
 };
 

@@ -12,7 +12,6 @@ class PlantDecorator : public Plant {
         PlantDecorator(Plant* plant) : plant(plant) {this->plant = plant;};
         virtual ~PlantDecorator() {};
         int getRadiusOfEffect() { return plant->getRadiusOfEffect(); };
-        bool placeStructure(int x, int y, CityMap* cityMap) { plant->placeStructure(x, y, cityMap); };
         virtual string getPlantType(){return plantType;};
 
 };

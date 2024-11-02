@@ -51,3 +51,15 @@ int CityStructure::getCost() {
     std::cout << "Getting cost" << cost << std::endl;
     return cost;
 }
+
+int CityStructure::getWoodCost() {
+    return woodCost;
+}
+
+int CityStructure::getSteelCost() {
+    return steelCost;
+}
+
+int CityStructure::getConcreteCost() {
+    return concreteCost;
+}

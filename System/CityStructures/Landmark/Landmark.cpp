@@ -20,8 +20,7 @@ bool Landmark::placeStructure(int x, int y, CityMap* cityMap) {
     if (placed) {
         cityMap->addLandmark(this);
         return true;
-    }
-    else {
+    }else{
         return false;
     }
 }

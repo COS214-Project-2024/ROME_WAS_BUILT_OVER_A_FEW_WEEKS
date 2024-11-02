@@ -13,6 +13,8 @@
 Road::Road() : trafficState(new LowTraffic()) {
     cityMap = nullptr;
     cost = 100;
+    concreteCost = 10;
+    steelCost = 10;
 }
 
 Road::~Road() {
