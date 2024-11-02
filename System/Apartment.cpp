@@ -5,7 +5,7 @@ Apartment::Apartment(int capacity) : ResidentialBuilding(capacity) {
     taxRatePerUnit = 100;
 }
 
-int Appartment::calculateTotalTaxes() {
-    return numUnits * taxRatePerUnit;
-}
+// int Appartment::calculateTotalTaxes() {
+//     return numUnits * taxRatePerUnit;
+// }
 
