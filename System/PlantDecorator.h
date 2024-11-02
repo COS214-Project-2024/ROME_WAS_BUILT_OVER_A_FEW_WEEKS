@@ -1,7 +1,0 @@
-#ifndef PLANT_DECORATOR_H
-#define PLANT_DECORATOR_H
-
-
-
-
-#endif // PLANT_DECORATOR_H
