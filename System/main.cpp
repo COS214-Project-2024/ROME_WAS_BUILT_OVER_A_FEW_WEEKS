@@ -1,72 +1,70 @@
-#include <iostream>
-#include <vector>
-
 // Booster Structures
-#include "./BoosterStructures/Airport.cpp"
-#include "./BoosterStructures/BoosterStructures.cpp"
-#include "./BoosterStructures/Railway.cpp"
+#include "./BoosterStructures/Airport.h"
+#include "./BoosterStructures/BoosterStructures.h"
+#include "./BoosterStructures/Railway.h"
 
-//Check adjacent template
-#include "./CheckAdjacentTemplate/CheckAdjacent.cpp"
+// Check Adjacent Template
+#include "./CheckAdjacentTemplate/CheckAdjacent.h"
 
 // City Structures - Residential
-#include "./CityStructures/Residential/Apartment.cpp"
-#include "./CityStructures/Residential/Estate.cpp"
-#include "./CityStructures/Residential/House.cpp"
-#include "./CityStructures/Residential/ResidentialBuilding.cpp"
-#include "./CityStructures/Residential/ResidentialComplex.cpp"
-#include "./CityStructures/Residential/Townhouse.cpp"
+#include "./CityStructures/Residential/Apartment.h"
+#include "./CityStructures/Residential/Estate.h"
+#include "./CityStructures/Residential/House.h"
+#include "./CityStructures/Residential/ResidentialBuilding.h"
+#include "./CityStructures/Residential/ResidentialComplex.h"
+#include "./CityStructures/Residential/Townhouse.h"
 
 // City Structures - Commercial
-#include "./CityStructures/Commercial/CommercialBuilding.cpp"
-#include "./CityStructures/Commercial/Mall.cpp"
-#include "./CityStructures/Commercial/Office.cpp"
-#include "./CityStructures/Commercial/Shop.cpp"
+#include "./CityStructures/Commercial/CommercialBuilding.h"
+#include "./CityStructures/Commercial/Mall.h"
+#include "./CityStructures/Commercial/Office.h"
+#include "./CityStructures/Commercial/Shop.h"
 
 // City Structures - Industrial
-#include "./CityStructures/Industrial/Concrete.cpp"
-#include "./CityStructures/Industrial/ConcreteGenerator.cpp"
-#include "./CityStructures/Industrial/Factory.cpp"
-#include "./CityStructures/Industrial/IndustrialBuilding.cpp"
-#include "./CityStructures/Industrial/Plant.cpp"
-#include "./CityStructures/Industrial/PowerPlant.cpp"
-#include "./CityStructures/Industrial/SewagePlant.cpp"
-#include "./CityStructures/Industrial/Steel.cpp"
-#include "./CityStructures/Industrial/SteelGenerator.cpp"
-#include "./CityStructures/Industrial/Warehouse.cpp"
-#include "./CityStructures/Industrial/WastePlant.cpp"
-#include "./CityStructures/Industrial/WaterPlant.cpp"
-#include "./CityStructures/Industrial/Wood.cpp"
-#include "./CityStructures/Industrial/WoodGenerator.cpp"
+#include "./CityStructures/Industrial/Concrete.h"
+#include "./CityStructures/Industrial/ConcreteGenerator.h"
+#include "./CityStructures/Industrial/Factory.h"
+#include "./CityStructures/Industrial/IndustrialBuilding.h"
+#include "./CityStructures/Industrial/Plant.h"
+#include "./CityStructures/Industrial/PowerPlant.h"
+#include "./CityStructures/Industrial/SewagePlant.h"
+#include "./CityStructures/Industrial/Steel.h"
+#include "./CityStructures/Industrial/SteelGenerator.h"
+#include "./CityStructures/Industrial/Warehouse.h"
+#include "./CityStructures/Industrial/WastePlant.h"
+#include "./CityStructures/Industrial/WaterPlant.h"
+#include "./CityStructures/Industrial/Wood.h"
+#include "./CityStructures/Industrial/WoodGenerator.h"
 
 // City Structures - Landmark
-#include "./CityStructures/Landmark/Colosseum.cpp"
-#include "./CityStructures/Landmark/Landmark.cpp"
-#include "./CityStructures/Landmark/Pantheon.cpp"
-#include "./CityStructures/Landmark/Park.cpp"
+#include "./CityStructures/Landmark/Colosseum.h"
+#include "./CityStructures/Landmark/Landmark.h"
+#include "./CityStructures/Landmark/Pantheon.h"
+#include "./CityStructures/Landmark/Park.h"
 
 // City Structures - Road
-#include "./CityStructures/Road/HighTraffic.cpp"
-#include "./CityStructures/Road/LowTraffic.cpp"
-#include "./CityStructures/Road/MediumTraffic.cpp"
-#include "./CityStructures/Road/Road.cpp"
+#include "./CityStructures/Road/HighTraffic.h"
+#include "./CityStructures/Road/LowTraffic.h"
+#include "./CityStructures/Road/MediumTraffic.h"
+#include "./CityStructures/Road/Road.h"
 
 // Political System
-#include "./PoliticalSystem/Authoritarianism.cpp"
-#include "./PoliticalSystem/Communsim.cpp"
-#include "./PoliticalSystem/Democracy.cpp"
-#include "./PoliticalSystem/PoliticalSystem.cpp"
+#include "./PoliticalSystem/Authoritarianism.h"
+#include "./PoliticalSystem/Communsim.h"
+#include "./PoliticalSystem/Democracy.h"
+#include "./PoliticalSystem/PoliticalSystem.h"
 
 // Satisfaction Handlers
-#include "./SatisfactionHandler/HighSatisfactionHandler.cpp"
-#include "./SatisfactionHandler/LowSatisfactionHandler.cpp"
-#include "./SatisfactionHandler/MediumSatisfactionHandler.cpp"
-#include "./SatisfactionHandler/SatisfactionHandler.cpp"
+#include "./SatisfactionHandler/HighSatisfactionHandler.h"
+#include "./SatisfactionHandler/LowSatisfactionHandler.h"
+#include "./SatisfactionHandler/MediumSatisfactionHandler.h"
+#include "./SatisfactionHandler/SatisfactionHandler.h"
 
 // Core City Classes
-#include "CityHall.cpp"
-#include "CityMap.cpp"
-#include "./CityStructures/CityStructure.cpp"
+#include "CityHall.h"
+#include "CityMap.h"
+#include "./CityStructures/CityStructure.h"
+
 
 
 
