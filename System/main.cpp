@@ -142,7 +142,7 @@ int main(){
     cout << "\nPLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK" << endl;
     ResidentialBuilding* house2 = new House();
     ResidentialComplex* residentialComplex2 = new ResidentialComplex(house2);
-    residentialComplex2->placeStructure(1, 0, cityMap);
+    residentialComplex2->placeStructure(3, 1, cityMap);
 
     //print states
     cout << "\nPRINT STATES" << endl;
@@ -172,27 +172,27 @@ int main(){
 
     cout << "Bye!" << endl; 
 
-    // =====================
-    // === GRAPHICS PART ===
-    // =====================
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    // // =====================
+    // // === GRAPHICS PART ===
+    // // =====================
+    // sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    // sf::CircleShape shape(100.f);
+    // shape.setFillColor(sf::Color::Green);
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    // while (window.isOpen())
+    // {
+    //     sf::Event event;
+    //     while (window.pollEvent(event))
+    //     {
+    //         if (event.type == sf::Event::Closed)
+    //             window.close();
+    //     }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-    // =====================
+    //     window.clear();
+    //     window.draw(shape);
+    //     window.display();
+    // }
+    // // =====================
 
     
   

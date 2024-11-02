@@ -167,10 +167,21 @@ CityHall::~CityHall(){
     delete politicalSystem;
 }
 
-void CityHall::placeStructure(int x, int y, CityMap* cityMap) {
+bool CityHall::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
+    if (cityMap == nullptr){
+        std::cout << "CityMap is null" << std::endl;
+        return false;
+    }
     cityMap->setCityHall(this);
-    CityStructure::placeStructure(x, y, cityMap); 
+
+    bool placed = CityStructure::placeStructure(x, y, cityMap); 
+    if (placed) {
+        return true;
+    }
+    else {
+        return false;
+    }
     
 }
 

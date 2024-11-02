@@ -71,7 +71,7 @@ class CityHall: public CityStructure{
         int getCitizenSatisfactionImpact();
         ~CityHall();
 
-        void placeStructure(int x, int y, CityMap* cityMap);
+        bool placeStructure(int x, int y, CityMap* cityMap);
         void removeStructure();
 
         void increaseNumResidentialComplexes();

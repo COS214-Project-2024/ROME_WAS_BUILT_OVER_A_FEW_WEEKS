@@ -16,7 +16,7 @@ class Landmark : public CityStructure {
         Landmark(int radiusOfEffect);
         virtual ~Landmark() ;
         int getRadiusOfEffect();
-        void placeStructure(int x, int y, CityMap* cityMap);
+        bool placeStructure(int x, int y, CityMap* cityMap);
         void removeStructure();
         void newResidentialComplexWasAdded(ResidentialComplex* complex);
         std::string getStructureType();

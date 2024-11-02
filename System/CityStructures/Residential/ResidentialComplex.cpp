@@ -35,9 +35,15 @@ std::string ResidentialComplex::getStructureType() {
     return "Residential";
 }
 
-void ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
-    CityStructure::placeStructure(x, y, cityMap);
-    cityMap->addResidentialComplex(this);
+bool ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        cityMap->addResidentialComplex(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void ResidentialComplex::newRoadWasAdded() {

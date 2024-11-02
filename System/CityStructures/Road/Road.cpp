@@ -23,11 +23,17 @@ std::string Road::getStructureType() {
     return "Road";
 }
 
-void Road::placeStructure(int x, int y, CityMap* cityMap) {
+bool Road::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
-    CityStructure::placeStructure(x, y, cityMap); 
-    calculateTraffic();
-    cityMap->addRoad(this);
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        calculateTraffic();
+        cityMap->addRoad(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void Road::newBuildingWasAdded() {

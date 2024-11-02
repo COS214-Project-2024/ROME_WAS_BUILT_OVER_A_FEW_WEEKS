@@ -20,9 +20,15 @@ int CommercialBuilding::getRadiusOfEffect() {
     return this->radiusOfEffect;
 }
 
-void CommercialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
-    CityStructure::placeStructure(x, y, cityMap);
-    cityMap->addCommercialBuilding(this);
+bool CommercialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        cityMap->addCommercialBuilding(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void CommercialBuilding::removeStructure() {

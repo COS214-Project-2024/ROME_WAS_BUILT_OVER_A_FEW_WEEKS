@@ -10,16 +10,18 @@ CityStructure::CityStructure() {
     cityMap = nullptr;
 }
 
-void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
+bool CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
     std::cout << "Placing the structure" << std::endl;
     bool placed = cityMap->addStructure(x, y, this);
     if (placed) {
         this->x = x;
         this->y = y;
         this->cityMap = cityMap;
+        return true;
     }
     else {
         std::cout << "Could not place the structure" << std::endl;
+        return false;
     }
     
 

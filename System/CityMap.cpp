@@ -24,11 +24,21 @@ const int DEFAULT_WIDTH = 20;
 
 CityMap::CityMap()  : map(DEFAULT_HEIGHT, std::vector<CityStructure*>(DEFAULT_HEIGHT, nullptr)) {
     // Here, map is initialized as a DEFAULT 2D vector of nullptr pointers.
+    for (int i = 0; i < DEFAULT_HEIGHT; i++) {
+        for (int j = 0; j < DEFAULT_WIDTH; j++) {
+            map.at(i).at(j) = nullptr;
+        }
+    }
 }
 
 
 CityMap::CityMap(int width, int height)  : map(height, std::vector<CityStructure*>(width, nullptr)) {
     // Here, map is initialized as a 2D vector of nullptr pointers.
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            map.at(i).at(j) = nullptr;
+        }
+    }
 }
 
 std::vector<std::vector<CityStructure*> > CityMap::getMap() {
@@ -37,8 +47,6 @@ std::vector<std::vector<CityStructure*> > CityMap::getMap() {
 
 void CityMap::setCityHall(CityHall* cityHall) {
     this->cityHall = cityHall;
-    // std::cout << "Placing the city hall" << std::endl;
-    // std::cout << "cityHall: " << cityHall->getStructureType()<< std::endl;
 }
 
 bool CityMap::addStructure(int x, int y, CityStructure* structure) {
@@ -52,7 +60,7 @@ bool CityMap::addStructure(int x, int y, CityStructure* structure) {
 
     // VALIDATE IF THERE IS ALREADY A STRUCTURE AT THE LOCATION
     if (map.at(y).at(x) != nullptr) {
-        std::cout << "There is already a structure at this location" << std::endl;
+        std::cout << "There is already a structure at the location " << x << ", " << y << std::endl;
         return false;
     }
     
@@ -110,7 +118,6 @@ bool CityMap::addStructure(int x, int y, CityStructure* structure) {
     
     // VALIDATE IF PLAYER HAS ENOUGH POPE COINS
     int deduction = structure->getCost();
-    // std::cout << "structure type: " << structure->getStructureType() << std::endl;
     std::cout << "deduction: " << deduction << std::endl;
     if (cityHall->deductPopeCoins(deduction) == false) {
         std::cout << "Not enough pope coins to place the structure" << std::endl;
@@ -142,28 +149,22 @@ void CityMap::addBuilding(CityStructure* originator) {
     // TELL ADJACENT ROADS TO ADJUST THEIR TRAFFIC BASED ON NEW BUILDING
     //then the roads will tell the residential complexes to adjust their satisfaction (CAN BE DONE USING MEDIATOR AS WELL)
     int x = originator->getX();
-    int y = originator->getY();
-    std::cout << "x: " << x << " y: " << y << std::endl;
+    int y = originator->getY();;
 
     // Calls newBuildingWasAdded on all adjacent roads (with appropriate bounds checking)
     BuildingAdded buildingAdded;
-    std::cout << "RR" << std::endl;
     buildingAdded.checkAdjacent(map, x, y);
-    std::cout << "RR" << std::endl;
-    
-
 }
 
 void CityMap::addResidentialComplex(ResidentialComplex* originator) {
     this->cityHall->increaseNumResidentialComplexes();
 
     int addedCapacity = originator->getCapacity();                          // I THINK THIS SHOULD WORK
-    std::cout << "added capacity: " << addedCapacity << std::endl;
     this->cityHall->increaseCapacity(addedCapacity);
 
     // call addBuilding to adjust the traffic
     addBuilding(originator);
-    std::cout << "RR" << std::endl;
+
     // notify all city structures in the map that a new residential complex was added
     for (int i = 0; i < map.size(); i++) {
         for (int j = 0; j < map[i].size(); j++) {
@@ -188,20 +189,33 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
     int y = originator->getY();
     int radiusOfEffect = originator->getRadiusOfEffect();
 
-    // radius for radius buildings works as concentric squares
-    int leftCornerX , leftCornerY;
-    for (int i = 0; i < radiusOfEffect; i++) {
-        leftCornerX = x - i;
-        leftCornerY = y - i;
-    }
+    // // radius for radius buildings works as concentric squares
+    // int leftCornerX , leftCornerY;
+    // for (int i = 0; i < radiusOfEffect; i++) {
+    //     leftCornerX = x - i;
+    //     leftCornerY = y - i;
+    // }
 
 
-    int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
+    // int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
 
-    for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
-        for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
-            if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
-                map.at(leftCornerY + i).at(leftCornerX + j)->newCommercialBuildingWasAdded(); 
+    // for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
+    //     for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
+    //         if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
+    //             map.at(leftCornerY + i).at(leftCornerX + j)->newCommercialBuildingWasAdded(); 
+    //         }
+    //     }
+    // }
+
+    int minX = std::max(0, x - radiusOfEffect);
+    int maxX = std::min(static_cast<int>(map[0].size()) - 1, x + radiusOfEffect);
+    int minY = std::max(0, y - radiusOfEffect);
+    int maxY = std::min(static_cast<int>(map.size()) - 1, y + radiusOfEffect);
+
+    for (int i = minY; i <= maxY; ++i) {
+        for (int j = minX; j <= maxX; ++j) {
+            if (map[i][j] != nullptr) {
+                map[i][j]->newCommercialBuildingWasAdded();
             }
         }
     }
@@ -223,19 +237,32 @@ void CityMap::addIndustrialBuilding(Plant* originator) {
     int y = originator->getY();
     int radiusOfEffect = originator->getRadiusOfEffect();
 
-    // radius for radius buildings works as concentric squares
-    int leftCornerX , leftCornerY;
-    for (int i = 0; i < radiusOfEffect; i++) {
-        leftCornerX = x - i;
-        leftCornerY = y - i;
-    }
+    // // radius for radius buildings works as concentric squares
+    // int leftCornerX , leftCornerY;
+    // for (int i = 0; i < radiusOfEffect; i++) {
+    //     leftCornerX = x - i;
+    //     leftCornerY = y - i;
+    // }
 
-    int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
+    // int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
 
-    for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
-        for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
-            if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
-                map.at(leftCornerY + i).at(leftCornerX + j)->newIndustrialBuildingWasAdded(); 
+    // for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
+    //     for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
+    //         if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
+    //             map.at(leftCornerY + i).at(leftCornerX + j)->newIndustrialBuildingWasAdded(); 
+    //         }
+    //     }
+    // }
+
+    int minX = std::max(0, x - radiusOfEffect);
+    int maxX = std::min(static_cast<int>(map[0].size()) - 1, x + radiusOfEffect);
+    int minY = std::max(0, y - radiusOfEffect);
+    int maxY = std::min(static_cast<int>(map.size()) - 1, y + radiusOfEffect);
+
+    for (int i = minY; i <= maxY; ++i) {
+        for (int j = minX; j <= maxX; ++j) {
+            if (map[i][j] != nullptr) {
+                map[i][j]->newIndustrialBuildingWasAdded();
             }
         }
     }
@@ -255,27 +282,40 @@ void CityMap::addLandmark(Landmark* originator) {
     int y = originator->getY();
     int radiusOfEffect = originator->getRadiusOfEffect();
 
-    // radius for radius buildings works as concentric squares
-    int leftCornerX , leftCornerY;
-    for (int i = 0; i < radiusOfEffect; i++) {
-        leftCornerX = x - i;
-        leftCornerY = y - i;
-    }
+    // // radius for radius buildings works as concentric squares
+    // int leftCornerX , leftCornerY;
+    // for (int i = 0; i < radiusOfEffect; i++) {
+    //     leftCornerX = x - i;
+    //     leftCornerY = y - i;
+    // }
 
-    int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
+    // int heightWidthOfSquareOfEffect = 2*radiusOfEffect + 1;
 
-    for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
-        for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
-            try {
-            std::cout << "jjj" << std::endl;
-            if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
-                map.at(leftCornerY + i).at(leftCornerX + j)->newLandmarkWasAdded(); 
-            }
-            } catch (const std::out_of_range& oor) {
-                std::cerr << "Out of Range error: " << oor.what() << '\n';
+    // for (int i = 0; i < heightWidthOfSquareOfEffect; i++) {
+    //     for (int j = 0; j < heightWidthOfSquareOfEffect; j++) {
+    //         try {
+    //         if (map.at(leftCornerY + i).at(leftCornerX + j) != nullptr) {
+    //             map.at(leftCornerY + i).at(leftCornerX + j)->newLandmarkWasAdded(); 
+    //         }
+    //         } catch (const std::out_of_range& oor) {
+    //             std::cerr << "Out of Range error: " << oor.what() << '\n';
+    //         }
+    //     }
+    // }
+
+    int minX = std::max(0, x - radiusOfEffect);
+    int maxX = std::min(static_cast<int>(map[0].size()) - 1, x + radiusOfEffect);
+    int minY = std::max(0, y - radiusOfEffect);
+    int maxY = std::min(static_cast<int>(map.size()) - 1, y + radiusOfEffect);
+
+    for (int i = minY; i <= maxY; ++i) {
+        for (int j = minX; j <= maxX; ++j) {
+            if (map[i][j] != nullptr) {
+                map[i][j]->newLandmarkWasAdded();
             }
         }
     }
+
 }
 
 CityMap::~CityMap() {
@@ -290,7 +330,6 @@ CityMap::~CityMap() {
 void CityMap::removeStructure(int x, int y) {
     // DO VALIDATION
     if (map.at(y).at(x) == nullptr) {
-        std::cout << "No structure to remove" << std::endl;
         return;
     }
 
