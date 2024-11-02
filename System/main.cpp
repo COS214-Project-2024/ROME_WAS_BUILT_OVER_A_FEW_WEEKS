@@ -54,37 +54,10 @@
 #include <SFML/Graphics.hpp>
 
 
-
-
 using namespace std;
-// SET-UP REQUIREMENTS SO FAR:
-// Create CityMap and CityHall.
-// CityHall needs reference to political system
 
-// void testDecorator(){
-//     cout << "Testing Plants" << endl;
-//     Plant* plant = new Plant();
-//     Plant* powerPlant = new PowerPlant(plant);
-//     Plant* waterPlant = new WaterPlant(powerPlant);
-//     Plant* powerPlant2 = new PowerPlant(waterPlant);
-//     Plant* wastePlant = new WastePlant(powerPlant2);
-//     Plant* sewagePlant = new SewagePlant(wastePlant);
-
-//     std::cout << sewagePlant->getPlantType() << std::endl;
-
-//     cout << "\nTesting Generators" << endl;
-//     Factory* factory = new Factory();
-//     Factory* concreteFactory = new ConcreteGenerator(factory);
-//     Factory* steelFactory = new SteelGenerator(concreteFactory);
-//     Factory* woodFactory = new WoodGenerator(steelFactory);
-
-
-//     std::cout << woodFactory->getFactoryType() << std::endl;
-// }
 
 int main(){
-
-    cout << "Hello, World!" << endl;
 
     // CREATE CITY MAP
     cout << "\nCREATE CITY MAP" << endl;
