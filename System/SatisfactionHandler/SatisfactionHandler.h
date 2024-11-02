@@ -1,7 +1,7 @@
 #ifndef SATISFACTIONHANDLER_H
 #define SATISFACTIONHANDLER_H
 
-#include "../../CityHall.h"
+#include "../CityHall.h"
 
 class CityHall;
 

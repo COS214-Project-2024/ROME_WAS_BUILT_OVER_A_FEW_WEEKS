@@ -31,7 +31,7 @@ CityMap::CityMap(int width, int height)  : map(height, std::vector<CityStructure
     // Here, map is initialized as a 2D vector of nullptr pointers.
 }
 
-std::vector<std::vector<CityStructure*>> CityMap::getMap() {
+std::vector<std::vector<CityStructure*> > CityMap::getMap() {
     return map;
 }
 
