@@ -35,9 +35,9 @@ class CityMap {
         void addRoad(Road* originator);  // DECREASE TRAFFIC
         void addResidentialComplex(ResidentialComplex* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addCommercialBuilding(CommercialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addIndustrialBuilding(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
+        void addPlant(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
         void addLandmark(Landmark* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        // void addPlant(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
+        void addIndustrialBuilding(IndustrialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
 
         void removeStructure(int x, int y);
         void removeBuilding(CityStructure* originator); // DECREASE TRAFFIC

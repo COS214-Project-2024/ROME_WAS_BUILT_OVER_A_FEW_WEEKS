@@ -210,7 +210,17 @@ void CityMap::addCommercialBuilding(CommercialBuilding* originator) {
     
 }
 
-void CityMap::addIndustrialBuilding(Plant* originator) {
+void CityMap::addIndustrialBuilding(IndustrialBuilding* originator) {
+    // call addBuilding to adjust the traffic
+    //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
+    // RADIUS WILL BE BIGGER IN THIS CASE
+
+    this->cityHall->increaseNumIndustrialBuildings();
+    addBuilding(originator);
+    
+}
+
+void CityMap::addPlant(Plant* originator) {
     // call addBuilding to adjust the traffic
     //TELL ADJACENT RESIDENTIAL COMPLEXES TO ADJUST THEIR SATISFACTIONS BASED ON NEW RADIAL BUILDING
     // RADIUS WILL BE BIGGER IN THIS CASE

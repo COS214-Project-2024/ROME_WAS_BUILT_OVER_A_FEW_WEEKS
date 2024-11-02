@@ -18,7 +18,7 @@ std::string IndustrialBuilding::getStructureType() {
 
 void IndustrialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     CityStructure::placeStructure(x, y, cityMap);
-    cityMap->addBuilding(this);
+    cityMap->addIndustrialBuilding(this);
 }
 
 
