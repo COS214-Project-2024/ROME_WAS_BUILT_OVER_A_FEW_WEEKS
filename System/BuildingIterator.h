@@ -1,7 +1,7 @@
 #ifndef BUILDINGITERATOR_H
 #define BUILDINGITERATOR_H
 
-#include "ResidentialComplex.h"  // Enclosed in quotes for local inclusion
+#include "./CityStructures/Residential/ResidentialComplex.h"  // Enclosed in quotes for local inclusion
 
 class BuildingIterator {
 public:
