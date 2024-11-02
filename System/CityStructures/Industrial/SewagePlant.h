@@ -9,7 +9,6 @@ class SewagePlant : public PlantDecorator {
         SewagePlant(Plant* plant) : PlantDecorator(plant) {this->plant = plant;};
         virtual ~SewagePlant() {};
         int getRadiusOfEffect() { return plant->getRadiusOfEffect() + 1; };
-        void placeStructure(int x, int y, CityMap* cityMap) { plant->placeStructure(x, y, cityMap); };
         string getPlantType();
         string setSewagePlant();
 };

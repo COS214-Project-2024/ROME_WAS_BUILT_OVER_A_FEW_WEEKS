@@ -118,6 +118,23 @@ bool CityMap::addStructure(int x, int y, CityStructure* structure) {
         std::cout << "Not enough pope coins to place the structure" << std::endl;
         return false;
     }
+
+    //VALIDATE IF PLAYER HAS ENOUGH RESOURCES
+    int woodCost = structure->getWoodCost();
+    int steelCost = structure->getSteelCost();
+    int concreteCost = structure->getConcreteCost();
+    if (cityHall->deductWood(woodCost) == false) {
+        std::cout << "Not enough wood to place the structure" << std::endl;
+        return false;
+    }
+    if (cityHall->deductSteel(steelCost) == false) {
+        std::cout << "Not enough steel to place the structure" << std::endl;
+        return false;
+    }
+    if (cityHall->deductConcrete(concreteCost) == false) {
+        std::cout << "Not enough concrete to place the structure" << std::endl;
+        return false;
+    }
     
 
     // DO VALIDATION (is it supposed to be at y then x?)

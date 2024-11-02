@@ -11,11 +11,11 @@ class Plant : public IndustrialBuilding {
         int radiusOfEffect;
         string plantType;
     public:
-        Plant() {};
+        Plant() {cost = 1000; woodCost = 100; steelCost = 100; concreteCost = 100;};
         Plant(int radiusOfEffect) : radiusOfEffect(radiusOfEffect) {};
         virtual ~Plant(){};
         int getRadiusOfEffect();
-        bool placeStructure(int x, int y, CityMap* cityMap);
+        virtual bool placeStructure(int x, int y, CityMap* cityMap);
         virtual string getPlantType();
         
 };

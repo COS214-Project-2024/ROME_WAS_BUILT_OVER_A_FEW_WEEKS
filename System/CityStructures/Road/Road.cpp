@@ -13,6 +13,8 @@
 Road::Road() : trafficState(new LowTraffic()) {
     cityMap = nullptr;
     cost = 100;
+    concreteCost = 10;
+    steelCost = 10;
 }
 
 Road::~Road() {
@@ -23,11 +25,16 @@ std::string Road::getStructureType() {
     return "Road";
 }
 
-void Road::placeStructure(int x, int y, CityMap* cityMap) {
+bool Road::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
-    CityStructure::placeStructure(x, y, cityMap); 
-    calculateTraffic();
-    cityMap->addRoad(this);
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        cityMap->addRoad(this);
+        calculateTraffic();
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void Road::newBuildingWasAdded() {

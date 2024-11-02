@@ -241,6 +241,47 @@ bool CityHall::deductPopeCoins(int coins){
     return true;
 }
 
+bool CityHall::addWood(int wood){
+    this->wood += wood;
+    return true;
+}
+
+bool CityHall::deductWood(int wood){
+    if (this->wood - wood < 0){
+        std::cout << "Not enough wood" << std::endl;
+        return false;
+    }
+    this->wood = this->wood - wood;
+    return true;
+}
+
+bool CityHall::addSteel(int steel){
+    this->steel += steel;
+    return true;
+}
+
+bool CityHall::deductSteel(int steel){
+    if (this->steel - steel < 0){
+        std::cout << "Not enough steel" << std::endl;
+        return false;
+    }
+    this->steel = this->steel - steel;
+    return true;
+}
+
+bool CityHall::addConcrete(int concrete){
+    this->concrete += concrete;
+    return true;
+}
+
+bool CityHall::deductConcrete(int concrete){
+    if (this->concrete - concrete < 0){
+        std::cout << "Not enough concrete" << std::endl;
+        return false;
+    }
+    this->concrete = this->concrete - concrete;
+    return true;
+}
 
 void CityHall::increaseCapacity(int capacity){
     std::cout << "Increasing capacity" << std::endl;

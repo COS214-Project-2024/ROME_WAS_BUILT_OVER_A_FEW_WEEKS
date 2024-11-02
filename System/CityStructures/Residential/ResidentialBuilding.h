@@ -15,7 +15,7 @@ class ResidentialBuilding : public ResidentialComponent {
         ~ResidentialBuilding();
         std::string getStructureType();
 
-        void placeStructure(int x, int y, CityMap* cityMap);
+        bool placeStructure(int x, int y, CityMap* cityMap);
         void removeStructure();
 
         int getCapacity(); // SAME AS calculateCapacity()

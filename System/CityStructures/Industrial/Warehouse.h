@@ -8,7 +8,7 @@ class IndustrialBuilding;
 
 class Warehouse : public CityStructure {
    public:
-        Warehouse() {};
+        Warehouse() { cost = 1000; woodCost = 0; steelCost = 0; concreteCost = 0; };
         virtual ~Warehouse(){};
         bool placeStructure(int x, int y, CityMap* cityMap);
         

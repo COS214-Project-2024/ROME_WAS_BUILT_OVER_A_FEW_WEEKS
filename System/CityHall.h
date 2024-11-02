@@ -93,6 +93,14 @@ class CityHall: public CityStructure{
         bool addPopeCoins(int coins);
         bool deductPopeCoins(int coins);
 
+        bool addWood(int wood);
+        bool deductWood(int wood);
+        bool addSteel(int steel);
+        bool deductSteel(int steel);
+        bool addConcrete(int concrete);
+        bool deductConcrete(int concrete);
+        
+
         void increaseCapacity(int capacity);
         void decreaseCapacity(int capacity);
 
