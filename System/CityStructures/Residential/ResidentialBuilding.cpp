@@ -3,6 +3,8 @@
 #include "../../CityMap.h"
 #include "ResidentialBuilding.h"
 
+#include "../../GameSimulation.h"
+
 ResidentialBuilding::ResidentialBuilding(int capacity) : capacity(capacity) {
     // EMPTY
 }

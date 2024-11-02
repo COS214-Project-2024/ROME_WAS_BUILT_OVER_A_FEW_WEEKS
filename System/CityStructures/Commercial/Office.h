@@ -13,6 +13,8 @@ class Office : public CommercialBuilding {
         ~Office();
 
         std::string getCommercialBuildingType();
+
+        static sf::Texture* texture;
         
 };
 

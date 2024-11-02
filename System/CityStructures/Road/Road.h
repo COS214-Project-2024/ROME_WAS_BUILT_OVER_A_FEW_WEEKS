@@ -27,6 +27,11 @@ class Road : public CityStructure {
         int getTrafficLevel();
         
 
+        static sf::Texture* texture1;
+        static sf::Texture* texture2;
+        static sf::Texture* texture3;
+        static sf::Texture* texture4;
+
         
 };
 

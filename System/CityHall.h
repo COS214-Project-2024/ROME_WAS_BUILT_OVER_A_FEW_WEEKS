@@ -37,6 +37,9 @@ class CityHall: public CityStructure{
         int citizenSatisfactionImpact;
 
 
+        static sf::Texture* texture;
+
+
 
     protected:
         CityHall(); // Singleton

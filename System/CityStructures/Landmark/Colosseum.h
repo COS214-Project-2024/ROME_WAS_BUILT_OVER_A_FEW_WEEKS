@@ -12,6 +12,8 @@ class Colosseum : public Landmark {
         Colosseum();
         ~Colosseum();
         std::string getLandmarkType();
+
+        static sf::Texture* texture;
 };
 
 #endif

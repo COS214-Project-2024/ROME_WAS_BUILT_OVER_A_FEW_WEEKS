@@ -12,6 +12,8 @@ class Park : public Landmark {
         Park();
         ~Park();
         std::string getLandmarkType();
+
+        static sf::Texture* texture;
 };
 
 #endif

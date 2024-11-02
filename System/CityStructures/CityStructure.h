@@ -2,6 +2,7 @@
 #define CITY_STRUCTURE_H
 
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class ResidentialComplex;
 class CityMap;
@@ -12,6 +13,7 @@ class CityStructure {
         int y;
         CityMap* cityMap; // MEDIATOR
         int cost;
+
     public:
         CityStructure();
         virtual ~CityStructure();
@@ -36,6 +38,9 @@ class CityStructure {
         int getX();
         int getY();
         virtual int getCost();
+
+        // GRAPHICS
+        sf::Sprite* sprite;
 
 };
 

@@ -8,6 +8,7 @@
 #include "BoosterStructures/Railway.h"
 #include "BoosterStructures/Airport.h"
 #include "PoliticalSystem/PoliticalSystem.h"
+#include "GameSimulation.h"
 
 CityHall* CityHall::cityHall = nullptr;
 
@@ -36,6 +37,9 @@ CityHall::CityHall(){
     MediumSatisfactionHandler* mediumHandler = new MediumSatisfactionHandler(lowHandler);
     HighSatisfactionHandler* highHandler = new HighSatisfactionHandler(mediumHandler);
     this->chainOfResponsibility = highHandler;
+
+
+    sprite->setTexture(gameReference->textures["CityHall"]);
 }
 
 // SINGLETON

@@ -52,6 +52,7 @@
 
 // GRAPHICS
 #include <SFML/Graphics.hpp>
+#include "GameSimulation.h"
 
 
 
@@ -84,18 +85,20 @@ using namespace std;
 
 int main(){
 
-    cout << "Hello, World!" << endl;
-
     // CREATE CITY MAP
-    cout << "\nCREATE CITY MAP" << endl;
     CityMap* cityMap = new CityMap();
 
     // CREATE AND PLACE CITY HALL
-    cout << "\nCREATE AND PLACE CITY HALL" << endl;
     CityHall* cityHall = CityHall::getInstance();
     cityHall->placeStructure(0, 0, cityMap);
 
-    // CREATE AND PLACE ROADS
+
+    // Initialize and run game loop
+    GameSimulation* game = new GameSimulation(cityHall, cityMap);
+
+
+
+        // CREATE AND PLACE ROADS
     cout << "\nCREATE AND PLACE ROADS" << endl;
     Road* road1 = new Road();
     road1->placeStructure(0, 1, cityMap);
@@ -103,6 +106,12 @@ int main(){
     road2->placeStructure(1, 1, cityMap);
     Road* road3 = new Road();
     road3->placeStructure(2, 1, cityMap);
+
+
+    game->gameRun();
+
+
+
 
 
     // CREATE AND PLACE RESIDENTIAL COMPLEXES 
@@ -152,9 +161,6 @@ int main(){
     cout << endl;
     residentialComplex2->printResidentialComplexState();
 
-
-
-
     std::vector<std::vector<CityStructure*> > map = cityMap->getMap();
     cout << "City Map: " << map.size() << endl;
     for(int i = 0; i < map.size(); i++){
@@ -169,30 +175,6 @@ int main(){
     }
 
 
-
-    cout << "Bye!" << endl; 
-
-    // =====================
-    // === GRAPHICS PART ===
-    // =====================
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-    // =====================
 
     
   
