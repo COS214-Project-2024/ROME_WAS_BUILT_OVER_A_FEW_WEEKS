@@ -85,16 +85,24 @@ using namespace std;
 
 int main(){
 
+    std::cout << "111" << endl;
+
     // CREATE CITY MAP
     CityMap* cityMap = new CityMap();
+
+    std::cout << "222" << endl;
 
     // CREATE AND PLACE CITY HALL
     CityHall* cityHall = CityHall::getInstance();
     cityHall->placeStructure(0, 0, cityMap);
 
+    std::cout << "333" << endl;
+
 
     // Initialize and run game loop
     GameSimulation* game = new GameSimulation(cityHall, cityMap);
+
+    std::cout << "444" << endl;
 
 
 
@@ -107,8 +115,11 @@ int main(){
     Road* road3 = new Road();
     road3->placeStructure(2, 1, cityMap);
 
+    std::cout << "555" << endl;
 
     game->gameRun();
+
+    std::cout << "666" << endl;
 
 
 

@@ -8,6 +8,7 @@ CityStructure::CityStructure() {
     x = -1;
     y = -1;
     cityMap = nullptr;
+    sprite = new sf::Sprite();
 }
 
 void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
@@ -17,6 +18,9 @@ void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
         this->x = x;
         this->y = y;
         this->cityMap = cityMap;
+
+        sprite->setPosition(x*128 + 128, y*128 + 128);
+        sprite->setScale(2, 2);
     }
     else {
         std::cout << "Could not place the structure" << std::endl;

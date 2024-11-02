@@ -18,8 +18,8 @@
 #include "CheckAdjacentTemplate/RoadRemoved.h"
 
 
-const int DEFAULT_HEIGHT = 20;
-const int DEFAULT_WIDTH = 20;
+const int DEFAULT_HEIGHT = 8;
+const int DEFAULT_WIDTH = 16;
 
 
 CityMap::CityMap()  : map(DEFAULT_HEIGHT, std::vector<CityStructure*>(DEFAULT_HEIGHT, nullptr)) {

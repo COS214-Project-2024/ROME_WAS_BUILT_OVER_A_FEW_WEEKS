@@ -12,8 +12,6 @@ class Apartment : public ResidentialBuilding {
         ~Apartment();
 
         std::string getResidentialBuildingType();
-
-        static sf::Texture* texture;
         
 };
 

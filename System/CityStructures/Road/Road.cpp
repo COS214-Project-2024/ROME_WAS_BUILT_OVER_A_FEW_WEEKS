@@ -11,27 +11,10 @@
 
 #include "../../GameSimulation.h"
 
-sf::Texture* Road::texture1 = new sf::Texture();
-sf::Texture* Road::texture2 = new sf::Texture();
-sf::Texture* Road::texture3 = new sf::Texture();
-sf::Texture* Road::texture4 = new sf::Texture();
-
 
 Road::Road() : trafficState(new LowTraffic()) {
     cityMap = nullptr;
     cost = 100;
-
-    static bool isLoaded = false;
-
-    if (!isLoaded){
-        texture1->loadFromFile("../../../images/spr_Road1.png");
-        texture2->loadFromFile("../../../images/spr_Road2.png");
-        texture3->loadFromFile("../../../images/spr_Road3.png");
-        texture4->loadFromFile("../../../images/spr_Road4.png");
-        isLoaded = true;
-    }
-
-    sprite->setTexture(*texture1);
 }
 
 Road::~Road() {

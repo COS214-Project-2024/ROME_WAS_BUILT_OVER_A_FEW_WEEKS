@@ -13,7 +13,6 @@ class Park : public Landmark {
         ~Park();
         std::string getLandmarkType();
 
-        static sf::Texture* texture;
 };
 
 #endif

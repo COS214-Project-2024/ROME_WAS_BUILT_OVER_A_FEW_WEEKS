@@ -13,8 +13,6 @@ class House : public ResidentialBuilding {
 
         std::string getResidentialBuildingType();
 
-        static sf::Texture* texture;
-        
 };
 
 #endif

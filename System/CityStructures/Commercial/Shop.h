@@ -13,8 +13,6 @@ class Shop : public CommercialBuilding {
         ~Shop();
 
         std::string getCommercialBuildingType();
-
-        static sf::Texture* texture;
 };
 
 

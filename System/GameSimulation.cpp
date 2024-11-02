@@ -1,4 +1,9 @@
 #include "GameSimulation.h"
+#include "CityStructure.h"
+#include "CityMap.h"
+#include "CityHall.h"
+
+#include <iostream>
 
 
 GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap){
@@ -37,8 +42,12 @@ void GameSimulation::gameRun(){
     sf::Clock clock;
     sf::Time elapsed = sf::Time::Zero;
 
+    int j = 0;
+
     // Run game simulation while the window is open
     while (window->isOpen()){
+        j += 1;
+        std::cout << j << std::endl;
 
         // === PROCESS EVENTS ===
         processEvents();
@@ -74,10 +83,54 @@ void GameSimulation::processEvents(){
 
 }
 
+
 void GameSimulation::update(sf::Time deltaTime){
     return;
 }
 
+
 void GameSimulation::drawFrame(){
-    
+    // Clear the frame
+    window->clear();
+
+    // CITYMAP 2D VECTOR
+    std::vector<std::vector<CityStructure*>> map = cityMap->getMap();
+
+    // Iterate over each row in the 2D vector
+    for (std::vector<CityStructure*>& row : map) {
+
+        for (CityStructure* structure : row) {
+
+            if (structure != NULL) {
+                if (structure->getStructureType() == "Road"){
+                    // Determine which road to use as a texture based on the other roads around it
+                    std::string roadTexture = "Road1";
+                    if (structure->getX() > 0 && map[structure->getY()][structure->getX() - 1] != NULL && map[structure->getY()][structure->getX() - 1]->getStructureType() == "Road"){
+                        roadTexture = "Road2";
+                    }else if (structure->getY() > 0 && map[structure->getY() - 1][structure->getX()] != NULL && map[structure->getY() - 1][structure->getX()]->getStructureType() == "Road"){
+                        roadTexture = "Road3";
+                    }else if (structure->getX() < map[0].size() - 1 && map[structure->getY()][structure->getX() + 1] != NULL && map[structure->getY()][structure->getX() + 1]->getStructureType() == "Road"){
+                        roadTexture = "Road4";
+                    }
+
+                    structure->sprite->setTexture(textures[roadTexture]);
+                    window->draw(*(structure->sprite));
+                }else if (structure->getStructureType() == "ResidentialComplex"){
+
+                }else{
+                    structure->sprite->setTexture(textures[structure->getStructureType()]);
+                    window->draw(*(structure->sprite));
+                }
+            }else{
+                // Draw a landscape
+                sf::Sprite landscape;
+                landscape.setTexture(textures["Landscape1"]);
+                //landscape.setPosition(x*128 + 128, y*128 + 128);
+                landscape.setScale(2, 2);
+                window->draw(landscape);
+            }
+        }
+    }
+
+    window->display();
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include "CityHall.h"
 #include "SatisfactionHandler/LowSatisfactionHandler.h"
@@ -13,7 +14,7 @@
 CityHall* CityHall::cityHall = nullptr;
 
 CityHall::CityHall(){
-    
+
     numCitizens = 0;
     cityCapacity = 0;
     numResidentialComplexes = 0;
@@ -38,13 +39,13 @@ CityHall::CityHall(){
     HighSatisfactionHandler* highHandler = new HighSatisfactionHandler(mediumHandler);
     this->chainOfResponsibility = highHandler;
 
-
-    sprite->setTexture(gameReference->textures["CityHall"]);
+    
 }
 
 // SINGLETON
 CityHall *CityHall::getInstance(){
     if (cityHall == nullptr){
+
         cityHall = new CityHall();
     }
 
