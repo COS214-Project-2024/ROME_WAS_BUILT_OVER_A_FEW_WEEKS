@@ -120,6 +120,12 @@ int main(){
 
     std::cout << "444" << endl;
 
+    cityHall->addConcrete(10000);
+    cityHall->addSteel(10000);
+    cityHall->addWood(10000);
+
+    cityHall->addPopeCoins(100000);
+
 
 
         // CREATE AND PLACE ROADS
