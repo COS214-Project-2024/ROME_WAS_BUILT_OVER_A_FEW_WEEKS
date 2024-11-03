@@ -25,14 +25,21 @@ bool CommercialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     if (placed) {
         cityMap->addCommercialBuilding(this);
         return true;
-    }else{
+    }
+    else {
         return false;
     }
 }
 
-void CommercialBuilding::removeStructure() {
-    CityStructure::removeStructure();
-    cityMap->removeCommercialBuilding(this);
+bool CommercialBuilding::removeStructure() {
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        cityMap->removeCommercialBuilding(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void CommercialBuilding::newResidentialComplexWasAdded(ResidentialComplex* complex) {

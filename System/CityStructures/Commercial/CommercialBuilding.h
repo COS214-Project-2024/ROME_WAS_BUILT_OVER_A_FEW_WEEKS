@@ -19,7 +19,7 @@ class CommercialBuilding : public CityStructure {
 
         int getRadiusOfEffect();
         bool placeStructure(int x, int y, CityMap* cityMap);
-        void removeStructure();
+        bool removeStructure();
         void newResidentialComplexWasAdded(ResidentialComplex* complex);
         
 

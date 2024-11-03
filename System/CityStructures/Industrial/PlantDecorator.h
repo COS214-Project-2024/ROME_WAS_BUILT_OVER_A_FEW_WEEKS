@@ -1,6 +1,8 @@
 #ifndef PLANT_DECORATOR_H
 #define PLANT_DECORATOR_H
 
+#include <iostream>
+
 #include "Plant.h"
 class Plant;
 
@@ -8,11 +10,13 @@ class PlantDecorator : public Plant {
     protected:
         Plant* plant;
     public:
-        PlantDecorator(){};
-        PlantDecorator(Plant* plant) : plant(plant) {this->plant = plant;};
-        virtual ~PlantDecorator() {};
-        int getRadiusOfEffect() { return plant->getRadiusOfEffect(); };
-        virtual string getPlantType(){return plantType;};
+        PlantDecorator();
+        PlantDecorator(Plant* plant);
+        virtual ~PlantDecorator();
+        int getRadiusOfEffect();
+        virtual bool placeStructure(int x, int y, CityMap* cityMap) = 0;
+        virtual bool removeStructure() = 0;
+        virtual string getPlantType();
 
 };
 

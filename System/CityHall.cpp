@@ -21,9 +21,12 @@ CityHall::CityHall(){
     popeCoins = 1000000;
     residentialSatisfaction = 0;
     citySatisfaction = 100;
-    maxWood = 1000;
-    maxSteel = 1000;
-    maxConcrete = 1000;
+    maxWood = 1000000;
+    maxSteel = 1000000;
+    maxConcrete = 1000000;
+    wood = 10000;
+    steel = 10000;
+    concrete = 10000;
     
     railway = new Railway();
     airport = new Airport();
@@ -123,6 +126,9 @@ float CityHall::getAirportBonus(){
 
 float CityHall::calculateHomelessnessDeduction(){
     int numberHomelessPeople = 0;
+    if(numCitizens == 0 || cityCapacity == 0){
+        return 0;
+    }
     if (numCitizens > cityCapacity){
         numberHomelessPeople = numCitizens - cityCapacity;
     }
@@ -172,15 +178,14 @@ CityHall::~CityHall(){
 
 bool CityHall::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
-    if(cityMap == nullptr){
+    if (cityMap == nullptr){
         std::cout << "CityMap is null" << std::endl;
         return false;
     }
     cityMap->setCityHall(this);
 
-    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    bool placed = CityStructure::placeStructure(x, y, cityMap); 
     if (placed) {
-        cityMap->addStructure(x, y, this);
         return true;
     }
     else {
@@ -189,8 +194,9 @@ bool CityHall::placeStructure(int x, int y, CityMap* cityMap) {
     
 }
 
-void CityHall::removeStructure() {
-    cityMap->removeStructure(x, y);
+bool CityHall::removeStructure() {
+    std::cout << "Cannot remove the city hall" << std::endl;
+    return false;
 }
 
 void CityHall::increaseStorageCapacity(){
@@ -220,6 +226,36 @@ void CityHall::decreaseNumIndustrialBuildings(){
     numIndustrialBuildings--;
 }
 
+void CityHall::increaseNumFactories(){
+    numFactories++;
+}
+
+void CityHall::decreaseNumFactories(){
+    numFactories--;
+}
+
+int CityHall::getNumFactories(){
+    return numFactories;
+}
+
+void CityHall::generateWood(int generatedAmount){
+    int addedWood = generatedAmount* getNumFactories();
+    addWood(addedWood);
+    std::cout << "GENERATED WOOD: " << addedWood << std::endl;
+}
+
+void CityHall::generateSteel(int generatedAmount){
+    int addedSteel = generatedAmount* getNumFactories();
+    addSteel(addedSteel);
+    std::cout << "GENERATED STEEL: " << addedSteel << std::endl;
+}
+
+void CityHall::generateConcrete(int generatedAmount){
+    int addedConcrete = generatedAmount* getNumFactories();
+    addConcrete(addedConcrete);
+    std::cout << "GENERATED CONCRETE: " << addedConcrete << std::endl;
+}
+
 
 bool CityHall::addPopeCoins(int coins){
     popeCoins = popeCoins + coins;
@@ -243,6 +279,10 @@ bool CityHall::deductPopeCoins(int coins){
 
 bool CityHall::addWood(int wood){
     this->wood += wood;
+    if(this->wood > maxWood){
+        this->wood = maxWood;
+        return false;
+    }
     return true;
 }
 
@@ -252,11 +292,16 @@ bool CityHall::deductWood(int wood){
         return false;
     }
     this->wood = this->wood - wood;
+    std::cout << "remaining " << this->wood << " wood" << std::endl;
     return true;
 }
 
 bool CityHall::addSteel(int steel){
     this->steel += steel;
+    if(this->steel > maxSteel){
+        this->steel = maxSteel;
+        return false;
+    }
     return true;
 }
 
@@ -266,11 +311,16 @@ bool CityHall::deductSteel(int steel){
         return false;
     }
     this->steel = this->steel - steel;
+    std::cout << "remaining " << this->steel << " steel" << std::endl;
     return true;
 }
 
 bool CityHall::addConcrete(int concrete){
     this->concrete += concrete;
+    if(this->concrete > maxConcrete){
+        this->concrete = maxConcrete;
+        return false;
+    }
     return true;
 }
 
@@ -280,6 +330,7 @@ bool CityHall::deductConcrete(int concrete){
         return false;
     }
     this->concrete = this->concrete - concrete;
+    std::cout << "remaining " << this->concrete << " concrete" << std::endl;
     return true;
 }
 
@@ -295,6 +346,12 @@ void CityHall::decreaseCapacity(int capacity){
 void CityHall::printCityHallState(){
     std::cout << "City Hall state" << std::endl;
     std::cout << "Pope coins: " << popeCoins << std::endl;
+    std::cout << "Max Wood: " << maxWood << std::endl;
+    std::cout << "Wood: " << wood << std::endl;
+    std::cout << "Max Steel: " << maxSteel << std::endl;
+    std::cout << "Steel: " << steel << std::endl;
+    std::cout << "Max Concrete: " << maxConcrete << std::endl;
+    std::cout << "Concrete: " << concrete << std::endl;
     std::cout << "Number of citizens: " << numCitizens << std::endl;
     std::cout << "City capacity: " << cityCapacity << std::endl;
     std::cout << "City satisfaction: " << citySatisfaction << std::endl;

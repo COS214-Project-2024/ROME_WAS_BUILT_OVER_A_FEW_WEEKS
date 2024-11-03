@@ -27,11 +27,17 @@ bool CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
 
 }
 
-void CityStructure::removeStructure() {
-    cityMap->removeStructure(x, y);
-    this->x = -1;
-    this->y = -1;
-    this->cityMap = nullptr;
+bool CityStructure::removeStructure() {
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        x = -1;
+        y = -1;
+        cityMap = nullptr;
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 CityStructure::~CityStructure() {
@@ -48,7 +54,7 @@ int CityStructure::getY() {
 }
 
 int CityStructure::getCost() {
-    std::cout << "Getting cost" << cost << std::endl;
+    //std::cout << "Getting cost" << cost << std::endl;
     return cost;
 }
 

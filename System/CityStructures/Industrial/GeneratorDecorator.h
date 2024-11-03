@@ -11,10 +11,10 @@ class GeneratorDecorator : public Factory {
         
     public:
         GeneratorDecorator(){};
-        GeneratorDecorator(Factory* factory): factory(factory){this->factory = factory;};
+        GeneratorDecorator(Factory* factory): factory(factory) {this->factory = factory;};
         virtual ~GeneratorDecorator(){};
         virtual int generate(){return 0;};
-        virtual string getFactoryType(){return factoryType;};
+        virtual string getFactoryType(){return this->factoryType;};
 };
 
 #endif

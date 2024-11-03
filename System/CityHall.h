@@ -23,6 +23,7 @@ class CityHall: public CityStructure{
         int numResidentialComplexes;
         int numCommercialBuildings;
         int numIndustrialBuildings;
+        int numFactories;
         int popeCoins;
         int wood;
         int steel;
@@ -78,7 +79,7 @@ class CityHall: public CityStructure{
         ~CityHall();
 
         bool placeStructure(int x, int y, CityMap* cityMap);
-        void removeStructure();
+        bool removeStructure();
         void increaseStorageCapacity();
 
         void increaseNumResidentialComplexes();
@@ -89,6 +90,13 @@ class CityHall: public CityStructure{
 
         void increaseNumIndustrialBuildings();
         void decreaseNumIndustrialBuildings();
+
+        void increaseNumFactories();
+        void decreaseNumFactories();
+        int getNumFactories();
+        void generateWood(int generatedAmount);
+        void generateSteel(int generatedAmount);
+        void generateConcrete(int generatedAmount);
 
         bool addPopeCoins(int coins);
         bool deductPopeCoins(int coins);
