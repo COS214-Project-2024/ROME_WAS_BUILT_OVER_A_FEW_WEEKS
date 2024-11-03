@@ -18,6 +18,8 @@ class Plant : public IndustrialBuilding {
         virtual bool placeStructure(int x, int y, CityMap* cityMap);
         virtual bool removeStructure();
         virtual string getPlantType() ;
+
+        std::string getStructureType();
         
 };
 

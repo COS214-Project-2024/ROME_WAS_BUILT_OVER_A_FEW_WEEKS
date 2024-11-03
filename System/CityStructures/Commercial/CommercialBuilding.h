@@ -15,7 +15,7 @@ class CommercialBuilding : public CityStructure {
     public:
         CommercialBuilding(int radiusOfEffect);
         virtual ~CommercialBuilding();
-        std::string getStructureType();
+        virtual std::string getStructureType();
 
         int getRadiusOfEffect();
         bool placeStructure(int x, int y, CityMap* cityMap);

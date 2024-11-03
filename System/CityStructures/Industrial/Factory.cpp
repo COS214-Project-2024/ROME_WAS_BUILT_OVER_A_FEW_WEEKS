@@ -16,3 +16,7 @@ bool Factory::placeStructure(int x, int y, CityMap *cityMap)
         return false;
     }
 }
+
+std::string Factory::getStructureType(){
+    return "Factory";
+}

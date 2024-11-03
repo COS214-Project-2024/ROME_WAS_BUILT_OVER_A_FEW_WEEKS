@@ -10,3 +10,7 @@ bool Warehouse::placeStructure(int x, int y, CityMap *cityMap){
         return false;
     }
 }
+
+std::string Warehouse::getStructureType(){
+    return "Warehouse";
+}

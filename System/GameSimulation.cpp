@@ -229,6 +229,8 @@ std::string GameSimulation::determineTexture(CityStructure* structure, const std
             roadTexture = "Road4";
         }
         return roadTexture;
+    }else if (structure->getStructureType() == "ResidentialComplex"){
+
     }
 
     // Otherwise, return texture based on structure type
@@ -285,36 +287,6 @@ void GameSimulation::processEvents(){
 
             case sf::Event::KeyPressed:
                 if (curEvent.key.code == sf::Keyboard::Num1){
-
-                        std::vector<std::vector<CityStructure*> > map1 = cityMap->getMap();
-                        cout << "CITY MAP: " << map1.size() << endl;
-                        for(int i = 0; i < map1.size(); i++){
-                            for(int j = 0; j < map1[i].size(); j++){
-                                if(map1[i][j] != nullptr){
-                                    cout << map1[i][j]->getStructureType() << " ";
-                                }else{
-                                    cout << "NULL ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
-
-                        cout << "MINE: " << myMap.size() << endl;
-                        for(int i = 0; i < myMap.size(); i++){
-                            for(int j = 0; j < myMap[i].size(); j++){
-                                if(myMap[i][j].type == "Landscape"){
-                                    cout << myMap[i][j].type << " ";
-                                }else{
-                                    cout << "NULL ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
-
-
-
                     // CREATE AND PLACE ROADS
                     Road* road1 = new Road();
                     road1->placeStructure(0, 1, cityMap);
@@ -323,6 +295,9 @@ void GameSimulation::processEvents(){
                     Road* road3 = new Road();
                     road3->placeStructure(2, 1, cityMap);
 
+                    ResidentialBuilding* house1 = new House();
+                    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
+                    residentialComplex1->placeStructure(1, 2, cityMap);
                 }
 
                 break;

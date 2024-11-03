@@ -16,3 +16,7 @@ Shop::~Shop() {
 std::string Shop::getCommercialBuildingType() {
     return "Shop";
 }
+
+std::string Shop::getStructureType(){
+    return "Shop";
+}

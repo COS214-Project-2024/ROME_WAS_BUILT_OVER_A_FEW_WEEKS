@@ -43,3 +43,7 @@ bool Plant::removeStructure() {
 string Plant::getPlantType(){
     return this->plantType;
 }
+
+std::string Plant::getStructureType(){
+    return "Plant";
+}

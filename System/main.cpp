@@ -109,6 +109,10 @@ int main(){
     ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
     residentialComplex1->placeStructure(1, 2, cityMap);
 
+    std::cout << residentialComplex1->getStructureType() << std::endl;
+
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
     //print states
     cout << "\nPRINT STATES" << endl;
     cityHall->printCityHallState();

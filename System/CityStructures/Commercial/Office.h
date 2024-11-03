@@ -13,6 +13,7 @@ class Office : public CommercialBuilding {
         ~Office();
 
         std::string getCommercialBuildingType();
+        std::string getStructureType();
         
 };
 

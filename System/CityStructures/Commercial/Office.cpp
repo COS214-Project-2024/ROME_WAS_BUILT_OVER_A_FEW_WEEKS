@@ -17,3 +17,6 @@ std::string Office::getCommercialBuildingType() {
     return "Office";
 }
 
+std::string Office::getStructureType(){
+    return "Office";
+}
