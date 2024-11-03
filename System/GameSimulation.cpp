@@ -101,6 +101,7 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     textures["Warehouse"].loadFromFile("../images/spr_Warehouse.png");
     textures["Border1"].loadFromFile("../images/spr_Border1.png");
     textures["Border2"].loadFromFile("../images/spr_Border2.png");
+    textures["WindowBorder"].loadFromFile("../images/spr_WindowBorder.png");
 
     //std::this_thread::sleep_for(std::chrono::seconds(2));
 
@@ -423,8 +424,6 @@ void GameSimulation::drawFrame() {
 
             // Draw the sprite for each CityItem in myMap
             window.draw(cityItem.sprite);
-
-
         }
     }
 
