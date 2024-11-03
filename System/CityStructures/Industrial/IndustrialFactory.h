@@ -2,8 +2,7 @@
 #define INDUSTRIAL_FACTORY_H
 
 #include "BuildingFactory.h"
-#include "Warehouse.h"
-#include "Factory.h"
+//#include "Factory.h"
 #include "Plant.h"
 
 

@@ -1,17 +1,17 @@
 #include "ResidentialFactory.h"
 
 ResidentialBuilding* HouseFactory::createResidentialBuilding() {
-    return new House(4);
+    return new House();
 }
 
 ResidentialBuilding* ApartmentFactory::createResidentialBuilding() {
-    return new Apartment(50);
+    return new Apartment();
 }
 
 ResidentialBuilding* EstateFactory::createResidentialBuilding() {
-    return new Estate(25);
+    return new Estate();
 }
 
 ResidentialBuilding* TownhouseFactory::createResidentialBuilding() {
-    return new Townhouse(6);
+    return new Townhouse();
 }

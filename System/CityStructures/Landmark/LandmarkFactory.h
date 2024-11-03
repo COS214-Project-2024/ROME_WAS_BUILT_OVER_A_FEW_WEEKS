@@ -3,8 +3,8 @@
 
 #include "BuildingFactory.h"
 #include "Park.h"
-#include "Monument.h"
-#include "CulturalCenter.h"
+#include "Colosseum.h"
+#include "Pantheon.h"
 
 class LandmarkFactory : public BuildingFactory {
     public: 
@@ -17,12 +17,12 @@ class ParkFactory : public LandmarkFactory {
         virtual Landmark* createLandmark() override;
 };
 
-class MonumentFactory : public LandmarkFactory {
+class ColosseumFactory : public LandmarkFactory {
     public:
         virtual Landmark* createLandmark() override;
 };
 
-class CulturalCenterFactory : public LandmarkFactory {
+class PantheonFactory : public LandmarkFactory {
     public:
         virtual Landmark* createLandmark() override;
 };

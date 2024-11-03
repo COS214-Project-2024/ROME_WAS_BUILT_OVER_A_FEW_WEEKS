@@ -1,14 +1,14 @@
 #include "CommercialFactory.h"
 
 CommercialBuilding* ShopFactory::createCommercialBuilding() {
-    return new Shop(10);
+    return new Shop();
 }
 
 CommercialBuilding* OfficeFactory::createCommercialBuilding() {
-    return new Office(100);
+    return new Office();
 }
 
 CommercialBuilding* MallFactory::createCommercialBuilding() {
-    return new Mall(50);
+    return new Mall();
 }
 
