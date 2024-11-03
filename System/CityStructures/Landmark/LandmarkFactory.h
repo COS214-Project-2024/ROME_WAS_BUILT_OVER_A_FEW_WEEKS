@@ -1,7 +1,7 @@
 #ifndef LANDMARK_FACTORY_H
 #define LANDMARK_FACTORY_H
 
-#include "BuildingFactory.h"
+#include "../BuildingFactory.h"
 #include "Park.h"
 #include "Colosseum.h"
 #include "Pantheon.h"

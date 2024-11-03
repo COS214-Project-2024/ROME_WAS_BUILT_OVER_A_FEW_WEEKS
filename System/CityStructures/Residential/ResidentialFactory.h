@@ -1,7 +1,7 @@
 #ifndef RESIDENTIAL_FACTORY_H
 #define RESIDENTIAL_FACTORY_H
 
-#include "BuildingFactory.h"
+#include "../BuildingFactory.h"
 #include "House.h"
 #include "Apartment.h"
 #include "Estate.h"

@@ -1,7 +1,7 @@
 #ifndef INDUSTRIAL_FACTORY_H
 #define INDUSTRIAL_FACTORY_H
 
-#include "BuildingFactory.h"
+#include "../BuildingFactory.h"
 //#include "Factory.h"
 #include "Plant.h"
 
