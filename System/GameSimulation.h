@@ -39,7 +39,7 @@ private:
 
     // Game handling
     void processEvents();
-    void update();  // User inputs
+    void update(sf::Time deltaTime);  // User inputs
     void drawFrame();
 
     // Other functions

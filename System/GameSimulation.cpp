@@ -243,24 +243,30 @@ int GameSimulation::randomLandscapeTexture() {
 
 
 
-void GameSimulation::gameRun() {
-    sf::Time frameLimit = sf::milliseconds(20);  // Roughly 60 FPS
-    sf::Clock frameClock;
+void GameSimulation::gameRun(){
+    sf::Clock clock;
+    sf::Time elapsed = sf::Time::Zero;
 
-    while (window.isOpen()) {
+
+    // Run game simulation while the window is open
+    while (window.isOpen()){
+
+        // === PROCESS EVENTS ===
         processEvents();
-        update();
-        drawFrame();
 
-        sf::Time frameTime = frameClock.getElapsedTime();
-        if (frameTime < frameLimit) {
-            sf::Time timeToSleep = frameLimit - frameTime;
-            std::this_thread::sleep_for(std::chrono::milliseconds(timeToSleep.asMilliseconds()));
+        // Force the game to run at 60fps
+        elapsed += clock.restart();
+
+        while (elapsed >= timePerFrame){
+            elapsed -= timePerFrame;
+            update(timePerFrame);
         }
-        frameClock.restart();
+
+
+        // === DRAW THE FRAME ===
+        drawFrame();
     }
 }
-
 
 
 void GameSimulation::processEvents(){
@@ -294,10 +300,10 @@ void GameSimulation::processEvents(){
                         cout << "MINE: " << myMap.size() << endl;
                         for(int i = 0; i < myMap.size(); i++){
                             for(int j = 0; j < myMap[i].size(); j++){
-                                if(myMap[i][j].type != "Landscape"){
+                                if(myMap[i][j].type == "Landscape"){
                                     cout << myMap[i][j].type << " ";
                                 }else{
-                                    cout << "Landscape ";
+                                    cout << "NULL ";
                                 }
                             }
                             cout << endl;
@@ -314,34 +320,6 @@ void GameSimulation::processEvents(){
                     Road* road3 = new Road();
                     road3->placeStructure(2, 1, cityMap);
 
-
-
-                        std::vector<std::vector<CityStructure*> > map2 = cityMap->getMap();
-                        cout << "CITY MAP: " << map2.size() << endl;
-                        for(int i = 0; i < map2.size(); i++){
-                            for(int j = 0; j < map2[i].size(); j++){
-                                if(map2[i][j] != nullptr){
-                                    cout << map2[i][j]->getStructureType() << " ";
-                                }else{
-                                    cout << "NULL ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
-
-                        cout << "MINE: " << myMap.size() << endl;
-                        for(int i = 0; i < myMap.size(); i++){
-                            for(int j = 0; j < myMap[i].size(); j++){
-                                if(myMap[i][j].type != "Landscape"){
-                                    cout << myMap[i][j].type << " ";
-                                }else{
-                                    cout << "Landscape ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
                 }
 
                 break;
@@ -352,7 +330,7 @@ void GameSimulation::processEvents(){
 }
 
 
-void GameSimulation::update() {
+void GameSimulation::update(sf::Time deltaTime) {
     const float cameraSpeed = 200.0f;
     sf::Vector2f cameraMove(0.f, 0.f);
 
@@ -362,16 +340,16 @@ void GameSimulation::update() {
 
     // Check keyboard input for camera movement
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        cameraMove.x -= cameraSpeed;
+        cameraMove.x -= cameraSpeed * deltaTime.asSeconds(); // Move left
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        cameraMove.x += cameraSpeed;
+        cameraMove.x += cameraSpeed * deltaTime.asSeconds(); // Move right
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        cameraMove.y -= cameraSpeed;
+        cameraMove.y -= cameraSpeed * deltaTime.asSeconds(); // Move up
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        cameraMove.y += cameraSpeed;
+        cameraMove.y += cameraSpeed * deltaTime.asSeconds(); // Move down
     }
 
     // Move the camera view
@@ -445,6 +423,7 @@ void GameSimulation::drawFrame() {
 
             // Draw the sprite for each CityItem in myMap
             window.draw(cityItem.sprite);
+
 
         }
     }

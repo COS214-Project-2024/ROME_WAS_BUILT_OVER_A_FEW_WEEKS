@@ -15,6 +15,7 @@ Road::Road() : trafficState(new LowTraffic()) {
     cost = 100;
     concreteCost = 10;
     steelCost = 10;
+    woodCost = 0;
 }
 
 Road::~Road() {
