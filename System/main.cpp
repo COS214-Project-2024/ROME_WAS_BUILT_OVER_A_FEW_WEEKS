@@ -408,6 +408,58 @@ int main(){
     residentialComplex2->printResidentialComplexState();
 
     // TEST REMOVING 
+    cout << "\n=======================================================================" << endl;
+    cout << "                         TEST REMOVING" << endl;
+    cout << "=======================================================================" << endl;
+
+    // REMOVE CITY HALL
+    cout << "\n============ REMOVE CITY HALL ============" << endl;
+    cityHall->removeStructure();
+
+    // REMOVE COMMERICAL BUILDING
+    cout << "\n======== REMOVE COMMERICAL BUILDING ========" << endl;
+    shop1->removeStructure();
+
+    cout << "\nResidential Complex 1" << endl;
+    residentialComplex1->printResidentialComplexState();
+    cout << "\nResidential Complex 2" << endl;
+    residentialComplex2->printResidentialComplexState();
+    cout << "==============================================" << endl;
+
+    // REMOVE LANDMARK
+    cout << "============= REMOVE LANDMARK =============" << endl;
+    colosseum->removeStructure();
+
+    cout << "\nResidential Complex 1" << endl;
+    residentialComplex1->printResidentialComplexState();
+    cout << "\nResidential Complex 2" << endl;
+    residentialComplex2->printResidentialComplexState();
+    cout << "==============================================" << endl;
+
+    // REMOVE PLANT
+    cout << "============== REMOVE PLANT ==============" << endl;
+    powerWaterPlant->removeStructure();
+
+    cout << "\nResidential Complex 1" << endl;
+    residentialComplex1->printResidentialComplexState();
+    cout << "\nResidential Complex 2" << endl;
+    residentialComplex2->printResidentialComplexState();
+    cout << "==============================================" << endl;
+
+    // REMOVE RESIDENTIAL COMPLEX
+    cout << "========= REMOVE RESIDENTIAL COMPLEX =========" << endl;
+    residentialComplex2->removeStructure();
+
+    cout << "\nResidential Complex 1" << endl;
+    residentialComplex1->printResidentialComplexState();
+    cout << "\nResidential Complex 2" << endl;
+    residentialComplex2->printResidentialComplexState();
+    cout << "==============================================" << endl;
+
+    // REMOVE ROAD
+    cout << "\nREMOVE ROAD" << endl;
+    road1->removeStructure();
+    cout << "ROAD 1" << endl;
 
 
 

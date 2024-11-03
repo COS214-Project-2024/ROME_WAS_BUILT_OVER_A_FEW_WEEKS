@@ -26,7 +26,7 @@ const int DEFAULT_HEIGHT = 20;
 const int DEFAULT_WIDTH = 20;
 
 
-CityMap::CityMap()  : map(DEFAULT_HEIGHT, std::vector<CityStructure*>(DEFAULT_HEIGHT, nullptr)) {
+CityMap::CityMap()  : map(DEFAULT_HEIGHT, std::vector<CityStructure*>(DEFAULT_WIDTH, nullptr)) {
     // Here, map is initialized as a DEFAULT 2D vector of nullptr pointers.
     for (int i = 0; i < DEFAULT_HEIGHT; i++) {
         for (int j = 0; j < DEFAULT_WIDTH; j++) {
