@@ -19,13 +19,24 @@ std::string IndustrialBuilding::getStructureType() {
 bool IndustrialBuilding::placeStructure(int x, int y, CityMap* cityMap) {
     bool placed = CityStructure::placeStructure(x, y, cityMap);
     if (placed) {
-        cityMap->addIndustrialBuilding(this);
+        cityMap->addBuilding(this);
         return true;
-    }else{
+    }
+    else {
         return false;
     }
 }
 
+bool IndustrialBuilding::removeStructure() {
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        cityMap->removeIndustrialBuilding(this);
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 
 

@@ -33,18 +33,26 @@ class ResidentialComplex : public ResidentialComponent {
         bool placeStructure(int x, int y, CityMap* cityMap);
         void newRoadWasAdded();
         void newCommercialBuildingWasAdded();
-        void newIndustrialBuildingWasAdded();
+        // void newIndustrialBuildingWasAdded();
+        void newPowerPlantWasAdded();
+        void newWaterPlantWasAdded();
+        void newWastePlantWasAdded();
+        void newSewagePlantWasAdded();
         void newLandmarkWasAdded();
 
-        void removeStructure();
+        bool removeStructure();
         void roadWasRemoved();
         void commercialBuildingWasRemoved();
-        void industrialBuildingWasRemoved();
+        // void industrialBuildingWasRemoved();
+        void powerPlantWasRemoved();
+        void waterPlantWasRemoved();
+        void wastePlantWasRemoved();
+        void sewagePlantWasRemoved();
         void landmarkWasRemoved();
 
         int getCapacity(); // Retrieves the member variable capacity instead of recalculating it
 
-        void addResidentialComponent(ResidentialComponent* residential);
+        void addResidentialComponent(ResidentialComponent* residential, CityMap* cityMap);
         void removeResidentialComponent(ResidentialComponent* residential);
         int calculateCapacity();
         int getCost();

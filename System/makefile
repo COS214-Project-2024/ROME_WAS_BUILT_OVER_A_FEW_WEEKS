@@ -64,3 +64,10 @@ clean:
 # Run the program
 run: $(TARGET)
 	./$(TARGET)
+
+# Clean up all generated files
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
+# Rebuild everything
+rebuild: clean $(TARGET)

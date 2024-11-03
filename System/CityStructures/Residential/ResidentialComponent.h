@@ -14,7 +14,7 @@ class ResidentialComponent : public CityStructure {
         virtual std::string getStructureType() = 0;
 
         virtual bool placeStructure(int x, int y, CityMap* cityMap) = 0;
-        virtual void removeStructure() = 0;
+        virtual bool removeStructure() = 0;
         
         virtual int getCapacity() = 0; // retrieves the memeber variable capacity whereas calculateCapacity() re calculates the capacity every time
 

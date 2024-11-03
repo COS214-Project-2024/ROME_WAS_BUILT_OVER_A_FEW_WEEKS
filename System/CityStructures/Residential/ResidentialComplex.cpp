@@ -18,6 +18,9 @@ ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
     EducationSatisfaction = 5;
     safetySatisfaction = 5;
     bonusSatisfaction = 0;
+    woodCost = residential->getWoodCost();
+    steelCost = residential->getSteelCost();
+    concreteCost = residential->getConcreteCost();
 
     satisfaction = 15;
     capacity = residential->getCapacity();
@@ -40,25 +43,44 @@ bool ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
     if (placed) {
         cityMap->addResidentialComplex(this);
         return true;
-    }else{
+    }
+    else {
         return false;
     }
 }
 
 void ResidentialComplex::newRoadWasAdded() {
-    std::cout << "New road was added" << std::endl;
     calculateTrafficSatisfaction(); // sets the traffic satisfaction
-    std::cout << "Traffic satisfaction: " << std::endl;
     calculateSatisfaction();
 }
 
 void ResidentialComplex::newCommercialBuildingWasAdded() {
-    EmploymentSatisfaction = 14;
+    EmploymentSatisfaction = EmploymentSatisfaction + 14;
     calculateSatisfaction();
 }
 
-void ResidentialComplex::newIndustrialBuildingWasAdded() {  // FIX
-    EmploymentSatisfaction = 14;
+// void ResidentialComplex::newIndustrialBuildingWasAdded() {  // FIX
+//     EmploymentSatisfaction = 14;
+//     calculateSatisfaction();
+// }
+
+void ResidentialComplex::newPowerPlantWasAdded() {
+    PowerSatisfaction = PowerSatisfaction + 14;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::newWaterPlantWasAdded() {
+    WaterSatisfaction = WaterSatisfaction + 14;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::newWastePlantWasAdded() {
+    WasteSatisfaction = WasteSatisfaction + 14;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::newSewagePlantWasAdded() {
+    SewageSatisfaction = SewageSatisfaction + 14;
     calculateSatisfaction();
 }
 
@@ -69,9 +91,15 @@ void ResidentialComplex::newLandmarkWasAdded() {
 
 // REMOVAL CODE
 
-void ResidentialComplex::removeStructure() {
-    CityStructure::removeStructure();
-    cityMap->removeResidentialComplex(this);
+bool ResidentialComplex::removeStructure() {
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        cityMap->removeResidentialComplex(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void ResidentialComplex::roadWasRemoved() {
@@ -80,12 +108,32 @@ void ResidentialComplex::roadWasRemoved() {
 }
 
 void ResidentialComplex::commercialBuildingWasRemoved() {
-    EmploymentSatisfaction = 0;
+    EmploymentSatisfaction = EmploymentSatisfaction - 14;
     calculateSatisfaction();
 }
 
-void ResidentialComplex::industrialBuildingWasRemoved() {
-    EmploymentSatisfaction -= 1;
+// void ResidentialComplex::industrialBuildingWasRemoved() {
+//     EmploymentSatisfaction -= 1;
+//     calculateSatisfaction();
+// }
+
+void ResidentialComplex::powerPlantWasRemoved() {
+    PowerSatisfaction = PowerSatisfaction - 14;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::waterPlantWasRemoved() {
+    WaterSatisfaction = WaterSatisfaction - 14;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::wastePlantWasRemoved() {
+    WasteSatisfaction = WasteSatisfaction - 14;
+    calculateSatisfaction();
+}
+
+void ResidentialComplex::sewagePlantWasRemoved() {
+    SewageSatisfaction = SewageSatisfaction - 14;
     calculateSatisfaction();
 }
 
@@ -102,7 +150,12 @@ int ResidentialComplex::getCapacity() {
     return capacity;
 }
 
-void ResidentialComplex::addResidentialComponent(ResidentialComponent* residential) {
+void ResidentialComplex::addResidentialComponent(ResidentialComponent* residential, CityMap* cityMap) {
+    bool canAdd = cityMap->checkResidentialComponent(residential, cityMap);
+    if(!canAdd) {
+        std::cout << "Cannot add the residential component" << std::endl;
+        return;
+    }
     std::cout << "Adding Residential Component" << std::endl;
     residentialComponents.push_back(residential);
     std::cout << "Informing the city map" << std::endl;
@@ -205,7 +258,56 @@ int ResidentialComplex::calculateSatisfaction() {
     // 7. Facilities (Healthcare, education, security and entertainment) // entartainment can just be landmarks
 
     int oldSatisfaction = satisfaction;
-    satisfaction = trafficSatisfaction + EmploymentSatisfaction + PowerSatisfaction + WaterSatisfaction + WasteSatisfaction + SewageSatisfaction + HealthSatisfaction + EducationSatisfaction + safetySatisfaction;
+
+    // cap all sub satisfactions
+    int cappedTrafficSatisfaction = trafficSatisfaction;
+    if (trafficSatisfaction > 15) {
+        cappedTrafficSatisfaction = 15;
+    }
+
+    int cappedEmploymentSatisfaction = EmploymentSatisfaction;
+    if (EmploymentSatisfaction > 14) {
+        cappedEmploymentSatisfaction = 14;
+    }
+
+    int cappedPowerSatisfaction = PowerSatisfaction;
+    if (PowerSatisfaction > 14) {
+        cappedPowerSatisfaction = 14;
+    }
+
+    int cappedWaterSatisfaction = WaterSatisfaction;
+    if (WaterSatisfaction > 14) {
+        cappedWaterSatisfaction = 14;
+    }
+
+    int cappedWasteSatisfaction = WasteSatisfaction;
+    if (WasteSatisfaction > 14) {
+        cappedWasteSatisfaction = 14;
+    }
+
+    int cappedSewageSatisfaction = SewageSatisfaction;
+    if (SewageSatisfaction > 14) {
+        cappedSewageSatisfaction = 14;
+    }
+
+    int cappedHealthSatisfaction = HealthSatisfaction;
+    if (HealthSatisfaction > 5) {
+        cappedHealthSatisfaction = 5;
+    }
+
+    int cappedEducationSatisfaction = EducationSatisfaction;
+    if (EducationSatisfaction > 5) {
+        cappedEducationSatisfaction = 5;
+    }
+
+    int cappedSafetySatisfaction = safetySatisfaction;
+    if (safetySatisfaction > 5) {
+        cappedSafetySatisfaction = 5;
+    }
+
+
+    // satisfaction = trafficSatisfaction + EmploymentSatisfaction + PowerSatisfaction + WaterSatisfaction + WasteSatisfaction + SewageSatisfaction + HealthSatisfaction + EducationSatisfaction + safetySatisfaction;
+    satisfaction = cappedTrafficSatisfaction + cappedEmploymentSatisfaction + cappedPowerSatisfaction + cappedWaterSatisfaction + cappedWasteSatisfaction + cappedSewageSatisfaction + cappedHealthSatisfaction + cappedEducationSatisfaction + cappedSafetySatisfaction;
     // Additonal bonus for landmarks, railway level, airport level
     if (satisfaction + bonusSatisfaction > 100) {
         satisfaction = 100;
@@ -227,18 +329,86 @@ int ResidentialComplex::getCost() {
 }
 
 void ResidentialComplex::printResidentialComplexState() {
+    // std::cout << "Residential Complex State" << std::endl;
+    // std::cout << "Traffic Satisfaction: " << trafficSatisfaction << std::endl;
+    // std::cout << "Employment Satisfaction: " << EmploymentSatisfaction << std::endl;
+    // std::cout << "Power Satisfaction: " << PowerSatisfaction << std::endl;
+    // std::cout << "Water Satisfaction: " << WaterSatisfaction << std::endl;
+    // std::cout << "Waste Satisfaction: " << WasteSatisfaction << std::endl;
+    // std::cout << "Sewage Satisfaction: " << SewageSatisfaction << std::endl;
+    // std::cout << "Health Satisfaction: " << HealthSatisfaction << std::endl;
+    // std::cout << "Education Satisfaction: " << EducationSatisfaction << std::endl;
+    // std::cout << "Safety Satisfaction: " << safetySatisfaction << std::endl;
+    // std::cout << "Bonus Satisfaction: " << bonusSatisfaction << std::endl;
+    // std::cout << "Total Satisfaction: " << satisfaction << std::endl;
+    // std::cout << "Capacity: " << capacity << std::endl;
+
+    // DISPLAY CAPPED VALUES
     std::cout << "Residential Complex State" << std::endl;
-    std::cout << "Traffic Satisfaction: " << trafficSatisfaction << std::endl;
-    std::cout << "Employment Satisfaction: " << EmploymentSatisfaction << std::endl;
-    std::cout << "Power Satisfaction: " << PowerSatisfaction << std::endl;
-    std::cout << "Water Satisfaction: " << WaterSatisfaction << std::endl;
-    std::cout << "Waste Satisfaction: " << WasteSatisfaction << std::endl;
-    std::cout << "Sewage Satisfaction: " << SewageSatisfaction << std::endl;
-    std::cout << "Health Satisfaction: " << HealthSatisfaction << std::endl;
-    std::cout << "Education Satisfaction: " << EducationSatisfaction << std::endl;
-    std::cout << "Safety Satisfaction: " << safetySatisfaction << std::endl;
+    if (trafficSatisfaction > 15) {
+        std::cout << "Traffic Satisfaction: 15" << std::endl;
+    }
+    else {
+        std::cout << "Traffic Satisfaction: " << trafficSatisfaction << std::endl;
+    }
+
+    if (EmploymentSatisfaction > 14) {
+        std::cout << "Employment Satisfaction: 14" << std::endl;
+    }
+    else {
+        std::cout << "Employment Satisfaction: " << EmploymentSatisfaction << std::endl;
+    }
+
+    if (PowerSatisfaction > 14) {
+        std::cout << "Power Satisfaction: 14" << std::endl;
+    }
+    else {
+        std::cout << "Power Satisfaction: " << PowerSatisfaction << std::endl;
+    }
+
+    if (WaterSatisfaction > 14) {
+        std::cout << "Water Satisfaction: 14" << std::endl;
+    }
+    else {
+        std::cout << "Water Satisfaction: " << WaterSatisfaction << std::endl;
+    }
+
+    if (WasteSatisfaction > 14) {
+        std::cout << "Waste Satisfaction: 14" << std::endl;
+    }
+    else {
+        std::cout << "Waste Satisfaction: " << WasteSatisfaction << std::endl;
+    }
+
+    if (SewageSatisfaction > 14) {
+        std::cout << "Sewage Satisfaction: 14" << std::endl;
+    }
+    else {
+        std::cout << "Sewage Satisfaction: " << SewageSatisfaction << std::endl;
+    }
+
+    if (HealthSatisfaction > 5) {
+        std::cout << "Health Satisfaction: 5" << std::endl;
+    }
+    else {
+        std::cout << "Health Satisfaction: " << HealthSatisfaction << std::endl;
+    }
+
+    if (EducationSatisfaction > 5) {
+        std::cout << "Education Satisfaction: 5" << std::endl;
+    }
+    else {
+        std::cout << "Education Satisfaction: " << EducationSatisfaction << std::endl;
+    }
+
+    if (safetySatisfaction > 5) {
+        std::cout << "Safety Satisfaction: 5" << std::endl;
+    }
+    else {
+        std::cout << "Safety Satisfaction: " << safetySatisfaction << std::endl;
+    }
+
     std::cout << "Bonus Satisfaction: " << bonusSatisfaction << std::endl;
-    std::cout << "Total Satisfaction: " << satisfaction << std::endl;
-    std::cout << "Capacity: " << capacity << std::endl;
 }
+
 

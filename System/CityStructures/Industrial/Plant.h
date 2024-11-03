@@ -8,15 +8,16 @@ class IndustrialBuilding;
 
 class Plant : public IndustrialBuilding {
     protected:
+        static const int DEFAULT_RADIUS_OF_EFFECT = 5;
         int radiusOfEffect;
         string plantType;
     public:
-        Plant() {cost = 1000; woodCost = 100; steelCost = 100; concreteCost = 100;};
-        Plant(int radiusOfEffect) : radiusOfEffect(radiusOfEffect) {};
-        virtual ~Plant(){};
-        int getRadiusOfEffect();
+        Plant();
+        virtual ~Plant();
+        virtual int getRadiusOfEffect();
         virtual bool placeStructure(int x, int y, CityMap* cityMap);
-        virtual string getPlantType();
+        virtual bool removeStructure();
+        virtual string getPlantType() ;
         
 };
 

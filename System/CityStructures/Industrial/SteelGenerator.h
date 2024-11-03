@@ -7,7 +7,7 @@ class SteelGenerator : public GeneratorDecorator {
     public:
         SteelGenerator(){};
         SteelGenerator(Factory* factory) : GeneratorDecorator(factory) {this->factory = factory;};
-        ~SteelGenerator();
+        virtual ~SteelGenerator();
         int generate();
         int generateSteel();
         string getFactoryType();

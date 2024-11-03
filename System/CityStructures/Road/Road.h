@@ -18,7 +18,7 @@ class Road : public CityStructure {
         bool placeStructure(int x, int y, CityMap* cityMap);
         void newBuildingWasAdded();
 
-        void removeStructure();
+        bool removeStructure();
         void buildingWasRemoved();
 
         void calculateTraffic();
