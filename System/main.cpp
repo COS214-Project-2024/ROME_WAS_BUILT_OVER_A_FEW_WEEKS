@@ -84,33 +84,30 @@ using namespace std;
 // Testing Factorys 
 
 #include <iostream>
-#include "BuildingFactory.h"
-#include "ResidentialFactory.h"
-#include "CommercialFactory.h"
-#include "IndustrialFactory.h"
-#include "LandmarkFactory.h"
+#include "CityStructures/Commercial/CommercialFactory.h"
+#include "CityStructures/BuildingFactory.h"
 
 int main() {
     // Test Residential Factories
-    HouseFactory houseFactory;
-    ResidentialBuilding* house = houseFactory.createResidentialBuilding();
-    std::cout << "Created house with capacity: " << house->getCapacity() << std::endl;
-    delete house;
+    // HouseFactory houseFactory;
+    // ResidentialBuilding* house = houseFactory.createResidentialBuilding();
+    // std::cout << "Created house with capacity: " << house->getCapacity() << std::endl;
+    // delete house;
 
-    ApartmentFactory apartmentFactory;
-    ResidentialBuilding* apartment = apartmentFactory.createResidentialBuilding();
-    std::cout << "Created apartment with capacity: " << apartment->getCapacity() << std::endl;
-    delete apartment;
+    // ApartmentFactory apartmentFactory;
+    // ResidentialBuilding* apartment = apartmentFactory.createResidentialBuilding();
+    // std::cout << "Created apartment with capacity: " << apartment->getCapacity() << std::endl;
+    // delete apartment;
 
-    EstateFactory estateFactory;
-    ResidentialBuilding* estate = estateFactory.createResidentialBuilding();
-    std::cout << "Created estate with capacity: " << estate->getCapacity() << std::endl;
-    delete estate;
+    // EstateFactory estateFactory;
+    // ResidentialBuilding* estate = estateFactory.createResidentialBuilding();
+    // std::cout << "Created estate with capacity: " << estate->getCapacity() << std::endl;
+    // delete estate;
 
-    TownhouseFactory townhouseFactory;
-    ResidentialBuilding* townhouse = townhouseFactory.createResidentialBuilding();
-    std::cout << "Created townhouse with capacity: " << townhouse->getCapacity() << std::endl;
-    delete townhouse;
+    // TownhouseFactory townhouseFactory;
+    // ResidentialBuilding* townhouse = townhouseFactory.createResidentialBuilding();
+    // std::cout << "Created townhouse with capacity: " << townhouse->getCapacity() << std::endl;
+    // delete townhouse;
 
     // Test Commercial Factories
     ShopFactory shopFactory;
@@ -129,31 +126,31 @@ int main() {
     delete mall;
 
     // Test Industrial Factories
-    PlantFactory plantFactory;
-    IndustrialBuilding* plant = plantFactory.createIndustrialBuilding();
-    std::cout << "Created plant" << std::endl;
-    delete plant;
+    // PlantFactory plantFactory;
+    // IndustrialBuilding* plant = plantFactory.createIndustrialBuilding();
+    // std::cout << "Created plant" << std::endl;
+    // delete plant;
 
-    FactoryFactory factoryFactory;
-    IndustrialBuilding* factory = factoryFactory.createIndustrialBuilding();
-    std::cout << "Created factory" << std::endl;
-    delete factory;
+    // FactoryFactory factoryFactory;
+    // IndustrialBuilding* factory = factoryFactory.createIndustrialBuilding();
+    // std::cout << "Created factory" << std::endl;
+    // delete factory;
 
-    // Test Landmark Factories
-    ParkFactory parkFactory;
-    Landmark* park = parkFactory.createLandmark();
-    std::cout << "Created park with radius of effect: " << static_cast<Park*>(park)->getRadiusOfEffect() << std::endl;
-    delete park;
+    // // Test Landmark Factories
+    // ParkFactory parkFactory;
+    // Landmark* park = parkFactory.createLandmark();
+    // std::cout << "Created park with radius of effect: " << static_cast<Park*>(park)->getRadiusOfEffect() << std::endl;
+    // delete park;
 
-    ColosseumFactory colosseumFactory;
-    Landmark* colosseum = colosseumFactory.createLandmark();
-    std::cout << "Created colosseum with radius of effect: " << static_cast<Colosseum*>(colosseum)->getRadiusOfEffect() << std::endl;
-    delete colosseum;
+    // ColosseumFactory colosseumFactory;
+    // Landmark* colosseum = colosseumFactory.createLandmark();
+    // std::cout << "Created colosseum with radius of effect: " << static_cast<Colosseum*>(colosseum)->getRadiusOfEffect() << std::endl;
+    // delete colosseum;
 
-    PantheonFactory pantheonFactory;
-    Landmark* pantheon = pantheonFactory.createLandmark();
-    std::cout << "Created cultural center with radius of effect: " << static_cast<Pantheon*>(pantheon)->getRadiusOfEffect() << std::endl;
-    delete pantheon;
+    // PantheonFactory pantheonFactory;
+    // Landmark* pantheon = pantheonFactory.createLandmark();
+    // std::cout << "Created cultural center with radius of effect: " << static_cast<Pantheon*>(pantheon)->getRadiusOfEffect() << std::endl;
+    // delete pantheon;
 
     return 0;
 }

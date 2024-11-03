@@ -13,7 +13,7 @@ class Shop : public CommercialBuilding {
         ~Shop();
 
         std::string getCommercialBuildingType();
-        
+       
 };
 
 #endif

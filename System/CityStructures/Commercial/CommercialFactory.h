@@ -1,7 +1,7 @@
 #ifndef COMMERCIAL_FACTORY_H
 #define COMMERCIAL_FACTORY_H
 
-#include "BuildingFactory.h"
+#include "../BuildingFactory.h"
 #include "Shop.h"
 #include "Office.h"
 #include "Mall.h"
