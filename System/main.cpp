@@ -1,54 +1,70 @@
-#include <iostream>
-#include <vector>
+// Booster Structures
+#include "./BoosterStructures/Airport.h"
+#include "./BoosterStructures/BoosterStructures.h"
+#include "./BoosterStructures/Railway.h"
 
-#include "Factory.h"
-#include "GeneratorDecorator.h"
-#include "ConcreteGenerator.h"
-#include "SteelGenerator.h"
-#include "WoodGenerator.h"
-#include "Material.h"
-#include "Concrete.h"
-#include "Steel.h"
-#include "Wood.h"
-#include "Plant.h"
-#include "PlantDecorator.h"
-#include "PowerPlant.h"
-#include "WaterPlant.h"
-#include "WastePlant.h"
-#include "SewagePlant.h"
+// Check Adjacent Template
+#include "./CheckAdjacentTemplate/CheckAdjacent.h"
 
-#include "CityMap.h"
+// City Structures - Residential
+#include "./CityStructures/Residential/Apartment.h"
+#include "./CityStructures/Residential/Estate.h"
+#include "./CityStructures/Residential/House.h"
+#include "./CityStructures/Residential/ResidentialBuilding.h"
+#include "./CityStructures/Residential/ResidentialComplex.h"
+#include "./CityStructures/Residential/Townhouse.h"
+
+// City Structures - Commercial
+#include "./CityStructures/Commercial/CommercialBuilding.h"
+#include "./CityStructures/Commercial/Mall.h"
+#include "./CityStructures/Commercial/Office.h"
+#include "./CityStructures/Commercial/Shop.h"
+
+// City Structures - Industrial
+#include "./CityStructures/Industrial/Concrete.h"
+#include "./CityStructures/Industrial/ConcreteGenerator.h"
+#include "./CityStructures/Industrial/Factory.h"
+#include "./CityStructures/Industrial/IndustrialBuilding.h"
+#include "./CityStructures/Industrial/Plant.h"
+#include "./CityStructures/Industrial/PowerPlant.h"
+#include "./CityStructures/Industrial/SewagePlant.h"
+#include "./CityStructures/Industrial/Steel.h"
+#include "./CityStructures/Industrial/SteelGenerator.h"
+#include "./CityStructures/Industrial/Warehouse.h"
+#include "./CityStructures/Industrial/WastePlant.h"
+#include "./CityStructures/Industrial/WaterPlant.h"
+#include "./CityStructures/Industrial/Wood.h"
+#include "./CityStructures/Industrial/WoodGenerator.h"
+
+// City Structures - Landmark
+#include "./CityStructures/Landmark/Colosseum.h"
+#include "./CityStructures/Landmark/Landmark.h"
+#include "./CityStructures/Landmark/Pantheon.h"
+#include "./CityStructures/Landmark/Park.h"
+
+// City Structures - Road
+#include "./CityStructures/Road/HighTraffic.h"
+#include "./CityStructures/Road/LowTraffic.h"
+#include "./CityStructures/Road/MediumTraffic.h"
+#include "./CityStructures/Road/Road.h"
+
+// Political System
+#include "./PoliticalSystem/Authoritarianism.h"
+#include "./PoliticalSystem/Communsim.h"
+#include "./PoliticalSystem/Democracy.h"
+#include "./PoliticalSystem/PoliticalSystem.h"
+
+// Satisfaction Handlers
+#include "./SatisfactionHandler/HighSatisfactionHandler.h"
+#include "./SatisfactionHandler/LowSatisfactionHandler.h"
+#include "./SatisfactionHandler/MediumSatisfactionHandler.h"
+#include "./SatisfactionHandler/SatisfactionHandler.h"
+
+// Core City Classes
 #include "CityHall.h"
+#include "CityMap.h"
+#include "./CityStructures/CityStructure.h"
 
-// BUILDING TYPES
-#include "CityStructure.h"  
-#include "Road.h"
-#include "ResidentialComplex.h"
-#include "ResidentialBuilding.h"
-#include "CommercialBuilding.h"
-#include "IndustrialBuilding.h"
-#include "Landmark.h"
-
-// RESIDENTIAL BUILDING TYPES
-#include "House.h"
-#include "Apartment.h"
-#include "Townhouse.h"
-#include "Estate.h"
-
-// COMMERCIAL BUILDING TYPES
-#include "Shop.h"
-#include "Mall.h"
-#include "Office.h"
-
-// INDUSTRIAL BUILDING TYPES
-#include "Plant.h"
-#include "Factory.h"
-#include "Warehouse.h"
-
-// LANDMARK TYPES
-#include "Colosseum.h"
-#include "Pantheon.h"
-#include "Park.h"
 
 // GRAPHICS
 #include <SFML/Graphics.hpp>
@@ -187,7 +203,31 @@ int main(){
 
 
 
-    
+    cout << "Bye!" << endl; 
+
+    /*// =====================
+    // === GRAPHICS PART ===
+    // =====================
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
+    // =====================
+
+    */
   
 
     return 0;

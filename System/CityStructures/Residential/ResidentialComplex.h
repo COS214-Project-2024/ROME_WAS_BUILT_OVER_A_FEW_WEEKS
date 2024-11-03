@@ -30,7 +30,7 @@ class ResidentialComplex : public ResidentialComponent {
         ~ResidentialComplex();
         std::string getStructureType();
 
-        void placeStructure(int x, int y, CityMap* cityMap);
+        bool placeStructure(int x, int y, CityMap* cityMap);
         void newRoadWasAdded();
         void newCommercialBuildingWasAdded();
         void newIndustrialBuildingWasAdded();

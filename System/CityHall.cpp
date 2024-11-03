@@ -23,6 +23,9 @@ CityHall::CityHall(){
     popeCoins = 1000000;
     residentialSatisfaction = 0;
     citySatisfaction = 100;
+    maxWood = 1000;
+    maxSteel = 1000;
+    maxConcrete = 1000;
     
     railway = new Railway();
     airport = new Airport();
@@ -172,15 +175,33 @@ CityHall::~CityHall(){
     delete politicalSystem;
 }
 
-void CityHall::placeStructure(int x, int y, CityMap* cityMap) {
+bool CityHall::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
+    if(cityMap == nullptr){
+        std::cout << "CityMap is null" << std::endl;
+        return false;
+    }
     cityMap->setCityHall(this);
-    CityStructure::placeStructure(x, y, cityMap); 
+
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        cityMap->addStructure(x, y, this);
+        return true;
+    }
+    else {
+        return false;
+    }
     
 }
 
 void CityHall::removeStructure() {
     cityMap->removeStructure(x, y);
+}
+
+void CityHall::increaseStorageCapacity(){
+    maxWood += 100;
+    maxSteel += 100;
+    maxConcrete += 100;
 }
 
 void CityHall::increaseNumResidentialComplexes(){
@@ -225,6 +246,47 @@ bool CityHall::deductPopeCoins(int coins){
     return true;
 }
 
+bool CityHall::addWood(int wood){
+    this->wood += wood;
+    return true;
+}
+
+bool CityHall::deductWood(int wood){
+    if (this->wood - wood < 0){
+        std::cout << "Not enough wood" << std::endl;
+        return false;
+    }
+    this->wood = this->wood - wood;
+    return true;
+}
+
+bool CityHall::addSteel(int steel){
+    this->steel += steel;
+    return true;
+}
+
+bool CityHall::deductSteel(int steel){
+    if (this->steel - steel < 0){
+        std::cout << "Not enough steel" << std::endl;
+        return false;
+    }
+    this->steel = this->steel - steel;
+    return true;
+}
+
+bool CityHall::addConcrete(int concrete){
+    this->concrete += concrete;
+    return true;
+}
+
+bool CityHall::deductConcrete(int concrete){
+    if (this->concrete - concrete < 0){
+        std::cout << "Not enough concrete" << std::endl;
+        return false;
+    }
+    this->concrete = this->concrete - concrete;
+    return true;
+}
 
 void CityHall::increaseCapacity(int capacity){
     std::cout << "Increasing capacity" << std::endl;

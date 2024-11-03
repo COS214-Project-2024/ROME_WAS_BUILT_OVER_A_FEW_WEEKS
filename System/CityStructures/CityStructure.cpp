@@ -11,7 +11,7 @@ CityStructure::CityStructure() {
     sprite = new sf::Sprite();
 }
 
-void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
+bool CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
     std::cout << "Placing the structure" << std::endl;
     bool placed = cityMap->addStructure(x, y, this);
     if (placed) {
@@ -21,9 +21,11 @@ void CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
 
         sprite->setPosition(x*128 + 128, y*128 + 128);
         sprite->setScale(2, 2);
+        return true;
     }
     else {
         std::cout << "Could not place the structure" << std::endl;
+        return false;
     }
     
 
@@ -52,4 +54,16 @@ int CityStructure::getY() {
 int CityStructure::getCost() {
     std::cout << "Getting cost" << cost << std::endl;
     return cost;
+}
+
+int CityStructure::getWoodCost() {
+    return woodCost;
+}
+
+int CityStructure::getSteelCost() {
+    return steelCost;
+}
+
+int CityStructure::getConcreteCost() {
+    return concreteCost;
 }
