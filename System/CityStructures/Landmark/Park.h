@@ -12,7 +12,6 @@ class Park : public Landmark {
         Park();
         ~Park();
         std::string getLandmarkType();
-
 };
 
 #endif

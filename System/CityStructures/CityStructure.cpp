@@ -8,7 +8,6 @@ CityStructure::CityStructure() {
     x = -1;
     y = -1;
     cityMap = nullptr;
-    sprite = new sf::Sprite();
 }
 
 bool CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
@@ -18,9 +17,6 @@ bool CityStructure::placeStructure(int x, int y, CityMap* cityMap) {
         this->x = x;
         this->y = y;
         this->cityMap = cityMap;
-
-        sprite->setPosition(x*128 + 128, y*128 + 128);
-        sprite->setScale(2, 2);
         return true;
     }
     else {

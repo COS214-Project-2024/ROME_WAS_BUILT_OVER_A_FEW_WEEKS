@@ -2,7 +2,6 @@
 #define CITY_STRUCTURE_H
 
 #include <string>
-#include <SFML/Graphics.hpp>
 
 class ResidentialComplex;
 class CityMap;
@@ -52,9 +51,6 @@ class CityStructure {
         int getSteelCost();
         int getConcreteCost();
         
-
-        // GRAPHICS
-        sf::Sprite* sprite;
 
 };
 

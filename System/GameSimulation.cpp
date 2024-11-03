@@ -6,14 +6,61 @@
 #include <iostream>
 #include <random>
 
+#include "Factory.h"
+#include "GeneratorDecorator.h"
+#include "ConcreteGenerator.h"
+#include "SteelGenerator.h"
+#include "WoodGenerator.h"
+#include "Material.h"
+#include "Concrete.h"
+#include "Steel.h"
+#include "Wood.h"
+#include "Plant.h"
+#include "PlantDecorator.h"
+#include "PowerPlant.h"
+#include "WaterPlant.h"
+#include "WastePlant.h"
+#include "SewagePlant.h"
 
-#include "GameSimulation.h"
-#include "CityStructure.h"
 #include "CityMap.h"
 #include "CityHall.h"
 
+// BUILDING TYPES
+#include "CityStructure.h"  
+#include "Road.h"
+#include "ResidentialComplex.h"
+#include "ResidentialBuilding.h"
+#include "CommercialBuilding.h"
+#include "IndustrialBuilding.h"
+#include "Landmark.h"
+
+// RESIDENTIAL BUILDING TYPES
+#include "House.h"
+#include "Apartment.h"
+#include "Townhouse.h"
+#include "Estate.h"
+
+// COMMERCIAL BUILDING TYPES
+#include "Shop.h"
+#include "Mall.h"
+#include "Office.h"
+
+// INDUSTRIAL BUILDING TYPES
+#include "Plant.h"
+#include "Factory.h"
+#include "Warehouse.h"
+
+// LANDMARK TYPES
+#include "Colosseum.h"
+#include "Pantheon.h"
+#include "Park.h"
+
 #include <iostream>
 #include <random>
+
+#include <thread>
+#include <chrono>
+
 
 GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     // Set references to game objects
@@ -23,6 +70,9 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     // Create window (no need to use new)
     window.create(sf::VideoMode(1120, 630), "Rome Was Built In a Day", sf::Style::Close);
     timePerFrame = sf::seconds(1.f / 60.f);
+
+    // Sleep
+    //std::this_thread::sleep_for(std::chrono::seconds(8));
 
     // Viewport (cameraView as a regular member)
     cameraView.setSize(1120, 630);
@@ -51,6 +101,8 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     textures["Warehouse"].loadFromFile("../images/spr_Warehouse.png");
     textures["Border1"].loadFromFile("../images/spr_Border1.png");
     textures["Border2"].loadFromFile("../images/spr_Border2.png");
+
+    //std::this_thread::sleep_for(std::chrono::seconds(2));
 
     // Create the map
     createMap();
@@ -128,7 +180,9 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     borderMap.push_back(topRight);
     borderMap.push_back(bottomLeft);
     borderMap.push_back(bottomRight);
+
 }
+
 
 void GameSimulation::createMap() {
     std::vector<std::vector<CityStructure*>> map = cityMap->getMap();
@@ -189,30 +243,24 @@ int GameSimulation::randomLandscapeTexture() {
 
 
 
-void GameSimulation::gameRun(){
-    sf::Clock clock;
-    sf::Time elapsed = sf::Time::Zero;
+void GameSimulation::gameRun() {
+    sf::Time frameLimit = sf::milliseconds(20);  // Roughly 60 FPS
+    sf::Clock frameClock;
 
-
-    // Run game simulation while the window is open
-    while (window.isOpen()){
-
-        // === PROCESS EVENTS ===
+    while (window.isOpen()) {
         processEvents();
-
-        // Force the game to run at 60fps
-        elapsed += clock.restart();
-
-        while (elapsed >= timePerFrame){
-            elapsed -= timePerFrame;
-            update(timePerFrame);
-        }
-
-
-        // === DRAW THE FRAME ===
+        update();
         drawFrame();
+
+        sf::Time frameTime = frameClock.getElapsedTime();
+        if (frameTime < frameLimit) {
+            sf::Time timeToSleep = frameLimit - frameTime;
+            std::this_thread::sleep_for(std::chrono::milliseconds(timeToSleep.asMilliseconds()));
+        }
+        frameClock.restart();
     }
 }
+
 
 
 void GameSimulation::processEvents(){
@@ -225,6 +273,78 @@ void GameSimulation::processEvents(){
             case sf::Event::Closed:
                 window.close();
                 break;
+
+            case sf::Event::KeyPressed:
+                if (curEvent.key.code == sf::Keyboard::Num1){
+
+                        std::vector<std::vector<CityStructure*> > map1 = cityMap->getMap();
+                        cout << "CITY MAP: " << map1.size() << endl;
+                        for(int i = 0; i < map1.size(); i++){
+                            for(int j = 0; j < map1[i].size(); j++){
+                                if(map1[i][j] != nullptr){
+                                    cout << map1[i][j]->getStructureType() << " ";
+                                }else{
+                                    cout << "NULL ";
+                                }
+                            }
+                            cout << endl;
+                        }
+
+
+                        cout << "MINE: " << myMap.size() << endl;
+                        for(int i = 0; i < myMap.size(); i++){
+                            for(int j = 0; j < myMap[i].size(); j++){
+                                if(myMap[i][j].type != "Landscape"){
+                                    cout << myMap[i][j].type << " ";
+                                }else{
+                                    cout << "Landscape ";
+                                }
+                            }
+                            cout << endl;
+                        }
+
+
+
+
+                    // CREATE AND PLACE ROADS
+                    Road* road1 = new Road();
+                    road1->placeStructure(0, 1, cityMap);
+                    Road* road2 = new Road();
+                    road2->placeStructure(1, 1, cityMap);
+                    Road* road3 = new Road();
+                    road3->placeStructure(2, 1, cityMap);
+
+
+
+                        std::vector<std::vector<CityStructure*> > map2 = cityMap->getMap();
+                        cout << "CITY MAP: " << map2.size() << endl;
+                        for(int i = 0; i < map2.size(); i++){
+                            for(int j = 0; j < map2[i].size(); j++){
+                                if(map2[i][j] != nullptr){
+                                    cout << map2[i][j]->getStructureType() << " ";
+                                }else{
+                                    cout << "NULL ";
+                                }
+                            }
+                            cout << endl;
+                        }
+
+
+                        cout << "MINE: " << myMap.size() << endl;
+                        for(int i = 0; i < myMap.size(); i++){
+                            for(int j = 0; j < myMap[i].size(); j++){
+                                if(myMap[i][j].type != "Landscape"){
+                                    cout << myMap[i][j].type << " ";
+                                }else{
+                                    cout << "Landscape ";
+                                }
+                            }
+                            cout << endl;
+                        }
+
+                }
+
+                break;
         }
 
     }
@@ -232,7 +352,7 @@ void GameSimulation::processEvents(){
 }
 
 
-void GameSimulation::update(sf::Time deltaTime) {
+void GameSimulation::update() {
     const float cameraSpeed = 200.0f;
     sf::Vector2f cameraMove(0.f, 0.f);
 
@@ -242,16 +362,16 @@ void GameSimulation::update(sf::Time deltaTime) {
 
     // Check keyboard input for camera movement
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        cameraMove.x -= cameraSpeed * deltaTime.asSeconds(); // Move left
+        cameraMove.x -= cameraSpeed;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        cameraMove.x += cameraSpeed * deltaTime.asSeconds(); // Move right
+        cameraMove.x += cameraSpeed;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        cameraMove.y -= cameraSpeed * deltaTime.asSeconds(); // Move up
+        cameraMove.y -= cameraSpeed;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        cameraMove.y += cameraSpeed * deltaTime.asSeconds(); // Move down
+        cameraMove.y += cameraSpeed;
     }
 
     // Move the camera view
@@ -277,6 +397,7 @@ void GameSimulation::update(sf::Time deltaTime) {
 
 
 void GameSimulation::drawFrame() {
+    window.setActive(true);
     // Clear the window for the new frame
     window.clear();
 
@@ -324,6 +445,7 @@ void GameSimulation::drawFrame() {
 
             // Draw the sprite for each CityItem in myMap
             window.draw(cityItem.sprite);
+
         }
     }
 

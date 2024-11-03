@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 
 #include "CityHall.h"
 #include "SatisfactionHandler/LowSatisfactionHandler.h"
@@ -9,12 +8,11 @@
 #include "BoosterStructures/Railway.h"
 #include "BoosterStructures/Airport.h"
 #include "PoliticalSystem/PoliticalSystem.h"
-#include "GameSimulation.h"
 
 CityHall* CityHall::cityHall = nullptr;
 
 CityHall::CityHall(){
-
+    
     numCitizens = 0;
     cityCapacity = 0;
     numResidentialComplexes = 0;
@@ -44,14 +42,11 @@ CityHall::CityHall(){
     MediumSatisfactionHandler* mediumHandler = new MediumSatisfactionHandler(lowHandler);
     HighSatisfactionHandler* highHandler = new HighSatisfactionHandler(mediumHandler);
     this->chainOfResponsibility = highHandler;
-
-    
 }
 
 // SINGLETON
 CityHall *CityHall::getInstance(){
     if (cityHall == nullptr){
-
         cityHall = new CityHall();
     }
 

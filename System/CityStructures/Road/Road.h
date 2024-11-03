@@ -25,7 +25,7 @@ class Road : public CityStructure {
 
         void setTrafficState(TrafficState* trafficState);
         int getTrafficLevel();
-    
+        
 
         
 };

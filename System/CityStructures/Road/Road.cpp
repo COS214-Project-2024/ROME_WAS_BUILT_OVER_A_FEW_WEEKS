@@ -9,8 +9,6 @@
 
 #include "../../CheckAdjacentTemplate/CheckAdjacent.h" 
 
-#include "../../GameSimulation.h"
-
 
 Road::Road() : trafficState(new LowTraffic()) {
     cityMap = nullptr;

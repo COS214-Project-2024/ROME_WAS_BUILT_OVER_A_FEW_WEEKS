@@ -12,7 +12,7 @@ class House : public ResidentialBuilding {
         ~House();
 
         std::string getResidentialBuildingType();
-
+        
 };
 
 #endif

@@ -13,7 +13,6 @@ class Estate : public ResidentialBuilding {
         
         std::string getResidentialBuildingType();
         
-        
 };
 
 #endif
