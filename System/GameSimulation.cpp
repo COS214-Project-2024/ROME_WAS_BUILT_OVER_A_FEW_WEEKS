@@ -182,6 +182,8 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     borderMap.push_back(bottomLeft);
     borderMap.push_back(bottomRight);
 
+    shopMenuOpen = false;
+
 }
 
 

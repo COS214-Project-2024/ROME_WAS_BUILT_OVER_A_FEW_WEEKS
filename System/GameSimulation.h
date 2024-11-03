@@ -46,6 +46,10 @@ private:
     void createMap();
     std::string determineTexture(CityStructure* structure, const std::vector<std::vector<CityStructure*>>& map);
     int randomLandscapeTexture();
+
+    bool shopMenuOpen;
+    sf::Sprite shopMenuSprite;
+    std::vector<sf::Sprite> shopButtons;
 };
 
 #endif
