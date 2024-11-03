@@ -37,12 +37,42 @@ private:
     sf::Time timePerFrame;
     sf::View cameraView;
 
+    // Satisfaction
+    sf::Font font;
+    sf::Text satisfactionText;
+    sf::Sprite satisfactionBackground;
+    sf::Sprite satisfactionIcon;
+
+    // Materials
+    sf::Sprite steelSprite;
+    sf::Sprite steelBackground;
+    sf::Text steelText;
+
+    sf::Sprite concreteSprite;
+    sf::Sprite concreteBackground;
+    sf::Text concreteText;
+
+    sf::Sprite woodSprite;
+    sf::Sprite woodBackground;
+    sf::Text woodText;
+
+    // Population
+    sf::Text populationText;
+    sf::Sprite populationBackground;
+    sf::Sprite populationIcon;
+
+    // Currency
+    sf::Text currencyText;
+    sf::Sprite currencyBackground;
+    sf::Sprite currencyIcon;
+
     // Game handling
     void processEvents();
     void update();  // User inputs
     void drawFrame();
 
     // Other functions
+    void centerTextOnSprite(sf::Text& text, const sf::Sprite& sprite);
     void createMap();
     std::string determineTexture(CityStructure* structure, const std::vector<std::vector<CityStructure*>>& map);
     int randomLandscapeTexture();

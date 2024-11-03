@@ -68,7 +68,7 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     this->cityMap = cityMap;
 
     // Create window (no need to use new)
-    window.create(sf::VideoMode(1120, 630), "Rome Was Built In a Day", sf::Style::Close);
+    window.create(sf::VideoMode(1120, 630), "Rome Was Built In a Day", sf::Style::Close );
     timePerFrame = sf::seconds(1.f / 60.f);
 
     // Sleep
@@ -101,6 +101,18 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     textures["Warehouse"].loadFromFile("../images/spr_Warehouse.png");
     textures["Border1"].loadFromFile("../images/spr_Border1.png");
     textures["Border2"].loadFromFile("../images/spr_Border2.png");
+
+    textures["satisfactionBackground"].loadFromFile("../images/spr_IconBorder.png");
+    textures["highSatisfactionIcon"].loadFromFile("../images/spr_HighSatisfaction.png");
+    textures["mediumSatisfactionIcon"].loadFromFile("../images/spr_MediumSatisfactionIcon.png");
+    textures["lowSatisfactionIcon"].loadFromFile("../images/spr_LowSatisfactionIcon.png");
+
+    textures["Steel"].loadFromFile("../images/spr_Steel.png");
+    textures["Concrete"].loadFromFile("../images/spr_Concrete.png");
+    textures["Wood"].loadFromFile("../images/spr_Wood.png");
+
+    textures["Population"].loadFromFile("../images/spr_Population.png");
+    textures["PopeCoins"].loadFromFile("../images/spr_PopeCoins.png");
 
     //std::this_thread::sleep_for(std::chrono::seconds(2));
 
@@ -181,6 +193,147 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     borderMap.push_back(bottomLeft);
     borderMap.push_back(bottomRight);
 
+
+
+
+
+
+    // Satisfaction text
+    if(!font.loadFromFile("../fonts/PixelFJVerdana12pt.ttf")) {
+        std::cout << "Error loading font" << std::endl;
+    }
+    satisfactionText.setFont(font);
+    satisfactionText.setCharacterSize(16);
+    satisfactionText.setFillColor(sf::Color::White);
+    satisfactionText.setPosition(45, 55);
+    // Create background sprite for satisfaction text
+    satisfactionBackground.setTexture(textures["satisfactionBackground"]);
+    satisfactionBackground.setPosition(15, 25);
+    satisfactionBackground.setScale(2, 2);
+    satisfactionBackground.setColor(sf::Color(0, 0, 0, 150));
+    // Create satisfaction icons
+    satisfactionIcon.setTexture(textures["highSatisfactionIcon"]);
+    satisfactionIcon.setPosition(10, 15);
+    satisfactionIcon.setScale(0.25, 0.25);
+
+
+
+
+
+    // Materials
+
+    // Steel
+    steelSprite.setTexture(textures["Steel"]);
+    steelSprite.setPosition(680, 15);
+    steelSprite.setScale(0.3, 0.3);
+
+    // Create background sprite for satisfaction text
+    steelBackground.setTexture(textures["satisfactionBackground"]);
+    steelBackground.setPosition(680, 25);
+    steelBackground.setScale(2, 2);
+    steelBackground.setColor(sf::Color(0, 0, 0, 150));
+
+    // Text
+    steelText.setFont(font);
+    steelText.setCharacterSize(14);
+    steelText.setFillColor(sf::Color::White);
+    steelText.setPosition(710, 55);
+
+
+
+
+    //Concrete
+    concreteSprite.setTexture(textures["Concrete"]);
+    concreteSprite.setPosition(830, 15);
+    concreteSprite.setScale(0.3, 0.3);
+
+    // Create background sprite for satisfaction text
+    concreteBackground.setTexture(textures["satisfactionBackground"]);
+    concreteBackground.setPosition(830, 25);
+    concreteBackground.setScale(2, 2);
+    concreteBackground.setColor(sf::Color(0, 0, 0, 150));
+
+    // Text
+    concreteText.setFont(font);
+    concreteText.setCharacterSize(14);
+    concreteText.setFillColor(sf::Color::White);
+    concreteText.setPosition(860, 55);
+
+
+
+
+    //Wood
+    woodSprite.setTexture(textures["Wood"]);
+    woodSprite.setPosition(980, 15);
+    woodSprite.setScale(0.2, 0.2);
+
+    // Create background sprite for satisfaction text
+    woodBackground.setTexture(textures["satisfactionBackground"]);
+    woodBackground.setPosition(980, 25);
+    woodBackground.setScale(2, 2);
+    woodBackground.setColor(sf::Color(0, 0, 0, 150));
+
+    // Text
+    woodText.setFont(font);
+    woodText.setCharacterSize(14);
+    woodText.setFillColor(sf::Color::White);
+    woodText.setPosition(1010, 55);
+
+
+
+    // Population
+    populationText.setFont(font);
+    populationText.setCharacterSize(16);
+    populationText.setFillColor(sf::Color::White);
+    populationText.setPosition(205, 55);
+    // Create background sprite for satisfaction text
+    populationBackground.setTexture(textures["satisfactionBackground"]);
+    populationBackground.setPosition(150, 25);
+    populationBackground.setScale(2, 2);
+    populationBackground.setColor(sf::Color(0, 0, 0, 150));
+    // Create satisfaction icons
+    populationIcon.setTexture(textures["Population"]);
+    populationIcon.setPosition(150, 15);
+    populationIcon.setScale(0.25, 0.25);
+
+
+
+
+    // Currency
+    currencyText.setFont(font);
+    currencyText.setCharacterSize(16);
+    currencyText.setFillColor(sf::Color::White);
+    currencyText.setPosition(355, 55);
+    // Create background sprite for currency text
+    currencyBackground.setTexture(textures["satisfactionBackground"]);
+    currencyBackground.setPosition(300, 25);
+    currencyBackground.setScale(2, 2);
+    currencyBackground.setColor(sf::Color(0, 0, 0, 150));
+    // Create currency icons
+    currencyIcon.setTexture(textures["PopeCoins"]);
+    currencyIcon.setPosition(300, 15);
+    currencyIcon.setScale(0.25, 0.25);
+    centerTextOnSprite(currencyText, currencyIcon);
+
+
+
+}
+
+void GameSimulation::centerTextOnSprite(sf::Text& text, const sf::Sprite& sprite) {
+    // Step 1: Get the center of the sprite
+    sf::FloatRect spriteBounds = sprite.getGlobalBounds();
+    float spriteCenterX = spriteBounds.left + spriteBounds.width / 2.f;
+    float spriteCenterY = spriteBounds.top + spriteBounds.height / 1.f;
+
+    // Step 2: Get the bounds of the text
+    sf::FloatRect textBounds = text.getLocalBounds();
+
+    // Step 3: Set the origin of the text to its center
+    text.setOrigin(textBounds.left + textBounds.width / 2.f, 
+                   textBounds.top + textBounds.height / 2.f);
+
+    // Step 4: Position the text at the center of the sprite
+    text.setPosition(spriteCenterX, spriteCenterY);
 }
 
 
@@ -262,13 +415,10 @@ void GameSimulation::gameRun() {
 }
 
 
-
 void GameSimulation::processEvents(){
-    sf::Event curEvent; // Create an event object
+    sf::Event curEvent;
 
-    while (window.pollEvent(curEvent)){ // We then poll this event (which means we "get" all events that happened in between the previous frame and now)
-
-        // We then go through all the  events and handle them (we specify what should happen based on the event that has occured)
+    while (window.pollEvent(curEvent)){
         switch (curEvent.type){
             case sf::Event::Closed:
                 window.close();
@@ -276,80 +426,47 @@ void GameSimulation::processEvents(){
 
             case sf::Event::KeyPressed:
                 if (curEvent.key.code == sf::Keyboard::Num1){
-
-                        std::vector<std::vector<CityStructure*> > map1 = cityMap->getMap();
-                        cout << "CITY MAP: " << map1.size() << endl;
-                        for(int i = 0; i < map1.size(); i++){
-                            for(int j = 0; j < map1[i].size(); j++){
-                                if(map1[i][j] != nullptr){
-                                    cout << map1[i][j]->getStructureType() << " ";
-                                }else{
-                                    cout << "NULL ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
-
-                        cout << "MINE: " << myMap.size() << endl;
-                        for(int i = 0; i < myMap.size(); i++){
-                            for(int j = 0; j < myMap[i].size(); j++){
-                                if(myMap[i][j].type != "Landscape"){
-                                    cout << myMap[i][j].type << " ";
-                                }else{
-                                    cout << "Landscape ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
-
-
-
-                    // CREATE AND PLACE ROADS
-                    Road* road1 = new Road();
-                    road1->placeStructure(0, 1, cityMap);
-                    Road* road2 = new Road();
-                    road2->placeStructure(1, 1, cityMap);
-                    Road* road3 = new Road();
-                    road3->placeStructure(2, 1, cityMap);
-
-
-
-                        std::vector<std::vector<CityStructure*> > map2 = cityMap->getMap();
-                        cout << "CITY MAP: " << map2.size() << endl;
-                        for(int i = 0; i < map2.size(); i++){
-                            for(int j = 0; j < map2[i].size(); j++){
-                                if(map2[i][j] != nullptr){
-                                    cout << map2[i][j]->getStructureType() << " ";
-                                }else{
-                                    cout << "NULL ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
-
-                        cout << "MINE: " << myMap.size() << endl;
-                        for(int i = 0; i < myMap.size(); i++){
-                            for(int j = 0; j < myMap[i].size(); j++){
-                                if(myMap[i][j].type != "Landscape"){
-                                    cout << myMap[i][j].type << " ";
-                                }else{
-                                    cout << "Landscape ";
-                                }
-                            }
-                            cout << endl;
-                        }
-
+                    // Code for Num1 key press
                 }
+                break;
 
+            case sf::Event::MouseButtonPressed:
+                if (curEvent.mouseButton.button == sf::Mouse::Left) {
+                    // Get the mouse position in the window
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+                    // Convert to world coordinates by taking into account the camera's view
+                    sf::Vector2f worldPos = window.mapPixelToCoords(mousePos, cameraView);
+
+                    // Offset for borders
+                    float xOffset = 128.f;
+                    float yOffset = 128.f;
+
+                    // Subtract offsets to ignore borders
+                    float worldX = worldPos.x - xOffset;
+                    float worldY = worldPos.y - yOffset;
+
+                    // Check if the world coordinates are within the map bounds
+                    if (worldX >= 0 && worldY >= 0 &&
+                        worldX < (myMap[0].size() * 128.f) &&
+                        worldY < (myMap.size() * 128.f)) {
+                        
+                        // Calculate the indices in the map array
+                        int mapX = static_cast<int>(worldX) / 128;
+                        int mapY = static_cast<int>(worldY) / 128;
+
+                        std::cout << "Clicked on map cell at row: " << mapY << ", column: " << mapX << std::endl;
+                        // Process the click event on the map tile (mapX, mapY)
+                        // Example: retrieve or modify map data at myMap[mapY][mapX]
+                    }
+                }
                 break;
         }
-
     }
-
 }
+
+
+
 
 
 void GameSimulation::update() {
@@ -393,11 +510,12 @@ void GameSimulation::update() {
 
     // Apply the updated camera view to the window
     window.setView(cameraView);
+
 }
 
 
 void GameSimulation::drawFrame() {
-    window.setActive(true);
+    
     // Clear the window for the new frame
     window.clear();
 
@@ -449,6 +567,72 @@ void GameSimulation::drawFrame() {
         }
     }
 
+    // Now switch to the UI view for fixed elements
+    sf::View uiView = window.getDefaultView();
+    window.setView(uiView);
+
+    // Draw the satisfaction text
+    int satisfaction = cityHall->getCurrSatisfaction();
+    satisfactionText.setString(std::to_string(satisfaction) + "%");
+
+    if (satisfaction >= 70) {
+        satisfactionIcon.setTexture(textures["highSatisfactionIcon"]);
+    } else if (satisfaction >= 40) {
+        satisfactionIcon.setTexture(textures["mediumSatisfactionIcon"]);
+    } else {
+        satisfactionIcon.setTexture(textures["lowSatisfactionIcon"]);
+    }
+
+
+
+
+
+    
+    
+   
+
+
+
+    // Draw the background for the satisfaction text
+    window.draw(satisfactionBackground);
+    window.draw(satisfactionText);
+    window.draw(satisfactionIcon);
+
+    // Draw the materials
+    window.draw(steelBackground);
+    // steelText.setString(std::to_string(cityHall->getSteel()) + " \n/ " + std::to_string(cityHall->getMaxSteel()));
+    steelText.setString(std::to_string(cityHall->getSteel()));
+    window.draw(steelText);
+    window.draw(steelSprite);
+
+    window.draw(concreteBackground);
+    // concreteText.setString(std::to_string(cityHall->getConcrete()) + " \n/ " + std::to_string(cityHall->getMaxConcrete()));
+    concreteText.setString(std::to_string(cityHall->getConcrete()));
+    window.draw(concreteText);
+    window.draw(concreteSprite);
+
+    window.draw(woodBackground);
+    // woodText.setString(std::to_string(cityHall->getWood()) + " \n/ " + std::to_string(cityHall->getMaxWood()));
+    woodText.setString(std::to_string(cityHall->getWood()));
+    window.draw(woodText);
+    window.draw(woodSprite);
+
+    // Draw the population
+    window.draw(populationBackground);
+    populationText.setString(std::to_string(cityHall->getNumCitizens()));
+    window.draw(populationText);
+    window.draw(populationIcon);
+
+    // Draw the currency
+    window.draw(currencyBackground);
+    currencyText.setString(std::to_string(cityHall->getPopeCoins()));
+    window.draw(currencyText);
+    window.draw(currencyIcon);
+
+
+
+    // Switch back to the main game view
+    window.setView(cameraView);
     // Display the frame
     window.display();
 }

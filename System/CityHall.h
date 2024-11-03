@@ -60,6 +60,13 @@ class CityHall: public CityStructure{
         int getNumResidentialBuildings();
         std::string getStructureType();
         int getCost();
+        int getPopeCoins();
+        int getWood();
+        int getSteel();
+        int getConcrete();
+        int getMaxWood();
+        int getMaxSteel();
+        int getMaxConcrete();
 
         int getCurrSatisfaction();
         float calculateSatisfaction();

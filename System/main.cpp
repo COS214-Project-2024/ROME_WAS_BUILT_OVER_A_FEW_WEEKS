@@ -88,93 +88,108 @@ using namespace std;
 int main(){
 
     // CREATE CITY MAP
+    cout << "CREATE CITY MAP" << endl;
     CityMap* cityMap = new CityMap();
 
     // CREATE AND PLACE CITY HALL
+    cout << "\nCREATE AND PLACE CITY HALL" << endl;
     CityHall* cityHall = CityHall::getInstance();
     cityHall->placeStructure(0, 0, cityMap);
 
     // Initialize and run game loop
+    cout << "\nINITIALIZE AND RUN GAME LOOP" << endl;
     GameSimulation* game = new GameSimulation(cityHall, cityMap);
+    cout << "Game initialized" << endl;
+    
+
+    // CREATE AND PLACE ROADS
+    cout << "\nCREATE AND PLACE ROADS" << endl;
+    Road* road1 = new Road();
+    road1->placeStructure(0, 1, cityMap);
+    cout << "Road 1 placed" << endl;
+    Road* road2 = new Road();
+    road2->placeStructure(1, 1, cityMap);
+    cout << "Road 2 placed" << endl;
+    Road* road3 = new Road();
+    road3->placeStructure(2, 1, cityMap);
+    cout << "Road 3 placed" << endl;
+    
     game->gameRun();
 
 
 
+    // // CREATE AND PLACE RESIDENTIAL COMPLEXES 
+    // cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
+    // ResidentialBuilding* house1 = new House();
+    // ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
+    // residentialComplex1->placeStructure(1, 2, cityMap);
 
+    // //print states
+    // cout << "\nPRINT STATES" << endl;
+    // cityHall->printCityHallState();
+    // cout << endl;
+    // residentialComplex1->printResidentialComplexState();
 
+    // // CREATE AND PLACE COMMERCIAL BUILDINGS
+    // cout << "\nCREATE AND PLACE COMMERCIAL BUILDINGS" << endl;
+    // CommercialBuilding* shop1 = new Shop();
+    // shop1->placeStructure(2, 2, cityMap);
 
-    // CREATE AND PLACE RESIDENTIAL COMPLEXES 
-    cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
-    ResidentialBuilding* house1 = new House();
-    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
-    residentialComplex1->placeStructure(1, 2, cityMap);
+    // //print states
+    // cout << "\nPRINT STATES" << endl;
+    // cityHall->printCityHallState();
+    // cout << endl;
+    // residentialComplex1->printResidentialComplexState();
 
-    //print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    residentialComplex1->printResidentialComplexState();
+    // // // CREATE AND PLACE INDUSTRIAL BUILDINGS
+    // // cout << "\nCREATE AND PLACE INDUSTRIAL BUILDINGS" << endl;
+    // // Plant* factory1 = new Factory();
+    // // factory1->placeStructure(3, 2, cityMap);
 
-    // CREATE AND PLACE COMMERCIAL BUILDINGS
-    cout << "\nCREATE AND PLACE COMMERCIAL BUILDINGS" << endl;
-    CommercialBuilding* shop1 = new Shop();
-    shop1->placeStructure(2, 2, cityMap);
+    // // CREATE AND PLACE PLANTS
+    // cout << "\nCREATE AND PLACE PLANTS" << endl;
+    // Plant* basePlant = new Plant();
+    // Plant* powerPlant = new PowerPlant(basePlant);
+    // Plant* powerWaterPlant = new WaterPlant(powerPlant);
+    // cout << "TYPE: " << powerWaterPlant->getPlantType() << endl;
+    // powerWaterPlant->placeStructure(1, 0, cityMap);
 
-    //print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    residentialComplex1->printResidentialComplexState();
+    // // print states
+    // cout << "\nPRINT STATES" << endl;
+    // cityHall->printCityHallState();
+    // cout << endl;
+    // residentialComplex1->printResidentialComplexState();
 
-    // // CREATE AND PLACE INDUSTRIAL BUILDINGS
-    // cout << "\nCREATE AND PLACE INDUSTRIAL BUILDINGS" << endl;
-    // Plant* factory1 = new Factory();
-    // factory1->placeStructure(3, 2, cityMap);
+    // // CREATE AND PLACE LANDMARKS
+    // cout << "\nCREATE AND PLACE LANDMARKS" << endl;
+    // Landmark* colosseum = new Colosseum();
+    // colosseum->placeStructure(0, 2, cityMap);
 
-    // CREATE AND PLACE PLANTS
-    cout << "\nCREATE AND PLACE PLANTS" << endl;
-    Plant* basePlant = new Plant();
-    Plant* powerPlant = new PowerPlant(basePlant);
-    Plant* powerWaterPlant = new WaterPlant(powerPlant);
-    cout << "TYPE: " << powerWaterPlant->getPlantType() << endl;
-    powerWaterPlant->placeStructure(1, 0, cityMap);
+    // //print states
+    // cout << "\nPRINT STATES" << endl;
+    // cityHall->printCityHallState();
+    // cout << endl;
+    // residentialComplex1->printResidentialComplexState();
 
-    // print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    residentialComplex1->printResidentialComplexState();
+    // // PLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK
+    // cout << "\nPLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK" << endl;
+    // ResidentialBuilding* house2 = new House();
+    // ResidentialComplex* residentialComplex2 = new ResidentialComplex(house2);
+    // residentialComplex2->placeStructure(3, 1, cityMap);
 
-    // CREATE AND PLACE LANDMARKS
-    cout << "\nCREATE AND PLACE LANDMARKS" << endl;
-    Landmark* colosseum = new Colosseum();
-    colosseum->placeStructure(0, 2, cityMap);
+    // // residentialComplex2->addResidentialComponent(new House());
 
-    //print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    residentialComplex1->printResidentialComplexState();
+    // //print states
+    // cout << "\nPRINT STATES" << endl;
+    // cityHall->printCityHallState();
+    // cout << endl;
+    // cout << "COMPLEX 1" << endl;
+    // residentialComplex1->printResidentialComplexState();
+    // cout << endl;
+    // cout << "COMPLEX 2" << endl;
+    // residentialComplex2->printResidentialComplexState();
 
-    // PLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK
-    cout << "\nPLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK" << endl;
-    ResidentialBuilding* house2 = new House();
-    ResidentialComplex* residentialComplex2 = new ResidentialComplex(house2);
-    residentialComplex2->placeStructure(3, 1, cityMap);
-
-    // residentialComplex2->addResidentialComponent(new House());
-
-    //print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    cout << "COMPLEX 1" << endl;
-    residentialComplex1->printResidentialComplexState();
-    cout << endl;
-    cout << "COMPLEX 2" << endl;
-    residentialComplex2->printResidentialComplexState();
-
-    // TEST REMOVING 
+    // // TEST REMOVING 
 
 
 
