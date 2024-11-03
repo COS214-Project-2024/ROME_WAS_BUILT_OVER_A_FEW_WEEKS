@@ -70,6 +70,15 @@ private:
     void processEvents();
     void update();  // User inputs
     void drawFrame();
+    void drawSatisfaction();
+    void drawPopulation();
+    void drawCurrency();
+    void drawWood();
+    void drawSteel();
+    void drawConcrete();
+    
+    void drawStats();
+    
 
     // Other functions
     void centerTextOnSprite(sf::Text& text, const sf::Sprite& sprite);

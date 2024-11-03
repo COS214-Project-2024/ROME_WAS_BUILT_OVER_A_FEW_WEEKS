@@ -571,6 +571,16 @@ void GameSimulation::drawFrame() {
     sf::View uiView = window.getDefaultView();
     window.setView(uiView);
 
+    // Draw the stats
+    drawStats();
+
+    // Switch back to the main game view
+    window.setView(cameraView);
+    // Display the frame
+    window.display();
+}
+
+void GameSimulation::drawSatisfaction() {
     // Draw the satisfaction text
     int satisfaction = cityHall->getCurrSatisfaction();
     satisfactionText.setString(std::to_string(satisfaction) + "%");
@@ -584,55 +594,55 @@ void GameSimulation::drawFrame() {
     }
 
 
-
-
-
-    
-    
-   
-
-
-
     // Draw the background for the satisfaction text
     window.draw(satisfactionBackground);
     window.draw(satisfactionText);
     window.draw(satisfactionIcon);
+}
 
-    // Draw the materials
-    window.draw(steelBackground);
-    // steelText.setString(std::to_string(cityHall->getSteel()) + " \n/ " + std::to_string(cityHall->getMaxSteel()));
-    steelText.setString(std::to_string(cityHall->getSteel()));
-    window.draw(steelText);
-    window.draw(steelSprite);
-
-    window.draw(concreteBackground);
-    // concreteText.setString(std::to_string(cityHall->getConcrete()) + " \n/ " + std::to_string(cityHall->getMaxConcrete()));
-    concreteText.setString(std::to_string(cityHall->getConcrete()));
-    window.draw(concreteText);
-    window.draw(concreteSprite);
-
+void GameSimulation:: drawWood() {
     window.draw(woodBackground);
     // woodText.setString(std::to_string(cityHall->getWood()) + " \n/ " + std::to_string(cityHall->getMaxWood()));
     woodText.setString(std::to_string(cityHall->getWood()));
     window.draw(woodText);
     window.draw(woodSprite);
+}
 
-    // Draw the population
+void GameSimulation::drawSteel() {
+    window.draw(steelBackground);
+    // steelText.setString(std::to_string(cityHall->getSteel()) + " \n/ " + std::to_string(cityHall->getMaxSteel()));
+    steelText.setString(std::to_string(cityHall->getSteel()));
+    window.draw(steelText);
+    window.draw(steelSprite);
+}
+
+void GameSimulation::drawConcrete() {
+    window.draw(concreteBackground);
+    // concreteText.setString(std::to_string(cityHall->getConcrete()) + " \n/ " + std::to_string(cityHall->getMaxConcrete()));
+    concreteText.setString(std::to_string(cityHall->getConcrete()));
+    window.draw(concreteText);
+    window.draw(concreteSprite);
+}
+
+void GameSimulation::drawPopulation() {
     window.draw(populationBackground);
     populationText.setString(std::to_string(cityHall->getNumCitizens()));
     window.draw(populationText);
     window.draw(populationIcon);
+}
 
-    // Draw the currency
+void GameSimulation::drawCurrency() {
     window.draw(currencyBackground);
     currencyText.setString(std::to_string(cityHall->getPopeCoins()));
     window.draw(currencyText);
     window.draw(currencyIcon);
+}
 
-
-
-    // Switch back to the main game view
-    window.setView(cameraView);
-    // Display the frame
-    window.display();
+void GameSimulation::drawStats() {
+    drawSatisfaction();
+    drawPopulation();
+    drawCurrency();
+    drawSteel();
+    drawConcrete();
+    drawWood();
 }
