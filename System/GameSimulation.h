@@ -33,6 +33,12 @@ public:
         std::string type;
     };
 
+    struct PlantItem {
+        sf::Sprite sprite;
+        int cost;
+        //std::string type;
+    };
+
 
 private:
     // Reference to main buildings
@@ -110,6 +116,9 @@ private:
     int nextPlacementY;
 
     IndustrialBuilding* curPlant;
+    std::vector<PlantItem> plantItems;
+    void createPlantSprites();
+    void drawPlant();
 };
 
 #endif

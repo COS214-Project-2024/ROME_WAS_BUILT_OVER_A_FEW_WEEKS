@@ -111,6 +111,10 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     textures["Population"].loadFromFile("../images/spr_Population.png");
     textures["PopeCoins"].loadFromFile("../images/spr_PopeCoins.png");
     textures["WindowBorder"].loadFromFile("../images/spr_WindowBorder.png");
+    textures["Water"].loadFromFile("../images/Water.png");
+    textures["Sewage"].loadFromFile("../images/Sewage.png");
+    textures["Electricity"].loadFromFile("../images/Electricity.png");
+    textures["Waste"].loadFromFile("../images/Waste.png");
 
     //std::this_thread::sleep_for(std::chrono::seconds(2));
 
@@ -1120,6 +1124,9 @@ void GameSimulation::createShopMenu(){
 
 
 void GameSimulation::drawShopMenu(){
+
+
+
     // Draw background
     // Dark rectangle
     window.setView(window.getDefaultView());
@@ -1333,4 +1340,46 @@ void GameSimulation::drawShopMenu(){
     roadCost.setPosition((1120 / 3) * 2.3 + 86, 160 + 124 * 2 + 60);
     window.draw(roadCost);
 
+}
+
+
+void GameSimulation::createPlantSprites(){
+    // Use curPlant to draw sprites
+    // Create plant sprites in vector
+
+    sf::Sprite water;
+    water.setTexture(textures["Water"]);
+    water.setScale(8, 8);
+    PlantItem waterItem;
+    waterItem.sprite = water;
+    waterItem.cost = 1000;
+
+    sf::Sprite electricity;
+    electricity.setTexture(textures["Electricity"]);
+    electricity.setScale(8, 8);
+    PlantItem electricityItem;
+    electricityItem.sprite = electricity;
+    electricityItem.cost = 1000;
+
+    sf::Sprite waste;
+    waste.setTexture(textures["Waste"]);
+    waste.setScale(8, 8);
+    PlantItem wasteItem;
+    wasteItem.sprite = waste;
+    wasteItem.cost = 1000;
+
+    sf::Sprite sewage;
+    sewage.setTexture(textures["Sewage"]);
+    sewage.setScale(8, 8);
+    PlantItem sewageItem;
+    sewageItem.sprite = sewage;
+    sewageItem.cost = 1000;
+
+    //curPlant->
+
+
+    plantItems.push_back(waterItem);
+    plantItems.push_back(electricityItem);
+    plantItems.push_back(wasteItem);
+    plantItems.push_back(sewageItem);
 }
