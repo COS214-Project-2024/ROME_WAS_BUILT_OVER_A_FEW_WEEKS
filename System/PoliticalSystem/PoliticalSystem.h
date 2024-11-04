@@ -28,6 +28,9 @@ public:
      */
     virtual int getTaxRateResidential() = 0;
 
+    
+    virtual std::string getSystemName() = 0;
+
     /**
      * @brief Get the commercial tax rate.
      * @return The tax rate for commercial zones as an integer percentage.

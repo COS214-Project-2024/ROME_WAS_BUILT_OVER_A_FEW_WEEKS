@@ -8,6 +8,9 @@ class PoliticalSystem;
 class CityMap;
 class Railway;
 class Airport;
+class School;
+class Hospital;
+class PoliceStation;
 
 /**
  * @class CityHall
@@ -23,6 +26,9 @@ private:
     PoliticalSystem* politicalSystem; ///< Pointer to the current political system of the city.
     Railway* railway; ///< Pointer to the railway system in the city.
     Airport* airport; ///< Pointer to the airport in the city.
+    School* school; ///< Pointer to the school in the city.
+    Hospital* hospital; ///< Pointer to the hospital in the city.
+    PoliceStation* policeStation; ///< Pointer to the police station in the city.
 
     int numCitizens; ///< Total number of citizens in the city.
     int cityCapacity; ///< Maximum population capacity of the city.
@@ -88,6 +94,9 @@ public:
     void calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction);
     float getRailwayBonus();
     float getAirportBonus();
+    float getSchoolBonus();
+    float getHospitalBonus();
+    float getPoliceStationBonus();
     float calculateHomelessnessDeduction();
     void populationChange(int satisfactionLevel);
     float collectTaxes(int satisfactionLevel);
@@ -128,6 +137,7 @@ public:
     bool deductConcrete(int concrete);
 
     // Capacity adjustment:
+    int getStorageCapacity();
     void increaseCapacity(int capacity);
     void decreaseCapacity(int capacity);
 

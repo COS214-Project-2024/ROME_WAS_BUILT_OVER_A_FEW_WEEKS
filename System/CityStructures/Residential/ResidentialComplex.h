@@ -29,6 +29,7 @@ class ResidentialComplex : public ResidentialComponent {
         ResidentialComplex(ResidentialComponent* residential);
         ~ResidentialComplex();
         std::string getStructureType();
+        std::vector<ResidentialComponent*> getResidentialComponents();
 
         bool placeStructure(int x, int y, CityMap* cityMap);
         void newRoadWasAdded();

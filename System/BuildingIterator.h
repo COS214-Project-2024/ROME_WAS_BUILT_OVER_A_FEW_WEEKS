@@ -1,7 +1,7 @@
 #ifndef BUILDINGITERATOR_H
 #define BUILDINGITERATOR_H
 
-#include "./CityStructures/Residential/ResidentialComplex.h"  // Enclosed in quotes for local inclusion
+#include "./CityStructures/Residential/ResidentialComponent.h"  // Enclosed in quotes for local inclusion
 
 /**
  * @class BuildingIterator
@@ -12,19 +12,19 @@ public:
     /**
      * @brief Destructor for BuildingIterator.
      */
-    virtual ~BuildingIterator() = default;
+    virtual ~BuildingIterator(){};
 
     /**
      * @brief Checks if there are more buildings to iterate over.
      * @return True if there are more buildings, false otherwise.
      */
-    virtual bool hasNext() const = 0;
+    virtual bool hasNext() = 0;
 
     /**
      * @brief Retrieves the next building in the iteration.
      * @return Pointer to the next ResidentialComplex.
      */
-    virtual ResidentialComplex* next() = 0;
+    virtual ResidentialComponent* next() = 0;
 };
 
 #endif  // BUILDINGITERATOR_H

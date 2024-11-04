@@ -11,13 +11,16 @@ SOURCES = \
     ./CityStructures/Residential/Apartment.cpp \
     ./PoliticalSystem/Authoritarianism.cpp \
     ./BoosterStructures/BoosterStructures.cpp \
+    ./BoosterStructures/PoliceStation.cpp \
+    ./BoosterStructures/School.cpp \
+    ./BoosterStructures/Hospital.cpp \
     CityHall.cpp \
     CityMap.cpp \
 	./CheckAdjacentTemplate/CheckAdjacent.cpp \
     ./CityStructures/CityStructure.cpp \
     ./CityStructures/Landmark/Colosseum.cpp \
     ./CityStructures/Commercial/CommercialBuilding.cpp \
-    ./PoliticalSystem/Communsim.cpp \
+    ./PoliticalSystem/Communism.cpp \
     ./CityStructures/Industrial/Concrete.cpp \
     ./CityStructures/Industrial/ConcreteGenerator.cpp \
     ./PoliticalSystem/Democracy.cpp \
@@ -61,6 +64,7 @@ SOURCES = \
     ./CityStructures/Commercial/CommercialFactory.cpp \
     ./CityStructures/Residential/ResidentialFactory.cpp \
     ./CityStructures/Landmark/LandmarkFactory.cpp \
+    LinearBuildingIterator.cpp \
 
 # Object files
 OBJECTS = $(SOURCES:.cpp=.o)

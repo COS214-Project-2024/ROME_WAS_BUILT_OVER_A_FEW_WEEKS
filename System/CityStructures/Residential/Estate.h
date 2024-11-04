@@ -10,7 +10,7 @@ class Estate : public ResidentialBuilding {
     public:
         Estate();
         ~Estate();
-        
+        std::string getStructureType();
         std::string getResidentialBuildingType();
         
 };

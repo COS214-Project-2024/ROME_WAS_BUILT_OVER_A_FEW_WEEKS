@@ -38,6 +38,10 @@ std::string ResidentialComplex::getStructureType() {
     return "Residential";
 }
 
+std::vector<ResidentialComponent*> ResidentialComplex::getResidentialComponents(){
+    return residentialComponents;
+}
+
 bool ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
     bool placed = CityStructure::placeStructure(x, y, cityMap);
     if (placed) {

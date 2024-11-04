@@ -8,6 +8,9 @@
 #include "BoosterStructures/Railway.h"
 #include "BoosterStructures/Airport.h"
 #include "PoliticalSystem/PoliticalSystem.h"
+#include "BoosterStructures/School.h"
+#include "BoosterStructures/Hospital.h"
+#include "BoosterStructures/PoliceStation.h"
 
 CityHall* CityHall::cityHall = nullptr;
 
@@ -30,6 +33,9 @@ CityHall::CityHall(){
     
     railway = new Railway();
     airport = new Airport();
+    school = new School();
+    hospital = new Hospital();
+    policeStation = new PoliceStation();
 
     taxRateResidential = 0;
     taxRateCommercial = 0;
@@ -53,9 +59,13 @@ CityHall *CityHall::getInstance(){
     return cityHall;
 }
 
-void CityHall::setPoliticalSystem(PoliticalSystem *politicalSystem)
-{
+void CityHall::setPoliticalSystem(PoliticalSystem *politicalSystem){
     this->politicalSystem = politicalSystem;
+    getBudgetSplit();
+    getTaxRateResidential();
+    getTaxRateCommercial();
+    getTaxRateIndustrial();
+    getCitizenSatisfactionImpact();
 }
 
 void CityHall::birth(){
@@ -104,7 +114,7 @@ int CityHall::getCost(){
 
 float CityHall::calculateSatisfaction(){
 
-    return residentialSatisfaction + getRailwayBonus() + getAirportBonus() - calculateHomelessnessDeduction();
+    return residentialSatisfaction + getRailwayBonus() + getAirportBonus() + getSchoolBonus() + getPoliceStationBonus() + getHospitalBonus() - calculateHomelessnessDeduction();
 }
 
 void CityHall::calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction){
@@ -123,6 +133,19 @@ float CityHall::getRailwayBonus(){
 float CityHall::getAirportBonus(){
     return (airport->getLevel() * airport->getSatisfactionMultiplier()); // level & multiplier
 }
+
+float CityHall::getSchoolBonus(){
+    return (school->getLevel() * school->getSatisfactionMultiplier()); // level & multiplier
+}
+
+float CityHall::getHospitalBonus(){
+    return (hospital->getLevel() * hospital->getSatisfactionMultiplier()); // level & multiplier
+}
+
+float CityHall::getPoliceStationBonus(){
+    return (policeStation->getLevel() * policeStation->getSatisfactionMultiplier()); // level & multiplier
+}
+
 
 float CityHall::calculateHomelessnessDeduction(){
     int numberHomelessPeople = 0;
@@ -279,7 +302,7 @@ bool CityHall::deductPopeCoins(int coins){
         return false;
     }
     popeCoins = popeCoins - coins;
-    std::cout << "remaining " << popeCoins << " pope coins" << std::endl;
+    std::cout << "Remaining " << popeCoins << " pope coins" << std::endl;
     return true;
 }
 
@@ -298,7 +321,7 @@ bool CityHall::deductWood(int wood){
         return false;
     }
     this->wood = this->wood - wood;
-    std::cout << "remaining " << this->wood << " wood" << std::endl;
+    std::cout << "Remaining " << this->wood << " wood" << std::endl;
     return true;
 }
 
@@ -317,7 +340,7 @@ bool CityHall::deductSteel(int steel){
         return false;
     }
     this->steel = this->steel - steel;
-    std::cout << "remaining " << this->steel << " steel" << std::endl;
+    std::cout << "Remaining " << this->steel << " steel" << std::endl;
     return true;
 }
 
@@ -336,11 +359,16 @@ bool CityHall::deductConcrete(int concrete){
         return false;
     }
     this->concrete = this->concrete - concrete;
-    std::cout << "remaining " << this->concrete << " concrete" << std::endl;
+    std::cout << "Remaining " << this->concrete << " concrete" << std::endl;
     return true;
 }
 
-void CityHall::increaseCapacity(int capacity){
+int CityHall::getStorageCapacity(){
+    return maxWood;
+}
+
+void CityHall::increaseCapacity(int capacity)
+{
     std::cout << "Increasing capacity" << std::endl;
     cityCapacity = cityCapacity + capacity;
 }
@@ -350,26 +378,32 @@ void CityHall::decreaseCapacity(int capacity){
 }
 
 void CityHall::printCityHallState(){
-    std::cout << "City Hall state" << std::endl;
-    std::cout << "Pope coins: " << popeCoins << std::endl;
-    std::cout << "Max Wood: " << maxWood << std::endl;
-    std::cout << "Wood: " << wood << std::endl;
-    std::cout << "Max Steel: " << maxSteel << std::endl;
-    std::cout << "Steel: " << steel << std::endl;
-    std::cout << "Max Concrete: " << maxConcrete << std::endl;
-    std::cout << "Concrete: " << concrete << std::endl;
-    std::cout << "Number of citizens: " << numCitizens << std::endl;
-    std::cout << "City capacity: " << cityCapacity << std::endl;
-    std::cout << "City satisfaction: " << citySatisfaction << std::endl;
-    std::cout << "Number of residential complexes: " << numResidentialComplexes << std::endl;
-    std::cout << "Number of commercial buildings: " << numCommercialBuildings << std::endl;
-    std::cout << "Number of industrial buildings: " << numIndustrialBuildings << std::endl;
-    std::cout << "Tax rate residential: " << taxRateResidential << std::endl;
-    std::cout << "Tax rate commercial: " << taxRateCommercial << std::endl;
-    std::cout << "Tax rate industrial: " << taxRateIndustrial << std::endl;
-    std::cout << "Budget split: " << budgetSplit << std::endl;
-    std::cout << "Citizen satisfaction impact: " << citizenSatisfactionImpact << std::endl;
-    std::cout << "Railway bonus: " << getRailwayBonus() << std::endl;
-    std::cout << "Airport bonus: " << getAirportBonus() << std::endl;
-    std::cout << "Homelessness deduction: " << calculateHomelessnessDeduction() << std::endl;
+    std::cout << "\033[1mCity Hall state\033[0m" << std::endl;
+    std::cout << "\033[1mPolitical System: \033[0m" << politicalSystem->getSystemName() << std::endl;
+    std::cout << "\033[1mNumber of citizens: \033[0m" << numCitizens << std::endl;
+    std::cout << "\033[1mCity capacity: \033[0m" << cityCapacity << std::endl;
+    std::cout << "\033[1mNumber of residential complexes: \033[0m" << numResidentialComplexes << std::endl;
+    std::cout << "\033[1mNumber of commercial buildings: \033[0m" << numCommercialBuildings << std::endl;
+    std::cout << "\033[1mNumber of industrial buildings: \033[0m" << numIndustrialBuildings << std::endl;
+    std::cout << "\033[1mNumber of factories: \033[0m" << numFactories << std::endl;
+    std::cout << "\033[1mPope coins: \033[0m" << popeCoins << std::endl;
+    std::cout << "\033[1mWood: \033[0m" << wood << std::endl;
+    std::cout << "\033[1mSteel: \033[0m" << steel << std::endl;
+    std::cout << "\033[1mConcrete: \033[0m" << concrete << std::endl;
+    std::cout << "\033[1mMax wood: \033[0m" << maxWood << std::endl;
+    std::cout << "\033[1mMax steel: \033[0m" << maxSteel << std::endl;
+    std::cout << "\033[1mMax concrete: \033[0m" << maxConcrete << std::endl;
+    std::cout << "\033[1mResidential satisfaction: \033[0m" << residentialSatisfaction << std::endl;
+    std::cout << "\033[1mCity satisfaction: \033[0m" << citySatisfaction << std::endl;
+    std::cout << "\033[1mTax rate residential: \033[0m" << taxRateResidential << std::endl;
+    std::cout << "\033[1mTax rate commercial: \033[0m" << taxRateCommercial << std::endl;
+    std::cout << "\033[1mTax rate industrial: \033[0m" << taxRateIndustrial << std::endl;
+    std::cout << "\033[1mBudget split: \033[0m" << budgetSplit << std::endl;
+    std::cout << "\033[1mCitizen satisfaction impact: \033[0m" << citizenSatisfactionImpact << std::endl;
+    std::cout << "\033[1mRailway bonus: \033[0m" << getRailwayBonus() << std::endl;
+    std::cout << "\033[1mAirport bonus: \033[0m" << getAirportBonus() << std::endl;
+    std::cout << "\033[1mSchool bonus: \033[0m" << getSchoolBonus() << std::endl;
+    std::cout << "\033[1mHospital bonus: \033[0m" << getHospitalBonus() << std::endl;
+    std::cout << "\033[1mPolice station bonus: \033[0m" << getPoliceStationBonus() << std::endl;
+    std::cout << "\033[1mHomelessness deduction: \033[0m" << calculateHomelessnessDeduction() << std::endl;
 }

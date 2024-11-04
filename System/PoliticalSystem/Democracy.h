@@ -27,6 +27,12 @@ public:
     virtual int getTaxRateResidential();
 
     /**
+     * @brief Get the name of the political system.
+     * @return The name of the political system as a string.
+     */
+    virtual std::string getSystemName();
+
+    /**
      * @brief Get the commercial tax rate.
      * @return The tax rate for commercial zones as an integer percentage.
      */

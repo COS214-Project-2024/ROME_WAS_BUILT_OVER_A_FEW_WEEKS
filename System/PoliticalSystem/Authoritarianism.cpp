@@ -12,6 +12,10 @@
 #include <random>
 using namespace std;
 
+std::string Authoritarianism::getSystemName(){
+    return "Authoritarianism";
+}
+
 /**
  * @brief Default constructor for the Authoritarianism class.
  * 
@@ -79,7 +83,7 @@ int Authoritarianism::getCitizenSatisfactionImpact() {
     
     // Generate a random number and return the adjusted satisfaction impact.
     int random_number = dist(gen);
-    return 3 + random_number;
+    return -3 + random_number;
 }
 
 /**

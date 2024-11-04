@@ -16,6 +16,10 @@ using namespace std;
 Democracy::Democracy() {
 }
 
+std::string Democracy::getSystemName(){
+    return "Democracy";
+}
+
 /**
  * @brief Get the residential tax rate.
  * @return The tax rate for residential zones as an integer percentage.
