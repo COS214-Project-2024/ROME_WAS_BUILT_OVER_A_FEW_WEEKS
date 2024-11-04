@@ -8,6 +8,9 @@
 #include "BoosterStructures/Railway.h"
 #include "BoosterStructures/Airport.h"
 #include "PoliticalSystem/PoliticalSystem.h"
+#include "BoosterStructures/School.h"
+#include "BoosterStructures/Hospital.h"
+#include "BoosterStructures/PoliceStation.h"
 
 CityHall* CityHall::cityHall = nullptr;
 
@@ -30,6 +33,9 @@ CityHall::CityHall(){
     
     railway = new Railway();
     airport = new Airport();
+    school = new School();
+    hospital = new Hospital();
+    policeStation = new PoliceStation();
 
     taxRateResidential = 0;
     taxRateCommercial = 0;
@@ -123,6 +129,19 @@ float CityHall::getRailwayBonus(){
 float CityHall::getAirportBonus(){
     return (airport->getLevel() * airport->getSatisfactionMultiplier()); // level & multiplier
 }
+
+float CityHall::getSchoolBonus(){
+    return (school->getLevel() * school->getSatisfactionMultiplier()); // level & multiplier
+}
+
+float CityHall::getHospitalBonus(){
+    return (hospital->getLevel() * hospital->getSatisfactionMultiplier()); // level & multiplier
+}
+
+float CityHall::getPoliceStationBonus(){
+    return (policeStation->getLevel() * policeStation->getSatisfactionMultiplier()); // level & multiplier
+}
+
 
 float CityHall::calculateHomelessnessDeduction(){
     int numberHomelessPeople = 0;

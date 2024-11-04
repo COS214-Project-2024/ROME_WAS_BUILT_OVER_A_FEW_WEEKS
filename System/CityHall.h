@@ -8,6 +8,9 @@ class PoliticalSystem;
 class CityMap;
 class Railway;
 class Airport;
+class School;
+class Hospital;
+class PoliceStation;
 
  
 class CityHall: public CityStructure{
@@ -17,6 +20,9 @@ class CityHall: public CityStructure{
         PoliticalSystem* politicalSystem;
         Railway* railway;
         Airport* airport;
+        School* school;
+        Hospital* hospital;
+        PoliceStation* policeStation;
 
         int numCitizens;
         int cityCapacity;
@@ -66,6 +72,9 @@ class CityHall: public CityStructure{
         void calculateResidentialSatisfaction(float oldSatisfaction, float newSatisfaction); // Mediator can do this (this is the calculation we were talking about Vansh)
         float getRailwayBonus();
         float getAirportBonus();
+        float getSchoolBonus();
+        float getHospitalBonus();
+        float getPoliceStationBonus();
         float calculateHomelessnessDeduction();
 
         void populationChange(int satisfactionLevel); // CHAIN
