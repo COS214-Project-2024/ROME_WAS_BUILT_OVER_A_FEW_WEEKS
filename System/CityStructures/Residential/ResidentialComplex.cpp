@@ -25,6 +25,8 @@ ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
     satisfaction = 15;
     capacity = residential->getCapacity();
     std::cout << "Residential Complex created" << std::endl;
+
+    realCapacity = 4;
 }
 
 ResidentialComplex::~ResidentialComplex() {
@@ -151,6 +153,12 @@ int ResidentialComplex::getCapacity() {
 }
 
 void ResidentialComplex::addResidentialComponent(ResidentialComponent* residential, CityMap* cityMap) {
+
+    if (realCapacity <= residentialComponents.size()) {
+        std::cout << "Cannot add more residential components" << std::endl;
+        return;
+    }
+
     bool canAdd = cityMap->checkResidentialComponent(residential, cityMap);
     if(!canAdd) {
         std::cout << "Cannot add the residential component" << std::endl;
@@ -412,4 +420,3 @@ void ResidentialComplex::printResidentialComplexState() {
 
     std::cout << "Bonus Satisfaction: " << bonusSatisfaction << std::endl;
 }
-

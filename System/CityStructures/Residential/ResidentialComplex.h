@@ -24,6 +24,7 @@ class ResidentialComplex : public ResidentialComponent {
 
         float satisfaction; //total satisfaction of the complex
         int capacity; 
+        int realCapacity;
     public:
 
         std::vector<ResidentialComponent*> residentialComponents;

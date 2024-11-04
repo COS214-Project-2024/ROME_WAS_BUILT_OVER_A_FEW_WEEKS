@@ -444,66 +444,6 @@ void GameSimulation::processEvents(){
                 window.close();
                 break;
 
-            case sf::Event::KeyPressed:
-                if (curEvent.key.code == sf::Keyboard::Num1){
-
-                    // CREATE AND PLACE ROADS
-                    cout << "\nCREATE AND PLACE ROADS" << endl;
-                    Road* road1 = new Road();
-                    road1->placeStructure(0, 1, cityMap);
-                    cout << "Road 1 placed" << endl;
-                    Road* road2 = new Road();
-                    road2->placeStructure(1, 1, cityMap);
-                    cout << "Road 2 placed" << endl;
-                    Road* road3 = new Road();
-                    road3->placeStructure(0, 2, cityMap);
-                    cout << "Road 3 placed" << endl;
-
-                    Road* road4 = new Road();
-                    road4->placeStructure(0, 3, cityMap);
-                    Road* road5 = new Road();
-                    road5->placeStructure(2, 1, cityMap);
-                    Road* road6 = new Road();
-                    road6->placeStructure(3, 1, cityMap);
-
-                    cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
-                    ResidentialBuilding* house1 = new House();
-                    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
-                    residentialComplex1->placeStructure(1, 2, cityMap);
-
-                    ResidentialBuilding* estate = new Estate();
-                    ResidentialBuilding* apartment = new Apartment();
-                    ResidentialBuilding* townhouse = new Townhouse();
-
-                    residentialComplex1->addResidentialComponent(estate, cityMap);
-                    residentialComplex1->addResidentialComponent(apartment, cityMap);
-                    residentialComplex1->addResidentialComponent(townhouse, cityMap);
-                    
-
-                    IndustrialBuilding* plant = new Plant();
-                    IndustrialBuilding* warehouse = new Warehouse();
-                    IndustrialBuilding* factory = new Factory();
-
-                    plant->placeStructure(2, 2, cityMap);
-                    warehouse->placeStructure(3, 2, cityMap);
-                    factory->placeStructure(1, 3, cityMap);
-
-                    CommercialBuilding* shop1 = new Shop();
-                    CommercialBuilding* office1 = new Office();
-
-                    shop1->placeStructure(1, 0, cityMap);
-                    office1->placeStructure(2, 0, cityMap);
-
-                    Landmark* colosseum = new Colosseum();
-                    Landmark* park = new Park();
-
-                    colosseum->placeStructure(4, 1, cityMap);
-                    park->placeStructure(0, 4, cityMap);
-
-
-                }
-                break;
-
             case sf::Event::MouseButtonPressed:
                 if (curEvent.mouseButton.button == sf::Mouse::Left) {
 
@@ -540,7 +480,9 @@ void GameSimulation::processEvents(){
                             } else if (structureType == "Road") {
                                 std::cout << "Road CLICKED" << std::endl;
                             } else if (structureType == "Residential") {
-                                std::cout << "Residential CLICKED" << std::endl;
+                                nextPlacementX = mapX;
+                                nextPlacementY = mapY;
+                                shopMenuOpen = true;
                             } else if (structureType == "Plant") {
                                 std::cout << "Plant CLICKED" << std::endl;
                             } else if (structureType == "Factory") {
@@ -568,16 +510,49 @@ void GameSimulation::processEvents(){
 
                                     if (structureType == "House") {
                                         ResidentialBuilding* house = new House();
-                                        structurePlaced = house->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        // Check if x and y is landscape
+                                        if(myMap[nextPlacementY][nextPlacementX].type == "Landscape"){
+                                            ResidentialComplex* residentialComplex = new ResidentialComplex(house);
+                                            structurePlaced = residentialComplex->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        }else{
+                                            if (ResidentialComplex* complex = dynamic_cast<ResidentialComplex*>(cityMap->getMap()[nextPlacementY][nextPlacementX])) {
+                                                complex->addResidentialComponent(house, cityMap);
+                                            }
+                                        }
                                     } else if (structureType == "Apartment") {
                                         ResidentialBuilding* apartment = new Apartment();
-                                        structurePlaced = apartment->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        
+                                        if(myMap[nextPlacementY][nextPlacementX].type == "Landscape"){
+                                            ResidentialComplex* residentialComplex = new ResidentialComplex(apartment);
+                                            structurePlaced = residentialComplex->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        }else{
+                                            if (ResidentialComplex* complex = dynamic_cast<ResidentialComplex*>(cityMap->getMap()[nextPlacementY][nextPlacementX])) {
+                                                complex->addResidentialComponent(apartment, cityMap);
+                                            }
+                                        }
+
                                     } else if (structureType == "Townhouse") {
                                         ResidentialBuilding* townhouse = new Townhouse();
-                                        structurePlaced = townhouse->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        
+                                        if(myMap[nextPlacementY][nextPlacementX].type == "Landscape"){
+                                            ResidentialComplex* residentialComplex = new ResidentialComplex(townhouse);
+                                            structurePlaced = residentialComplex->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        }else{
+                                            if (ResidentialComplex* complex = dynamic_cast<ResidentialComplex*>(cityMap->getMap()[nextPlacementY][nextPlacementX])) {
+                                                complex->addResidentialComponent(townhouse, cityMap);
+                                            }
+                                        }
                                     } else if (structureType == "Estate") {
                                         ResidentialBuilding* estate = new Estate();
-                                        structurePlaced = estate->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        
+                                        if(myMap[nextPlacementY][nextPlacementX].type == "Landscape"){
+                                            ResidentialComplex* residentialComplex = new ResidentialComplex(estate);
+                                            structurePlaced = residentialComplex->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                        }else{
+                                            if (ResidentialComplex* complex = dynamic_cast<ResidentialComplex*>(cityMap->getMap()[nextPlacementY][nextPlacementX])) {
+                                                complex->addResidentialComponent(estate, cityMap);
+                                            }
+                                        }
                                     } else if (structureType == "Road") {
                                         Road* road = new Road();
                                         structurePlaced = road->placeStructure(nextPlacementX, nextPlacementY, cityMap);
@@ -691,7 +666,11 @@ void GameSimulation::drawFrame() {
             if (structure != nullptr) {
                 // Update CityItem with the new structure type if it has changed
                 if (structure->getStructureType() != cityItem.type) {
+                    // Update CityItem with the new structure type and texture
                     cityItem.type = structure->getStructureType();
+                    cityItem.sprite.setTexture(textures[cityItem.type]);
+
+                    cityItem.sprite.setPosition(col * 128 + 128, row * 128 + 128);
                 }
 
                 // Additional logic for road texture changes based on neighbors
@@ -893,7 +872,6 @@ void GameSimulation::drawFrame() {
 
     window.display();
 }
-
 
 
 void GameSimulation::drawSatisfaction() {
