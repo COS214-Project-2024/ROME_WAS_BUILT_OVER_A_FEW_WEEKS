@@ -1,72 +1,56 @@
-// Booster Structures
-#include "./BoosterStructures/Airport.h"
-#include "./BoosterStructures/BoosterStructures.h"
-#include "./BoosterStructures/Railway.h"
+#include <iostream>
+#include <vector>
 
-// Check Adjacent Template
-#include "./CheckAdjacentTemplate/CheckAdjacent.h"
+// //#include "GeneratorDecorator.h"
+// //#include "ConcreteGenerator.h"
+// //#include "SteelGenerator.h"
+// //#include "WoodGenerator.h"
+// //#include "Material.h"
+// // #include "Concrete.h"
+// // #include "Steel.h"
+// // #include "Wood.h"
+// #include "Plant.h"
+// //#include "PlantDecorator.h"
+// // #include "PowerPlant.h"
+// // #include "WaterPlant.h"
+// // #include "WastePlant.h"
+// // #include "SewagePlant.h"
 
-// City Structures - Residential
-#include "./CityStructures/Residential/Apartment.h"
-#include "./CityStructures/Residential/Estate.h"
-#include "./CityStructures/Residential/House.h"
-#include "./CityStructures/Residential/ResidentialBuilding.h"
-#include "./CityStructures/Residential/ResidentialComplex.h"
-#include "./CityStructures/Residential/Townhouse.h"
+// #include "CityMap.h"
+// #include "CityHall.h"
 
-// City Structures - Commercial
-#include "./CityStructures/Commercial/CommercialBuilding.h"
-#include "./CityStructures/Commercial/Mall.h"
-#include "./CityStructures/Commercial/Office.h"
-#include "./CityStructures/Commercial/Shop.h"
+// // BUILDING TYPES
+// #include "CityStructure.h"  
+// #include "Road.h"
+// #include "ResidentialComplex.h"
+// #include "ResidentialBuilding.h"
+// #include "CommercialBuilding.h"
+// #include "IndustrialBuilding.h"
+// #include "Landmark.h"
 
-// City Structures - Industrial
-#include "./CityStructures/Industrial/Concrete.h"
-#include "./CityStructures/Industrial/ConcreteGenerator.h"
-#include "./CityStructures/Industrial/Factory.h"
-#include "./CityStructures/Industrial/IndustrialBuilding.h"
-#include "./CityStructures/Industrial/Plant.h"
-#include "./CityStructures/Industrial/PowerPlant.h"
-#include "./CityStructures/Industrial/SewagePlant.h"
-#include "./CityStructures/Industrial/Steel.h"
-#include "./CityStructures/Industrial/SteelGenerator.h"
-#include "./CityStructures/Industrial/Warehouse.h"
-#include "./CityStructures/Industrial/WastePlant.h"
-#include "./CityStructures/Industrial/WaterPlant.h"
-#include "./CityStructures/Industrial/Wood.h"
-#include "./CityStructures/Industrial/WoodGenerator.h"
+// // RESIDENTIAL BUILDING TYPES
+// #include "House.h"
+// #include "Apartment.h"
+// #include "Townhouse.h"
+// #include "Estate.h"
 
-// City Structures - Landmark
-#include "./CityStructures/Landmark/Colosseum.h"
-#include "./CityStructures/Landmark/Landmark.h"
-#include "./CityStructures/Landmark/Pantheon.h"
-#include "./CityStructures/Landmark/Park.h"
+// // COMMERCIAL BUILDING TYPES
+// #include "Shop.h"
+// #include "Mall.h"
+// #include "Office.h"
 
-// City Structures - Road
-#include "./CityStructures/Road/HighTraffic.h"
-#include "./CityStructures/Road/LowTraffic.h"
-#include "./CityStructures/Road/MediumTraffic.h"
-#include "./CityStructures/Road/Road.h"
+// // INDUSTRIAL BUILDING TYPES
+// #include "Plant.h"
+// #include "Factory.h"
+// #include "Warehouse.h"
 
-// Political System
-#include "./PoliticalSystem/Authoritarianism.h"
-#include "./PoliticalSystem/Communsim.h"
-#include "./PoliticalSystem/Democracy.h"
-#include "./PoliticalSystem/PoliticalSystem.h"
+// // LANDMARK TYPES
+// #include "Colosseum.h"
+// #include "Pantheon.h"
+// #include "Park.h"
 
-// Satisfaction Handlers
-#include "./SatisfactionHandler/HighSatisfactionHandler.h"
-#include "./SatisfactionHandler/LowSatisfactionHandler.h"
-#include "./SatisfactionHandler/MediumSatisfactionHandler.h"
-#include "./SatisfactionHandler/SatisfactionHandler.h"
-
-// Core City Classes
-#include "CityHall.h"
-#include "CityMap.h"
-#include "./CityStructures/CityStructure.h"
-
-
-
+// // GRAPHICS
+// #include <SFML/Graphics.hpp>
 
 
 
@@ -97,120 +81,197 @@ using namespace std;
 //     std::cout << woodFactory->getFactoryType() << std::endl;
 // }
 
-int main(){
+// Testing Factorys 
 
-    cout << "Hello, World!" << endl;
+#include <iostream>
+#include "CityStructures/Commercial/CommercialFactory.h"
+#include "CityStructures/BuildingFactory.h"
+#include "CityStructures/Residential/ResidentialFactory.h"
+#include "CityStructures/Industrial/IndustrialFactory.h"
+#include "CityStructures/Landmark/LandmarkFactory.h"
 
-    // CREATE CITY MAP
-    cout << "\nCREATE CITY MAP" << endl;
-    CityMap* cityMap = new CityMap();
+int main() {
+    //Test Residential Factories
+    HouseFactory houseFactory;
+    ResidentialBuilding* house = houseFactory.createResidentialBuilding();
+    std::cout << "Created house with capacity: " << house->getCapacity() << std::endl;
+    delete house;
 
-    // CREATE AND PLACE CITY HALL
-    cout << "\nCREATE AND PLACE CITY HALL" << endl;
-    CityHall* cityHall = CityHall::getInstance();
-    cityHall->placeStructure(0, 0, cityMap);
+    ApartmentFactory apartmentFactory;
+    ResidentialBuilding* apartment = apartmentFactory.createResidentialBuilding();
+    std::cout << "Created apartment with capacity: " << apartment->getCapacity() << std::endl;
+    delete apartment;
 
-    // CREATE AND PLACE ROADS
-    cout << "\nCREATE AND PLACE ROADS" << endl;
-    Road* road1 = new Road();
-    road1->placeStructure(0, 1, cityMap);
-    Road* road2 = new Road();
-    road2->placeStructure(1, 1, cityMap);
-    Road* road3 = new Road();
-    road3->placeStructure(2, 1, cityMap);
+    EstateFactory estateFactory;
+    ResidentialBuilding* estate = estateFactory.createResidentialBuilding();
+    std::cout << "Created estate with capacity: " << estate->getCapacity() << std::endl;
+    delete estate;
+
+    TownhouseFactory townhouseFactory;
+    ResidentialBuilding* townhouse = townhouseFactory.createResidentialBuilding();
+    std::cout << "Created townhouse with capacity: " << townhouse->getCapacity() << std::endl;
+    delete townhouse;
+
+    // Test Commercial Factories
+    ShopFactory shopFactory;
+    CommercialBuilding* shop = shopFactory.createCommercialBuilding();
+    std::cout << "Created shop with radius of effect: " << static_cast<Shop*>(shop)->getRadiusOfEffect() << std::endl;
+    delete shop;
+
+    OfficeFactory officeFactory;
+    CommercialBuilding* office = officeFactory.createCommercialBuilding();
+    std::cout << "Created office with radius of effect: " << static_cast<Office*>(office)->getRadiusOfEffect() << std::endl;
+    delete office;
+
+    MallFactory mallFactory;
+    CommercialBuilding* mall = mallFactory.createCommercialBuilding();
+    std::cout << "Created mall with radius of effect: " << static_cast<Mall*>(mall)->getRadiusOfEffect() << std::endl;
+    delete mall;
+
+    // Test Industrial Factories
+    PlantFactory plantFactory;
+    IndustrialBuilding* plant = plantFactory.createIndustrialBuilding();
+    std::cout << "Created plant" << std::endl;
+    delete plant;
+
+    FactoryFactory factoryFactory;
+    IndustrialBuilding* factory = factoryFactory.createIndustrialBuilding();
+    std::cout << "Created factory" << std::endl;
+    delete factory;
+
+    // Test Landmark Factories
+    ParkFactory parkFactory;
+    Landmark* park = parkFactory.createLandmark();
+    std::cout << "Created park with radius of effect: " << static_cast<Park*>(park)->getRadiusOfEffect() << std::endl;
+    delete park;
+
+    ColosseumFactory colosseumFactory;
+    Landmark* colosseum = colosseumFactory.createLandmark();
+    std::cout << "Created colosseum with radius of effect: " << static_cast<Colosseum*>(colosseum)->getRadiusOfEffect() << std::endl;
+    delete colosseum;
+
+    PantheonFactory pantheonFactory;
+    Landmark* pantheon = pantheonFactory.createLandmark();
+    std::cout << "Created cultural center with radius of effect: " << static_cast<Pantheon*>(pantheon)->getRadiusOfEffect() << std::endl;
+    delete pantheon;
+
+    return 0;
+}
+
+// int main(){
+
+//     cout << "Hello, World!" << endl;
+
+//     // CREATE CITY MAP
+//     cout << "\nCREATE CITY MAP" << endl;
+//     CityMap* cityMap = new CityMap();
+
+//     // CREATE AND PLACE CITY HALL
+//     cout << "\nCREATE AND PLACE CITY HALL" << endl;
+//     CityHall* cityHall = CityHall::getInstance();
+//     cityHall->placeStructure(0, 0, cityMap);
+
+//     // CREATE AND PLACE ROADS
+//     cout << "\nCREATE AND PLACE ROADS" << endl;
+//     Road* road1 = new Road();
+//     road1->placeStructure(0, 1, cityMap);
+//     Road* road2 = new Road();
+//     road2->placeStructure(1, 1, cityMap);
+//     Road* road3 = new Road();
+//     road3->placeStructure(2, 1, cityMap);
 
 
-    // CREATE AND PLACE RESIDENTIAL COMPLEXES 
-    cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
-    ResidentialBuilding* house1 = new House();
-    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
-    residentialComplex1->placeStructure(1, 2, cityMap);
+//     // CREATE AND PLACE RESIDENTIAL COMPLEXES 
+//     cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
+//     ResidentialBuilding* house1 = new House();
+//     ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
+//     residentialComplex1->placeStructure(1, 2, cityMap);
 
-    //print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    residentialComplex1->printResidentialComplexState();
+//     //print states
+//     cout << "\nPRINT STATES" << endl;
+//     cityHall->printCityHallState();
+//     cout << endl;
+//     residentialComplex1->printResidentialComplexState();
 
-    // CREATE AND PLACE COMMERCIAL BUILDINGS
-    cout << "\nCREATE AND PLACE COMMERCIAL BUILDINGS" << endl;
-    CommercialBuilding* shop1 = new Shop();
-    shop1->placeStructure(2, 2, cityMap);
+//     // CREATE AND PLACE COMMERCIAL BUILDINGS
+//     cout << "\nCREATE AND PLACE COMMERCIAL BUILDINGS" << endl;
+//     CommercialBuilding* shop1 = new Shop();
+//     shop1->placeStructure(2, 2, cityMap);
 
-    //print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    residentialComplex1->printResidentialComplexState();
+//     //print states
+//     cout << "\nPRINT STATES" << endl;
+//     cityHall->printCityHallState();
+//     cout << endl;
+//     residentialComplex1->printResidentialComplexState();
 
-    // // CREATE AND PLACE INDUSTRIAL BUILDINGS
-    // cout << "\nCREATE AND PLACE INDUSTRIAL BUILDINGS" << endl;
-    // Plant* factory1 = new Factory();
-    // factory1->placeStructure(3, 2, cityMap);
+//     // // CREATE AND PLACE INDUSTRIAL BUILDINGS
+//     // cout << "\nCREATE AND PLACE INDUSTRIAL BUILDINGS" << endl;
+//     // Plant* factory1 = new Factory();
+//     // factory1->placeStructure(3, 2, cityMap);
 
-    // CREATE AND PLACE LANDMARKS
-    cout << "\nCREATE AND PLACE LANDMARKS" << endl;
-    Landmark* colosseum = new Colosseum();
-    colosseum->placeStructure(0, 2, cityMap);
+//     // CREATE AND PLACE LANDMARKS
+//     cout << "\nCREATE AND PLACE LANDMARKS" << endl;
+//     Landmark* colosseum = new Colosseum();
+//     colosseum->placeStructure(0, 2, cityMap);
 
-    // PLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK
-    cout << "\nPLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK" << endl;
-    ResidentialBuilding* house2 = new House();
-    ResidentialComplex* residentialComplex2 = new ResidentialComplex(house2);
-    residentialComplex2->placeStructure(1, 0, cityMap);
+//     // PLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK
+//     cout << "\nPLACE RESIDENTIAL COMPLEX AFTER HAVING COMMERCIAL BUILDING AND LANDMARK" << endl;
+//     ResidentialBuilding* house2 = new House();
+//     ResidentialComplex* residentialComplex2 = new ResidentialComplex(house2);
+//     residentialComplex2->placeStructure(1, 0, cityMap);
 
-    //print states
-    cout << "\nPRINT STATES" << endl;
-    cityHall->printCityHallState();
-    cout << endl;
-    residentialComplex1->printResidentialComplexState();
-    cout << endl;
-    residentialComplex2->printResidentialComplexState();
-
-
-
-
-    std::vector<std::vector<CityStructure*> > map = cityMap->getMap();
-    cout << "City Map: " << map.size() << endl;
-    for(int i = 0; i < map.size(); i++){
-        for(int j = 0; j < map[i].size(); j++){
-            if(map[i][j] != nullptr){
-                cout << map[i][j]->getStructureType() << " ";
-            }else{
-                cout << "NULL ";
-            }
-        }
-        cout << endl;
-    }
+//     //print states
+//     cout << "\nPRINT STATES" << endl;
+//     cityHall->printCityHallState();
+//     cout << endl;
+//     residentialComplex1->printResidentialComplexState();
+//     cout << endl;
+//     residentialComplex2->printResidentialComplexState();
 
 
 
-    cout << "Bye!" << endl; 
 
-    /*// =====================
-    // === GRAPHICS PART ===
-    // =====================
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+//     std::vector<std::vector<CityStructure*> > map = cityMap->getMap();
+//     cout << "City Map: " << map.size() << endl;
+//     for(int i = 0; i < map.size(); i++){
+//         for(int j = 0; j < map[i].size(); j++){
+//             if(map[i][j] != nullptr){
+//                 cout << map[i][j]->getStructureType() << " ";
+//             }else{
+//                 cout << "NULL ";
+//             }
+//         }
+//         cout << endl;
+//     }
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-    // =====================
+
+//     cout << "Bye!" << endl; 
+
+//     // =====================
+//     // === GRAPHICS PART ===
+//     // =====================
+//     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+//     sf::CircleShape shape(100.f);
+//     shape.setFillColor(sf::Color::Green);
+
+//     while (window.isOpen())
+//     {
+//         sf::Event event;
+//         while (window.pollEvent(event))
+//         {
+//             if (event.type == sf::Event::Closed)
+//                 window.close();
+//         }
+
+//         window.clear();
+//         window.draw(shape);
+//         window.display();
+//     }
+//     // =====================
 
     */
   
 
-    return 0;
-}
+//     return 0;
+// }

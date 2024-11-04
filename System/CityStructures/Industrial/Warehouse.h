@@ -14,4 +14,18 @@ class Warehouse : public CityStructure {
         
 };
 
+#include "IndustrialBuilding.h"
+
+class Warehouse : public IndustrialBuilding {
+    private:
+        int numEmployees;
+        double taxRatePerPerson;
+        int employmentCapacity;
+
+    public:
+        Warehouse();
+        virtual ~Warehouse();
+        //int calculateTotalTaxes() override;
+};
+
 #endif
