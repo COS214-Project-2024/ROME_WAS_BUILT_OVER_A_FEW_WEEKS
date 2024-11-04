@@ -103,8 +103,8 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     textures["Border2"].loadFromFile("../images/spr_Border2.png");
     textures["satisfactionBackground"].loadFromFile("../images/spr_IconBorder.png");
     textures["highSatisfactionIcon"].loadFromFile("../images/spr_HighSatisfaction.png");
-    textures["mediumSatisfactionIcon"].loadFromFile("../images/spr_MediumSatisfactionIcon.png");
-    textures["lowSatisfactionIcon"].loadFromFile("../images/spr_LowSatisfactionIcon.png");
+    textures["mediumSatisfactionIcon"].loadFromFile("../images/spr_MediumSatisfaction.png");
+    textures["lowSatisfactionIcon"].loadFromFile("../images/spr_LowSatisfaction.png");
     textures["Steel"].loadFromFile("../images/spr_Steel.png");
     textures["Concrete"].loadFromFile("../images/spr_Concrete.png");
     textures["Wood"].loadFromFile("../images/spr_Wood.png");
@@ -387,26 +387,46 @@ int GameSimulation::randomLandscapeTexture() {
 void GameSimulation::gameRun(){
     sf::Clock clock;
     sf::Time elapsed = sf::Time::Zero;
+    sf::Time eventTimer = sf::Time::Zero;
+    const sf::Time eventInterval = sf::seconds(5.0f); // Event every 10 seconds
 
-
-    // Run game simulation while the window is open
     while (window.isOpen()){
-
-        // === PROCESS EVENTS ===
         processEvents();
 
-        // Force the game to run at 60fps
-        elapsed += clock.restart();
+        sf::Time deltaTime = clock.restart();
+        elapsed += deltaTime;
+        eventTimer += deltaTime;
 
+        // Handle fixed time step updates
         while (elapsed >= timePerFrame){
             elapsed -= timePerFrame;
             update(timePerFrame);
         }
 
+        if (eventTimer >= eventInterval){
+            eventTimer -= eventInterval;
+            gameLoop();
+        }
 
-        // === DRAW THE FRAME ===
         drawFrame();
     }
+}
+
+
+void GameSimulation::gameLoop(){
+
+    float satisfactionTemp = cityHall->calculateSatisfaction();
+
+    std::cout << " ========== Satisfaction: " << satisfactionTemp << " ===========" << std::endl;
+
+    satisfactionTemp = cityHall->getCitizenSatisfactionImpact(satisfactionTemp);
+
+    std::cout << " ========== Satisfaction: " << satisfactionTemp << " ===========" << std::endl;
+    
+    cityHall->populationChange(satisfactionTemp);
+    float taxesCollected = cityHall->collectTaxes(satisfactionTemp);
+
+    cityHall->getBudgetSplit(taxesCollected);
 }
 
 

@@ -3,7 +3,7 @@
 
 MediumSatisfactionHandler::MediumSatisfactionHandler(SatisfactionHandler *nextHandler){
     this->nextHandler = nextHandler;
-    chanceOfPopulationChange = 0.05;
+    chanceOfPopulationChange = 50;
     incomeAffectionRate = 0.8;
 }
 
@@ -26,14 +26,14 @@ void MediumSatisfactionHandler::handlePopulation(int curSatisfaction, CityHall *
     std::uniform_int_distribution<> random3(-10, 10);
     std::uniform_int_distribution<> random4(0, 1);
 
-    float changePopulation = random1(gen)/100; // Random number
+    float changePopulation = random1(gen); // Random number
 
     // If random number is below chanceOfPopulationChange then population should change
     if (changePopulation <= chanceOfPopulationChange){
-        int numNewCitizenMultiplier = random2(gen)/100;
-        int numNewCitizens = cityHall->getNumCitizens() * numNewCitizenMultiplier;
+        int numNewCitizenMultiplier = random2(gen);
+        int numNewCitizens = (cityHall->getNumCitizens() * numNewCitizenMultiplier)/100.f;
 
-        for (int i = 0; i < numNewCitizens; ){
+        for (float i = 0.5; i < numNewCitizens; i++){
             bool doLeave = random4(gen);
 
             if (doLeave){
@@ -70,6 +70,6 @@ float MediumSatisfactionHandler::handleTax(int curSatisfaction, CityHall *cityHa
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> random1(-10, 10);
 
-    incomeAffectionRate += random1(gen)/100;
+    incomeAffectionRate += random1(gen) * 0.01;
     return incomeAffectionRate*cityHall->getTaxRateResidential()*cityHall->getNumCitizens();
 }

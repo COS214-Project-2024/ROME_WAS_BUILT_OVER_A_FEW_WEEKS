@@ -1,27 +1,27 @@
-#include "Communsim.h"
+#include "Communism.h"
 #include <random>
 using namespace std;
 
-Communsim::Communsim(){
+Communism::Communism(){
 }
 
-int Communsim::getTaxRateResidential(){
+int Communism::getTaxRateResidential(){
     return 30;
 }
 
-int Communsim::getTaxRateCommercial(){
+int Communism::getTaxRateCommercial(){
     return 40;
 }
 
-int Communsim::getTaxRateIndustrial(){
+int Communism::getTaxRateIndustrial(){
     return 60;
 }
 
-double Communsim::getBudgetSplit(){
+double Communism::getBudgetSplit(){
     return 0.3;
 }
 
-int Communsim::getCitizenSatisfactionImpact(){
+int Communism::getCitizenSatisfactionImpact(){
     random_device rd;
     mt19937 gen(rd());
     // Define the distribution range between -2 and 2 (inclusive)
@@ -31,7 +31,7 @@ int Communsim::getCitizenSatisfactionImpact(){
     return 7 + random_number;
 }
 
-Communsim::~Communsim(){
+Communism::~Communism(){
 }
 
 

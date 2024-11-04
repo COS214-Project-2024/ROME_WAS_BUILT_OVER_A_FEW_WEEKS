@@ -190,15 +190,16 @@ int CityHall::getTaxRateIndustrial(){
     return taxRateIndustrial;
 }
 
-double CityHall::getBudgetSplit(){
+double CityHall::getBudgetSplit(float taxNum){
     budgetSplit = politicalSystem->getBudgetSplit();
-    return budgetSplit;
+    popeCoins += taxNum * budgetSplit;
+    return budgetSplit * taxNum;
 }
 
-int CityHall::getCitizenSatisfactionImpact(){
+float CityHall::getCitizenSatisfactionImpact(float tempSatisfaction){
     citizenSatisfactionImpact = politicalSystem->getCitizenSatisfactionImpact();
-    citySatisfaction += citizenSatisfactionImpact;
-    return citizenSatisfactionImpact;
+    citySatisfaction = citizenSatisfactionImpact + tempSatisfaction;
+    return citySatisfaction;
 }
 
 CityHall::~CityHall(){

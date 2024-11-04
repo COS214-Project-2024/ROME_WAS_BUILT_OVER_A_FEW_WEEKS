@@ -81,8 +81,8 @@ class CityHall: public CityStructure{
         int getTaxRateResidential();
         int getTaxRateCommercial();
         int getTaxRateIndustrial();
-        double getBudgetSplit(); // Higher the percentage the more money goes to the user
-        int getCitizenSatisfactionImpact();
+        double getBudgetSplit(float taxNum); // Higher the percentage the more money goes to the user
+        float getCitizenSatisfactionImpact(float tempSatisfaction);
         ~CityHall();
 
         bool placeStructure(int x, int y, CityMap* cityMap);

@@ -19,6 +19,9 @@
 
 #include "CityMap.h"
 #include "CityHall.h"
+#include "Democracy.h"
+#include "Communism.h"
+#include "Authoritarianism.h"
 
 // BUILDING TYPES
 #include "CityStructure.h"  
@@ -96,20 +99,40 @@ int main(){
     // CREATE AND PLACE CITY HALL
     cout << "\nCREATE AND PLACE CITY HALL" << endl;
     CityHall* cityHall = CityHall::getInstance();
+
+    cityHall->setPoliticalSystem(new Democracy());
+
     cityHall->placeStructure(0, 0, cityMap);
 
 
+    cout << "\nCREATE AND PLACE ROADS" << endl;
+    Road* road1 = new Road();
+    road1->placeStructure(0, 1, cityMap);
+    cout << "Road 1 placed" << endl;
+    Road* road2 = new Road();
+    road2->placeStructure(1, 1, cityMap);
+    cout << "Road 2 placed" << endl;
+    Road* road3 = new Road();
+    road3->placeStructure(0, 2, cityMap);
+    cout << "Road 3 placed" << endl;
 
 
-    // CREATE AND PLACE RESIDENTIAL COMPLEXES 
-    cout << "\n ================= CREATE AND PLACE RESIDENTIAL COMPLEXES =================" << endl;
+    cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
     ResidentialBuilding* house1 = new House();
     ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
-    residentialComplex1->placeStructure(4, 4, cityMap);
+    residentialComplex1->placeStructure(1, 2, cityMap);
 
-    std::cout << residentialComplex1->getStructureType() << std::endl;
-    std::cout << residentialComplex1->residentialComponents[0]->getStructureType() << std::endl;
+    ResidentialBuilding* estate = new Estate();
+    ResidentialBuilding* apartment = new Apartment();
+    ResidentialBuilding* townhouse = new Townhouse();
 
+    residentialComplex1->addResidentialComponent(estate, cityMap);
+    residentialComplex1->addResidentialComponent(apartment, cityMap);
+    residentialComplex1->addResidentialComponent(townhouse, cityMap);
+
+    for (int i = 0; i < 20; i++){
+        cityHall->birth();
+    }
 
 
     // Initialize and run game loop
