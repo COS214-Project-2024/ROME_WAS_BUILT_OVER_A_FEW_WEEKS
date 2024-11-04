@@ -25,6 +25,14 @@ public:
         std::string type;
     };
 
+
+    struct ShopItem {
+        sf::Sprite sprite;
+        int cost;
+        std::string type;
+    };
+
+
 private:
     // Reference to main buildings
     CityHall* cityHall;
@@ -80,6 +88,9 @@ private:
     void gameLoop();
     
     void drawStats();
+
+    void createShopMenu();
+    void drawShopMenu();
     
 
     // Other functions
@@ -90,7 +101,7 @@ private:
 
     bool shopMenuOpen;
     sf::Sprite shopMenuSprite;
-    std::vector<sf::Sprite> shopButtons;
+    std::vector<std::vector<ShopItem>> shopButtons;
 };
 
 #endif

@@ -7,7 +7,7 @@ class LinearBuildingIterator : public BuildingIterator {
 private:
     const std::vector<ResidentialComplex*>& buildings;  // Reference to buildings in a ResidentialComplex
     size_t currentIndex;                      // Current index in the iteration
-
+    
 public:
     // Constructor: initialize with a vector of Building pointers
     LinearBuildingIterator(const std::vector<ResidentialComplex*>& buildings)

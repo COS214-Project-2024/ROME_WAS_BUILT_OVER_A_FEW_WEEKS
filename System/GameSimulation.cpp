@@ -301,7 +301,9 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     currencyIcon.setScale(0.25, 0.25);
     centerTextOnSprite(currencyText, currencyIcon);
 
-    shopMenuOpen = false;
+    shopMenuOpen = true;
+
+    createShopMenu();
 
 }
 
@@ -675,17 +677,22 @@ void GameSimulation::drawFrame() {
         }
     }
 
-    // Now switch to the UI view for fixed elements
-    sf::View uiView = window.getDefaultView();
-    window.setView(uiView);
+    if (shopMenuOpen){
+        drawShopMenu();
+    }else{
 
-    // Draw the stats
-    drawStats();
+        sf::View uiView = window.getDefaultView();
+        window.setView(uiView);
 
-    // Switch back to the main game view
-    window.setView(cameraView);
-    // Display the frame
+        // Draw the stats
+        drawStats();
+
+        // Switch back to the main game view
+        window.setView(cameraView);
+    }
+
     window.display();
+    
 }
 
 void GameSimulation::drawSatisfaction() {
@@ -753,4 +760,335 @@ void GameSimulation::drawStats() {
     drawSteel();
     drawConcrete();
     drawWood();
+}
+
+
+
+void GameSimulation::createShopMenu(){
+    // Populate each row with shop items
+    // Type is gonna be stored in texture name of sprite
+    // Cost is gonna be stored in the shop item
+    // Sprite is gonna be stored in the shop item
+
+    // RESIDENTIAL
+    sf::Sprite house;
+    house.setTexture(textures["House"]);
+    house.setScale(1.5, 1.5);
+    int costHouse = 1000;
+    ShopItem houseItem;
+    houseItem.sprite = house;
+    houseItem.cost = costHouse;
+    houseItem.type = "House";
+
+    sf::Sprite apartment;
+    apartment.setTexture(textures["Apartment"]);
+    apartment.setScale(1.5, 1.5);
+    int costApartment = 1000;
+    ShopItem apartmentItem;
+    apartmentItem.sprite = apartment;
+    apartmentItem.cost = costApartment;
+    apartmentItem.type = "Apartment";
+
+    sf::Sprite estate;
+    estate.setTexture(textures["Estate"]);
+    estate.setScale(1.5, 1.5);
+    int costEstate = 1000;
+    ShopItem estateItem;
+    estateItem.sprite = estate;
+    estateItem.cost = costEstate;
+    estateItem.type = "Estate";
+
+    sf::Sprite townhouse;
+    townhouse.setTexture(textures["Townhouse"]);
+    townhouse.setScale(1.5, 1.5);
+    int costTownhouse = 1000;
+    ShopItem townhouseItem;
+    townhouseItem.sprite = townhouse;
+    townhouseItem.cost = costTownhouse;
+    townhouseItem.type = "Townhouse";
+
+    std::vector<ShopItem> residentialItems;
+    residentialItems.push_back(houseItem);
+    residentialItems.push_back(apartmentItem);
+    residentialItems.push_back(estateItem);
+    residentialItems.push_back(townhouseItem);
+
+
+    // COMMERCIAL
+    sf::Sprite shop;
+    shop.setTexture(textures["Shop"]);
+    shop.setScale(1.5, 1.5);
+    int costShop = 1000;
+    ShopItem shopItem;
+    shopItem.sprite = shop;
+    shopItem.cost = costShop;
+    shopItem.type = "Shop";
+
+    sf::Sprite office;
+    office.setTexture(textures["Office"]);
+    office.setScale(1.5, 1.5);
+    int costOffice = 1000;
+    ShopItem officeItem;
+    officeItem.sprite = office;
+    officeItem.cost = costOffice;
+    officeItem.type = "Office";
+
+    std::vector<ShopItem> commercialItems;
+    commercialItems.push_back(shopItem);
+    commercialItems.push_back(officeItem);
+
+
+    // INDUSTRIAL
+    sf::Sprite plant;
+    plant.setTexture(textures["Plant"]);
+    plant.setScale(1.5, 1.5);
+    int costPlant = 1000;
+    ShopItem plantItem;
+    plantItem.sprite = plant;
+    plantItem.cost = costPlant;
+    plantItem.type = "Plant";
+
+    sf::Sprite warehouse;
+    warehouse.setTexture(textures["Warehouse"]);
+    warehouse.setScale(1.5, 1.5);
+    int costWarehouse = 1000;
+    ShopItem warehouseItem;
+    warehouseItem.sprite = warehouse;
+    warehouseItem.cost = costWarehouse;
+    warehouseItem.type = "Warehouse";
+
+    sf::Sprite factory;
+    factory.setTexture(textures["Factory"]);
+    factory.setScale(1.5, 1.5);
+    int costFactory = 1000;
+    ShopItem factoryItem;
+    factoryItem.sprite = factory;
+    factoryItem.cost = costFactory;
+    factoryItem.type = "Factory";
+
+    std::vector<ShopItem> industrialItems;
+    industrialItems.push_back(plantItem);
+    industrialItems.push_back(warehouseItem);
+    industrialItems.push_back(factoryItem);
+
+
+    // LANDMARK
+    sf::Sprite colosseum;
+    colosseum.setTexture(textures["Colosseum"]);
+    colosseum.setScale(1.5, 1.5);
+    int costColosseum = 1000;
+    ShopItem colosseumItem;
+    colosseumItem.sprite = colosseum;
+    colosseumItem.cost = costColosseum;
+    colosseumItem.type = "Colosseum";
+
+    sf::Sprite park;
+    park.setTexture(textures["Park"]);
+    park.setScale(1.5, 1.5);
+    int costPark = 1000;
+    ShopItem parkItem;
+    parkItem.sprite = park;
+    parkItem.cost = costPark;
+    parkItem.type = "Park";
+
+    std::vector<ShopItem> landmarkItems;
+    landmarkItems.push_back(colosseumItem);
+    landmarkItems.push_back(parkItem);
+
+    // Add all vectors to the shop menu vector array
+    shopButtons.push_back(residentialItems);
+    shopButtons.push_back(commercialItems);
+    shopButtons.push_back(industrialItems);
+    shopButtons.push_back(landmarkItems);
+}
+
+
+void GameSimulation::drawShopMenu(){
+    // Draw background
+    // Dark rectangle
+    window.setView(window.getDefaultView());
+    sf::RectangleShape backgroundColour(sf::Vector2f(1120, 630));
+    backgroundColour.setPosition(0, 0);
+
+    backgroundColour.setFillColor(sf::Color(0, 0, 0, 200));
+    window.draw(backgroundColour);
+
+    // Draw the shop menu
+    // "Shop" text
+    sf::Text shopText;
+    shopText.setFont(font);
+    shopText.setString("Shop");
+    shopText.setCharacterSize(32);
+    shopText.setFillColor(sf::Color::White);
+    shopText.setOrigin(shopText.getLocalBounds().width / 2, shopText.getLocalBounds().height / 2);
+    shopText.setPosition(1120 / 2, 64);
+    window.draw(shopText);
+
+    // Draw underline for shop
+    sf::RectangleShape underline(sf::Vector2f(1120 / 4, 2));
+    underline.setOrigin(1120 / 4 / 2, 2 / 2);
+    underline.setPosition(1120 / 2, 70);
+    underline.setFillColor(sf::Color::White);
+    window.draw(underline);
+
+    // ============ RESIDENTIAL DISPLAY ============
+    // Residential text
+    sf::Text residentialText;
+    residentialText.setFont(font);
+    residentialText.setString("Residential");
+    residentialText.setCharacterSize(20);
+    residentialText.setFillColor(sf::Color::White);
+    residentialText.setPosition((1120 / 4)/2  - 100, 112);
+    window.draw(residentialText);
+
+    // Draw residential buttons
+    for (int i = 0; i < shopButtons[0].size(); i++){
+        sf::Sprite residentialSprite = shopButtons[0][i].sprite;
+        residentialSprite.setPosition((1120 / 4)/2 - 100, 140 + i * 124);
+        window.draw(residentialSprite);
+
+        // Draw coin icon to the left of text
+        sf::Sprite coinIcon;
+        coinIcon.setTexture(textures["PopeCoins"]);
+        coinIcon.setScale(0.2, 0.2);
+        coinIcon.setPosition((1120 / 4)/2, 160 + i * 124 + 50);
+        window.draw(coinIcon);
+
+        // Display texture name
+        sf::Text buildingName;
+        buildingName.setFont(font);
+        buildingName.setString(shopButtons[0][i].type);
+        buildingName.setCharacterSize(14);
+        buildingName.setFillColor(sf::Color::White);
+        buildingName.setPosition((1120 / 4)/2 + 8, 180 + i * 124);
+        window.draw(buildingName);
+
+        sf::Text residentialCost;
+        residentialCost.setFont(font);
+        residentialCost.setString(std::to_string(shopButtons[0][i].cost));
+        residentialCost.setCharacterSize(10);
+        residentialCost.setFillColor(sf::Color::White);
+        residentialCost.setPosition((1120 / 4)/2 + 26, 160 + i * 124 + 60);
+        window.draw(residentialCost);
+    }
+
+
+    sf::Text commercialText;
+    commercialText.setFont(font);
+    commercialText.setString("Commercial");
+    commercialText.setCharacterSize(20);
+    commercialText.setFillColor(sf::Color::White);
+    commercialText.setPosition((1120 / 3) - 86, 112);
+    window.draw(commercialText);
+
+    // Draw commercial buttons
+    for (int i = 0; i < shopButtons[1].size(); i++){
+        sf::Sprite commercialSprite = shopButtons[1][i].sprite;
+        commercialSprite.setPosition((1120 / 3) - 70, 140 + i * 124);
+        window.draw(commercialSprite);
+
+        // Draw coin icon to the left of text
+        sf::Sprite coinIcon;
+        coinIcon.setTexture(textures["PopeCoins"]);
+        coinIcon.setScale(0.2, 0.2);
+        coinIcon.setPosition((1120 / 3) + 30, 160 + i * 124 + 50);
+        window.draw(coinIcon);
+
+        // Display texture name
+        sf::Text buildingName;
+        buildingName.setFont(font);
+        buildingName.setString(shopButtons[1][i].type);
+        buildingName.setCharacterSize(14);
+        buildingName.setFillColor(sf::Color::White);
+        buildingName.setPosition((1120 / 3) + 38, 180 + i * 124);
+        window.draw(buildingName);
+
+        sf::Text commercialCost;
+        commercialCost.setFont(font);
+        commercialCost.setString(std::to_string(shopButtons[1][i].cost));
+        commercialCost.setCharacterSize(10);
+        commercialCost.setFillColor(sf::Color::White);
+        commercialCost.setPosition((1120 / 3) + 54, 160 + i * 124 + 60);
+        window.draw(commercialCost);
+    }
+
+
+    sf::Text industrialText;
+    industrialText.setFont(font);
+    industrialText.setString("Industrial");
+    industrialText.setCharacterSize(20);
+    industrialText.setFillColor(sf::Color::White);
+    industrialText.setPosition((1120 / 3) * 1.54 - 40, 112);
+    window.draw(industrialText);
+
+    // Draw industrial buttons
+    for (int i = 0; i < shopButtons[2].size(); i++){
+        sf::Sprite industrialSprite = shopButtons[2][i].sprite;
+        industrialSprite.setPosition((1120 / 3) * 1.54 - 40, 140 + i * 124);
+        window.draw(industrialSprite);
+
+        // Draw coin icon to the left of text
+        sf::Sprite coinIcon;
+        coinIcon.setTexture(textures["PopeCoins"]);
+        coinIcon.setScale(0.2, 0.2);
+        coinIcon.setPosition((1120 / 3) * 1.54 + 60, 160 + i * 124 + 50);
+        window.draw(coinIcon);
+
+        // Display texture name
+        sf::Text buildingName;
+        buildingName.setFont(font);
+        buildingName.setString(shopButtons[2][i].type);
+        buildingName.setCharacterSize(14);
+        buildingName.setFillColor(sf::Color::White);
+        buildingName.setPosition((1120 / 3) * 1.54 + 68, 180 + i * 124);
+        window.draw(buildingName);
+
+        sf::Text industrialCost;
+        industrialCost.setFont(font);
+        industrialCost.setString(std::to_string(shopButtons[2][i].cost));
+        industrialCost.setCharacterSize(10);
+        industrialCost.setFillColor(sf::Color::White);
+        industrialCost.setPosition((1120 / 3) * 1.54 + 86, 160 + i * 124 + 60);
+        window.draw(industrialCost);
+    }
+
+
+    sf::Text landmarkText;
+    landmarkText.setFont(font);
+    landmarkText.setString("Landmark");
+    landmarkText.setCharacterSize(20);
+    landmarkText.setFillColor(sf::Color::White);
+    landmarkText.setPosition((1120 / 3) * 2.3 - 40, 112);
+    window.draw(landmarkText);
+
+    // Draw landmark buttons
+    for (int i = 0; i < shopButtons[3].size(); i++){
+        sf::Sprite landmarkSprite = shopButtons[3][i].sprite;
+        landmarkSprite.setPosition((1120 / 3) * 2.3 - 40, 140 + i * 124);
+        window.draw(landmarkSprite);
+
+        // Draw coin icon to the left of text
+        sf::Sprite coinIcon;
+        coinIcon.setTexture(textures["PopeCoins"]);
+        coinIcon.setScale(0.2, 0.2);
+        coinIcon.setPosition((1120 / 3) * 2.3 + 60, 160 + i * 124 + 50);
+        window.draw(coinIcon);
+
+        // Display texture name
+        sf::Text buildingName;
+        buildingName.setFont(font);
+        buildingName.setString(shopButtons[3][i].type);
+        buildingName.setCharacterSize(14);
+        buildingName.setFillColor(sf::Color::White);
+        buildingName.setPosition((1120 / 3) * 2.3 + 68, 180 + i * 124);
+        window.draw(buildingName);
+
+        sf::Text landmarkCost;
+        landmarkCost.setFont(font);
+        landmarkCost.setString(std::to_string(shopButtons[3][i].cost));
+        landmarkCost.setCharacterSize(10);
+        landmarkCost.setFillColor(sf::Color::White);
+        landmarkCost.setPosition((1120 / 3) * 2.3 + 86, 160 + i * 124 + 60);
+        window.draw(landmarkCost);
+    }
 }
