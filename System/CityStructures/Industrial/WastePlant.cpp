@@ -6,7 +6,10 @@ WastePlant::WastePlant(Plant* plant) : PlantDecorator(plant) {
 }
 
 WastePlant::~WastePlant(){
+    delete plant;
     plant = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 bool WastePlant::placeStructure(int x, int y, CityMap* cityMap) {

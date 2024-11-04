@@ -18,6 +18,9 @@ Road::Road() : trafficState(new LowTraffic()) {
 }
 
 Road::~Road() {
+    delete trafficState;
+    trafficState = nullptr;
+    delete cityMap;
     cityMap = nullptr;
 }
 

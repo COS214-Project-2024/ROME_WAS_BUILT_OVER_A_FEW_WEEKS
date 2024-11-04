@@ -6,7 +6,10 @@ WaterPlant::WaterPlant(Plant* plant)  {
 }
 
 WaterPlant::~WaterPlant(){
+    delete plant;
     plant = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 bool WaterPlant::placeStructure(int x, int y, CityMap* cityMap) {

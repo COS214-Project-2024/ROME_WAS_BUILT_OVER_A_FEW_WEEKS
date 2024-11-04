@@ -25,4 +25,7 @@ public:
         }
         return buildings[currentIndex++];
     }
+
+    // Destructor: nothing to clean up
+    ~LinearBuildingIterator() override = default;
 };

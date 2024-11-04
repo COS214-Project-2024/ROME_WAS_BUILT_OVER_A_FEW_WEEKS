@@ -9,6 +9,10 @@ Factory::Factory(){
     concreteCost = 0;
 }
 
+Factory::~Factory(){
+    // EMPTY
+}
+
 string Factory::getFactoryType(){
     return this->factoryType;
 }

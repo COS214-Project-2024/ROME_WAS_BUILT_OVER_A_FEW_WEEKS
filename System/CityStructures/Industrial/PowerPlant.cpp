@@ -6,7 +6,10 @@ PowerPlant::PowerPlant(Plant* plant): PlantDecorator(plant) {
 }
 
 PowerPlant::~PowerPlant() {
+    delete plant;
     plant = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 bool PowerPlant::placeStructure(int x, int y, CityMap* cityMap) {

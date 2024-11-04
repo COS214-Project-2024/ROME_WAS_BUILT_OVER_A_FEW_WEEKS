@@ -6,6 +6,9 @@ SteelGenerator::SteelGenerator(Factory* factory) : GeneratorDecorator(factory){
 
 SteelGenerator::~SteelGenerator(){
     delete factory;
+    factory = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 

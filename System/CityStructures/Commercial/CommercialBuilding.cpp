@@ -9,7 +9,8 @@ CommercialBuilding::CommercialBuilding(int radiusOfEffect) : radiusOfEffect(radi
 }
 
 CommercialBuilding::~CommercialBuilding() {
-    // EMPTY
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 std::string CommercialBuilding::getStructureType() {

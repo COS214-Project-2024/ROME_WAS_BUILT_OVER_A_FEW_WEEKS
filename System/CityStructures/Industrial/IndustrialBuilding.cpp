@@ -9,6 +9,7 @@ IndustrialBuilding::IndustrialBuilding()  {
 }
 
 IndustrialBuilding::~IndustrialBuilding() {
+    delete cityMap;
     cityMap = nullptr;
 }
 

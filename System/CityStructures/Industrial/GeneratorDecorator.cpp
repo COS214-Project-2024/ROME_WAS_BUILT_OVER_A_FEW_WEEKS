@@ -9,7 +9,10 @@ GeneratorDecorator::GeneratorDecorator(Factory* factory) : factory(factory){
 }
 
 GeneratorDecorator::~GeneratorDecorator(){
+    delete factory;
     factory = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 int GeneratorDecorator::generate(){

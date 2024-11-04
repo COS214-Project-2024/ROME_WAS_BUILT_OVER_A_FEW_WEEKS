@@ -11,6 +11,7 @@ Plant::Plant(){
 }
 
 Plant::~Plant(){
+    delete cityMap;
     cityMap = nullptr;
 }
 

@@ -14,7 +14,7 @@ class Factory : public IndustrialBuilding {
         string factoryType;
     public:
         Factory();
-        virtual ~Factory(){};
+        virtual ~Factory();
         int getQuantity();
         virtual string getFactoryType();
         virtual bool placeStructure(int x, int y, CityMap* cityMap);

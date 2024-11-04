@@ -6,7 +6,10 @@ SewagePlant::SewagePlant(Plant* plant) : PlantDecorator(plant) {
 }
 
 SewagePlant::~SewagePlant(){
+    delete plant;
     plant = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 bool SewagePlant::placeStructure(int x, int y, CityMap* cityMap) {

@@ -6,6 +6,9 @@ WoodGenerator::WoodGenerator(Factory* factory) : GeneratorDecorator(factory){
 
 WoodGenerator::~WoodGenerator(){
     delete factory;
+    factory = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 int WoodGenerator::generate(){

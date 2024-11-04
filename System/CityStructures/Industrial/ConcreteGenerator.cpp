@@ -6,6 +6,9 @@ ConcreteGenerator::ConcreteGenerator(Factory* factory) : GeneratorDecorator(fact
 
 ConcreteGenerator::~ConcreteGenerator(){
     delete factory;
+    factory = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 int ConcreteGenerator::generate(){

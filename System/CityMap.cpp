@@ -337,6 +337,8 @@ CityMap::~CityMap() {
         }
     }
     map.clear();
+    delete cityHall;
+    cityHall = nullptr;
 }
 
 bool CityMap::checkResidentialComponent(ResidentialComponent *residential, CityMap* checkCityMap) {

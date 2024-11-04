@@ -10,7 +10,10 @@ PlantDecorator::PlantDecorator(Plant* plant) : plant(plant) {
 }
 
 PlantDecorator::~PlantDecorator() {
+    delete plant;
     plant = nullptr;
+    delete cityMap;
+    cityMap = nullptr;
 }
 
 int PlantDecorator::getRadiusOfEffect() {
