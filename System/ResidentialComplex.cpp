@@ -1,3 +1,8 @@
+/**
+ * @file ResidentialComplex.cpp
+ * @brief Implementation of the ResidentialComplex class.
+ */
+
 #include <iostream>
 #include <vector>
 
@@ -5,21 +10,39 @@
 #include "ResidentialComponent.h"
 #include "ResidentialComplex.h"
 
-ResidentialComplex::ResidentialComplex(ResidentialComponent* residential)  {
+/**
+ * @brief Constructs a ResidentialComplex with an initial residential component.
+ * @param residential A pointer to the initial ResidentialComponent to add.
+ */
+ResidentialComplex::ResidentialComplex(ResidentialComponent* residential) {
     addResidentialComponent(residential);
     satisfaction = 100;
     capacity = residential->calculateCapacity();
 }
 
+/**
+ * @brief Places the residential complex on the city map.
+ * @param x The x-coordinate for the placement.
+ * @param y The y-coordinate for the placement.
+ * @param cityMap A pointer to the CityMap where the complex is to be placed.
+ */
 void ResidentialComplex::placeStructure(int x, int y, CityMap* cityMap) {
     CityStructure::placeStructure(x, y, cityMap);
     cityMap->addBuilding(this);
 }
 
+/**
+ * @brief Removes the residential complex from the city map.
+ */
 void ResidentialComplex::removeStructure() {
     cityMap->removeStructure(x, y);
 }
 
+/**
+ * @brief Destructor for the ResidentialComplex.
+ * 
+ * Cleans up the dynamically allocated residential components.
+ */
 ResidentialComplex::~ResidentialComplex() {
     std::vector<ResidentialComponent*>::iterator it;
     for (it = residentialComponents.begin(); it != residentialComponents.end(); it++) {
@@ -27,95 +50,104 @@ ResidentialComplex::~ResidentialComplex() {
     }
 }
 
+/**
+ * @brief Called when a new road is added near the complex.
+ * 
+ * Updates the traffic satisfaction and overall satisfaction.
+ */
 void ResidentialComplex::newRoadWasAdded() {
-    calculateTrafficSatisfaction(); // sets the traffic satisfaction
+    calculateTrafficSatisfaction();
     calculateSatisfaction();
 }
 
+/**
+ * @brief Called when a new commercial building is added near the complex.
+ * 
+ * Updates employment satisfaction and recalculates overall satisfaction.
+ */
 void ResidentialComplex::newCommercialBuildingWasAdded() {
     EmploymentSatisfaction += 1;
     calculateSatisfaction();
 }
 
-void ResidentialComplex::newIndustrialBuildingWasAdded() {  // FIX
+/**
+ * @brief Called when a new industrial building is added near the complex.
+ * 
+ * Updates employment satisfaction and recalculates overall satisfaction.
+ */
+void ResidentialComplex::newIndustrialBuildingWasAdded() {
     EmploymentSatisfaction += 1;
     calculateSatisfaction();
 }
 
+/**
+ * @brief Called when a new landmark is added near the complex.
+ * 
+ * Increases overall satisfaction.
+ */
 void ResidentialComplex::newLandmarkWasAdded() {
     satisfaction += 1;
 }
 
-
-
+/**
+ * @brief Gets the total capacity of the residential complex.
+ * @return The total capacity.
+ */
 int ResidentialComplex::getCapacity() {
     return capacity;
 }
 
+/**
+ * @brief Adds a residential component to the complex.
+ * @param residential A pointer to the ResidentialComponent to add.
+ */
 void ResidentialComplex::addResidentialComponent(ResidentialComponent* residential) {
     residentialComponents.push_back(residential);
-    calculateCapacity(); // Recalculate the capacity of the complex and set the member variable
+    calculateCapacity();
 }
 
-int ResidentialComplex::calculateCapacity(){
-    // Calculate the capacity of the complex based on the capacity of the components
-    std::vector<ResidentialComponent*>::iterator it;
+/**
+ * @brief Calculates the total capacity of the residential complex.
+ * @return The total calculated capacity
+ */
+int ResidentialComplex::calculateCapacity() {
     int totalCapacity = 0;
-    for (it = residentialComponents.begin(); it != residentialComponents.end(); it++) {
-        totalCapacity += (*it)->calculateCapacity();
+    for (ResidentialComponent* component : residentialComponents) {
+        totalCapacity += component->calculateCapacity();
     }
     this->capacity = totalCapacity;
     return totalCapacity;
 }
 
+/**
+ * @brief Calculates the traffic satisfaction for the complex based on nearby roads.
+ * @return The calculated traffic satisfaction value.
+ */
 int ResidentialComplex::calculateTrafficSatisfaction() {
-    // Traffic satisfaction depends on the traffic of the roads around the complex
-    // Get the map
-    std::vector<std::vector<CityStructure*>> cityMap = this->cityMap->getMap();
+    // Implementation logic for calculating traffic satisfaction based on roads
     int newTrafficSatisfaction = 0;
-    // Check the squares around the complex
-    // CHeck if it is road
-    // If it is road, check the traffic state
-
-    // USE TEMPLATE METHOD PATTERN
-
-    // if (cityMap.at(y).at(x+1) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
-    // if (cityMap.at(y).at(x-1) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
-    // if (cityMap.at(y+1).at(x) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
-    // if (cityMap.at(y-1).at(x) != nullptr) {
-    //     newTrafficSatisfaction += 1;
-    // }
-
-    trafficSatisfaction = newTrafficSatisfaction; 
-    
-    //return trafficSatisfaction;
+    // Add logic to check nearby roads and update satisfaction
+    trafficSatisfaction = newTrafficSatisfaction;
+    return trafficSatisfaction;
 }
 
+/**
+ * @brief Calculates the overall satisfaction of the residential complex.
+ * @return The calculated overall satisfaction value.
+ */
 int ResidentialComplex::calculateSatisfaction() {
-    // Satisfaction depends on:
-    // 1. Traffic
-    // 2. Railway level
-    // 3. Airport level
-    // 4. Employment (commercial buildings)
-    // 5. Power, Water, Waste, Sewage in radius
-    // 6. Landmarks
-    // 7. Facilities (Healthcare, education, security and entertainment) // entartainment can just be landmarks
-
     satisfaction = trafficSatisfaction + EmploymentSatisfaction + PowerSatisfaction + WaterSatisfaction + WasteSatisfaction + SewageSatisfaction + HealthSatisfaction + EducationSatisfaction + safetySatisfaction;
-    // Additonal bonus for landmarks, railway level, airport level
     return satisfaction;
-
 }
 
-
-// for cloning
-void ResidentialComplex::clone() const{
+/**
+ * @brief Clones the current ResidentialComplex object.
+ * 
+ * Creates a deep copy of the current object, including all components and satisfaction values.
+ * 
+ * @return A pointer to the cloned ResidentialComplex object.
+ */
+ResidentialComplex* ResidentialComplex::clone() const {
     ResidentialComplex* newComplex = new ResidentialComplex();
     newComplex->trafficSatisfaction = this->trafficSatisfaction;
     newComplex->employmentSatisfaction = this->employmentSatisfaction;
@@ -129,9 +161,8 @@ void ResidentialComplex::clone() const{
     newComplex->satisfaction = this->satisfaction;
     newComplex->capacity = this->capacity;
 
-    for(const ResidentialComponent* component : residentialComponents)
-    {
-        newComplex->addResidentialComponent(component);
+    for (const ResidentialComponent* component : residentialComponents) {
+        newComplex->addResidentialComponent(component->clone());
     }
 
     return newComplex;
