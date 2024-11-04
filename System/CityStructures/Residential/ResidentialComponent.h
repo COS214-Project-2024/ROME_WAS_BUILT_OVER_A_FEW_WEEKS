@@ -14,13 +14,15 @@ class ResidentialComponent : public CityStructure {
         virtual std::string getStructureType() = 0;
 
         virtual bool placeStructure(int x, int y, CityMap* cityMap) = 0;
-        virtual void removeStructure() = 0;
+        virtual bool removeStructure() = 0;
         
         virtual int getCapacity() = 0; // retrieves the memeber variable capacity whereas calculateCapacity() re calculates the capacity every time
 
         // virtual void calculateStatisfaction() : NO NEED since it will be same for all in complex
         virtual int calculateCapacity() = 0; //composite function
         virtual int getCost() = 0;
+        //protype, added by Lufuno
+        virtual ResidentialComponent* clone() const = 0;
 
         
 

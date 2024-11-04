@@ -3,12 +3,16 @@
 
 #include "PlantDecorator.h"
 class PlantDecorator;
+class ResidentialComplex;
 
 class WaterPlant : public PlantDecorator {
     public:
-        WaterPlant(Plant* plant) : PlantDecorator(plant) {this->plant = plant;};
-        virtual ~WaterPlant() {};
-        int getRadiusOfEffect() { return plant->getRadiusOfEffect() + 1; };
+        WaterPlant(Plant* plant);
+        virtual ~WaterPlant();
+        int getRadiusOfEffect() ;
+        bool placeStructure(int x, int y, CityMap* cityMap);
+        bool removeStructure();
+        void newResidentialComplexWasAdded(ResidentialComplex* complex);
         string getPlantType();
         string setWaterPlant();
 };

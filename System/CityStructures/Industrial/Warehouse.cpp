@@ -10,3 +10,14 @@ bool Warehouse::placeStructure(int x, int y, CityMap *cityMap){
         return false;
     }
 }
+
+bool Warehouse::removeStructure(){
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        cityMap->removeWarehouse(this);
+        return true;
+    }
+    else {
+        return false;
+    }
+}

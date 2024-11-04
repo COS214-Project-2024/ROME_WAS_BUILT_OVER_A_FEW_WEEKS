@@ -23,6 +23,7 @@ SOURCES = \
     ./PoliticalSystem/Democracy.cpp \
     ./CityStructures/Residential/Estate.cpp \
     ./CityStructures/Industrial/Factory.cpp \
+    ./CityStructures/Industrial/GeneratorDecorator.cpp \
     ./SatisfactionHandler/HighSatisfactionHandler.cpp \
     ./CityStructures/Road/HighTraffic.cpp \
     ./CityStructures//Residential/House.cpp \
@@ -39,6 +40,7 @@ SOURCES = \
     ./CityStructures/Landmark/Park.cpp \
     ./PoliticalSystem/PoliticalSystem.cpp \
 	./CityStructures/Industrial/Plant.cpp \
+	./CityStructures/Industrial/PlantDecorator.cpp \
     ./CityStructures/Industrial/PowerPlant.cpp \
     ./BoosterStructures/Railway.cpp \
     ./CityStructures/Residential/ResidentialBuilding.cpp \
@@ -54,7 +56,11 @@ SOURCES = \
     ./CityStructures/Industrial/WastePlant.cpp \
     ./CityStructures/Industrial/WaterPlant.cpp \
     ./CityStructures/Industrial/Wood.cpp \
-    ./CityStructures/Industrial/WoodGenerator.cpp
+    ./CityStructures/Industrial/WoodGenerator.cpp \
+    ./CityStructures/Industrial/IndustrialFactory.cpp \
+    ./CityStructures/Commercial/CommercialFactory.cpp \
+    ./CityStructures/Residential/ResidentialFactory.cpp \
+    ./CityStructures/Landmark/LandmarkFactory.cpp \
 
 # Object files
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -77,3 +83,4 @@ clean:
 
 # Rebuild everything
 rebuild: clean $(TARGET)
+

@@ -14,17 +14,14 @@ class ResidentialBuilding : public ResidentialComponent {
         ResidentialBuilding(int capacity);
         ~ResidentialBuilding();
         std::string getStructureType();
-
         bool placeStructure(int x, int y, CityMap* cityMap);
-        void removeStructure();
-
+        bool removeStructure();
         int getCapacity(); // SAME AS calculateCapacity()
-
         int calculateCapacity();
-
         int getCost();
-
         // virtual std::string getResidentialBuildingType() = 0;
+        // clone method for prototype
+        ResidentialComponent* clone() const override;
 };
 
 #endif

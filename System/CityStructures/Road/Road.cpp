@@ -29,10 +29,11 @@ bool Road::placeStructure(int x, int y, CityMap* cityMap) {
     // call base class function which assigns it to the map
     bool placed = CityStructure::placeStructure(x, y, cityMap);
     if (placed) {
-        cityMap->addRoad(this);
         calculateTraffic();
+        cityMap->addRoad(this);
         return true;
-    }else{
+    }
+    else {
         return false;
     }
 }
@@ -43,9 +44,15 @@ void Road::newBuildingWasAdded() {
 }
 
 
-void Road::removeStructure() {
-    CityStructure::removeStructure();
-    cityMap->removeRoad(this);
+bool Road::removeStructure() {
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        cityMap->removeRoad(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 
 }
 

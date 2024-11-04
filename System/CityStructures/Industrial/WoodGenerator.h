@@ -5,13 +5,14 @@
 
 class WoodGenerator : public GeneratorDecorator {
     public:
-        WoodGenerator(){};
-        WoodGenerator(Factory* factory) : GeneratorDecorator(factory) {this->factory = factory;};
-        ~WoodGenerator();
+        WoodGenerator(Factory* factory);
+        virtual ~WoodGenerator();
         int generate();
         int generateWood();
         string getFactoryType();
         string setWoodGenerator();
+        bool placeStructure(int x, int y, CityMap* cityMap);
+        bool removeStructure();
 };
 
 #endif

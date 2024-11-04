@@ -5,13 +5,14 @@
 
 class SteelGenerator : public GeneratorDecorator {
     public:
-        SteelGenerator(){};
-        SteelGenerator(Factory* factory) : GeneratorDecorator(factory) {this->factory = factory;};
-        ~SteelGenerator();
+        SteelGenerator(Factory* factory);;
+        virtual ~SteelGenerator();
         int generate();
         int generateSteel();
         string getFactoryType();
         string setSteelGenerator();
+        bool placeStructure(int x, int y, CityMap* cityMap);
+        bool removeStructure();
 };
 
 #endif

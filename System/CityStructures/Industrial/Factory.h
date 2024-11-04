@@ -13,10 +13,13 @@ class Factory : public IndustrialBuilding {
         int qunatity;
         string factoryType;
     public:
-        Factory(){cost = 1000; woodCost = 0; steelCost = 0; concreteCost = 0;};
+        Factory();
         virtual ~Factory(){};
-        int getQuantity(){return this->qunatity;};
-        virtual string getFactoryType(){return factoryType;};
+        int getQuantity();
+        virtual string getFactoryType();
+        virtual bool placeStructure(int x, int y, CityMap* cityMap);
+        virtual bool removeStructure();
+        virtual int generate();
 };
 
 

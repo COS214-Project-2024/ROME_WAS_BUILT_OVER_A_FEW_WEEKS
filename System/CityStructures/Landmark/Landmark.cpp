@@ -25,9 +25,15 @@ bool Landmark::placeStructure(int x, int y, CityMap* cityMap) {
     }
 }
 
-void Landmark::removeStructure() {
-    CityStructure::removeStructure();
-    cityMap->removeLandmark(this);
+bool Landmark::removeStructure() {
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        cityMap->removeLandmark(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void Landmark::newResidentialComplexWasAdded(ResidentialComplex* complex) {

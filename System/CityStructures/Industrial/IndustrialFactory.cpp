@@ -1,11 +1,11 @@
 #include "IndustrialFactory.h"
 
 IndustrialBuilding* WarehouseFactory::createIndustrialBuilding() {
-    return new Plant();
+    return new Warehouse();
 }
 
 IndustrialBuilding* FactoryFactory::createIndustrialBuilding() {
-    return new Plant();
+    return new Factory();
 }
 
 IndustrialBuilding* PlantFactory::createIndustrialBuilding() {

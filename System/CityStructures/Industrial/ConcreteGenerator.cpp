@@ -1,5 +1,9 @@
 #include "ConcreteGenerator.h"
 
+ConcreteGenerator::ConcreteGenerator(Factory* factory) : GeneratorDecorator(factory){
+    this->factory = factory;
+}
+
 ConcreteGenerator::~ConcreteGenerator(){
     delete factory;
 }
@@ -19,4 +23,26 @@ string ConcreteGenerator::getFactoryType(){
 string ConcreteGenerator::setConcreteGenerator(){
     factoryType = "|Concrete Factory|" + factory->getFactoryType();
     return this->factoryType;
+}
+
+bool ConcreteGenerator::placeStructure(int x, int y, CityMap *cityMap){
+    bool placed = CityStructure::placeStructure(x, y, cityMap);
+    if (placed) {
+        cityMap->addFactory(this);
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool ConcreteGenerator::removeStructure(){
+    bool removed = cityMap->removeStructure(x, y);
+    if (removed) {
+        cityMap->removeFactory(this);
+        return true;
+    }
+    else {
+        return false;
+    }
 }

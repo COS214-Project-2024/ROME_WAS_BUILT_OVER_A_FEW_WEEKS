@@ -4,6 +4,8 @@
 #include "../BuildingFactory.h"
 //#include "Factory.h"
 #include "Plant.h"
+#include "Warehouse.h"
+#include "Factory.h"
 
 
 class IndustrialFactory : public BuildingFactory {

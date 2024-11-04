@@ -10,11 +10,13 @@ class GeneratorDecorator : public Factory {
         Factory* factory;
         
     public:
-        GeneratorDecorator(){};
-        GeneratorDecorator(Factory* factory): factory(factory){this->factory = factory;};
-        virtual ~GeneratorDecorator(){};
-        virtual int generate(){return 0;};
-        virtual string getFactoryType(){return factoryType;};
+        GeneratorDecorator();
+        GeneratorDecorator(Factory* factory);
+        virtual ~GeneratorDecorator();
+        virtual int generate();
+        virtual string getFactoryType();
+        virtual bool placeStructure(int x, int y, CityMap* cityMap) = 0;
+        virtual bool removeStructure() = 0;
 };
 
 #endif
