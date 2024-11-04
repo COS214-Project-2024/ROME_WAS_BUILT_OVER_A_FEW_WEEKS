@@ -1,28 +1,29 @@
+#include "LinearBuildingIterator.h"
 
-#include <vector>
-#include "BuildingIterator.h"
+/**
+ * @brief Constructor for `LinearBuildingIterator`.
+ * @param buildings A reference to a vector of `ResidentialComplex` pointers to iterate over.
+ *
+ * Initializes the iterator with the given vector and sets the starting index to 0.
+ */
+LinearBuildingIterator::LinearBuildingIterator(const std::vector<ResidentialComplex*>& buildings)
+    : buildings(buildings), currentIndex(0) {}
 
+/**
+ * @brief Checks if there is another building to iterate over.
+ * @return `true` if there are more buildings to iterate over, otherwise `false`.
+ */
+bool LinearBuildingIterator::hasNext() const {
+    return currentIndex < buildings.size();
+}
 
-class LinearBuildingIterator : public BuildingIterator {
-private:
-    const std::vector<ResidentialComplex*>& buildings;  // Reference to buildings in a ResidentialComplex
-    size_t currentIndex;                      // Current index in the iteration
-
-public:
-    // Constructor: initialize with a vector of Building pointers
-    LinearBuildingIterator(const std::vector<ResidentialComplex*>& buildings)
-        : buildings(buildings), currentIndex(0) {}
-
-    // Check if there is another building to iterate over
-    bool hasNext() const override {
-        return currentIndex < buildings.size();
+/**
+ * @brief Retrieves the next `ResidentialComplex` in the iteration and advances the index.
+ * @return A pointer to the next `ResidentialComplex` object, or `nullptr` if there are no more buildings.
+ */
+ResidentialComplex* LinearBuildingIterator::next() {
+    if (!hasNext()) {
+        return nullptr;  // Return nullptr if there are no more buildings
     }
-
-    // Return the next building in the list and advance the index
-    ResidentialComplex* next() override {
-        if (!hasNext()) {
-            return nullptr;  // Return nullptr if there are no more buildings
-        }
-        return buildings[currentIndex++];
-    }
-};
+    return buildings[currentIndex++];
+}
