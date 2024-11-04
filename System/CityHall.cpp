@@ -102,6 +102,35 @@ int CityHall::getCost(){
     return 0;
 }
 
+int CityHall::getPopeCoins(){
+    return popeCoins;
+}
+
+int CityHall::getWood(){
+    return wood;
+}
+
+int CityHall::getSteel(){
+    return steel;
+}
+
+int CityHall::getConcrete(){
+    return concrete;
+}
+
+int CityHall::getMaxWood(){
+    return maxWood;
+}
+
+int CityHall::getMaxSteel(){
+    return maxSteel;
+}
+
+int CityHall::getMaxConcrete(){
+    return maxConcrete;
+}
+
+
 float CityHall::calculateSatisfaction(){
 
     return residentialSatisfaction + getRailwayBonus() + getAirportBonus() - calculateHomelessnessDeduction();
