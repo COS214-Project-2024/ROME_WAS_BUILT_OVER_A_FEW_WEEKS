@@ -3,7 +3,6 @@
 
 #include <vector>
 
-
 class CityHall;
 class CityStructure;
 class CommercialBuilding;
@@ -16,54 +15,77 @@ class Landmark;
 class Road;
 class Factory;
 
-
+/**
+ * @class CityMap
+ * @brief Class representing a map of the city composed of various structures.
+ */
 class CityMap {
-    private: 
-        // 2D array of CityStructures using vector
-        std::vector<std::vector<CityStructure*> > map;
-        CityHall* cityHall;
-        int width;
-        int height;
-    public:
-        CityMap();
-        CityMap(int width, int height);
-        ~CityMap();
-        std::vector<std::vector<CityStructure*> > getMap();
+private:
+    std::vector<std::vector<CityStructure*>> map; ///< 2D array representing the city map.
+    CityHall* cityHall; ///< Pointer to the CityHall structure.
+    int width; ///< Width of the city map.
+    int height; ///< Height of the city map.
 
-        void setCityHall(CityHall* cityHall);
+public:
+    /**
+     * @brief Default constructor for CityMap.
+     */
+    CityMap();
 
-        bool addStructure(int x, int y, CityStructure* structure);
-        void addBuilding(CityStructure* originator); // INCREASE TRAFFIC
+    /**
+     * @brief Parameterized constructor for CityMap.
+     * @param width Width of the city map.
+     * @param height Height of the city map.
+     */
+    CityMap(int width, int height);
 
-        void addRoad(Road* originator);  // DECREASE TRAFFIC
-        void addResidentialComplex(ResidentialComplex* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addCommercialBuilding(CommercialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addPlant(Plant* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addIndustrialBuilding(IndustrialBuilding* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addWarehouse(Warehouse* originator); // INCREASE TRAFFIC AND INCREASE STORAGE CAPACITY
-        void addLandmark(Landmark* originator); // INCREASE TRAFFIC AND AFFECTS SATISFACTION
-        void addFactory(Factory* originator); // INCREASE TRAFFIC AND INCREASE NUMBER OF FACTORIES
-        
-        bool checkResidentialComponent(ResidentialComponent* residential, CityMap* citcheckCityMapyMap);
-        
-        bool removeStructure(int x, int y);
-        void removeBuilding(CityStructure* originator); // DECREASE TRAFFIC
+    /**
+     * @brief Destructor for CityMap.
+     */
+    ~CityMap();
 
-        void removeRoad(Road* originator); // DECREASE TRAFFIC
-        void removeResidentialComplex(ResidentialComplex* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
-        void removeCommercialBuilding(CommercialBuilding* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
-        void removeIndustrialBuilding(IndustrialBuilding* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
-        void removeLandmark(Landmark* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
-        void removePlant(Plant* originator); // DECREASE TRAFFIC AND AFFECTS SATISFACTION
-        void removeWarehouse(Warehouse* originator); // DECREASE TRAFFIC AND DECREASE STORAGE CAPACITY
-        void removeFactory(Factory* originator); // DECREASE TRAFFIC AND DECREASE NUMBER OF FACTORIES
+    /**
+     * @brief Retrieves the current map.
+     * @return 2D vector of CityStructure pointers representing the map.
+     */
+    std::vector<std::vector<CityStructure*>> getMap();
 
-        void addResidentialComponent(ResidentialComponent* residential);
-        void removeResidentialComponent(ResidentialComponent* residential);
-        void aResidentialComponentChangedItsSatifaction(int oldSatisfaction, int newSatisfaction);
+    void setCityHall(CityHall* cityHall);
 
-        void generateResources(Factory* factory);
+    // Structure addition methods with respective traffic and satisfaction adjustments:
+    bool addStructure(int x, int y, CityStructure* structure);
+    void addBuilding(CityStructure* originator);
+    void addRoad(Road* originator);
+    void addResidentialComplex(ResidentialComplex* originator);
+    void addCommercialBuilding(CommercialBuilding* originator);
+    void addPlant(Plant* originator);
+    void addIndustrialBuilding(IndustrialBuilding* originator);
+    void addWarehouse(Warehouse* originator);
+    void addLandmark(Landmark* originator);
+    void addFactory(Factory* originator);
 
+    // Residential component checking:
+    bool checkResidentialComponent(ResidentialComponent* residential, CityMap* cityMap);
+
+    // Structure removal methods:
+    bool removeStructure(int x, int y);
+    void removeBuilding(CityStructure* originator);
+    void removeRoad(Road* originator);
+    void removeResidentialComplex(ResidentialComplex* originator);
+    void removeCommercialBuilding(CommercialBuilding* originator);
+    void removeIndustrialBuilding(IndustrialBuilding* originator);
+    void removeLandmark(Landmark* originator);
+    void removePlant(Plant* originator);
+    void removeWarehouse(Warehouse* originator);
+    void removeFactory(Factory* originator);
+
+    // Residential component management:
+    void addResidentialComponent(ResidentialComponent* residential);
+    void removeResidentialComponent(ResidentialComponent* residential);
+    void aResidentialComponentChangedItsSatifaction(int oldSatisfaction, int newSatisfaction);
+
+    // Resource generation:
+    void generateResources(Factory* factory);
 };
 
 #endif
