@@ -88,16 +88,16 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     textures["Landscape1"].loadFromFile("../images/spr_Landscape1.png");
     textures["Landscape2"].loadFromFile("../images/spr_Landscape2.png");
     textures["Landscape3"].loadFromFile("../images/spr_Landscape3.png");
-    textures["Monument"].loadFromFile("../images/spr_Monument.png");
+    textures["Colosseum"].loadFromFile("../images/spr_Monument.png");
     textures["Office"].loadFromFile("../images/spr_Office.png");
     textures["Park"].loadFromFile("../images/spr_Park.png");
-    textures["PlantStrip"].loadFromFile("../images/spr_Plant_strip.png");
+    textures["Plant"].loadFromFile("../images/spr_Plant.png");
     textures["Road1"].loadFromFile("../images/spr_Road1.png");
     textures["Road2"].loadFromFile("../images/spr_Road2.png");
     textures["Road3"].loadFromFile("../images/spr_Road3.png");
     textures["Road4"].loadFromFile("../images/spr_Road4.png");
     textures["Shop"].loadFromFile("../images/spr_Shop.png");
-    textures["TownHouse"].loadFromFile("../images/spr_TownHouse.png");
+    textures["Townhouse"].loadFromFile("../images/spr_TownHouse.png");
     textures["Warehouse"].loadFromFile("../images/spr_Warehouse.png");
     textures["Border1"].loadFromFile("../images/spr_Border1.png");
     textures["Border2"].loadFromFile("../images/spr_Border2.png");
@@ -192,10 +192,6 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     borderMap.push_back(bottomRight);
 
 
-
-
-
-
     // Satisfaction text
     if(!font.loadFromFile("../fonts/PixelFJVerdana12pt.ttf")) {
         std::cout << "Error loading font" << std::endl;
@@ -213,8 +209,6 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     satisfactionIcon.setTexture(textures["highSatisfactionIcon"]);
     satisfactionIcon.setPosition(10, 15);
     satisfactionIcon.setScale(0.25, 0.25);
-
-
 
 
 
@@ -238,8 +232,6 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     steelText.setPosition(710, 55);
 
 
-
-
     //Concrete
     concreteSprite.setTexture(textures["Concrete"]);
     concreteSprite.setPosition(830, 15);
@@ -256,8 +248,6 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     concreteText.setCharacterSize(14);
     concreteText.setFillColor(sf::Color::White);
     concreteText.setPosition(860, 55);
-
-
 
 
     //Wood
@@ -295,8 +285,6 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     populationIcon.setScale(0.25, 0.25);
 
 
-
-
     // Currency
     currencyText.setFont(font);
     currencyText.setCharacterSize(16);
@@ -316,6 +304,7 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     shopMenuOpen = false;
 
 }
+
 
 void GameSimulation::centerTextOnSprite(sf::Text& text, const sf::Sprite& sprite) {
     // Step 1: Get the center of the sprite
@@ -377,8 +366,9 @@ std::string GameSimulation::determineTexture(CityStructure* structure, const std
             roadTexture = "Road4";
         }
         return roadTexture;
-    }else if (structure->getStructureType() == "ResidentialComplex"){
+    }else if (structure->getStructureType() == "Residential"){
         // DO STUFF BASED ON RESIDENTIAL COMPLEX IDK
+        return "Apartment";
     }
 
     // Otherwise, return texture based on structure type
@@ -392,8 +382,6 @@ int GameSimulation::randomLandscapeTexture() {
     std::uniform_int_distribution<> dis(1, 3);
     return dis(gen);
 }
-
-
 
 
 void GameSimulation::gameRun(){
@@ -433,7 +421,61 @@ void GameSimulation::processEvents(){
 
             case sf::Event::KeyPressed:
                 if (curEvent.key.code == sf::Keyboard::Num1){
-                    // Code for Num1 key press
+
+                    // CREATE AND PLACE ROADS
+                    cout << "\nCREATE AND PLACE ROADS" << endl;
+                    Road* road1 = new Road();
+                    road1->placeStructure(0, 1, cityMap);
+                    cout << "Road 1 placed" << endl;
+                    Road* road2 = new Road();
+                    road2->placeStructure(1, 1, cityMap);
+                    cout << "Road 2 placed" << endl;
+                    Road* road3 = new Road();
+                    road3->placeStructure(0, 2, cityMap);
+                    cout << "Road 3 placed" << endl;
+
+                    Road* road4 = new Road();
+                    road4->placeStructure(0, 3, cityMap);
+                    Road* road5 = new Road();
+                    road5->placeStructure(2, 1, cityMap);
+                    Road* road6 = new Road();
+                    road6->placeStructure(3, 1, cityMap);
+
+                    cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
+                    ResidentialBuilding* house1 = new House();
+                    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
+                    residentialComplex1->placeStructure(1, 2, cityMap);
+
+                    ResidentialBuilding* estate = new Estate();
+                    ResidentialBuilding* apartment = new Apartment();
+                    ResidentialBuilding* townhouse = new Townhouse();
+
+                    residentialComplex1->addResidentialComponent(estate, cityMap);
+                    residentialComplex1->addResidentialComponent(apartment, cityMap);
+                    residentialComplex1->addResidentialComponent(townhouse, cityMap);
+                    
+
+                    IndustrialBuilding* plant = new Plant();
+                    IndustrialBuilding* warehouse = new Warehouse();
+                    IndustrialBuilding* factory = new Factory();
+
+                    plant->placeStructure(2, 2, cityMap);
+                    warehouse->placeStructure(3, 2, cityMap);
+                    factory->placeStructure(1, 3, cityMap);
+
+                    CommercialBuilding* shop1 = new Shop();
+                    CommercialBuilding* office1 = new Office();
+
+                    shop1->placeStructure(1, 0, cityMap);
+                    office1->placeStructure(2, 0, cityMap);
+
+                    Landmark* colosseum = new Colosseum();
+                    Landmark* park = new Park();
+
+                    colosseum->placeStructure(4, 1, cityMap);
+                    park->placeStructure(0, 4, cityMap);
+
+
                 }
                 break;
 
@@ -473,12 +515,6 @@ void GameSimulation::processEvents(){
 }
 
 
-
-
-
-
-
-
 void GameSimulation::update(sf::Time deltaTime) {
     const float cameraSpeed = 200.0f;
     sf::Vector2f cameraMove(0.f, 0.f);
@@ -489,16 +525,16 @@ void GameSimulation::update(sf::Time deltaTime) {
 
     // Check keyboard input for camera movement
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        cameraMove.x -= cameraSpeed * deltaTime.asSeconds(); // Move left
+        cameraMove.x -= cameraSpeed * deltaTime.asSeconds() * (!shopMenuOpen); // Move left
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        cameraMove.x += cameraSpeed * deltaTime.asSeconds(); // Move right
+        cameraMove.x += cameraSpeed * deltaTime.asSeconds() * (!shopMenuOpen); // Move right
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        cameraMove.y -= cameraSpeed * deltaTime.asSeconds(); // Move up
+        cameraMove.y -= cameraSpeed * deltaTime.asSeconds() * (!shopMenuOpen); // Move up
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        cameraMove.y += cameraSpeed * deltaTime.asSeconds(); // Move down
+        cameraMove.y += cameraSpeed * deltaTime.asSeconds() * (!shopMenuOpen); // Move down
     }
 
     // Move the camera view
@@ -559,6 +595,49 @@ void GameSimulation::drawFrame() {
                 if (cityItem.type == "Road") {
                     std::string roadTexture = determineTexture(structure, map);
                     cityItem.sprite.setTexture(textures[roadTexture]);
+                }else if (cityItem.type == "Residential"){
+                    // DO STUFF BASED ON RESIDENTIAL COMPLEX IDK
+                    cityItem.sprite.setTexture(textures["Apartment"]);
+
+                    // Load all 4 residence buildings inside of the residential complex
+                    if (ResidentialComplex* residentialComplex = dynamic_cast<ResidentialComplex*>(structure)) {
+
+                        cityItem.sprite.setTexture(textures[residentialComplex->residentialComponents[0]->getStructureType()]);
+
+                        if (residentialComplex->residentialComponents.size() >= 2) {
+                            cityItem.sprite.setScale(1, 1);
+
+                            sf::Sprite tempLandscape;
+                            tempLandscape.setTexture(textures["Landscape1"]);
+                            tempLandscape.setPosition(col * 128 + 128, row * 128 + 128);
+                            tempLandscape.setScale(2, 2);
+                            window.draw(tempLandscape);
+                            
+                            for (int i = 1; i < residentialComplex->residentialComponents.size(); i++) {
+                                sf::Sprite residentialSprite;
+                                residentialSprite.setTexture(textures[residentialComplex->residentialComponents[i]->getStructureType()]);
+
+
+
+                                int xOffset = 0;
+                                int yOffset = 0;
+
+                                if (i == 1) {
+                                    xOffset = 64;
+                                } else if (i == 2) {
+                                    yOffset = 64;
+                                } else if (i == 3) {
+                                    xOffset = 64;
+                                    yOffset = 64;
+                                }
+
+                                residentialSprite.setPosition(col * 128 + 128 + xOffset, row * 128 + 128 + yOffset);
+                                window.draw(residentialSprite);
+                            }
+
+
+                        }
+                    }
                 }
             } else {
                 // Handle landscape tiles if there’s no structure

@@ -411,4 +411,3 @@ void ResidentialComplex::printResidentialComplexState() {
     std::cout << "Bonus Satisfaction: " << bonusSatisfaction << std::endl;
 }
 
-

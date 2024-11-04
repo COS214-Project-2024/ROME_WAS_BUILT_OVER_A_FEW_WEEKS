@@ -13,7 +13,8 @@ Estate::~Estate() {
     // EMPTY
 }
 
-std::string Estate::getResidentialBuildingType() {
+std::string Estate::getStructureType(){
     return "Estate";
 }
+
 

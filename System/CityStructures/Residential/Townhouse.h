@@ -11,7 +11,7 @@ class Townhouse : public ResidentialBuilding {
         Townhouse();
         ~Townhouse();
 
-        std::string getResidentialBuildingType();
+        std::string getStructureType() override;
         
 };
 

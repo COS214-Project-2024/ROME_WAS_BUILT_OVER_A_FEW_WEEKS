@@ -11,7 +11,7 @@ class Park : public Landmark {
     public:
         Park();
         ~Park();
-        std::string getLandmarkType();
+        std::string getStructureType();
 };
 
 #endif

@@ -13,6 +13,6 @@ House::~House() {
     // EMPTY
 }
 
-std::string House::getResidentialBuildingType() {
+std::string House::getStructureType(){
     return "House";
 }

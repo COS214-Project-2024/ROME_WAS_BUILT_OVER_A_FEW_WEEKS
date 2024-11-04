@@ -5,9 +5,9 @@
 Plant::Plant(){
     this->radiusOfEffect = DEFAULT_RADIUS_OF_EFFECT;
     cost = 1000; 
-    // woodCost = 100; 
-    // steelCost = 100; 
-    // concreteCost = 100;
+    woodCost = 100; 
+    steelCost = 100; 
+    concreteCost = 100;
 }
 
 Plant::~Plant(){

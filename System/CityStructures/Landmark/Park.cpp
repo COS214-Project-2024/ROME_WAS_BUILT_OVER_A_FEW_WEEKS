@@ -13,7 +13,7 @@ Park::~Park() {
     // EMPTY
 }
 
-std::string Park::getLandmarkType() {
+std::string Park::getStructureType() {
     return "Park";
 }
 

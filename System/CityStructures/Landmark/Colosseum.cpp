@@ -13,6 +13,6 @@ Colosseum::~Colosseum() {
     // EMPTY
 }
 
-std::string Colosseum::getLandmarkType() {
+std::string Colosseum::getStructureType() {
     return "Colosseum";
 }

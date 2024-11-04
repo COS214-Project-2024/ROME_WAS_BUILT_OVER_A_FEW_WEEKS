@@ -87,6 +87,8 @@ using namespace std;
 
 int main(){
 
+    
+
     // CREATE CITY MAP
     cout << "CREATE CITY MAP" << endl;
     CityMap* cityMap = new CityMap();
@@ -96,23 +98,24 @@ int main(){
     CityHall* cityHall = CityHall::getInstance();
     cityHall->placeStructure(0, 0, cityMap);
 
+
+
+
+    // CREATE AND PLACE RESIDENTIAL COMPLEXES 
+    cout << "\n ================= CREATE AND PLACE RESIDENTIAL COMPLEXES =================" << endl;
+    ResidentialBuilding* house1 = new House();
+    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
+    residentialComplex1->placeStructure(4, 4, cityMap);
+
+    std::cout << residentialComplex1->getStructureType() << std::endl;
+    std::cout << residentialComplex1->residentialComponents[0]->getStructureType() << std::endl;
+
+
+
     // Initialize and run game loop
     cout << "\nINITIALIZE AND RUN GAME LOOP" << endl;
     GameSimulation* game = new GameSimulation(cityHall, cityMap);
     cout << "Game initialized" << endl;
-    
-
-    // CREATE AND PLACE ROADS
-    cout << "\nCREATE AND PLACE ROADS" << endl;
-    Road* road1 = new Road();
-    road1->placeStructure(0, 1, cityMap);
-    cout << "Road 1 placed" << endl;
-    Road* road2 = new Road();
-    road2->placeStructure(1, 1, cityMap);
-    cout << "Road 2 placed" << endl;
-    Road* road3 = new Road();
-    road3->placeStructure(2, 1, cityMap);
-    cout << "Road 3 placed" << endl;
     
     game->gameRun();
 
@@ -122,12 +125,13 @@ int main(){
 
 
     // CREATE AND PLACE RESIDENTIAL COMPLEXES 
-    cout << "\nCREATE AND PLACE RESIDENTIAL COMPLEXES" << endl;
-    ResidentialBuilding* house1 = new House();
-    ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
-    residentialComplex1->placeStructure(1, 2, cityMap);
+    // cout << "\n ================= CREATE AND PLACE RESIDENTIAL COMPLEXES =================" << endl;
+    // ResidentialBuilding* house1 = new House();
+    // ResidentialComplex* residentialComplex1 = new ResidentialComplex(house1);
+    // residentialComplex1->placeStructure(4, 4, cityMap);
 
-    std::cout << residentialComplex1->getStructureType() << std::endl;
+    // std::cout << residentialComplex1->getStructureType() << std::endl;
+    // std::cout << residentialComplex1->residentialComponents[0]->getResidentialBuildingType() << std::endl;
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
 

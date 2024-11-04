@@ -12,6 +12,7 @@ Apartment::~Apartment() {
     // EMPTY
 }
 
-std::string Apartment::getResidentialBuildingType() {
+std::string Apartment::getStructureType(){
     return "Apartment";
 }
+

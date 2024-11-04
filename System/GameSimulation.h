@@ -76,6 +76,7 @@ private:
     void drawWood();
     void drawSteel();
     void drawConcrete();
+    void loadHUDElements();
     
     void drawStats();
     

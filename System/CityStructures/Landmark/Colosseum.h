@@ -11,7 +11,7 @@ class Colosseum : public Landmark {
     public:
         Colosseum();
         ~Colosseum();
-        std::string getLandmarkType();
+        std::string getStructureType();
 };
 
 #endif

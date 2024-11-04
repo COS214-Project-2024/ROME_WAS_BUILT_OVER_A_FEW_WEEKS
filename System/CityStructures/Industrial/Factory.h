@@ -19,7 +19,7 @@ class Factory : public IndustrialBuilding {
         int getQuantity(){return this->qunatity;};
         virtual string getFactoryType();
         virtual bool placeStructure(int x, int y, CityMap* cityMap);
-        virtual int generate() = 0;
+        virtual int generate();
 
         std::string getStructureType();
 };

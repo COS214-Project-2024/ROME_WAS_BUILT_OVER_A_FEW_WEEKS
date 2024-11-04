@@ -22,6 +22,7 @@ class ResidentialComponent : public CityStructure {
         virtual int calculateCapacity() = 0; //composite function
         virtual int getCost() = 0;
 
+
         
 
 };

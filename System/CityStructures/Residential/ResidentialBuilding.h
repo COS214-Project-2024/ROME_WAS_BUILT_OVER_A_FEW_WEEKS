@@ -23,8 +23,6 @@ class ResidentialBuilding : public ResidentialComponent {
         int calculateCapacity();
 
         int getCost();
-
-        // virtual std::string getResidentialBuildingType() = 0;
 };
 
 #endif

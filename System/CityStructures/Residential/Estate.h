@@ -11,7 +11,7 @@ class Estate : public ResidentialBuilding {
         Estate();
         ~Estate();
         
-        std::string getResidentialBuildingType();
+        std::string getStructureType() override;
         
 };
 

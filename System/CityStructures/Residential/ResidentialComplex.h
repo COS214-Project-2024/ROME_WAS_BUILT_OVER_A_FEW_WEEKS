@@ -10,7 +10,6 @@ class ResidentialComponent;
 
 class ResidentialComplex : public ResidentialComponent {
     private:
-        std::vector<ResidentialComponent*> residentialComponents;
 
         float trafficSatisfaction; // 15
         float EmploymentSatisfaction; //14
@@ -26,6 +25,9 @@ class ResidentialComplex : public ResidentialComponent {
         float satisfaction; //total satisfaction of the complex
         int capacity; 
     public:
+
+        std::vector<ResidentialComponent*> residentialComponents;
+
         ResidentialComplex(ResidentialComponent* residential);
         ~ResidentialComplex();
         std::string getStructureType();
@@ -61,6 +63,7 @@ class ResidentialComplex : public ResidentialComponent {
         int calculateSatisfaction();
 
         void printResidentialComplexState();
+
 };
 
 #endif
