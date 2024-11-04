@@ -1,35 +1,69 @@
+/**
+ * @file Democracy.cpp
+ * @brief Implementation of the Democracy class.
+ * 
+ * This file contains the function definitions for the Democracy class, 
+ * which simulates economic policies of a democratic system.
+ */
+
 #include "Democracy.h"
 #include <random>
 using namespace std;
-Democracy::Democracy(){
+
+/**
+ * @brief Constructor for the Democracy class.
+ */
+Democracy::Democracy() {
 }
 
-int Democracy::getTaxRateResidential(){
+/**
+ * @brief Get the residential tax rate.
+ * @return The tax rate for residential zones as an integer percentage.
+ */
+int Democracy::getTaxRateResidential() {
     return 50;
 }
 
-int Democracy::getTaxRateCommercial(){
+/**
+ * @brief Get the commercial tax rate.
+ * @return The tax rate for commercial zones as an integer percentage.
+ */
+int Democracy::getTaxRateCommercial() {
     return 75;
 }
 
-int Democracy::getTaxRateIndustrial(){
+/**
+ * @brief Get the industrial tax rate.
+ * @return The tax rate for industrial zones as an integer percentage.
+ */
+int Democracy::getTaxRateIndustrial() {
     return 100;
 }
 
-double Democracy::getBudgetSplit(){
+/**
+ * @brief Get the budget split for public services.
+ * @return The budget allocation proportion as a double.
+ */
+double Democracy::getBudgetSplit() {
     return 0.5;
 }
 
-int Democracy::getCitizenSatisfactionImpact(){
+/**
+ * @brief Get the impact on citizen satisfaction.
+ * 
+ * Generates a random number to add variability to the citizen satisfaction.
+ * @return The citizen satisfaction impact as an integer.
+ */
+int Democracy::getCitizenSatisfactionImpact() {
     random_device rd;
     mt19937 gen(rd());
-    // Define the distribution range between -2 and 2 (inclusive)
     uniform_int_distribution<int> dist(-2, 2);
-    // Generate a random number
     int random_number = dist(gen);
     return 5 + random_number;
 }
 
-Democracy::~Democracy(){
+/**
+ * @brief Destructor for the Democracy class.
+ */
+Democracy::~Democracy() {
 }
-

@@ -1,7 +1,21 @@
+/**
+ * @file PoliticalSystem.cpp
+ * @brief Implementation of the PoliticalSystem base class.
+ * 
+ * This file contains the implementation for the constructor and destructor 
+ * of the abstract PoliticalSystem class.
+ */
+
 #include "PoliticalSystem.h"
 
-PoliticalSystem::PoliticalSystem(){
+/**
+ * @brief Constructor for the PoliticalSystem class.
+ */
+PoliticalSystem::PoliticalSystem() {
 }
 
-PoliticalSystem::~PoliticalSystem(){
+/**
+ * @brief Destructor for the PoliticalSystem class.
+ */
+PoliticalSystem::~PoliticalSystem() {
 }
