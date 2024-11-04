@@ -29,7 +29,7 @@ bool ResidentialBuilding::removeStructure() {
 }
 
 int ResidentialBuilding::getCapacity() {
-    std::cout << "Getting capacity BUILDING" << capacity << std::endl;
+    //std::cout << "Getting capacity BUILDING " << capacity << std::endl;
     return capacity;
 }
 

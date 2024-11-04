@@ -4,6 +4,10 @@
 #include <random>
 using namespace std;
 
+std::string Authoritarianism::getSystemName(){
+    return "Authoritarianism";
+}
+
 Authoritarianism::Authoritarianism(){
 }
 
@@ -30,7 +34,7 @@ int Authoritarianism::getCitizenSatisfactionImpact(){
     uniform_int_distribution<int> dist(-2, 2);
     // Generate a random number
     int random_number = dist(gen);
-    return 3 + random_number;
+    return -3 + random_number;
 }
 
 Authoritarianism::~Authoritarianism(){

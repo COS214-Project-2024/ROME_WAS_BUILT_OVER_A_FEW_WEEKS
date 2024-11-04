@@ -4,6 +4,10 @@ using namespace std;
 Democracy::Democracy(){
 }
 
+std::string Democracy::getSystemName(){
+    return "Democracy";
+}
+
 int Democracy::getTaxRateResidential(){
     return 50;
 }

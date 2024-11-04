@@ -6,6 +6,7 @@
 class Authoritarianism : public PoliticalSystem {
 public:
     Authoritarianism();
+    virtual std::string getSystemName();
     virtual int getTaxRateResidential();
     virtual int getTaxRateCommercial();
     virtual int getTaxRateIndustrial();

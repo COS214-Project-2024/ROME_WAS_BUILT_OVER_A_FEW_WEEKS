@@ -119,6 +119,7 @@ class CityHall: public CityStructure{
         bool deductConcrete(int concrete);
         
 
+        int getStorageCapacity();
         void increaseCapacity(int capacity);
         void decreaseCapacity(int capacity);
 

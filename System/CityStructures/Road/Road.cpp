@@ -67,7 +67,7 @@ void Road::buildingWasRemoved() {
 
 
 void Road::calculateTraffic() {
-    std::cout << "calculating traffic" << std::endl;
+    std::cout << "Calculating traffic" << std::endl;
     // Check the squares around
     int numStructuresAroundRoad = 0;
     
@@ -93,7 +93,7 @@ void Road::calculateTraffic() {
         numStructuresAroundRoad++;
     }
 
-    std:: cout << "setting traffic state" << std::endl;
+    std:: cout << "Setting traffic state" << std::endl;
     // Change the traffic state based on the number of structures around the road
     if (numStructuresAroundRoad <= 1) {          // if 0 or 1 then low
         setTrafficState(new LowTraffic());
@@ -102,8 +102,8 @@ void Road::calculateTraffic() {
     } else { // if 3 or 4 then high
         setTrafficState(new HighTraffic());
     }
-    std:: cout << "done calculating traffic" << std::endl;
-    std:: cout << "new traffic level: " << getTrafficLevel() << std::endl;
+    std:: cout << "Done calculating traffic" << std::endl;
+    std:: cout << "New traffic level: " << getTrafficLevel() << std::endl;
 }
 
 void Road::setTrafficState(TrafficState* state) {

@@ -13,6 +13,10 @@ Townhouse::~Townhouse() {
     // EMPTY
 }
 
+std::string Townhouse::getStructureType(){
+    return getResidentialBuildingType();
+}
+
 std::string Townhouse::getResidentialBuildingType() {
     return "Townhouse";
 }
