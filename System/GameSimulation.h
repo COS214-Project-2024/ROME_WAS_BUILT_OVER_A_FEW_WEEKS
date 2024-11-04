@@ -102,6 +102,11 @@ private:
     bool shopMenuOpen;
     sf::Sprite shopMenuSprite;
     std::vector<std::vector<ShopItem>> shopButtons;
+
+
+    // Shop stuff
+    int nextPlacementX;
+    int nextPlacementY;
 };
 
 #endif

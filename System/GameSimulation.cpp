@@ -301,10 +301,8 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     currencyIcon.setScale(0.25, 0.25);
     centerTextOnSprite(currencyText, currencyIcon);
 
-    shopMenuOpen = true;
-
     createShopMenu();
-
+    shopMenuOpen = false;
 }
 
 
@@ -503,32 +501,116 @@ void GameSimulation::processEvents(){
 
             case sf::Event::MouseButtonPressed:
                 if (curEvent.mouseButton.button == sf::Mouse::Left) {
-                    // Get the mouse position in the window
-                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-                    // Convert to world coordinates by taking into account the camera's view
-                    sf::Vector2f worldPos = window.mapPixelToCoords(mousePos, cameraView);
+                    if (shopMenuOpen == false) {
+                        // Get the mouse position in the window
+                        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-                    // Offset for borders
-                    float xOffset = 128.f;
-                    float yOffset = 128.f;
+                        // Convert to world coordinates by taking into account the camera's view
+                        sf::Vector2f worldPos = window.mapPixelToCoords(mousePos, cameraView);
 
-                    // Subtract offsets to ignore borders
-                    float worldX = worldPos.x - xOffset;
-                    float worldY = worldPos.y - yOffset;
+                        // Offset for borders
+                        float xOffset = 128.f;
+                        float yOffset = 128.f;
 
-                    // Check if the world coordinates are within the map bounds
-                    if (worldX >= 0 && worldY >= 0 &&
-                        worldX < (myMap[0].size() * 128.f) &&
-                        worldY < (myMap.size() * 128.f)) {
-                        
-                        // Calculate the indices in the map array
-                        int mapX = static_cast<int>(worldX) / 128;
-                        int mapY = static_cast<int>(worldY) / 128;
+                        // Subtract offsets to ignore borders
+                        float worldX = worldPos.x - xOffset;
+                        float worldY = worldPos.y - yOffset;
 
-                        std::cout << "Clicked on map cell at row: " << mapY << ", column: " << mapX << std::endl;
-                        // Process the click event on the map tile (mapX, mapY)
-                        // Example: retrieve or modify map data at myMap[mapY][mapX]
+                        // Check if the world coordinates are within the map bounds
+                        if (worldX >= 0 && worldY >= 0 &&
+                            worldX < (myMap[0].size() * 128.f) &&
+                            worldY < (myMap.size() * 128.f)) {
+                            
+                            // Calculate the indices in the map array
+                            int mapX = static_cast<int>(worldX) / 128;
+                            int mapY = static_cast<int>(worldY) / 128;
+
+                            std::string structureType = myMap[mapY][mapX].type;
+
+                            if (structureType == "Landscape") {
+                                nextPlacementX = mapX;
+                                nextPlacementY = mapY;
+                                shopMenuOpen = true;
+                            } else if (structureType == "Road") {
+                                std::cout << "Road CLICKED" << std::endl;
+                            } else if (structureType == "Residential") {
+                                std::cout << "Residential CLICKED" << std::endl;
+                            } else if (structureType == "Plant") {
+                                std::cout << "Plant CLICKED" << std::endl;
+                            } else if (structureType == "Factory") {
+                                std::cout << "Factory CLICKED" << std::endl;
+                            } else if (structureType == "Colosseum" || structureType == "Park" || structureType == "Office" || structureType == "Shop") {
+                                std::cout << "Radius-display CLICKED" << std::endl;
+                            }
+                        }
+                    }else{
+                        // Get mouse coordinates with viewport offset
+                        // Get mouse coordinates relative to the window
+                        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+                        // Convert to world coordinates using the default view
+                        sf::Vector2f worldPos = window.mapPixelToCoords(mousePos, window.getDefaultView());
+
+                        // Check if any sprite in the shop got clicked
+                        for (int i = 0; i < shopButtons.size(); i++) {
+                            for (int j = 0; j < shopButtons[i].size(); j++) {
+                                if (shopButtons[i][j].sprite.getGlobalBounds().contains(worldPos)) {
+                                    // Get the structure type based on the button clicked
+                                    std::string structureType = shopButtons[i][j].type;
+
+                                    bool structurePlaced = false;
+
+                                    if (structureType == "House") {
+                                        ResidentialBuilding* house = new House();
+                                        structurePlaced = house->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Apartment") {
+                                        ResidentialBuilding* apartment = new Apartment();
+                                        structurePlaced = apartment->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Townhouse") {
+                                        ResidentialBuilding* townhouse = new Townhouse();
+                                        structurePlaced = townhouse->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Estate") {
+                                        ResidentialBuilding* estate = new Estate();
+                                        structurePlaced = estate->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Road") {
+                                        Road* road = new Road();
+                                        structurePlaced = road->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Shop") {
+                                        CommercialBuilding* shop = new Shop();
+                                        structurePlaced = shop->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Mall") {
+                                        CommercialBuilding* mall = new Mall();
+                                        structurePlaced = mall->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Office") {
+                                        CommercialBuilding* office = new Office();
+                                        structurePlaced = office->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Plant") {
+                                        IndustrialBuilding* plant = new Plant();
+                                        structurePlaced = plant->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Factory") {
+                                        IndustrialBuilding* factory = new Factory();
+                                        structurePlaced = factory->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Warehouse") {
+                                        IndustrialBuilding* warehouse = new Warehouse();
+                                        structurePlaced = warehouse->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Colosseum") {
+                                        Landmark* colosseum = new Colosseum();
+                                        structurePlaced = colosseum->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Pantheon") {
+                                        Landmark* pantheon = new Pantheon();
+                                        structurePlaced = pantheon->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    } else if (structureType == "Park") {
+                                        Landmark* park = new Park();
+                                        structurePlaced = park->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                    }
+
+                                    
+                                    // Close the shop menu
+                                    shopMenuOpen = false;
+                                }
+                            }
+                        }
                     }
                 }
                 break;
@@ -695,6 +777,7 @@ void GameSimulation::drawFrame() {
     
 }
 
+
 void GameSimulation::drawSatisfaction() {
     // Draw the satisfaction text
     int satisfaction = cityHall->getCurrSatisfaction();
@@ -715,6 +798,7 @@ void GameSimulation::drawSatisfaction() {
     window.draw(satisfactionIcon);
 }
 
+
 void GameSimulation:: drawWood() {
     window.draw(woodBackground);
     // woodText.setString(std::to_string(cityHall->getWood()) + " \n/ " + std::to_string(cityHall->getMaxWood()));
@@ -722,6 +806,7 @@ void GameSimulation:: drawWood() {
     window.draw(woodText);
     window.draw(woodSprite);
 }
+
 
 void GameSimulation::drawSteel() {
     window.draw(steelBackground);
@@ -731,6 +816,7 @@ void GameSimulation::drawSteel() {
     window.draw(steelSprite);
 }
 
+
 void GameSimulation::drawConcrete() {
     window.draw(concreteBackground);
     // concreteText.setString(std::to_string(cityHall->getConcrete()) + " \n/ " + std::to_string(cityHall->getMaxConcrete()));
@@ -739,6 +825,7 @@ void GameSimulation::drawConcrete() {
     window.draw(concreteSprite);
 }
 
+
 void GameSimulation::drawPopulation() {
     window.draw(populationBackground);
     populationText.setString(std::to_string(cityHall->getNumCitizens()));
@@ -746,12 +833,14 @@ void GameSimulation::drawPopulation() {
     window.draw(populationIcon);
 }
 
+
 void GameSimulation::drawCurrency() {
     window.draw(currencyBackground);
     currencyText.setString(std::to_string(cityHall->getPopeCoins()));
     window.draw(currencyText);
     window.draw(currencyIcon);
 }
+
 
 void GameSimulation::drawStats() {
     drawSatisfaction();
@@ -761,7 +850,6 @@ void GameSimulation::drawStats() {
     drawConcrete();
     drawWood();
 }
-
 
 
 void GameSimulation::createShopMenu(){
@@ -943,9 +1031,8 @@ void GameSimulation::drawShopMenu(){
 
     // Draw residential buttons
     for (int i = 0; i < shopButtons[0].size(); i++){
-        sf::Sprite residentialSprite = shopButtons[0][i].sprite;
-        residentialSprite.setPosition((1120 / 4)/2 - 100, 140 + i * 124);
-        window.draw(residentialSprite);
+        shopButtons[0][i].sprite.setPosition((1120 / 4)/2 - 100, 140 + i * 124);
+        window.draw(shopButtons[0][i].sprite);
 
         // Draw coin icon to the left of text
         sf::Sprite coinIcon;
@@ -983,9 +1070,8 @@ void GameSimulation::drawShopMenu(){
 
     // Draw commercial buttons
     for (int i = 0; i < shopButtons[1].size(); i++){
-        sf::Sprite commercialSprite = shopButtons[1][i].sprite;
-        commercialSprite.setPosition((1120 / 3) - 70, 140 + i * 124);
-        window.draw(commercialSprite);
+        shopButtons[1][i].sprite.setPosition((1120 / 3) - 70, 140 + i * 124);
+        window.draw(shopButtons[1][i].sprite);
 
         // Draw coin icon to the left of text
         sf::Sprite coinIcon;
@@ -1023,9 +1109,8 @@ void GameSimulation::drawShopMenu(){
 
     // Draw industrial buttons
     for (int i = 0; i < shopButtons[2].size(); i++){
-        sf::Sprite industrialSprite = shopButtons[2][i].sprite;
-        industrialSprite.setPosition((1120 / 3) * 1.54 - 40, 140 + i * 124);
-        window.draw(industrialSprite);
+        shopButtons[2][i].sprite.setPosition((1120 / 3) * 1.54 - 40, 140 + i * 124);
+        window.draw(shopButtons[2][i].sprite);
 
         // Draw coin icon to the left of text
         sf::Sprite coinIcon;
@@ -1063,9 +1148,8 @@ void GameSimulation::drawShopMenu(){
 
     // Draw landmark buttons
     for (int i = 0; i < shopButtons[3].size(); i++){
-        sf::Sprite landmarkSprite = shopButtons[3][i].sprite;
-        landmarkSprite.setPosition((1120 / 3) * 2.3 - 40, 140 + i * 124);
-        window.draw(landmarkSprite);
+        shopButtons[3][i].sprite.setPosition((1120 / 3) * 2.3 - 40, 140 + i * 124);
+        window.draw(shopButtons[3][i].sprite);
 
         // Draw coin icon to the left of text
         sf::Sprite coinIcon;
