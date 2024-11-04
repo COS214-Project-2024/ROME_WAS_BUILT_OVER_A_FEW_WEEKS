@@ -77,3 +77,22 @@ void LowSatisfactionHandler::handlePopulation(int curSatisfaction, CityHall *cit
  * @return The adjusted tax value.
  */
 float LowSatisfactionHandler::handleTax(int curSatisfaction, CityHall *cityHall) {
+    // Check if satisfaction is below 40 and pass to the next handler if it is.
+    if (curSatisfaction < 40) {
+        if (nextHandler == NULL) {
+            return SatisfactionHandler::handleTax(curSatisfaction, cityHall);
+        }
+        return nextHandler->handleTax(curSatisfaction, cityHall);
+    }
+
+    // Create a random generator for modifying the income affection rate.
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> random1(-5, 5);
+
+    // Adjust the income affection rate downwards.
+    incomeAffectionRate += random1(gen) / 100.0;
+
+    // Calculate the adjusted tax based on the new income affection rate.
+    return incomeAffectionRate * cityHall->getTaxRateResidential() * cityHall->getNumCitizens();
+}
