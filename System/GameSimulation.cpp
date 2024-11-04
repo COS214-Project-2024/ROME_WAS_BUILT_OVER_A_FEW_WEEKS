@@ -230,7 +230,7 @@ std::string GameSimulation::determineTexture(CityStructure* structure, const std
         }
         return roadTexture;
     }else if (structure->getStructureType() == "ResidentialComplex"){
-
+        // DO STUFF BASED ON RESIDENTIAL COMPLEX IDK
     }
 
     // Otherwise, return texture based on structure type
