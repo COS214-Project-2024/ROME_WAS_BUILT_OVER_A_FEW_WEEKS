@@ -360,6 +360,7 @@ std::string GameSimulation::determineTexture(CityStructure* structure, const std
         // Check neighbors to determine road type
         if (x > 0 && map[y][x - 1] != nullptr && map[y][x - 1]->getStructureType() == "Road") {
             roadTexture = "Road2";
+            
         } else if (y > 0 && map[y - 1][x] != nullptr && map[y - 1][x]->getStructureType() == "Road") {
             roadTexture = "Road3";
         } else if (x < map[0].size() - 1 && map[y][x + 1] != nullptr && map[y][x + 1]->getStructureType() == "Road") {
@@ -665,7 +666,6 @@ void GameSimulation::update(sf::Time deltaTime) {
 
 
 void GameSimulation::drawFrame() {
-    
     // Clear the window for the new frame
     window.clear();
 
@@ -685,20 +685,123 @@ void GameSimulation::drawFrame() {
 
             // Check if there's a structure in the cell
             if (structure != nullptr) {
-                // Check if the type has changed
+                // Update CityItem with the new structure type if it has changed
                 if (structure->getStructureType() != cityItem.type) {
-                    // Update CityItem with the new structure type and texture
                     cityItem.type = structure->getStructureType();
-                    cityItem.sprite.setTexture(textures[cityItem.type]);
-
-                    // Optionally adjust the sprite position based on row/col
-                    cityItem.sprite.setPosition(col * 128 + 128, row * 128 + 128);
                 }
 
                 // Additional logic for road texture changes based on neighbors
                 if (cityItem.type == "Road") {
-                    std::string roadTexture = determineTexture(structure, map);
+                    // Determine road texture and rotation
+                    std::string roadTexture;
+                    int rotation = 0;
+
+                    int x = structure->getX();
+                    int y = structure->getY();
+
+                    bool connectedUp = false;
+                    bool connectedDown = false;
+                    bool connectedLeft = false;
+                    bool connectedRight = false;
+
+                    int numConnections = 0;
+
+                    // Check up
+                    if (y > 0 && map[y - 1][x] != nullptr && map[y - 1][x]->getStructureType() == "Road") {
+                        connectedUp = true;
+                        numConnections++;
+                    }
+                    // Check down
+                    if (y < map.size() - 1 && map[y + 1][x] != nullptr && map[y + 1][x]->getStructureType() == "Road") {
+                        connectedDown = true;
+                        numConnections++;
+                    }
+                    // Check left
+                    if (x > 0 && map[y][x - 1] != nullptr && map[y][x - 1]->getStructureType() == "Road") {
+                        connectedLeft = true;
+                        numConnections++;
+                    }
+                    // Check right
+                    if (x < map[0].size() - 1 && map[y][x + 1] != nullptr && map[y][x + 1]->getStructureType() == "Road") {
+                        connectedRight = true;
+                        numConnections++;
+                    }
+
+                    // Determine the road texture and rotation based on connections
+
+                    if (numConnections == 1) {
+                        // Dead-end or isolated road, use Road1
+                        roadTexture = "Road1";
+                        if (connectedUp) {
+                            rotation = 90;
+                        } else if (connectedRight) {
+                            rotation = 0;
+                        } else if (connectedDown) {
+                            rotation = 270;
+                        } else if (connectedLeft) {
+                            rotation = 180;
+                        }
+                    } else if (numConnections == 2) {
+                        if (connectedLeft && connectedRight) {
+                            // Horizontal road
+                            roadTexture = "Road1";
+                            rotation = 0;
+                        } else if (connectedUp && connectedDown) {
+                            // Vertical road
+                            roadTexture = "Road1";
+                            rotation = 90;
+                        } else if (connectedUp && connectedRight) {
+                            roadTexture = "Road2";
+                            rotation = 0;
+                        } else if (connectedRight && connectedDown) {
+                            roadTexture = "Road2";
+                            rotation = 90;
+                        } else if (connectedDown && connectedLeft) {
+                            roadTexture = "Road2";
+                            rotation = 180;
+                        } else if (connectedLeft && connectedUp) {
+                            roadTexture = "Road2";
+                            rotation = 270;
+                        }
+                    } else if (numConnections == 3) {
+                        roadTexture = "Road3";
+                        if (!connectedLeft) {
+                            // Connected up, right, down
+                            rotation = 0;
+                        } else if (!connectedUp) {
+                            // Connected right, down, left
+                            rotation = 90;
+                        } else if (!connectedRight) {
+                            // Connected down, left, up
+                            rotation = 180;
+                        } else if (!connectedDown) {
+                            // Connected left, up, right
+                            rotation = 270;
+                        }
+                    } else if (numConnections == 4) {
+                        roadTexture = "Road4";
+                        rotation = 0;
+                    } else {
+                        // No connections, use default Road1
+                        roadTexture = "Road1";
+                        rotation = 0;
+                    }
+
+                    // Update the texture and rotation
                     cityItem.sprite.setTexture(textures[roadTexture]);
+
+                    // Set origin to center (32,32 is half of 64x64 sprite size)
+                    cityItem.sprite.setOrigin(32, 32);
+
+                    // Set scale
+                    cityItem.sprite.setScale(2.0f, 2.0f);
+
+                    // Apply rotation
+                    cityItem.sprite.setRotation(rotation);
+
+                    // Update position (since origin changed, adjust position accordingly)
+                    cityItem.sprite.setPosition(col * 128 + 128 + 64, row * 128 + 128 + 64);
+
                 }else if (cityItem.type == "Residential"){
                     // DO STUFF BASED ON RESIDENTIAL COMPLEX IDK
                     cityItem.sprite.setTexture(textures["Apartment"]);
@@ -742,6 +845,15 @@ void GameSimulation::drawFrame() {
 
                         }
                     }
+                }else {
+                    // For other structures, update texture and position if type has changed
+                    if (structure->getStructureType() != cityItem.type) {
+                        cityItem.sprite.setTexture(textures[cityItem.type]);
+                        cityItem.sprite.setPosition(col * 128 + 128, row * 128 + 128);
+                        cityItem.sprite.setScale(2.0f, 2.0f);
+                        cityItem.sprite.setOrigin(0, 0); // reset origin
+                        cityItem.sprite.setRotation(0);  // reset rotation
+                    }
                 }
             } else {
                 // Handle landscape tiles if there’s no structure
@@ -751,6 +863,9 @@ void GameSimulation::drawFrame() {
                     int landscapeTexture = randomLandscapeTexture();
                     cityItem.sprite.setTexture(textures["Landscape" + std::to_string(landscapeTexture)]);
                     cityItem.sprite.setPosition(col * 128 + 128, row * 128 + 128);
+                    cityItem.sprite.setScale(2.0f, 2.0f);
+                    cityItem.sprite.setOrigin(0, 0); // reset origin
+                    cityItem.sprite.setRotation(0);  // reset rotation
                 }
             }
 
@@ -761,8 +876,7 @@ void GameSimulation::drawFrame() {
 
     if (shopMenuOpen){
         drawShopMenu();
-    }else{
-
+    } else {
         sf::View uiView = window.getDefaultView();
         window.setView(uiView);
 
@@ -774,8 +888,8 @@ void GameSimulation::drawFrame() {
     }
 
     window.display();
-    
 }
+
 
 
 void GameSimulation::drawSatisfaction() {
@@ -983,11 +1097,25 @@ void GameSimulation::createShopMenu(){
     landmarkItems.push_back(colosseumItem);
     landmarkItems.push_back(parkItem);
 
+    // Add road to the shop menu
+    sf::Sprite road;
+    road.setTexture(textures["Road1"]);
+    road.setScale(1.5, 1.5);
+    int costRoad = 1000;
+    ShopItem roadItem;
+    roadItem.sprite = road;
+    roadItem.cost = costRoad;
+    roadItem.type = "Road";
+
+    std::vector<ShopItem> roadItems;
+    roadItems.push_back(roadItem);
+
     // Add all vectors to the shop menu vector array
     shopButtons.push_back(residentialItems);
     shopButtons.push_back(commercialItems);
     shopButtons.push_back(industrialItems);
     shopButtons.push_back(landmarkItems);
+    shopButtons.push_back(roadItems);
 }
 
 
@@ -1175,4 +1303,34 @@ void GameSimulation::drawShopMenu(){
         landmarkCost.setPosition((1120 / 3) * 2.3 + 86, 160 + i * 124 + 60);
         window.draw(landmarkCost);
     }
+
+
+    // Draw road at the bottom right corner
+    shopButtons[4][0].sprite.setPosition((1120 / 3) * 2.3 - 40, 140 + 124 * 2);
+    window.draw(shopButtons[4][0].sprite);
+
+    // Draw coin icon to the left of text
+    sf::Sprite coinIcon;
+    coinIcon.setTexture(textures["PopeCoins"]);
+    coinIcon.setScale(0.2, 0.2);
+    coinIcon.setPosition((1120 / 3) * 2.3 + 60, 160 + 124 * 2 + 50);
+    window.draw(coinIcon);
+
+    // Display texture name
+    sf::Text buildingName;
+    buildingName.setFont(font);
+    buildingName.setString(shopButtons[4][0].type);
+    buildingName.setCharacterSize(14);
+    buildingName.setFillColor(sf::Color::White);
+    buildingName.setPosition((1120 / 3) * 2.3 + 68, 180 + 124 * 2);
+    window.draw(buildingName);
+
+    sf::Text roadCost;
+    roadCost.setFont(font);
+    roadCost.setString(std::to_string(shopButtons[4][0].cost));
+    roadCost.setCharacterSize(10);
+    roadCost.setFillColor(sf::Color::White);
+    roadCost.setPosition((1120 / 3) * 2.3 + 86, 160 + 124 * 2 + 60);
+    window.draw(roadCost);
+
 }

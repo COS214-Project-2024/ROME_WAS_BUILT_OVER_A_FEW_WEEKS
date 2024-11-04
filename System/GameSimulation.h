@@ -4,6 +4,7 @@
 class CityMap;
 class CityHall;
 class CityStructure;
+class IndustrialBuilding;
 
 #include <map>
 #include <vector>
@@ -96,7 +97,7 @@ private:
     // Other functions
     void centerTextOnSprite(sf::Text& text, const sf::Sprite& sprite);
     void createMap();
-    std::string determineTexture(CityStructure* structure, const std::vector<std::vector<CityStructure*>>& map);
+    std::string determineTexture(CityStructure* structure, const std::vector<std::vector<CityStructure*> >& map);
     int randomLandscapeTexture();
 
     bool shopMenuOpen;
@@ -107,6 +108,8 @@ private:
     // Shop stuff
     int nextPlacementX;
     int nextPlacementY;
+
+    IndustrialBuilding* curPlant;
 };
 
 #endif

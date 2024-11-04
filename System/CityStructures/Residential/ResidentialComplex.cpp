@@ -311,6 +311,8 @@ int ResidentialComplex::calculateSatisfaction() {
     // Additonal bonus for landmarks, railway level, airport level
     if (satisfaction + bonusSatisfaction > 100) {
         satisfaction = 100;
+    }else{
+        satisfaction += bonusSatisfaction;
     }
     cityMap->aResidentialComponentChangedItsSatifaction(oldSatisfaction, satisfaction);
     return satisfaction;
