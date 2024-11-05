@@ -1,0 +1,25 @@
+\doxysection{Generator\+Decorator.\+h}
+\hypertarget{_generator_decorator_8h_source}{}\label{_generator_decorator_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GENERATOR\_DECORATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GENERATOR\_DECORATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Factory.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_factory}{Factory}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_generator_decorator}{GeneratorDecorator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_factory}{Factory}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_factory}{Factory}}*\ factory;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generator_decorator_ae357500e5c94040bb7e4114ba4851d72}{GeneratorDecorator}}()\{\};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generator_decorator_abc29dbe5976f2aea5bb40da91b2f6119}{GeneratorDecorator}}(\mbox{\hyperlink{class_factory}{Factory}}*\ factory):\ factory(factory)\{this-\/>factory\ =\ factory;\};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_generator_decorator_a90929a5fd993cd631a93cf6e23dd5508}{\string~GeneratorDecorator}}()\{\};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_generator_decorator_a2f5cf8b549b30ea3fce175f8abcea3be}{generate}}()\{\textcolor{keywordflow}{return}\ 0;\};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_generator_decorator_a2febd9dd2440d88b4a36d3a487729fec}{getFactoryType}}()\{\textcolor{keywordflow}{return}\ factoryType;\};}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

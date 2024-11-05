@@ -1,0 +1,25 @@
+\doxysection{Linear\+Buildingiterator.\+h}
+\hypertarget{_linear_buildingiterator_8h_source}{}\label{_linear_buildingiterator_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LINEARBUILDINGITERATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LINEARBUILDINGITERATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}BuildingIterator.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_linear_building_iterator}{LinearBuildingIterator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_building_iterator}{BuildingIterator}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ResidentialComplex*>\&\ buildings;\ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ currentIndex;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_linear_building_iterator_a2300df710e3d1bd1cd7ef8ab8fcd78ac}{LinearBuildingIterator}}(\textcolor{keyword}{const}\ std::vector<ResidentialComplex*>\&\ buildings);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_linear_building_iterator_a7596cec90f78819128376c1524a9d088}{hasNext}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_residential_complex}{ResidentialComplex}}*\ \mbox{\hyperlink{class_linear_building_iterator_a28610615136d456b838c51758d1fb375}{next}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LINEARBUILDINGITERATOR\_H}}
+
+\end{DoxyCode}

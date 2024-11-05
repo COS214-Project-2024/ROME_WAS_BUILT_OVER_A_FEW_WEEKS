@@ -1,0 +1,22 @@
+\doxysection{Power\+Plant.\+h}
+\hypertarget{_power_plant_8h_source}{}\label{_power_plant_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PowerPlant\_h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PowerPlant\_h}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_plant_decorator_8h}{PlantDecorator.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant_decorator}{PlantDecorator}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_power_plant}{PowerPlant}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_decorator}{PlantDecorator}}\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_power_plant_a5e328849e1eeae0a92f972ada98a7459}{PowerPlant}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ :\ \mbox{\hyperlink{class_plant_decorator}{PlantDecorator}}(plant)\ \{this-\/>plant\ =\ plant;\};}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_power_plant_a39f79fce64dfbeffaebedc10bb289257}{\string~PowerPlant}}()\ \{\};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_power_plant_a598484bc8a2f3fe0e9bca7fc34cccd64}{getRadiusOfEffect}}()\ \{\ \textcolor{keywordflow}{return}\ plant-\/>\mbox{\hyperlink{class_plant_a19cbec934f9fa37f105f463d84d122dd}{getRadiusOfEffect}}()\ +\ 1;\ \};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_plant_a84f59b2c24a99c47510fde9c197ab78b}{placeStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_map}{CityMap}}*\ cityMap)\ \{\ plant-\/>\mbox{\hyperlink{class_plant_a10eebfa6e5f74657845c7b0055a4f215}{placeStructure}}(x,\ y,\ cityMap);\ \};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_power_plant_adb4e5a5f6127112b05677bdb64978782}{getPlantType}}();}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_power_plant_a78f27236d88e225c2f7507599bda6545}{setPowerPlant}}();}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,34 @@
+\doxysection{Commercial\+Building.\+h}
+\hypertarget{_commercial_building_8h_source}{}\label{_commercial_building_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COMMERICAL\_BUILDING\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ COMMERICAL\_BUILDING\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}CityStructure.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CityMap.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ResidentialComplex.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_residential_complex}{ResidentialComplex}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_map}{CityMap}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_commercial_building}{CommercialBuilding}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_city_structure}{CityStructure}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ radiusOfEffect;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_commercial_building_a1c0a8af99c4aa6d695384c09d288feb0}{CommercialBuilding}}(\textcolor{keywordtype}{int}\ radiusOfEffect);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_commercial_building_ad769a61f37e0448630d7c879a282cb14}{\string~CommercialBuilding}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_commercial_building_a48bd917843042427835e0966adddc595}{getStructureType}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_building_af304869ba4de0957a2ab34e1563cb79e}{getRadiusOfEffect}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_commercial_building_ac739a8696c25cd4ac6eeebdd37e0c3ae}{placeStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_map}{CityMap}}*\ cityMap);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_commercial_building_a5ebfaafe450082ea5f4930f2bfda5c9f}{removeStructure}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_commercial_building_a7bf3aee317f7ee9480e3e60e40e05d3a}{newResidentialComplexWasAdded}}(\mbox{\hyperlink{class_residential_complex}{ResidentialComplex}}*\ complex);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

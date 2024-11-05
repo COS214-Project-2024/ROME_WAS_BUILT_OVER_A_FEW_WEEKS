@@ -1,0 +1,41 @@
+\doxysection{Road.\+h}
+\hypertarget{_road_8h_source}{}\label{_road_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ROAD\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ROAD\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}CityStructure.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_traffic_state}{TrafficState}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_residential_complex}{ResidentialComplex}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_map}{CityMap}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_road}{Road}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_city_structure}{CityStructure}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_traffic_state}{TrafficState}}*\ trafficState;\ \textcolor{comment}{//\ USE\ STATE\ DP\ in\ future}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_road_a90bb6be2a5c3b6997849a915e2af0cf0}{Road}}();}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_road_a3fa0feda8a96c3763d5f5a1f06f2972e}{\string~Road}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_road_a57177ba86064163718da77544507f36e}{getStructureType}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_a769fba0c7a47f495cf0561f30f7b675b}{placeStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_map}{CityMap}}*\ cityMap);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_a2d9edde9d4d4e77a9af75aeb49d03d92}{newBuildingWasAdded}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ wasPlaced(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_map}{CityMap}}*\ cityMap);}
+\DoxyCodeLine{00021\ \ \ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_ae642168ecf09731a9b0ae9bde35f40e7}{removeStructure}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_a99c184a193c82f9b846112b8e8fc82d7}{buildingWasRemoved}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_afd52a69d585f96d697f62ab18ae2de96}{calculateTraffic}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_a3c8344cd41c85d3e1c71a34f210ef3fb}{setTrafficState}}(\mbox{\hyperlink{class_traffic_state}{TrafficState}}*\ trafficState);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_road_a318b2e8bbbbcde1cda9e69e70928208c}{getTrafficLevel}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

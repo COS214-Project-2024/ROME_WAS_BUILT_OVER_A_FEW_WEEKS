@@ -1,0 +1,22 @@
+\doxysection{Water\+Plant.\+h}
+\hypertarget{_water_plant_8h_source}{}\label{_water_plant_8h_source}\mbox{\hyperlink{_water_plant_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ WaterPlant\_h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ WaterPlant\_h}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_plant_decorator_8h}{PlantDecorator.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant_decorator}{PlantDecorator}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_water_plant}{WaterPlant}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_decorator}{PlantDecorator}}\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_water_plant}{WaterPlant}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ :\ \mbox{\hyperlink{class_plant_decorator}{PlantDecorator}}(plant)\ \{this-\/>plant\ =\ plant;\};}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_water_plant_a83c056bc47f6ed91a5185439947b5045}{\string~WaterPlant}}()\ \{\};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_water_plant_aec843f1030e25e538be10b9671e0b111}{getRadiusOfEffect}}()\ \{\ \textcolor{keywordflow}{return}\ plant-\/>\mbox{\hyperlink{class_plant_a19cbec934f9fa37f105f463d84d122dd}{getRadiusOfEffect}}()\ +\ 1;\ \};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_water_plant_a211adb3284f66780a032da9f9149f191}{placeStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_map}{CityMap}}*\ cityMap)\ \{\ plant-\/>\mbox{\hyperlink{class_plant_a10eebfa6e5f74657845c7b0055a4f215}{placeStructure}}(x,\ y,\ cityMap);\ \};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_water_plant_a0aa3b4b2e63157ab3e082a4a1dce7254}{getPlantType}}();}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_water_plant_aea7b3985309cb18bf537cfbdcbe20b3e}{setWaterPlant}}();}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,20 @@
+\doxysection{Building\+Added.\+h}
+\hypertarget{_building_added_8h_source}{}\label{_building_added_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BUILDING\_ADDED\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BUILDING\_ADDED\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}CheckAdjacent.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CityStructure.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_building_added}{BuildingAdded}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_check_adjacent}{CheckAdjacent}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_building_added_a540ebc8bc50bbed4b684c8997cf1f84b}{performAction}}(std::vector<std::vector<CityStructure*>\ >\ map,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ map.at(y).at(x)-\/>buildingWasRemoved();}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

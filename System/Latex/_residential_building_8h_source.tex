@@ -1,0 +1,35 @@
+\doxysection{Residential\+Building.\+h}
+\hypertarget{_residential_building_8h_source}{}\label{_residential_building_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RESIDENTIAL\_BUILDING\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RESIDENTIAL\_BUILDING\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ResidentialComponent.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}CityMap.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_map}{CityMap}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_residential_building}{ResidentialBuilding}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_residential_component}{ResidentialComponent}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ capacity;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_residential_building_a3d49adc21132fb559c6b65ba5834ec6b}{ResidentialBuilding}}(\textcolor{keywordtype}{int}\ capacity);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_residential_building_a9232b6754a2ce20bc48d425aa4df703b}{\string~ResidentialBuilding}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_residential_building_adb677c5ff126435aa4fbcc9277499fb4}{getStructureType}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_residential_building_a37a4ba42d0d3c87fe87407536abdae06}{placeStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_map}{CityMap}}*\ cityMap);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_residential_building_aea665b83c6892f94eef2031e8be62887}{removeStructure}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_building_a3366ab094bbb6038393b5160eaa559b8}{getCapacity}}();\ \textcolor{comment}{//\ SAME\ AS\ calculateCapacity()}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_building_a66b140e347bb7b24a5071c476176bb5d}{calculateCapacity}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_building_a4a87493780a4a974fe666e3b84f00317}{getCost}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ virtual\ std::string\ getResidentialBuildingType()\ =\ 0;}}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

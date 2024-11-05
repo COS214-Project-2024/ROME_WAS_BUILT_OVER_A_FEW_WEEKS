@@ -1,0 +1,36 @@
+\doxysection{Landmark\+Factory.\+h}
+\hypertarget{_landmark_factory_8h_source}{}\label{_landmark_factory_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LANDMARK\_FACTORY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LANDMARK\_FACTORY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../BuildingFactory.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Park.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Colosseum.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Pantheon.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_landmark_factory}{LandmarkFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_building_factory}{BuildingFactory}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_landmark}{Landmark}}*\ \mbox{\hyperlink{class_landmark_factory_a5b29bbb44ae27e524ee8bc145d7aaa47}{createLandmark}}()\ =\ 0;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_landmark_factory_ad54f104af4e9c3384f8514c65c1526ee}{\string~LandmarkFactory}}()\ \{\};}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_park_factory}{ParkFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_landmark_factory}{LandmarkFactory}}\ \{}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_landmark}{Landmark}}*\ \mbox{\hyperlink{class_park_factory_a353f7d1a601c8ed4861565c0f495731b}{createLandmark}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_colosseum_factory}{ColosseumFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_landmark_factory}{LandmarkFactory}}\ \{}
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_landmark}{Landmark}}*\ \mbox{\hyperlink{class_colosseum_factory_a9964d2b4e4402478214a4af60bc6ea44}{createLandmark}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pantheon_factory}{PantheonFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_landmark_factory}{LandmarkFactory}}\ \{}
+\DoxyCodeLine{00060\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_landmark}{Landmark}}*\ \mbox{\hyperlink{class_pantheon_factory_a7e16eadefda5f1bde5992b70d14b94c1}{createLandmark}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LANDMARK\_FACTORY\_H}}
+
+\end{DoxyCode}

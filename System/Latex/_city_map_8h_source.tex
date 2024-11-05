@@ -1,0 +1,63 @@
+\doxysection{City\+Map.\+h}
+\hypertarget{_city_map_8h_source}{}\label{_city_map_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CITY\_MAP\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CITY\_MAP\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_hall}{CityHall}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_structure}{CityStructure}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_commercial_building}{CommercialBuilding}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_industrial_building}{IndustrialBuilding}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_residential_complex}{ResidentialComplex}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_residential_component}{ResidentialComponent}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant}{Plant}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_landmark}{Landmark}};}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_road}{Road}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_map}{CityMap}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2D\ array\ of\ CityStructures\ using\ vector}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::vector<std::vector<CityStructure*>\ >\ map;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_city_hall}{CityHall}}*\ cityHall;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_city_map_a1a79fe83cb2f0431c2a937c004cb2362}{CityMap}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_city_map_a1a79fe83cb2f0431c2a937c004cb2362}{CityMap}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_city_map_a765bf338fcd6f61e65494684f70848ff}{\string~CityMap}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::vector<std::vector<CityStructure*>\ >\ \mbox{\hyperlink{class_city_map_a76879a5c1f1e5c8e9d9237ccf1cb98d9}{getMap}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a2f9bc7958c033255fc7d13fe18772117}{setCityHall}}(\mbox{\hyperlink{class_city_hall}{CityHall}}*\ cityHall);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_city_map_aea6f3a3a18b5150a685c5989fbd34844}{addStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_structure}{CityStructure}}*\ structure);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a29020319d9f0888915b4a13270d964fc}{addBuilding}}(\mbox{\hyperlink{class_city_structure}{CityStructure}}*\ originator);\ \textcolor{comment}{//\ INCREASE\ TRAFFIC}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a11ccd8c2fae9f4c95117b14a29a06a7a}{addRoad}}(\mbox{\hyperlink{class_road}{Road}}*\ originator);\ \ \textcolor{comment}{//\ DECREASE\ TRAFFIC}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a4159b06435f484502b2b4f28ed0b571c}{addResidentialComplex}}(\mbox{\hyperlink{class_residential_complex}{ResidentialComplex}}*\ originator);\ \textcolor{comment}{//\ INCREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a4d59da1220105c9d184f02de8c0c2b5e}{addCommercialBuilding}}(\mbox{\hyperlink{class_commercial_building}{CommercialBuilding}}*\ originator);\ \textcolor{comment}{//\ INCREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_aeae542f64f6348d1df875abddcd8409e}{addIndustrialBuilding}}(\mbox{\hyperlink{class_plant}{Plant}}*\ originator);\ \textcolor{comment}{//\ INCREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_af14f8c8bb334e2764c82face8f7ce95f}{addLandmark}}(\mbox{\hyperlink{class_landmark}{Landmark}}*\ originator);\ \textcolor{comment}{//\ INCREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ addPlant(Plant*\ originator);\ //\ INCREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_abed1de06c68ac8e65e999b83c5bac556}{removeStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_abface8c6bec5a25f5027ee19f49e2bf5}{removeBuilding}}(\mbox{\hyperlink{class_city_structure}{CityStructure}}*\ originator);\ \textcolor{comment}{//\ DECREASE\ TRAFFIC}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a9fe25954cbea117ea8fcc0d1d9bbe956}{removeRoad}}(\mbox{\hyperlink{class_road}{Road}}*\ originator);\ \textcolor{comment}{//\ DECREASE\ TRAFFIC}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a780dfc34fa2ddd7e17051e5296ebb148}{removeResidentialComplex}}(\mbox{\hyperlink{class_residential_complex}{ResidentialComplex}}*\ originator);\ \textcolor{comment}{//\ DECREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_afae2d76a3c33cbc18cf716812a253514}{removeCommercialBuilding}}(\mbox{\hyperlink{class_commercial_building}{CommercialBuilding}}*\ originator);\ \textcolor{comment}{//\ DECREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ removeIndustrialBuilding(\mbox{\hyperlink{class_plant}{Plant}}*\ originator);\ \textcolor{comment}{//\ DECREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a23143850f8e8c58e1c3eed7a4e802fb0}{removeLandmark}}(\mbox{\hyperlink{class_landmark}{Landmark}}*\ originator);\ \textcolor{comment}{//\ DECREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ removePlant(Plant*\ originator);\ //\ DECREASE\ TRAFFIC\ AND\ AFFECTS\ SATISFACTION}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a73f2af1696de9e7657caf60081deccc6}{addResidentialComponent}}(\mbox{\hyperlink{class_residential_component}{ResidentialComponent}}*\ residential);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a0ee1c174003d46674f65d16d908fedbf}{removeResidentialComponent}}(\mbox{\hyperlink{class_residential_component}{ResidentialComponent}}*\ residential);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_map_a02f9415df27de1ca80aa79153ae77096}{aResidentialComponentChangedItsSatifaction}}(\textcolor{keywordtype}{int}\ oldSatisfaction,\ \textcolor{keywordtype}{int}\ newSatisfaction);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

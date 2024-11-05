@@ -1,0 +1,22 @@
+\doxysection{Waste\+Plant.\+h}
+\hypertarget{_waste_plant_8h_source}{}\label{_waste_plant_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ WastePlant\_h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ WastePlant\_h}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_plant_decorator_8h}{PlantDecorator.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant_decorator}{PlantDecorator}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_waste_plant}{WastePlant}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_plant_decorator}{PlantDecorator}}\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_waste_plant_ae1be6f04b335de556e1a6cec14d4f2b6}{WastePlant}}(\mbox{\hyperlink{class_plant}{Plant}}*\ plant)\ :\ \mbox{\hyperlink{class_plant_decorator}{PlantDecorator}}(plant)\ \{this-\/>plant\ =\ plant;\};}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_waste_plant_adb23d7af70727453686a0dece4b7a9f7}{\string~WastePlant}}()\ \{\};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_waste_plant_a2bca186bd6554ebc0b89dbd0be583814}{getRadiusOfEffect}}()\ \{\ \textcolor{keywordflow}{return}\ plant-\/>\mbox{\hyperlink{class_plant_a19cbec934f9fa37f105f463d84d122dd}{getRadiusOfEffect}}()\ +\ 1;\ \};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_waste_plant_aec5ba2cf855b4a5145ab4c7c3a896092}{placeStructure}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_city_map}{CityMap}}*\ cityMap)\ \{\ plant-\/>\mbox{\hyperlink{class_plant_a10eebfa6e5f74657845c7b0055a4f215}{placeStructure}}(x,\ y,\ cityMap);\ \};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_waste_plant_a9603905cd27766a06d6ec33e8f4a523b}{getPlantType}}();}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_waste_plant_a9834612c7a905cd1192041fb78a4ee54}{setWastePlant}}();}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
