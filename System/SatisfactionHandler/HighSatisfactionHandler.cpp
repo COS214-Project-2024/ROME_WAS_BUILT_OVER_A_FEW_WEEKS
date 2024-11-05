@@ -59,7 +59,7 @@ float HighSatisfactionHandler::handleTax(int curSatisfaction, CityHall *cityHall
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> random1(-10, 10);
+    std::uniform_int_distribution<> random1(1, 10);
 
     incomeAffectionRate += random1(gen) * 0.01;
     return incomeAffectionRate*cityHall->getTaxRateResidential()*cityHall->getNumCitizens();

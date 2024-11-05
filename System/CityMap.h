@@ -20,11 +20,11 @@ class Factory;
 class CityMap {
     private: 
         // 2D array of CityStructures using vector
-        std::vector<std::vector<CityStructure*> > map;
         CityHall* cityHall;
         int width;
         int height;
     public:
+        std::vector<std::vector<CityStructure*> > map;
         CityMap();
         CityMap(int width, int height);
         ~CityMap();

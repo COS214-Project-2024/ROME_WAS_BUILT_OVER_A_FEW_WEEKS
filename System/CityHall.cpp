@@ -198,7 +198,10 @@ double CityHall::getBudgetSplit(float taxNum){
 
 float CityHall::getCitizenSatisfactionImpact(float tempSatisfaction){
     citizenSatisfactionImpact = politicalSystem->getCitizenSatisfactionImpact();
-    citySatisfaction = citizenSatisfactionImpact + tempSatisfaction;
+    citySatisfaction = (citizenSatisfactionImpact + tempSatisfaction);
+    if (citySatisfaction > 100){
+        citySatisfaction = 100;
+    }
     return citySatisfaction;
 }
 

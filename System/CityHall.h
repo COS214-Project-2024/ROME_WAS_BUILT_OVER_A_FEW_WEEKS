@@ -31,7 +31,7 @@ class CityHall: public CityStructure{
         int maxWood;
         int maxSteel;
         int maxConcrete;
-        static const int MAX_POPE_COINS = 1000000; // 1 million
+        static const int MAX_POPE_COINS = 1000; // 1 million
 
         float residentialSatisfaction;
         float citySatisfaction;

@@ -8,6 +8,7 @@ Plant::Plant(){
     woodCost = 100; 
     steelCost = 100; 
     concreteCost = 100;
+    plantType = "Plant";
 }
 
 Plant::~Plant(){
@@ -46,4 +47,9 @@ string Plant::getPlantType(){
 
 std::string Plant::getStructureType(){
     return "Plant";
+}
+
+
+void Plant::newResidentialComplexWasAdded(ResidentialComplex* complex) {
+    // Base implementation does nothing
 }

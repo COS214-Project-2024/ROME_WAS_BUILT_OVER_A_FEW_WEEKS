@@ -111,10 +111,10 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
     textures["Population"].loadFromFile("../images/spr_Population.png");
     textures["PopeCoins"].loadFromFile("../images/spr_PopeCoins.png");
     textures["WindowBorder"].loadFromFile("../images/spr_WindowBorder.png");
-    textures["Water"].loadFromFile("../images/Water.png");
-    textures["Sewage"].loadFromFile("../images/Sewage.png");
-    textures["Electricity"].loadFromFile("../images/Electricity.png");
-    textures["Waste"].loadFromFile("../images/Waste.png");
+    textures["Water"].loadFromFile("../images/spr_Water.png");
+    textures["Sewage"].loadFromFile("../images/spr_Sewage.png");
+    textures["Electricity"].loadFromFile("../images/spr_Electricity.png");
+    textures["Waste"].loadFromFile("../images/spr_Waste.png");
 
     //std::this_thread::sleep_for(std::chrono::seconds(2));
 
@@ -307,6 +307,7 @@ GameSimulation::GameSimulation(CityHall *cityHall, CityMap *cityMap) {
 
     createShopMenu();
     shopMenuOpen = false;
+    plantMenuOpen = false;
 }
 
 
@@ -422,6 +423,11 @@ void GameSimulation::gameLoop(){
 
     float satisfactionTemp = cityHall->calculateSatisfaction();
 
+    cityHall->addSteel(100);
+    cityHall->addWood(100);
+    cityHall->addConcrete(100);
+
+
     std::cout << " ========== Satisfaction: " << satisfactionTemp << " ===========" << std::endl;
 
     satisfactionTemp = cityHall->getCitizenSatisfactionImpact(satisfactionTemp);
@@ -447,51 +453,7 @@ void GameSimulation::processEvents(){
             case sf::Event::MouseButtonPressed:
                 if (curEvent.mouseButton.button == sf::Mouse::Left) {
 
-                    if (shopMenuOpen == false) {
-                        // Get the mouse position in the window
-                        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-
-                        // Convert to world coordinates by taking into account the camera's view
-                        sf::Vector2f worldPos = window.mapPixelToCoords(mousePos, cameraView);
-
-                        // Offset for borders
-                        float xOffset = 128.f;
-                        float yOffset = 128.f;
-
-                        // Subtract offsets to ignore borders
-                        float worldX = worldPos.x - xOffset;
-                        float worldY = worldPos.y - yOffset;
-
-                        // Check if the world coordinates are within the map bounds
-                        if (worldX >= 0 && worldY >= 0 &&
-                            worldX < (myMap[0].size() * 128.f) &&
-                            worldY < (myMap.size() * 128.f)) {
-                            
-                            // Calculate the indices in the map array
-                            int mapX = static_cast<int>(worldX) / 128;
-                            int mapY = static_cast<int>(worldY) / 128;
-
-                            std::string structureType = myMap[mapY][mapX].type;
-
-                            if (structureType == "Landscape") {
-                                nextPlacementX = mapX;
-                                nextPlacementY = mapY;
-                                shopMenuOpen = true;
-                            } else if (structureType == "Road") {
-                                std::cout << "Road CLICKED" << std::endl;
-                            } else if (structureType == "Residential") {
-                                nextPlacementX = mapX;
-                                nextPlacementY = mapY;
-                                shopMenuOpen = true;
-                            } else if (structureType == "Plant") {
-                                std::cout << "Plant CLICKED" << std::endl;
-                            } else if (structureType == "Factory") {
-                                std::cout << "Factory CLICKED" << std::endl;
-                            } else if (structureType == "Colosseum" || structureType == "Park" || structureType == "Office" || structureType == "Shop") {
-                                std::cout << "Radius-display CLICKED" << std::endl;
-                            }
-                        }
-                    }else{
+                    if (shopMenuOpen){
                         // Get mouse coordinates with viewport offset
                         // Get mouse coordinates relative to the window
                         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
@@ -566,8 +528,13 @@ void GameSimulation::processEvents(){
                                         CommercialBuilding* office = new Office();
                                         structurePlaced = office->placeStructure(nextPlacementX, nextPlacementY, cityMap);
                                     } else if (structureType == "Plant") {
-                                        IndustrialBuilding* plant = new Plant();
-                                        structurePlaced = plant->placeStructure(nextPlacementX, nextPlacementY, cityMap);
+                                           // CREATE AND PLACE PLANTS
+                                        Plant* basePlant = new Plant();
+                                        Plant* powerPlant = new PowerPlant(basePlant);
+                                        Plant* powerWaterPlant = new WaterPlant(powerPlant);
+                                        Plant* powerWaterWastePlant = new WastePlant(powerWaterPlant);
+                                        Plant* powerWaterWasteSewagePlant = new SewagePlant(powerWaterWastePlant);
+                                        structurePlaced = powerWaterWasteSewagePlant->placeStructure(nextPlacementX, nextPlacementY, cityMap);
                                     } else if (structureType == "Factory") {
                                         IndustrialBuilding* factory = new Factory();
                                         structurePlaced = factory->placeStructure(nextPlacementX, nextPlacementY, cityMap);
@@ -584,14 +551,123 @@ void GameSimulation::processEvents(){
                                         Landmark* park = new Park();
                                         structurePlaced = park->placeStructure(nextPlacementX, nextPlacementY, cityMap);
                                     }
-
-                                    
-                                    // Close the shop menu
-                                    shopMenuOpen = false;
                                 }
                             }
                         }
+                        // Close the shop menu
+                        shopMenuOpen = false;
+                    }else if (plantMenuOpen) {
+                        // Handle clicks on plant menu items
+
+                        // Get mouse coordinates relative to the window
+                        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+                        // Convert to world coordinates using the default view
+                        sf::Vector2f worldPos = window.mapPixelToCoords(mousePos, window.getDefaultView());
+
+                        // Loop over plant items to check for clicks
+                        for (int i = 0; i < plantItems.size(); ++i) {
+                            PlantItem& item = plantItems[i];
+
+                            // Check if the sprite contains the mouse position and if the item can be bought
+                            if (item.sprite.getGlobalBounds().contains(worldPos) && item.canBuy) {
+
+                                // Check if the player has enough coins
+                                if (cityHall->getPopeCoins() >= item.cost) {
+
+                                    // Check if the plant already has this decorator
+                                    std::string plantTypes = curPlant->getPlantType();
+                                    if (plantTypes.find(item.type) == std::string::npos) {
+
+                                        // Store previous x and y positions
+                                        int x = curPlant->getX();
+                                        int y = curPlant->getY();
+
+                                        Plant* newPlant = nullptr;
+
+                                        // Create the corresponding decorator and assign it back to curPlant
+                                        if (item.type == "Water") {
+                                            newPlant = new WaterPlant(curPlant);
+                                        } else if (item.type == "Electricity") {
+                                            newPlant = new PowerPlant(curPlant);
+                                        } else if (item.type == "Waste") {
+                                            newPlant = new WastePlant(curPlant);
+                                        } else if (item.type == "Sewage") {
+                                            newPlant = new SewagePlant(curPlant);
+                                        }
+
+                                        curPlantX = nextPlacementX;
+                                        curPlantY = nextPlacementY;
+                                        curPlant = new Plant();
+                                        curPlant->placeStructure(curPlantX, curPlantY, cityMap);
+
+
+                                        cityMap->map[curPlantY][curPlantX] = curPlant;
+                                        
+                                        // Output for debugging
+                                        std::cout << "Decorator applied. New plant type: " << curPlant->getPlantType() << std::endl;
+
+                                    }
+                                }
+
+                                // Break out of the loop after handling the click
+                                break;
+                            }
+                        }
+
+                        plantMenuOpen = false;
+
+                    }else{ 
+                        // Get the mouse position in the window
+                        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+                        // Convert to world coordinates by taking into account the camera's view
+                        sf::Vector2f worldPos = window.mapPixelToCoords(mousePos, cameraView);
+
+                        // Offset for borders
+                        float xOffset = 128.f;
+                        float yOffset = 128.f;
+
+                        // Subtract offsets to ignore borders
+                        float worldX = worldPos.x - xOffset;
+                        float worldY = worldPos.y - yOffset;
+
+                        // Check if the world coordinates are within the map bounds
+                        if (worldX >= 0 && worldY >= 0 &&
+                            worldX < (myMap[0].size() * 128.f) &&
+                            worldY < (myMap.size() * 128.f)) {
+                            
+                            // Calculate the indices in the map array
+                            int mapX = static_cast<int>(worldX) / 128;
+                            int mapY = static_cast<int>(worldY) / 128;
+
+                            std::string structureType = myMap[mapY][mapX].type;
+
+                            if (structureType == "Landscape") {
+                                nextPlacementX = mapX;
+                                nextPlacementY = mapY;
+                                shopMenuOpen = true;
+                            } else if (structureType == "Road") {
+                                std::cout << "Road CLICKED" << std::endl;
+                            } else if (structureType == "Residential") {
+                                nextPlacementX = mapX;
+                                nextPlacementY = mapY;
+                                shopMenuOpen = true;
+                            } else if (structureType == "Plant") {
+                                std::cout << "Plant CLICKED" << std::endl;
+                                // nextPlacementX = mapX;
+                                // nextPlacementY = mapY;
+                                // curPlant = dynamic_cast<Plant*>(cityMap->getMap()[mapY][mapX]);
+                                // createPlantSprites();
+                                // plantMenuOpen = true;
+                            } else if (structureType == "Factory") {
+                                std::cout << "Factory CLICKED" << std::endl;
+                            } else if (structureType == "Colosseum" || structureType == "Park" || structureType == "Office" || structureType == "Shop") {
+                                std::cout << "Radius-display CLICKED" << std::endl;
+                            }
+                        }
                     }
+                    
                 }
                 break;
         }
@@ -859,6 +935,8 @@ void GameSimulation::drawFrame() {
 
     if (shopMenuOpen){
         drawShopMenu();
+    } else if(plantMenuOpen){
+        drawPlantMenu();
     } else {
         sf::View uiView = window.getDefaultView();
         window.setView(uiView);
@@ -1102,9 +1180,6 @@ void GameSimulation::createShopMenu(){
 
 
 void GameSimulation::drawShopMenu(){
-
-
-
     // Draw background
     // Dark rectangle
     window.setView(window.getDefaultView());
@@ -1321,43 +1396,145 @@ void GameSimulation::drawShopMenu(){
 }
 
 
-void GameSimulation::createPlantSprites(){
-    // Use curPlant to draw sprites
-    // Create plant sprites in vector
+void GameSimulation::createPlantSprites() {
+    // Clear any existing plant items
+    plantItems.clear();
 
-    sf::Sprite water;
-    water.setTexture(textures["Water"]);
-    water.setScale(8, 8);
+    // Load coin icon texture
+    sf::Texture& coinTexture = textures["PopeCoins"];
+
+    // WATER PLANT
     PlantItem waterItem;
-    waterItem.sprite = water;
+    waterItem.sprite.setTexture(textures["Water"]);
+    waterItem.sprite.setScale(8, 8);
     waterItem.cost = 1000;
+    waterItem.type = "Water";
+    waterItem.coinIcon.setTexture(coinTexture);
+    waterItem.coinIcon.setScale(0.2f, 0.2f);
 
-    sf::Sprite electricity;
-    electricity.setTexture(textures["Electricity"]);
-    electricity.setScale(8, 8);
+    // ELECTRICITY PLANT
     PlantItem electricityItem;
-    electricityItem.sprite = electricity;
+    electricityItem.sprite.setTexture(textures["Electricity"]);
+    electricityItem.sprite.setScale(8, 8);
     electricityItem.cost = 1000;
+    electricityItem.type = "Electricity";
+    electricityItem.coinIcon.setTexture(coinTexture);
+    electricityItem.coinIcon.setScale(0.2f, 0.2f);
 
-    sf::Sprite waste;
-    waste.setTexture(textures["Waste"]);
-    waste.setScale(8, 8);
+    // WASTE PLANT
     PlantItem wasteItem;
-    wasteItem.sprite = waste;
+    wasteItem.sprite.setTexture(textures["Waste"]);
+    wasteItem.sprite.setScale(8, 8);
     wasteItem.cost = 1000;
+    wasteItem.type = "Waste";
+    wasteItem.coinIcon.setTexture(coinTexture);
+    wasteItem.coinIcon.setScale(0.2f, 0.2f);
 
-    sf::Sprite sewage;
-    sewage.setTexture(textures["Sewage"]);
-    sewage.setScale(8, 8);
+    // SEWAGE PLANT
     PlantItem sewageItem;
-    sewageItem.sprite = sewage;
+    sewageItem.sprite.setTexture(textures["Sewage"]);
+    sewageItem.sprite.setScale(8, 8);
     sewageItem.cost = 1000;
+    sewageItem.type = "Sewage";
+    sewageItem.coinIcon.setTexture(coinTexture);
+    sewageItem.coinIcon.setScale(0.2f, 0.2f);
 
-    //curPlant->
+    // Determine which plants have already been bought
+    std::string plantTypes = curPlant->getPlantType();
 
+    waterItem.canBuy = (plantTypes.find("Water") == std::string::npos);
+    electricityItem.canBuy = (plantTypes.find("Power") == std::string::npos);
+    wasteItem.canBuy = (plantTypes.find("Waste") == std::string::npos);
+    sewageItem.canBuy = (plantTypes.find("Sewage") == std::string::npos);
 
+    // Add items to the plantItems vector
     plantItems.push_back(waterItem);
     plantItems.push_back(electricityItem);
     plantItems.push_back(wasteItem);
     plantItems.push_back(sewageItem);
 }
+
+
+
+void GameSimulation::drawPlantMenu() {
+    // Draw background
+    window.setView(window.getDefaultView());
+    sf::RectangleShape backgroundColour(sf::Vector2f(1120, 630));
+    backgroundColour.setPosition(0, 0);
+    backgroundColour.setFillColor(sf::Color(0, 0, 0, 200));
+    window.draw(backgroundColour);
+
+    // Number of plant items (should be 4)
+    int numItems = plantItems.size();
+    float sectionWidth = 1120.0f / numItems;
+
+    for (int i = 0; i < numItems; ++i) {
+        PlantItem& item = plantItems[i];
+
+        // Calculate positions
+        float xPosition = i * sectionWidth;
+        float centerX = xPosition + sectionWidth / 2.0f;
+
+        // Draw the plant name
+        sf::Text itemText;
+        itemText.setFont(font);
+        itemText.setString(item.type);
+        itemText.setCharacterSize(20);
+        itemText.setFillColor(sf::Color::White);
+        sf::FloatRect textRect = itemText.getLocalBounds();
+        itemText.setOrigin(textRect.left + textRect.width / 2.0f, 0);
+        itemText.setPosition(centerX, 200);
+        window.draw(itemText);
+
+        // Set the sprite's position
+        sf::Sprite& sprite = item.sprite;
+        sf::FloatRect spriteBounds = sprite.getLocalBounds();
+        sprite.setOrigin(spriteBounds.width / 2.0f, 0);
+        sprite.setPosition(centerX, 260);
+
+        // Save original color
+        sf::Color originalColor = sprite.getColor();
+
+        // Grey out the sprite if it can't be bought
+        if (!item.canBuy) {
+            sprite.setColor(sf::Color(100, 100, 100, 255)); // Greyed out
+        }
+
+        // Draw the sprite
+        window.draw(sprite);
+
+        // Restore original color
+        sprite.setColor(originalColor);
+
+        // Set the coin icon's position
+        sf::Sprite& coinIcon = item.coinIcon;
+        coinIcon.setPosition(centerX - coinIcon.getGlobalBounds().width / 2.0f, sprite.getPosition().y + sprite.getGlobalBounds().height + 10);
+
+        // Save original color
+        sf::Color originalCoinColor = coinIcon.getColor();
+
+        // Grey out the coin icon if it can't be bought
+        if (!item.canBuy) {
+            coinIcon.setColor(sf::Color(100, 100, 100, 255)); // Greyed out
+        }
+
+        // Draw the coin icon
+        window.draw(coinIcon);
+
+        // Restore original color
+        coinIcon.setColor(originalCoinColor);
+
+        // Draw the price text
+        sf::Text priceText;
+        priceText.setFont(font);
+        priceText.setString(std::to_string(item.cost));
+        priceText.setCharacterSize(14);
+        priceText.setFillColor(sf::Color::White);
+        sf::FloatRect priceRect = priceText.getLocalBounds();
+        priceText.setOrigin(priceRect.left + priceRect.width / 2.0f, 0);
+        float priceY = coinIcon.getPosition().y + coinIcon.getGlobalBounds().height + 5;
+        priceText.setPosition(centerX, priceY);
+        window.draw(priceText);
+    }
+}
+

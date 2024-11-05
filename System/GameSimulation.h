@@ -5,6 +5,7 @@ class CityMap;
 class CityHall;
 class CityStructure;
 class IndustrialBuilding;
+class Plant;
 
 #include <map>
 #include <vector>
@@ -35,9 +36,11 @@ public:
 
     struct PlantItem {
         sf::Sprite sprite;
+        sf::Sprite coinIcon;
         int cost;
-        //std::string type;
-    };
+        bool canBuy;
+        std::string type; 
+}   ;
 
 
 private:
@@ -115,10 +118,14 @@ private:
     int nextPlacementX;
     int nextPlacementY;
 
-    IndustrialBuilding* curPlant;
+    int curPlantX;
+    int curPlantY;
+
+    bool plantMenuOpen;
+    Plant* curPlant;
     std::vector<PlantItem> plantItems;
     void createPlantSprites();
-    void drawPlant();
+    void drawPlantMenu();
 };
 
 #endif

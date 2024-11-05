@@ -90,8 +90,6 @@ using namespace std;
 
 int main(){
 
-    
-
     // CREATE CITY MAP
     cout << "CREATE CITY MAP" << endl;
     CityMap* cityMap = new CityMap();
@@ -156,7 +154,7 @@ int main(){
     // std::cout << residentialComplex1->getStructureType() << std::endl;
     // std::cout << residentialComplex1->residentialComponents[0]->getResidentialBuildingType() << std::endl;
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    //std::this_thread::sleep_for(std::chrono::seconds(1));
 
     // //print states
     // cout << "\nPRINT STATES" << endl;
@@ -180,7 +178,7 @@ int main(){
     // // Plant* factory1 = new Factory();
     // // factory1->placeStructure(3, 2, cityMap);
 
-    // // CREATE AND PLACE PLANTS
+    // CREATE AND PLACE PLANTS
     // cout << "\nCREATE AND PLACE PLANTS" << endl;
     // Plant* basePlant = new Plant();
     // Plant* powerPlant = new PowerPlant(basePlant);

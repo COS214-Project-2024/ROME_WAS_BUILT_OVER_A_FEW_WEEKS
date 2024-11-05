@@ -20,6 +20,8 @@ class Plant : public IndustrialBuilding {
         virtual string getPlantType() ;
 
         std::string getStructureType();
+        virtual void newResidentialComplexWasAdded(ResidentialComplex* complex);
+
         
 };
 
