@@ -34,6 +34,5 @@ Build your own Rome! A city builder created by Team-19, which lets users chose t
 - Iterator
 
   ## How to run the program
-  The project contains two diffrent ways of running the simulation, a demo main that runs in ther terminal to outline features that arent present in the GUI, the other way is the GUI   
-  which also includes the game loop which correctly implements the simulation. The demo main/terminal program can be run using the make file present in the System folder. The GUI can 
-  be run using the make file in the FINAL GUI folder.
+  The project contains two diffrent ways of running the simulation, a demo main that runs in ther terminal to outline features that arent present in the GUI, the other way is the GUI   which also includes the game loop which correctly implements the simulation. The demo main/terminal program can be run using the make file present in the System folder. The GUI can 
+be run using the make file in the FINAL GUI folder.
