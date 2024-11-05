@@ -1,0 +1,122 @@
+\doxysection{Factory Class Reference}
+\hypertarget{class_factory}{}\label{class_factory}\index{Factory@{Factory}}
+Inheritance diagram for Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_factory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_factory_ac792bf88cfb7b6804b479529da5308cc}\label{class_factory_ac792bf88cfb7b6804b479529da5308cc} 
+{\bfseries Factory} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_factory}{Factory}. Initializes the factory\textquotesingle{}s properties to default values. \end{DoxyCompactList}\item 
+\Hypertarget{class_factory_a8f71456f48e4df402c778a44191ff40e}\label{class_factory_a8f71456f48e4df402c778a44191ff40e} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Factory} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_factory}{Factory}. Currently does nothing. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_factory_a150837f58f325daf6c9b3ca611db7656}{get\+Quantity}} ()
+\begin{DoxyCompactList}\small\item\em Gets the quantity of resources produced by the factory. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_factory_aa49cfbdb4bac397dcf1a4d3f2d86286a}{get\+Factory\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the factory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_industrial_building}{Industrial\+Building}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_industrial_building_aa0b4dd5b14602e0b9fc55b3e253d05d3}{\texorpdfstring{$\sim$}{\string~}\+Industrial\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_industrial_building}{Industrial\+Building} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_industrial_building_a3ba027280ed0575596d49dc6f3b81ed3}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the industrial building structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_industrial_building_a43c47f592be1183c07546caa4c1bb64c}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the industrial building structure on the city map at the specified coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_acd664d9e4363c5724cc95be693d126db}{remove\+Structure}} ()
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_factory_a686ac6db3fc228f46a46be0572b85104}\label{class_factory_a686ac6db3fc228f46a46be0572b85104} 
+int {\bfseries qunatity}
+\item 
+\Hypertarget{class_factory_a0feba3640057cadb33392a78124831ef}\label{class_factory_a0feba3640057cadb33392a78124831ef} 
+string {\bfseries factory\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_factory_aa49cfbdb4bac397dcf1a4d3f2d86286a}\index{Factory@{Factory}!getFactoryType@{getFactoryType}}
+\index{getFactoryType@{getFactoryType}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{getFactoryType()}{getFactoryType()}}
+{\footnotesize\ttfamily \label{class_factory_aa49cfbdb4bac397dcf1a4d3f2d86286a} 
+string Factory\+::get\+Factory\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the type of the factory. 
+
+\begin{DoxyReturn}{Returns}
+The type of the factory as a string. 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_concrete_generator_a5b8d26b670f2b08e8e846440866999c3}{Concrete\+Generator}}, \mbox{\hyperlink{class_generator_decorator_a2febd9dd2440d88b4a36d3a487729fec}{Generator\+Decorator}}, \mbox{\hyperlink{class_steel_generator_a5283110ad601c7538f4e3279f4240cc3}{Steel\+Generator}}, and \mbox{\hyperlink{class_wood_generator_a32d4a92772c0adabe62a91d8c4a16f8c}{Wood\+Generator}}.
+
+\Hypertarget{class_factory_a150837f58f325daf6c9b3ca611db7656}\index{Factory@{Factory}!getQuantity@{getQuantity}}
+\index{getQuantity@{getQuantity}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{getQuantity()}{getQuantity()}}
+{\footnotesize\ttfamily \label{class_factory_a150837f58f325daf6c9b3ca611db7656} 
+int Factory\+::get\+Quantity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the quantity of resources produced by the factory. 
+
+\begin{DoxyReturn}{Returns}
+The quantity of resources as an integer. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Factory.\+h\item 
+Factory.\+cpp\end{DoxyCompactItemize}

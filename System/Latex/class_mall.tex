@@ -1,0 +1,121 @@
+\doxysection{Mall Class Reference}
+\hypertarget{class_mall}{}\label{class_mall}\index{Mall@{Mall}}
+
+
+Represents a mall building with specific costs and radius.  
+
+
+Inheritance diagram for Mall\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_mall}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mall_a818e30c1d89eff65d1f93f81d3e03614}{Mall}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_mall}{Mall} with default radius and material costs. \end{DoxyCompactList}\item 
+\Hypertarget{class_mall_a11a4d5206a1d469bf457639b6e440663}\label{class_mall_a11a4d5206a1d469bf457639b6e440663} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Mall} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_mall}{Mall} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_mall_a1cf958a5449cc67ee134732204c93ee3}{get\+Commercial\+Building\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Returns the type of the commercial building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_commercial_building}{Commercial\+Building}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_commercial_building_a1c0a8af99c4aa6d695384c09d288feb0}{Commercial\+Building}} (int radius\+Of\+Effect)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_commercial_building}{Commercial\+Building} with a specified radius of effect. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_commercial_building_ad769a61f37e0448630d7c879a282cb14}{\texorpdfstring{$\sim$}{\string~}\+Commercial\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_commercial_building}{Commercial\+Building} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_commercial_building_a48bd917843042427835e0966adddc595}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the type of structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_commercial_building_af304869ba4de0957a2ab34e1563cb79e}{get\+Radius\+Of\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Gets the radius of effect of the commercial building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_commercial_building_ac739a8696c25cd4ac6eeebdd37e0c3ae}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the commercial building on the city map at specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_commercial_building_a5ebfaafe450082ea5f4930f2bfda5c9f}{remove\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Removes the commercial building from the city map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_commercial_building_a7bf3aee317f7ee9480e3e60e40e05d3a}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\begin{DoxyCompactList}\small\item\em Notifies the commercial building when a new residential complex is added nearby. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a mall building with specific costs and radius. 
+
+The \doxylink{class_mall}{Mall} class inherits from \doxylink{class_commercial_building}{Commercial\+Building} and provides specific values for cost and required materials (wood, steel, and concrete). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mall_a818e30c1d89eff65d1f93f81d3e03614}\index{Mall@{Mall}!Mall@{Mall}}
+\index{Mall@{Mall}!Mall@{Mall}}
+\doxysubsubsection{\texorpdfstring{Mall()}{Mall()}}
+{\footnotesize\ttfamily \label{class_mall_a818e30c1d89eff65d1f93f81d3e03614} 
+Mall\+::\+Mall (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_mall}{Mall} with default radius and material costs. 
+
+Initializes the cost and material requirements (wood, steel, concrete) for the \doxylink{class_mall}{Mall}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mall_a1cf958a5449cc67ee134732204c93ee3}\index{Mall@{Mall}!getCommercialBuildingType@{getCommercialBuildingType}}
+\index{getCommercialBuildingType@{getCommercialBuildingType}!Mall@{Mall}}
+\doxysubsubsection{\texorpdfstring{getCommercialBuildingType()}{getCommercialBuildingType()}}
+{\footnotesize\ttfamily \label{class_mall_a1cf958a5449cc67ee134732204c93ee3} 
+std\+::string Mall\+::get\+Commercial\+Building\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the type of the commercial building. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the building type ("{}\+Mall"{}). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Mall.\+h\item 
+Mall.\+cpp\end{DoxyCompactItemize}

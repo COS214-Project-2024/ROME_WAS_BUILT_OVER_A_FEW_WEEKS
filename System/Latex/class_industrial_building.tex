@@ -1,0 +1,143 @@
+\doxysection{Industrial\+Building Class Reference}
+\hypertarget{class_industrial_building}{}\label{class_industrial_building}\index{IndustrialBuilding@{IndustrialBuilding}}
+
+
+Represents an industrial building in the city.  
+
+
+Inheritance diagram for Industrial\+Building\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.985075cm]{class_industrial_building}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_industrial_building_aa0b4dd5b14602e0b9fc55b3e253d05d3}{\texorpdfstring{$\sim$}{\string~}\+Industrial\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_industrial_building}{Industrial\+Building} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_industrial_building_a3ba027280ed0575596d49dc6f3b81ed3}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the industrial building structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_industrial_building_a43c47f592be1183c07546caa4c1bb64c}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the industrial building structure on the city map at the specified coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_acd664d9e4363c5724cc95be693d126db}{remove\+Structure}} ()
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an industrial building in the city. 
+
+The \doxylink{class_industrial_building}{Industrial\+Building} class provides functionality for placing and removing industrial structures. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_industrial_building_aa0b4dd5b14602e0b9fc55b3e253d05d3}\index{IndustrialBuilding@{IndustrialBuilding}!````~IndustrialBuilding@{\texorpdfstring{$\sim$}{\string~}IndustrialBuilding}}
+\index{````~IndustrialBuilding@{\texorpdfstring{$\sim$}{\string~}IndustrialBuilding}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IndustrialBuilding()}{\string~IndustrialBuilding()}}
+{\footnotesize\ttfamily \label{class_industrial_building_aa0b4dd5b14602e0b9fc55b3e253d05d3} 
+Industrial\+Building\+::\texorpdfstring{$\sim$}{\string~}\+Industrial\+Building (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor for the \doxylink{class_industrial_building}{Industrial\+Building} class. 
+
+Cleans up resources used by the \doxylink{class_industrial_building}{Industrial\+Building} instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_industrial_building_a3ba027280ed0575596d49dc6f3b81ed3}\index{IndustrialBuilding@{IndustrialBuilding}!getStructureType@{getStructureType}}
+\index{getStructureType@{getStructureType}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{getStructureType()}{getStructureType()}}
+{\footnotesize\ttfamily \label{class_industrial_building_a3ba027280ed0575596d49dc6f3b81ed3} 
+std\+::string Industrial\+Building\+::get\+Structure\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the type of the industrial building structure. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the type of structure, which is "{}\+Industrial"{}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_industrial_building_a43c47f592be1183c07546caa4c1bb64c}\index{IndustrialBuilding@{IndustrialBuilding}!placeStructure@{placeStructure}}
+\index{placeStructure@{placeStructure}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{placeStructure()}{placeStructure()}}
+{\footnotesize\ttfamily \label{class_industrial_building_a43c47f592be1183c07546caa4c1bb64c} 
+bool Industrial\+Building\+::place\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}}]{city\+Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Places the industrial building structure on the city map at the specified coordinates. 
+
+This function attempts to place the industrial building structure and, if successful, adds it to the city map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate to place the industrial building. \\
+\hline
+{\em y} & The y-\/coordinate to place the industrial building. \\
+\hline
+{\em city\+Map} & A pointer to the city map where the industrial building will be placed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the structure was successfully placed; false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_plant_a10eebfa6e5f74657845c7b0055a4f215}{Plant}}, \mbox{\hyperlink{class_plant_decorator_a19bda3ccd2416d70665903d26aebd6ba}{Plant\+Decorator}}, \mbox{\hyperlink{class_power_plant_a84f59b2c24a99c47510fde9c197ab78b}{Power\+Plant}}, \mbox{\hyperlink{class_sewage_plant_ac23cd80dce43d7714eef32af417d4704}{Sewage\+Plant}}, \mbox{\hyperlink{class_waste_plant_aec5ba2cf855b4a5145ab4c7c3a896092}{Waste\+Plant}}, and \mbox{\hyperlink{class_water_plant_a211adb3284f66780a032da9f9149f191}{Water\+Plant}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_industrial_building_8h}{Industrial\+Building.\+h}}\item 
+Industrial\+Building.\+cpp\end{DoxyCompactItemize}

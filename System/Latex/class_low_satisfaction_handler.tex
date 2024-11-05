@@ -1,0 +1,151 @@
+\doxysection{Low\+Satisfaction\+Handler Class Reference}
+\hypertarget{class_low_satisfaction_handler}{}\label{class_low_satisfaction_handler}\index{LowSatisfactionHandler@{LowSatisfactionHandler}}
+
+
+A class that manages population and tax adjustments for low satisfaction levels.  
+
+
+
+
+{\ttfamily \#include $<$Low\+Satisfaction\+Handler.\+h$>$}
+
+Inheritance diagram for Low\+Satisfaction\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_low_satisfaction_handler}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_low_satisfaction_handler_aee568f50595d18969e9216e9e9feca8c}{Low\+Satisfaction\+Handler}} (\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_satisfaction_handler_a1c335a8b3fed440b4c2b68edf95cdccd}{next\+Handler}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_low_satisfaction_handler}{Low\+Satisfaction\+Handler}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_low_satisfaction_handler_ac554b331db80d55f5781eecc646c6194}{handle\+Population}} (int cur\+Satisfaction, \mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}city\+Hall)
+\begin{DoxyCompactList}\small\item\em Adjusts the population of the city based on the current satisfaction level. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_low_satisfaction_handler_ae21034466132faf98f637c663655c283}{handle\+Tax}} (int cur\+Satisfaction, \mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}city\+Hall)
+\begin{DoxyCompactList}\small\item\em Adjusts the tax calculation for low satisfaction levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Satisfaction\+Handler} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_satisfaction_handler}{Satisfaction\+Handler}. Initializes the next handler pointer to nullptr. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Satisfaction\+Handler} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_satisfaction_handler_a235c43cd3035c1e7e9a432062b32bc48}{add\+Handler}} (\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_satisfaction_handler_a1c335a8b3fed440b4c2b68edf95cdccd}{next\+Handler}})
+\begin{DoxyCompactList}\small\item\em Adds a next handler to the chain for processing satisfaction-\/related requests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*} {\bfseries next\+Handler}
+\begin{DoxyCompactList}\small\item\em Pointer to the next handler in the chain. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that manages population and tax adjustments for low satisfaction levels. 
+
+This handler is responsible for reducing the population by removing citizens through death or emigration and adjusting the tax rate based on a lower income affection rate when the satisfaction level is below 40. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_low_satisfaction_handler_aee568f50595d18969e9216e9e9feca8c}\index{LowSatisfactionHandler@{LowSatisfactionHandler}!LowSatisfactionHandler@{LowSatisfactionHandler}}
+\index{LowSatisfactionHandler@{LowSatisfactionHandler}!LowSatisfactionHandler@{LowSatisfactionHandler}}
+\doxysubsubsection{\texorpdfstring{LowSatisfactionHandler()}{LowSatisfactionHandler()}}
+{\footnotesize\ttfamily \label{class_low_satisfaction_handler_aee568f50595d18969e9216e9e9feca8c} 
+Low\+Satisfaction\+Handler\+::\+Low\+Satisfaction\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*}}]{next\+Handler}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_low_satisfaction_handler}{Low\+Satisfaction\+Handler}. 
+
+Constructor for \doxylink{class_low_satisfaction_handler}{Low\+Satisfaction\+Handler}. Initializes the object with a pointer to the next handler and sets default values for chance of population change and income affection rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Handler} & Pointer to the next handler in the chain.\\
+\hline
+{\em next\+Handler} & Pointer to the next handler in the chain of responsibility. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_low_satisfaction_handler_ac554b331db80d55f5781eecc646c6194}\index{LowSatisfactionHandler@{LowSatisfactionHandler}!handlePopulation@{handlePopulation}}
+\index{handlePopulation@{handlePopulation}!LowSatisfactionHandler@{LowSatisfactionHandler}}
+\doxysubsubsection{\texorpdfstring{handlePopulation()}{handlePopulation()}}
+{\footnotesize\ttfamily \label{class_low_satisfaction_handler_ac554b331db80d55f5781eecc646c6194} 
+void Low\+Satisfaction\+Handler\+::handle\+Population (\begin{DoxyParamCaption}\item[{int}]{cur\+Satisfaction}{, }\item[{\mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}}]{city\+Hall}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adjusts the population of the city based on the current satisfaction level. 
+
+Handles population adjustments when satisfaction is below 40.
+
+If the satisfaction is below 40, this method attempts to remove citizens from the population through death or emigration methods.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object for population operations.\\
+\hline
+\end{DoxyParams}
+If the satisfaction level is low, this method attempts to reduce the city\textquotesingle{}s population through death or emigration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level of the city. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object for modifying population. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_satisfaction_handler_a3258a43753a268d20551913201d36439}{Satisfaction\+Handler}}.
+
+\Hypertarget{class_low_satisfaction_handler_ae21034466132faf98f637c663655c283}\index{LowSatisfactionHandler@{LowSatisfactionHandler}!handleTax@{handleTax}}
+\index{handleTax@{handleTax}!LowSatisfactionHandler@{LowSatisfactionHandler}}
+\doxysubsubsection{\texorpdfstring{handleTax()}{handleTax()}}
+{\footnotesize\ttfamily \label{class_low_satisfaction_handler_ae21034466132faf98f637c663655c283} 
+float Low\+Satisfaction\+Handler\+::handle\+Tax (\begin{DoxyParamCaption}\item[{int}]{cur\+Satisfaction}{, }\item[{\mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}}]{city\+Hall}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adjusts the tax calculation for low satisfaction levels. 
+
+Adjusts the tax rate when satisfaction is below 40.
+
+The method calculates a new tax rate based on a reduced income affection rate, which is influenced by the current satisfaction level.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object for tax rate retrieval. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Adjusted tax value.
+\end{DoxyReturn}
+The method modifies the tax rate based on a lower income affection rate and recalculates the tax amount accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object to retrieve tax rate and population data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The adjusted tax value. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_satisfaction_handler_abb441f2ba8406a85b1335a89ca9cc09c}{Satisfaction\+Handler}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Low\+Satisfaction\+Handler.\+h\item 
+Low\+Satisfaction\+Handler.\+cpp\end{DoxyCompactItemize}

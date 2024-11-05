@@ -1,0 +1,363 @@
+\doxysection{City\+Map Class Reference}
+\hypertarget{class_city_map}{}\label{class_city_map}\index{CityMap@{CityMap}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_city_map_a1a79fe83cb2f0431c2a937c004cb2362}\label{class_city_map_a1a79fe83cb2f0431c2a937c004cb2362} 
+{\bfseries City\+Map} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_city_map}{City\+Map}. Initializes a default 20x20 grid of nullptr pointers for city structures. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_city_map_a49e1b62d92ace8eb9f950e94761b7366}{City\+Map}} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor for \doxylink{class_city_map}{City\+Map}. Initializes a grid with specified dimensions, filled with nullptr pointers. \end{DoxyCompactList}\item 
+\Hypertarget{class_city_map_a765bf338fcd6f61e65494684f70848ff}\label{class_city_map_a765bf338fcd6f61e65494684f70848ff} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+City\+Map} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_city_map}{City\+Map} class. Cleans up dynamically allocated memory for buildings and the city hall. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$ \mbox{\hyperlink{class_city_map_a76879a5c1f1e5c8e9d9237ccf1cb98d9}{get\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the 2D vector map of city structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a2f9bc7958c033255fc7d13fe18772117}{set\+City\+Hall}} (\mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}city\+Hall)
+\begin{DoxyCompactList}\small\item\em Sets the City Hall object for the city map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_city_map_aea6f3a3a18b5150a685c5989fbd34844}{add\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*}structure)
+\begin{DoxyCompactList}\small\item\em Adds a structure to the city map at a specified location. Performs validation checks for boundaries, adjacency to roads, and resources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a29020319d9f0888915b4a13270d964fc}{add\+Building}} (\mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Adds a building to the city map and adjusts traffic on adjacent roads. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a11ccd8c2fae9f4c95117b14a29a06a7a}{add\+Road}} (\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Adds a road to the city map and notifies adjacent residential complexes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a4159b06435f484502b2b4f28ed0b571c}{add\+Residential\+Complex}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Adds a residential complex to the city map and adjusts nearby traffic and satisfaction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a4d59da1220105c9d184f02de8c0c2b5e}{add\+Commercial\+Building}} (\mbox{\hyperlink{class_commercial_building}{Commercial\+Building}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Adds a commercial building to the city map and updates adjacent residential complexes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_aeae542f64f6348d1df875abddcd8409e}{add\+Industrial\+Building}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Adds an industrial building to the city map. Adjusts traffic on adjacent roads. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_af14f8c8bb334e2764c82face8f7ce95f}{add\+Landmark}} (\mbox{\hyperlink{class_landmark}{Landmark}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Adds a landmark to the \doxylink{class_city_map}{City\+Map} and adjusts nearby residential complexes\textquotesingle{} satisfaction based on the landmark\textquotesingle{}s radius of effect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_abed1de06c68ac8e65e999b83c5bac556}{remove\+Structure}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Removes a structure at specified coordinates in the city map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_abface8c6bec5a25f5027ee19f49e2bf5}{remove\+Building}} (\mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Removes a building from the city map and adjusts adjacent roads\textquotesingle{} traffic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a9fe25954cbea117ea8fcc0d1d9bbe956}{remove\+Road}} (\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Removes a road from the city map and adjusts adjacent structures\textquotesingle{} satisfaction levels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a780dfc34fa2ddd7e17051e5296ebb148}{remove\+Residential\+Complex}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Removes a residential complex from the city map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_afae2d76a3c33cbc18cf716812a253514}{remove\+Commercial\+Building}} (\mbox{\hyperlink{class_commercial_building}{Commercial\+Building}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Removes a commercial building from the city map and adjusts adjacent structures\textquotesingle{} satisfaction. \end{DoxyCompactList}\item 
+\Hypertarget{class_city_map_ac6519ff7c188f958faeda2b2d9b0f6be}\label{class_city_map_ac6519ff7c188f958faeda2b2d9b0f6be} 
+void {\bfseries remove\+Industrial\+Building} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}originator)
+\item 
+void \mbox{\hyperlink{class_city_map_a23143850f8e8c58e1c3eed7a4e802fb0}{remove\+Landmark}} (\mbox{\hyperlink{class_landmark}{Landmark}} \texorpdfstring{$\ast$}{*}originator)
+\begin{DoxyCompactList}\small\item\em Removes a landmark from the \doxylink{class_city_map}{City\+Map}, adjusting traffic and affecting the satisfaction of nearby residential complexes within the landmark\textquotesingle{}s radius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a73f2af1696de9e7657caf60081deccc6}{add\+Residential\+Component}} (\mbox{\hyperlink{class_residential_component}{Residential\+Component}} \texorpdfstring{$\ast$}{*}residential)
+\begin{DoxyCompactList}\small\item\em Adds a residential component to the \doxylink{class_city_map}{City\+Map}, increasing the capacity in \doxylink{class_city_hall}{City\+Hall} based on the residential component\textquotesingle{}s capacity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a0ee1c174003d46674f65d16d908fedbf}{remove\+Residential\+Component}} (\mbox{\hyperlink{class_residential_component}{Residential\+Component}} \texorpdfstring{$\ast$}{*}residential)
+\begin{DoxyCompactList}\small\item\em Removes a residential component from the \doxylink{class_city_map}{City\+Map}, decreasing the capacity in \doxylink{class_city_hall}{City\+Hall} based on the residential component\textquotesingle{}s capacity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_map_a02f9415df27de1ca80aa79153ae77096}{a\+Residential\+Component\+Changed\+Its\+Satifaction}} (int old\+Satisfaction, int new\+Satisfaction)
+\begin{DoxyCompactList}\small\item\em Updates \doxylink{class_city_hall}{City\+Hall}\textquotesingle{}s residential satisfaction score when a residential component\textquotesingle{}s satisfaction changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_city_map_a49e1b62d92ace8eb9f950e94761b7366}\index{CityMap@{CityMap}!CityMap@{CityMap}}
+\index{CityMap@{CityMap}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{CityMap()}{CityMap()}}
+{\footnotesize\ttfamily \label{class_city_map_a49e1b62d92ace8eb9f950e94761b7366} 
+City\+Map\+::\+City\+Map (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Parameterized constructor for \doxylink{class_city_map}{City\+Map}. Initializes a grid with specified dimensions, filled with nullptr pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the city map. \\
+\hline
+{\em height} & Height of the city map. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_city_map_a29020319d9f0888915b4a13270d964fc}\index{CityMap@{CityMap}!addBuilding@{addBuilding}}
+\index{addBuilding@{addBuilding}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addBuilding()}{addBuilding()}}
+{\footnotesize\ttfamily \label{class_city_map_a29020319d9f0888915b4a13270d964fc} 
+void City\+Map\+::add\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Adds a building to the city map and adjusts traffic on adjacent roads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the \doxylink{class_city_structure}{City\+Structure} representing the building. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a4d59da1220105c9d184f02de8c0c2b5e}\index{CityMap@{CityMap}!addCommercialBuilding@{addCommercialBuilding}}
+\index{addCommercialBuilding@{addCommercialBuilding}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addCommercialBuilding()}{addCommercialBuilding()}}
+{\footnotesize\ttfamily \label{class_city_map_a4d59da1220105c9d184f02de8c0c2b5e} 
+void City\+Map\+::add\+Commercial\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_commercial_building}{Commercial\+Building}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Adds a commercial building to the city map and updates adjacent residential complexes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the \doxylink{class_commercial_building}{Commercial\+Building} being added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_aeae542f64f6348d1df875abddcd8409e}\index{CityMap@{CityMap}!addIndustrialBuilding@{addIndustrialBuilding}}
+\index{addIndustrialBuilding@{addIndustrialBuilding}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addIndustrialBuilding()}{addIndustrialBuilding()}}
+{\footnotesize\ttfamily \label{class_city_map_aeae542f64f6348d1df875abddcd8409e} 
+void City\+Map\+::add\+Industrial\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Adds an industrial building to the city map. Adjusts traffic on adjacent roads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the \doxylink{class_industrial_building}{Industrial\+Building} being added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_af14f8c8bb334e2764c82face8f7ce95f}\index{CityMap@{CityMap}!addLandmark@{addLandmark}}
+\index{addLandmark@{addLandmark}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addLandmark()}{addLandmark()}}
+{\footnotesize\ttfamily \label{class_city_map_af14f8c8bb334e2764c82face8f7ce95f} 
+void City\+Map\+::add\+Landmark (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_landmark}{Landmark}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Adds a landmark to the \doxylink{class_city_map}{City\+Map} and adjusts nearby residential complexes\textquotesingle{} satisfaction based on the landmark\textquotesingle{}s radius of effect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & A pointer to the \doxylink{class_landmark}{Landmark} object being added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a4159b06435f484502b2b4f28ed0b571c}\index{CityMap@{CityMap}!addResidentialComplex@{addResidentialComplex}}
+\index{addResidentialComplex@{addResidentialComplex}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addResidentialComplex()}{addResidentialComplex()}}
+{\footnotesize\ttfamily \label{class_city_map_a4159b06435f484502b2b4f28ed0b571c} 
+void City\+Map\+::add\+Residential\+Complex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Adds a residential complex to the city map and adjusts nearby traffic and satisfaction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the \doxylink{class_residential_complex}{Residential\+Complex} object being added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a73f2af1696de9e7657caf60081deccc6}\index{CityMap@{CityMap}!addResidentialComponent@{addResidentialComponent}}
+\index{addResidentialComponent@{addResidentialComponent}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addResidentialComponent()}{addResidentialComponent()}}
+{\footnotesize\ttfamily \label{class_city_map_a73f2af1696de9e7657caf60081deccc6} 
+void City\+Map\+::add\+Residential\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_residential_component}{Residential\+Component}} \texorpdfstring{$\ast$}{*}}]{residential}{}\end{DoxyParamCaption})}
+
+
+
+Adds a residential component to the \doxylink{class_city_map}{City\+Map}, increasing the capacity in \doxylink{class_city_hall}{City\+Hall} based on the residential component\textquotesingle{}s capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em residential} & A pointer to the \doxylink{class_residential_component}{Residential\+Component} object being added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a11ccd8c2fae9f4c95117b14a29a06a7a}\index{CityMap@{CityMap}!addRoad@{addRoad}}
+\index{addRoad@{addRoad}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addRoad()}{addRoad()}}
+{\footnotesize\ttfamily \label{class_city_map_a11ccd8c2fae9f4c95117b14a29a06a7a} 
+void City\+Map\+::add\+Road (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Adds a road to the city map and notifies adjacent residential complexes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the \doxylink{class_road}{Road} object being added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_aea6f3a3a18b5150a685c5989fbd34844}\index{CityMap@{CityMap}!addStructure@{addStructure}}
+\index{addStructure@{addStructure}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{addStructure()}{addStructure()}}
+{\footnotesize\ttfamily \label{class_city_map_aea6f3a3a18b5150a685c5989fbd34844} 
+bool City\+Map\+::add\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*}}]{structure}{}\end{DoxyParamCaption})}
+
+
+
+Adds a structure to the city map at a specified location. Performs validation checks for boundaries, adjacency to roads, and resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X-\/coordinate of the location. \\
+\hline
+{\em y} & Y-\/coordinate of the location. \\
+\hline
+{\em structure} & Pointer to the \doxylink{class_city_structure}{City\+Structure} to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the structure was added successfully, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_city_map_a02f9415df27de1ca80aa79153ae77096}\index{CityMap@{CityMap}!aResidentialComponentChangedItsSatifaction@{aResidentialComponentChangedItsSatifaction}}
+\index{aResidentialComponentChangedItsSatifaction@{aResidentialComponentChangedItsSatifaction}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{aResidentialComponentChangedItsSatifaction()}{aResidentialComponentChangedItsSatifaction()}}
+{\footnotesize\ttfamily \label{class_city_map_a02f9415df27de1ca80aa79153ae77096} 
+void City\+Map\+::a\+Residential\+Component\+Changed\+Its\+Satifaction (\begin{DoxyParamCaption}\item[{int}]{old\+Satisfaction}{, }\item[{int}]{new\+Satisfaction}{}\end{DoxyParamCaption})}
+
+
+
+Updates \doxylink{class_city_hall}{City\+Hall}\textquotesingle{}s residential satisfaction score when a residential component\textquotesingle{}s satisfaction changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+Satisfaction} & The old satisfaction value before the change. \\
+\hline
+{\em new\+Satisfaction} & The new satisfaction value after the change. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a76879a5c1f1e5c8e9d9237ccf1cb98d9}\index{CityMap@{CityMap}!getMap@{getMap}}
+\index{getMap@{getMap}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{getMap()}{getMap()}}
+{\footnotesize\ttfamily \label{class_city_map_a76879a5c1f1e5c8e9d9237ccf1cb98d9} 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$ City\+Map\+::get\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the 2D vector map of city structures. 
+
+\begin{DoxyReturn}{Returns}
+2D vector of pointers to \doxylink{class_city_structure}{City\+Structure} objects. 
+\end{DoxyReturn}
+\Hypertarget{class_city_map_abface8c6bec5a25f5027ee19f49e2bf5}\index{CityMap@{CityMap}!removeBuilding@{removeBuilding}}
+\index{removeBuilding@{removeBuilding}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{removeBuilding()}{removeBuilding()}}
+{\footnotesize\ttfamily \label{class_city_map_abface8c6bec5a25f5027ee19f49e2bf5} 
+void City\+Map\+::remove\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Removes a building from the city map and adjusts adjacent roads\textquotesingle{} traffic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the building being removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_afae2d76a3c33cbc18cf716812a253514}\index{CityMap@{CityMap}!removeCommercialBuilding@{removeCommercialBuilding}}
+\index{removeCommercialBuilding@{removeCommercialBuilding}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{removeCommercialBuilding()}{removeCommercialBuilding()}}
+{\footnotesize\ttfamily \label{class_city_map_afae2d76a3c33cbc18cf716812a253514} 
+void City\+Map\+::remove\+Commercial\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_commercial_building}{Commercial\+Building}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Removes a commercial building from the city map and adjusts adjacent structures\textquotesingle{} satisfaction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the commercial building being removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a23143850f8e8c58e1c3eed7a4e802fb0}\index{CityMap@{CityMap}!removeLandmark@{removeLandmark}}
+\index{removeLandmark@{removeLandmark}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{removeLandmark()}{removeLandmark()}}
+{\footnotesize\ttfamily \label{class_city_map_a23143850f8e8c58e1c3eed7a4e802fb0} 
+void City\+Map\+::remove\+Landmark (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_landmark}{Landmark}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Removes a landmark from the \doxylink{class_city_map}{City\+Map}, adjusting traffic and affecting the satisfaction of nearby residential complexes within the landmark\textquotesingle{}s radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & A pointer to the \doxylink{class_landmark}{Landmark} object being removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a780dfc34fa2ddd7e17051e5296ebb148}\index{CityMap@{CityMap}!removeResidentialComplex@{removeResidentialComplex}}
+\index{removeResidentialComplex@{removeResidentialComplex}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{removeResidentialComplex()}{removeResidentialComplex()}}
+{\footnotesize\ttfamily \label{class_city_map_a780dfc34fa2ddd7e17051e5296ebb148} 
+void City\+Map\+::remove\+Residential\+Complex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Removes a residential complex from the city map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the residential complex being removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a0ee1c174003d46674f65d16d908fedbf}\index{CityMap@{CityMap}!removeResidentialComponent@{removeResidentialComponent}}
+\index{removeResidentialComponent@{removeResidentialComponent}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{removeResidentialComponent()}{removeResidentialComponent()}}
+{\footnotesize\ttfamily \label{class_city_map_a0ee1c174003d46674f65d16d908fedbf} 
+void City\+Map\+::remove\+Residential\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_residential_component}{Residential\+Component}} \texorpdfstring{$\ast$}{*}}]{residential}{}\end{DoxyParamCaption})}
+
+
+
+Removes a residential component from the \doxylink{class_city_map}{City\+Map}, decreasing the capacity in \doxylink{class_city_hall}{City\+Hall} based on the residential component\textquotesingle{}s capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em residential} & A pointer to the \doxylink{class_residential_component}{Residential\+Component} object being removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_a9fe25954cbea117ea8fcc0d1d9bbe956}\index{CityMap@{CityMap}!removeRoad@{removeRoad}}
+\index{removeRoad@{removeRoad}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{removeRoad()}{removeRoad()}}
+{\footnotesize\ttfamily \label{class_city_map_a9fe25954cbea117ea8fcc0d1d9bbe956} 
+void City\+Map\+::remove\+Road (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}}]{originator}{}\end{DoxyParamCaption})}
+
+
+
+Removes a road from the city map and adjusts adjacent structures\textquotesingle{} satisfaction levels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em originator} & Pointer to the road being removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_map_abed1de06c68ac8e65e999b83c5bac556}\index{CityMap@{CityMap}!removeStructure@{removeStructure}}
+\index{removeStructure@{removeStructure}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{removeStructure()}{removeStructure()}}
+{\footnotesize\ttfamily \label{class_city_map_abed1de06c68ac8e65e999b83c5bac556} 
+bool City\+Map\+::remove\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Removes a structure at specified coordinates in the city map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the structure. \\
+\hline
+{\em y} & The y-\/coordinate of the structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the structure was successfully removed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_city_map_a2f9bc7958c033255fc7d13fe18772117}\index{CityMap@{CityMap}!setCityHall@{setCityHall}}
+\index{setCityHall@{setCityHall}!CityMap@{CityMap}}
+\doxysubsubsection{\texorpdfstring{setCityHall()}{setCityHall()}}
+{\footnotesize\ttfamily \label{class_city_map_a2f9bc7958c033255fc7d13fe18772117} 
+void City\+Map\+::set\+City\+Hall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}}]{city\+Hall}{}\end{DoxyParamCaption})}
+
+
+
+Sets the City Hall object for the city map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+City\+Map.\+h\item 
+City\+Map.\+cpp\end{DoxyCompactItemize}

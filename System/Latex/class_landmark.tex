@@ -1,0 +1,197 @@
+\doxysection{Landmark Class Reference}
+\hypertarget{class_landmark}{}\label{class_landmark}\index{Landmark@{Landmark}}
+
+
+Represents a landmark that can influence nearby residential complexes.  
+
+
+Inheritance diagram for Landmark\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.978723cm]{class_landmark}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_landmark_adb7d09fab1e5d05ee54b2539f4e62c51}\label{class_landmark_adb7d09fab1e5d05ee54b2539f4e62c51} 
+{\bfseries Landmark} (int radius\+Of\+Effect)
+\item 
+virtual \mbox{\hyperlink{class_landmark_add8b834269cebb84cc638c183ff83208}{\texorpdfstring{$\sim$}{\string~}\+Landmark}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_landmark}{Landmark} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_landmark_a80bead4f90ecb05788cc06e11bada830}{get\+Radius\+Of\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Gets the radius of effect of the landmark. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_landmark_ad1b49c991f6b253bcdc263ed72c61042}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the landmark structure on the city map at the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_landmark_aca8365fe1cde5b9cdde8b35f2a3a9f80}{remove\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Removes the landmark structure from the city map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_landmark_ad8a44836ec1752c84df02fec293bec73}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\begin{DoxyCompactList}\small\item\em Notifies the landmark that a new residential complex has been added. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_landmark_ad1a80d6e37d4aaa613008bf377409379}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of structure represented by the landmark. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a landmark that can influence nearby residential complexes. 
+
+A \doxylink{class_landmark}{Landmark} has a radius of effect within which it can affect the properties of residential complexes that are added to the city map. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_landmark_add8b834269cebb84cc638c183ff83208}\index{Landmark@{Landmark}!````~Landmark@{\texorpdfstring{$\sim$}{\string~}Landmark}}
+\index{````~Landmark@{\texorpdfstring{$\sim$}{\string~}Landmark}!Landmark@{Landmark}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Landmark()}{\string~Landmark()}}
+{\footnotesize\ttfamily \label{class_landmark_add8b834269cebb84cc638c183ff83208} 
+Landmark\+::\texorpdfstring{$\sim$}{\string~}\+Landmark (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor for the \doxylink{class_landmark}{Landmark} class. 
+
+Cleans up resources used by the \doxylink{class_landmark}{Landmark}. Specifically, it sets the city map to nullptr. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_landmark_a80bead4f90ecb05788cc06e11bada830}\index{Landmark@{Landmark}!getRadiusOfEffect@{getRadiusOfEffect}}
+\index{getRadiusOfEffect@{getRadiusOfEffect}!Landmark@{Landmark}}
+\doxysubsubsection{\texorpdfstring{getRadiusOfEffect()}{getRadiusOfEffect()}}
+{\footnotesize\ttfamily \label{class_landmark_a80bead4f90ecb05788cc06e11bada830} 
+int Landmark\+::get\+Radius\+Of\+Effect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the radius of effect of the landmark. 
+
+\begin{DoxyReturn}{Returns}
+The radius of effect as an integer. 
+\end{DoxyReturn}
+\Hypertarget{class_landmark_ad1a80d6e37d4aaa613008bf377409379}\index{Landmark@{Landmark}!getStructureType@{getStructureType}}
+\index{getStructureType@{getStructureType}!Landmark@{Landmark}}
+\doxysubsubsection{\texorpdfstring{getStructureType()}{getStructureType()}}
+{\footnotesize\ttfamily \label{class_landmark_ad1a80d6e37d4aaa613008bf377409379} 
+std\+::string Landmark\+::get\+Structure\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the type of structure represented by the landmark. 
+
+\begin{DoxyReturn}{Returns}
+A string indicating the structure type, which is "{}\+Landmark"{}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_landmark_ad8a44836ec1752c84df02fec293bec73}\index{Landmark@{Landmark}!newResidentialComplexWasAdded@{newResidentialComplexWasAdded}}
+\index{newResidentialComplexWasAdded@{newResidentialComplexWasAdded}!Landmark@{Landmark}}
+\doxysubsubsection{\texorpdfstring{newResidentialComplexWasAdded()}{newResidentialComplexWasAdded()}}
+{\footnotesize\ttfamily \label{class_landmark_ad8a44836ec1752c84df02fec293bec73} 
+void Landmark\+::new\+Residential\+Complex\+Was\+Added (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}}]{complex}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Notifies the landmark that a new residential complex has been added. 
+
+This function checks if the new residential complex is within the radius of effect of the landmark. If it is, the complex is updated accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em complex} & A pointer to the \doxylink{class_residential_complex}{Residential\+Complex} that was added. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_landmark_ad1b49c991f6b253bcdc263ed72c61042}\index{Landmark@{Landmark}!placeStructure@{placeStructure}}
+\index{placeStructure@{placeStructure}!Landmark@{Landmark}}
+\doxysubsubsection{\texorpdfstring{placeStructure()}{placeStructure()}}
+{\footnotesize\ttfamily \label{class_landmark_ad1b49c991f6b253bcdc263ed72c61042} 
+bool Landmark\+::place\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}}]{city\+Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Places the landmark structure on the city map at the specified coordinates. 
+
+This function attempts to place the structure and, if successful, adds this landmark to the city map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate to place the landmark. \\
+\hline
+{\em y} & The y-\/coordinate to place the landmark. \\
+\hline
+{\em city\+Map} & A pointer to the city map where the structure will be placed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the structure was successfully placed; false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_landmark_aca8365fe1cde5b9cdde8b35f2a3a9f80}\index{Landmark@{Landmark}!removeStructure@{removeStructure}}
+\index{removeStructure@{removeStructure}!Landmark@{Landmark}}
+\doxysubsubsection{\texorpdfstring{removeStructure()}{removeStructure()}}
+{\footnotesize\ttfamily \label{class_landmark_aca8365fe1cde5b9cdde8b35f2a3a9f80} 
+bool Landmark\+::remove\+Structure (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Removes the landmark structure from the city map. 
+
+This function attempts to remove the structure and, if successful, removes this landmark from the city map.
+
+\begin{DoxyReturn}{Returns}
+true if the structure was successfully removed; false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_landmark_8h}{Landmark.\+h}}\item 
+Landmark.\+cpp\end{DoxyCompactItemize}

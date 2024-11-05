@@ -1,0 +1,120 @@
+\doxysection{Linear\+Building\+Iterator Class Reference}
+\hypertarget{class_linear_building_iterator}{}\label{class_linear_building_iterator}\index{LinearBuildingIterator@{LinearBuildingIterator}}
+
+
+A concrete iterator that provides linear traversal over a collection of {\ttfamily \doxylink{class_residential_complex}{Residential\+Complex}} buildings.  
+
+
+
+
+{\ttfamily \#include $<$Linear\+Buildingiterator.\+h$>$}
+
+Inheritance diagram for Linear\+Building\+Iterator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_linear_building_iterator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_linear_building_iterator_a2300df710e3d1bd1cd7ef8ab8fcd78ac}\label{class_linear_building_iterator_a2300df710e3d1bd1cd7ef8ab8fcd78ac} 
+{\bfseries Linear\+Building\+Iterator} (const std\+::vector$<$ \mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*} $>$ \&buildings)
+\item 
+bool \mbox{\hyperlink{class_linear_building_iterator_a7596cec90f78819128376c1524a9d088}{has\+Next}} () const override
+\item 
+\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_linear_building_iterator_a28610615136d456b838c51758d1fb375}{next}} () override
+\item 
+\mbox{\hyperlink{class_linear_building_iterator_a2300df710e3d1bd1cd7ef8ab8fcd78ac}{Linear\+Building\+Iterator}} (const std\+::vector$<$ \mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*} $>$ \&buildings)
+\begin{DoxyCompactList}\small\item\em Constructor for {\ttfamily \doxylink{class_linear_building_iterator}{Linear\+Building\+Iterator}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_linear_building_iterator_a7596cec90f78819128376c1524a9d088}{has\+Next}} () const override
+\begin{DoxyCompactList}\small\item\em Checks if there is another building to iterate over. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_linear_building_iterator_a28610615136d456b838c51758d1fb375}{next}} () override
+\begin{DoxyCompactList}\small\item\em Retrieves the next {\ttfamily \doxylink{class_residential_complex}{Residential\+Complex}} in the iteration and advances the index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_building_iterator}{Building\+Iterator}}}
+
+
+\doxysubsection{Detailed Description}
+A concrete iterator that provides linear traversal over a collection of {\ttfamily \doxylink{class_residential_complex}{Residential\+Complex}} buildings. 
+
+The {\ttfamily \doxylink{class_linear_building_iterator}{Linear\+Building\+Iterator}} iterates over a vector of {\ttfamily \doxylink{class_residential_complex}{Residential\+Complex}} pointers in a linear fashion, starting from the beginning of the collection and moving sequentially to the end. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_linear_building_iterator_a2300df710e3d1bd1cd7ef8ab8fcd78ac}\index{LinearBuildingIterator@{LinearBuildingIterator}!LinearBuildingIterator@{LinearBuildingIterator}}
+\index{LinearBuildingIterator@{LinearBuildingIterator}!LinearBuildingIterator@{LinearBuildingIterator}}
+\doxysubsubsection{\texorpdfstring{LinearBuildingIterator()}{LinearBuildingIterator()}}
+{\footnotesize\ttfamily \label{class_linear_building_iterator_a2300df710e3d1bd1cd7ef8ab8fcd78ac} 
+Linear\+Building\+Iterator\+::\+Linear\+Building\+Iterator (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*} $>$ \&}]{buildings}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for {\ttfamily \doxylink{class_linear_building_iterator}{Linear\+Building\+Iterator}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buildings} & A reference to a vector of {\ttfamily \doxylink{class_residential_complex}{Residential\+Complex}} pointers to iterate over.\\
+\hline
+\end{DoxyParams}
+Initializes the iterator with the given vector and sets the starting index to 0. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_linear_building_iterator_a7596cec90f78819128376c1524a9d088}\index{LinearBuildingIterator@{LinearBuildingIterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!LinearBuildingIterator@{LinearBuildingIterator}}
+\doxysubsubsection{\texorpdfstring{hasNext()}{hasNext()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_linear_building_iterator_a7596cec90f78819128376c1524a9d088} 
+bool Linear\+Building\+Iterator\+::has\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_building_iterator}{Building\+Iterator}}.
+
+\Hypertarget{class_linear_building_iterator_a7596cec90f78819128376c1524a9d088}\index{LinearBuildingIterator@{LinearBuildingIterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!LinearBuildingIterator@{LinearBuildingIterator}}
+\doxysubsubsection{\texorpdfstring{hasNext()}{hasNext()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_linear_building_iterator_a7596cec90f78819128376c1524a9d088} 
+bool Linear\+Building\+Iterator\+::has\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks if there is another building to iterate over. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if there are more buildings to iterate over, otherwise {\ttfamily false}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_iterator}{Building\+Iterator}}.
+
+\Hypertarget{class_linear_building_iterator_a28610615136d456b838c51758d1fb375}\index{LinearBuildingIterator@{LinearBuildingIterator}!next@{next}}
+\index{next@{next}!LinearBuildingIterator@{LinearBuildingIterator}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_linear_building_iterator_a28610615136d456b838c51758d1fb375} 
+\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*} Linear\+Building\+Iterator\+::next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_building_iterator}{Building\+Iterator}}.
+
+\Hypertarget{class_linear_building_iterator_a28610615136d456b838c51758d1fb375}\index{LinearBuildingIterator@{LinearBuildingIterator}!next@{next}}
+\index{next@{next}!LinearBuildingIterator@{LinearBuildingIterator}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_linear_building_iterator_a28610615136d456b838c51758d1fb375} 
+\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*} Linear\+Building\+Iterator\+::next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the next {\ttfamily \doxylink{class_residential_complex}{Residential\+Complex}} in the iteration and advances the index. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the next {\ttfamily \doxylink{class_residential_complex}{Residential\+Complex}} object, or {\ttfamily nullptr} if there are no more buildings. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_iterator}{Building\+Iterator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Linear\+Building\+Iterator.\+cpp\item 
+Linear\+Buildingiterator.\+h\end{DoxyCompactItemize}

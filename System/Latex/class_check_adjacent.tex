@@ -1,0 +1,83 @@
+\doxysection{Check\+Adjacent Class Reference}
+\hypertarget{class_check_adjacent}{}\label{class_check_adjacent}\index{CheckAdjacent@{CheckAdjacent}}
+
+
+Utility class to check adjacent structures in a 2D map of \doxylink{class_city_structure}{City\+Structure} pointers.  
+
+
+Inheritance diagram for Check\+Adjacent\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_check_adjacent}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_check_adjacent_a7ac9c2ce804310f9122a636361d782e0}{check\+Adjacent}} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$ map, int x, int y)
+\begin{DoxyCompactList}\small\item\em Checks adjacent cells around a given position in the map for non-\/null structures. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_check_adjacent_a38a50ca6c14469a10a370c60289d0ea4}{perform\+Action}} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$ map, int x, int y)
+\begin{DoxyCompactList}\small\item\em Performs an action on a specified cell in the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility class to check adjacent structures in a 2D map of \doxylink{class_city_structure}{City\+Structure} pointers. 
+
+The \doxylink{class_check_adjacent}{Check\+Adjacent} class provides functionality to count and perform actions on non-\/null adjacent structures around a specified position in the map. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_check_adjacent_a7ac9c2ce804310f9122a636361d782e0}\index{CheckAdjacent@{CheckAdjacent}!checkAdjacent@{checkAdjacent}}
+\index{checkAdjacent@{checkAdjacent}!CheckAdjacent@{CheckAdjacent}}
+\doxysubsubsection{\texorpdfstring{checkAdjacent()}{checkAdjacent()}}
+{\footnotesize\ttfamily \label{class_check_adjacent_a7ac9c2ce804310f9122a636361d782e0} 
+int Check\+Adjacent\+::check\+Adjacent (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Checks adjacent cells around a given position in the map for non-\/null structures. 
+
+This method iterates over the cells adjacent to the specified coordinates {\ttfamily (x, y)} in the {\ttfamily map}. If an adjacent cell contains a non-\/null structure, the method increments the count and performs an action on that structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A 2D vector representing the city map, where each cell holds a pointer to a \doxylink{class_city_structure}{City\+Structure} object (or nullptr if empty). \\
+\hline
+{\em x} & The x-\/coordinate of the cell to check adjacency for. \\
+\hline
+{\em y} & The y-\/coordinate of the cell to check adjacency for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of non-\/null adjacent cells around the specified {\ttfamily (x, y)} position. 
+\end{DoxyReturn}
+\Hypertarget{class_check_adjacent_a38a50ca6c14469a10a370c60289d0ea4}\index{CheckAdjacent@{CheckAdjacent}!performAction@{performAction}}
+\index{performAction@{performAction}!CheckAdjacent@{CheckAdjacent}}
+\doxysubsubsection{\texorpdfstring{performAction()}{performAction()}}
+{\footnotesize\ttfamily \label{class_check_adjacent_a38a50ca6c14469a10a370c60289d0ea4} 
+void Check\+Adjacent\+::perform\+Action (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Performs an action on a specified cell in the map. 
+
+This method is intended to be overridden to define specific actions on non-\/null adjacent structures. By default, it does nothing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A 2D vector representing the city map, where each cell holds a pointer to a \doxylink{class_city_structure}{City\+Structure} object (or nullptr if empty). \\
+\hline
+{\em x} & The x-\/coordinate of the cell on which to perform the action. \\
+\hline
+{\em y} & The y-\/coordinate of the cell on which to perform the action. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_building_added_a540ebc8bc50bbed4b684c8997cf1f84b}{Building\+Added}}, \mbox{\hyperlink{class_building_removed_aaf68e8ccc48a7576d3b8e179ec093be0}{Building\+Removed}}, \mbox{\hyperlink{class_road_added_a82d4f7374488146088375fdf980267ec}{Road\+Added}}, and \mbox{\hyperlink{class_road_removed_aaca0d7791220405a2d888d17ea22ec83}{Road\+Removed}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Check\+Adjacent.\+h\item 
+Check\+Adjacent.\+cpp\end{DoxyCompactItemize}

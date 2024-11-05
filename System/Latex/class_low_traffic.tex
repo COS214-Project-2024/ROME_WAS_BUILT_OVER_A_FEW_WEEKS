@@ -1,0 +1,71 @@
+\doxysection{Low\+Traffic Class Reference}
+\hypertarget{class_low_traffic}{}\label{class_low_traffic}\index{LowTraffic@{LowTraffic}}
+
+
+Represents a low traffic state for a road structure.  
+
+
+Inheritance diagram for Low\+Traffic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_low_traffic}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_low_traffic_af660ff6339ba9aab1811400647858737}{adjust\+Traffic\+Impact}} (\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}road) override
+\begin{DoxyCompactList}\small\item\em Outputs a message indicating low traffic in surrounding structures. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_low_traffic_aec9e948705c6d789eeda131b8d55fbe7}{get\+Traffic\+Level}} () const override
+\begin{DoxyCompactList}\small\item\em Retrieves the traffic level for low traffic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}}
+
+
+\doxysubsection{Detailed Description}
+Represents a low traffic state for a road structure. 
+
+The {\ttfamily \doxylink{class_low_traffic}{Low\+Traffic}} class defines the characteristics and behavior of a road when traffic is low, such as indicating low traffic impact. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_low_traffic_af660ff6339ba9aab1811400647858737}\index{LowTraffic@{LowTraffic}!adjustTrafficImpact@{adjustTrafficImpact}}
+\index{adjustTrafficImpact@{adjustTrafficImpact}!LowTraffic@{LowTraffic}}
+\doxysubsubsection{\texorpdfstring{adjustTrafficImpact()}{adjustTrafficImpact()}}
+{\footnotesize\ttfamily \label{class_low_traffic_af660ff6339ba9aab1811400647858737} 
+void Low\+Traffic\+::adjust\+Traffic\+Impact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}}]{road}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Outputs a message indicating low traffic in surrounding structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road} & Pointer to the {\ttfamily \doxylink{class_road}{Road}} object for which the traffic impact is being adjusted. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}.
+
+\Hypertarget{class_low_traffic_aec9e948705c6d789eeda131b8d55fbe7}\index{LowTraffic@{LowTraffic}!getTrafficLevel@{getTrafficLevel}}
+\index{getTrafficLevel@{getTrafficLevel}!LowTraffic@{LowTraffic}}
+\doxysubsubsection{\texorpdfstring{getTrafficLevel()}{getTrafficLevel()}}
+{\footnotesize\ttfamily \label{class_low_traffic_aec9e948705c6d789eeda131b8d55fbe7} 
+int Low\+Traffic\+::get\+Traffic\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the traffic level for low traffic. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing low traffic level, which is 1. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Low\+Traffic.\+h\item 
+Low\+Traffic.\+cpp\end{DoxyCompactItemize}

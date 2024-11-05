@@ -1,0 +1,51 @@
+\doxysection{Building\+Removed Class Reference}
+\hypertarget{class_building_removed}{}\label{class_building_removed}\index{BuildingRemoved@{BuildingRemoved}}
+Inheritance diagram for Building\+Removed\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_building_removed}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_building_removed_aaf68e8ccc48a7576d3b8e179ec093be0}{perform\+Action}} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$ map, int x, int y)
+\begin{DoxyCompactList}\small\item\em Performs an action on a specified cell in the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_check_adjacent}{Check\+Adjacent}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_check_adjacent_a7ac9c2ce804310f9122a636361d782e0}{check\+Adjacent}} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$ map, int x, int y)
+\begin{DoxyCompactList}\small\item\em Checks adjacent cells around a given position in the map for non-\/null structures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_building_removed_aaf68e8ccc48a7576d3b8e179ec093be0}\index{BuildingRemoved@{BuildingRemoved}!performAction@{performAction}}
+\index{performAction@{performAction}!BuildingRemoved@{BuildingRemoved}}
+\doxysubsubsection{\texorpdfstring{performAction()}{performAction()}}
+{\footnotesize\ttfamily \label{class_building_removed_aaf68e8ccc48a7576d3b8e179ec093be0} 
+void Building\+Removed\+::perform\+Action (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_city_structure}{City\+Structure}} \texorpdfstring{$\ast$}{*} $>$ $>$}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Performs an action on a specified cell in the map. 
+
+This method is intended to be overridden to define specific actions on non-\/null adjacent structures. By default, it does nothing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A 2D vector representing the city map, where each cell holds a pointer to a \doxylink{class_city_structure}{City\+Structure} object (or nullptr if empty). \\
+\hline
+{\em x} & The x-\/coordinate of the cell on which to perform the action. \\
+\hline
+{\em y} & The y-\/coordinate of the cell on which to perform the action. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_check_adjacent_a38a50ca6c14469a10a370c60289d0ea4}{Check\+Adjacent}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Building\+Removed.\+h\end{DoxyCompactItemize}

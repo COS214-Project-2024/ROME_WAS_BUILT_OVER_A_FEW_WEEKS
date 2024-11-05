@@ -1,0 +1,164 @@
+\doxysection{Democracy Class Reference}
+\hypertarget{class_democracy}{}\label{class_democracy}\index{Democracy@{Democracy}}
+
+
+A political system model representing democracy.  
+
+
+
+
+{\ttfamily \#include $<$Democracy.\+h$>$}
+
+Inheritance diagram for Democracy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_democracy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_democracy_a63fade34aa5bce8ac47305fa88fce78c}{Democracy}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_democracy}{Democracy}. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_democracy_a8b6572a3c0eb3514ebeef9a7c6e9f1cc}{get\+Tax\+Rate\+Residential}} ()
+\begin{DoxyCompactList}\small\item\em Get the residential tax rate. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_democracy_a7b630ca66b27a8a66ec08fce452dec35}{get\+Tax\+Rate\+Commercial}} ()
+\begin{DoxyCompactList}\small\item\em Get the commercial tax rate. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_democracy_aee60b0bbcf5ec000f59a28ef898a9241}{get\+Tax\+Rate\+Industrial}} ()
+\begin{DoxyCompactList}\small\item\em Get the industrial tax rate. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_democracy_ac720aa8c3cfaaadfe60fdcfe0d671b2e}{get\+Budget\+Split}} ()
+\begin{DoxyCompactList}\small\item\em Get the budget split for public services. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_democracy_af816da9c05366a553676f016b0502d6c}{get\+Citizen\+Satisfaction\+Impact}} ()
+\begin{DoxyCompactList}\small\item\em Get the impact on citizen satisfaction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_democracy_aaa0f1ac6de2c96e51a50743bfaa0e21d}{\texorpdfstring{$\sim$}{\string~}\+Democracy}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_democracy}{Democracy}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_political_system}{Political\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_political_system_a7ff2deaaa0133bb68d96f77fda39d8eb}{Political\+System}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_political_system}{Political\+System}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_political_system_a78f7f220d36676f02be77f625e26b539}{\texorpdfstring{$\sim$}{\string~}\+Political\+System}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_political_system}{Political\+System}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A political system model representing democracy. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_democracy_a63fade34aa5bce8ac47305fa88fce78c}\index{Democracy@{Democracy}!Democracy@{Democracy}}
+\index{Democracy@{Democracy}!Democracy@{Democracy}}
+\doxysubsubsection{\texorpdfstring{Democracy()}{Democracy()}}
+{\footnotesize\ttfamily \label{class_democracy_a63fade34aa5bce8ac47305fa88fce78c} 
+Democracy\+::\+Democracy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_democracy}{Democracy}. 
+
+Constructor for the \doxylink{class_democracy}{Democracy} class. \Hypertarget{class_democracy_aaa0f1ac6de2c96e51a50743bfaa0e21d}\index{Democracy@{Democracy}!````~Democracy@{\texorpdfstring{$\sim$}{\string~}Democracy}}
+\index{````~Democracy@{\texorpdfstring{$\sim$}{\string~}Democracy}!Democracy@{Democracy}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Democracy()}{\string~Democracy()}}
+{\footnotesize\ttfamily \label{class_democracy_aaa0f1ac6de2c96e51a50743bfaa0e21d} 
+Democracy\+::\texorpdfstring{$\sim$}{\string~}\+Democracy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor for \doxylink{class_democracy}{Democracy}. 
+
+Destructor for the \doxylink{class_democracy}{Democracy} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_democracy_ac720aa8c3cfaaadfe60fdcfe0d671b2e}\index{Democracy@{Democracy}!getBudgetSplit@{getBudgetSplit}}
+\index{getBudgetSplit@{getBudgetSplit}!Democracy@{Democracy}}
+\doxysubsubsection{\texorpdfstring{getBudgetSplit()}{getBudgetSplit()}}
+{\footnotesize\ttfamily \label{class_democracy_ac720aa8c3cfaaadfe60fdcfe0d671b2e} 
+double Democracy\+::get\+Budget\+Split (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the budget split for public services. 
+
+\begin{DoxyReturn}{Returns}
+The budget allocation proportion as a double. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_political_system_a879afdc4bd57508cc9d6850d003844d2}{Political\+System}}.
+
+\Hypertarget{class_democracy_af816da9c05366a553676f016b0502d6c}\index{Democracy@{Democracy}!getCitizenSatisfactionImpact@{getCitizenSatisfactionImpact}}
+\index{getCitizenSatisfactionImpact@{getCitizenSatisfactionImpact}!Democracy@{Democracy}}
+\doxysubsubsection{\texorpdfstring{getCitizenSatisfactionImpact()}{getCitizenSatisfactionImpact()}}
+{\footnotesize\ttfamily \label{class_democracy_af816da9c05366a553676f016b0502d6c} 
+int Democracy\+::get\+Citizen\+Satisfaction\+Impact (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the impact on citizen satisfaction. 
+
+\begin{DoxyReturn}{Returns}
+The calculated impact on citizen satisfaction as an integer.
+\end{DoxyReturn}
+Generates a random number to add variability to the citizen satisfaction. \begin{DoxyReturn}{Returns}
+The citizen satisfaction impact as an integer. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_political_system_ae216faa9d600b2f95801284a43846e07}{Political\+System}}.
+
+\Hypertarget{class_democracy_a7b630ca66b27a8a66ec08fce452dec35}\index{Democracy@{Democracy}!getTaxRateCommercial@{getTaxRateCommercial}}
+\index{getTaxRateCommercial@{getTaxRateCommercial}!Democracy@{Democracy}}
+\doxysubsubsection{\texorpdfstring{getTaxRateCommercial()}{getTaxRateCommercial()}}
+{\footnotesize\ttfamily \label{class_democracy_a7b630ca66b27a8a66ec08fce452dec35} 
+int Democracy\+::get\+Tax\+Rate\+Commercial (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the commercial tax rate. 
+
+\begin{DoxyReturn}{Returns}
+The tax rate for commercial zones as an integer percentage. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_political_system_a7f7b932adf9e612200a329ad150d1ebb}{Political\+System}}.
+
+\Hypertarget{class_democracy_aee60b0bbcf5ec000f59a28ef898a9241}\index{Democracy@{Democracy}!getTaxRateIndustrial@{getTaxRateIndustrial}}
+\index{getTaxRateIndustrial@{getTaxRateIndustrial}!Democracy@{Democracy}}
+\doxysubsubsection{\texorpdfstring{getTaxRateIndustrial()}{getTaxRateIndustrial()}}
+{\footnotesize\ttfamily \label{class_democracy_aee60b0bbcf5ec000f59a28ef898a9241} 
+int Democracy\+::get\+Tax\+Rate\+Industrial (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the industrial tax rate. 
+
+\begin{DoxyReturn}{Returns}
+The tax rate for industrial zones as an integer percentage. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_political_system_ab1d3effdd0541fc1c621b02ff1f9d72c}{Political\+System}}.
+
+\Hypertarget{class_democracy_a8b6572a3c0eb3514ebeef9a7c6e9f1cc}\index{Democracy@{Democracy}!getTaxRateResidential@{getTaxRateResidential}}
+\index{getTaxRateResidential@{getTaxRateResidential}!Democracy@{Democracy}}
+\doxysubsubsection{\texorpdfstring{getTaxRateResidential()}{getTaxRateResidential()}}
+{\footnotesize\ttfamily \label{class_democracy_a8b6572a3c0eb3514ebeef9a7c6e9f1cc} 
+int Democracy\+::get\+Tax\+Rate\+Residential (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the residential tax rate. 
+
+\begin{DoxyReturn}{Returns}
+The tax rate for residential zones as an integer percentage. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_political_system_aa83a3fa0d8851dae18d5c49c07b8cf42}{Political\+System}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_democracy_8h}{Democracy.\+h}}\item 
+\mbox{\hyperlink{_democracy_8cpp}{Democracy.\+cpp}}\end{DoxyCompactItemize}

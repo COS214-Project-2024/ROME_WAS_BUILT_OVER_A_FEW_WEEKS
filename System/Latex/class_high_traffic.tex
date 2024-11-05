@@ -1,0 +1,74 @@
+\doxysection{High\+Traffic Class Reference}
+\hypertarget{class_high_traffic}{}\label{class_high_traffic}\index{HighTraffic@{HighTraffic}}
+
+
+Represents a high traffic state for a road structure.  
+
+
+Inheritance diagram for High\+Traffic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_high_traffic}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_high_traffic_aafad86abd2255fda624d9a74ede7b6ae}\label{class_high_traffic_aafad86abd2255fda624d9a74ede7b6ae} 
+{\bfseries High\+Traffic} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_high_traffic}{High\+Traffic} object with default settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_high_traffic_a5d785f03ca5d007ba12bb9f6f1da3ed5}{adjust\+Traffic\+Impact}} (\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}road) override
+\begin{DoxyCompactList}\small\item\em Outputs a message indicating high traffic in surrounding structures. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_high_traffic_a21db77e6b2a4c8e6bf4c36cdd45a307b}{get\+Traffic\+Level}} () const override
+\begin{DoxyCompactList}\small\item\em Retrieves the traffic level for high traffic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}}
+
+
+\doxysubsection{Detailed Description}
+Represents a high traffic state for a road structure. 
+
+The {\ttfamily \doxylink{class_high_traffic}{High\+Traffic}} class implements behavior specific to high traffic scenarios for roads, including displaying a high traffic message. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_high_traffic_a5d785f03ca5d007ba12bb9f6f1da3ed5}\index{HighTraffic@{HighTraffic}!adjustTrafficImpact@{adjustTrafficImpact}}
+\index{adjustTrafficImpact@{adjustTrafficImpact}!HighTraffic@{HighTraffic}}
+\doxysubsubsection{\texorpdfstring{adjustTrafficImpact()}{adjustTrafficImpact()}}
+{\footnotesize\ttfamily \label{class_high_traffic_a5d785f03ca5d007ba12bb9f6f1da3ed5} 
+void High\+Traffic\+::adjust\+Traffic\+Impact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}}]{road}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Outputs a message indicating high traffic in surrounding structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road} & Pointer to the {\ttfamily \doxylink{class_road}{Road}} object for which the traffic impact is being adjusted. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}.
+
+\Hypertarget{class_high_traffic_a21db77e6b2a4c8e6bf4c36cdd45a307b}\index{HighTraffic@{HighTraffic}!getTrafficLevel@{getTrafficLevel}}
+\index{getTrafficLevel@{getTrafficLevel}!HighTraffic@{HighTraffic}}
+\doxysubsubsection{\texorpdfstring{getTrafficLevel()}{getTrafficLevel()}}
+{\footnotesize\ttfamily \label{class_high_traffic_a21db77e6b2a4c8e6bf4c36cdd45a307b} 
+int High\+Traffic\+::get\+Traffic\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the traffic level for high traffic. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing high traffic level, which is 3. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+High\+Traffic.\+h\item 
+High\+Traffic.\+cpp\end{DoxyCompactItemize}
