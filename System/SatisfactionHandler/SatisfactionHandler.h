@@ -1,5 +1,6 @@
 #ifndef SATISFACTIONHANDLER_H
 #define SATISFACTIONHANDLER_H
+#include "../CityHall.h"
 
 class CityHall; // Forward declaration
 
@@ -14,6 +15,8 @@ class CityHall; // Forward declaration
 class SatisfactionHandler {
     protected:
         SatisfactionHandler *nextHandler; ///< Pointer to the next handler in the chain.
+        float chanceOfPopulationChange; ///< Probability of population change.
+        float incomeAffectionRate; ///< Rate of income affecting tax calculation.
 
     public:
         /**

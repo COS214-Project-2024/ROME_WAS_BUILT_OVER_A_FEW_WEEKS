@@ -21,7 +21,7 @@ class Factory;
  */
 class CityMap {
 private:
-    std::vector<std::vector<CityStructure*>> map; ///< 2D array representing the city map.
+    std::vector<std::vector<CityStructure*> > map; ///< 2D array representing the city map.
     CityHall* cityHall; ///< Pointer to the CityHall structure.
     int width; ///< Width of the city map.
     int height; ///< Height of the city map.
@@ -48,7 +48,7 @@ public:
      * @brief Retrieves the current map.
      * @return 2D vector of CityStructure pointers representing the map.
      */
-    std::vector<std::vector<CityStructure*>> getMap();
+    std::vector<std::vector<CityStructure*> > getMap();
 
     void setCityHall(CityHall* cityHall);
 

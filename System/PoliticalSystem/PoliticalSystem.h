@@ -7,6 +7,7 @@
 
 #ifndef POLITICALSYSTEM_H
 #define POLITICALSYSTEM_H
+#include <string>
 
 /**
  * @class PoliticalSystem
