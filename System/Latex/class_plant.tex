@@ -1,0 +1,152 @@
+\doxysection{Plant Class Reference}
+\hypertarget{class_plant}{}\label{class_plant}\index{Plant@{Plant}}
+Inheritance diagram for Plant\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_plant}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_plant_aeebba67fbf33e3087e9035f41289a83a}\label{class_plant_aeebba67fbf33e3087e9035f41289a83a} 
+{\bfseries Plant} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_plant}{Plant} class. Initializes the radius of effect and sets the costs for construction materials. \end{DoxyCompactList}\item 
+\Hypertarget{class_plant_ab0effb2b143e6da7b65ebd13a3b1fc29}\label{class_plant_ab0effb2b143e6da7b65ebd13a3b1fc29} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Plant} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_plant}{Plant} class, releasing resources. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_plant_a19cbec934f9fa37f105f463d84d122dd}{get\+Radius\+Of\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Gets the radius of effect of the plant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_plant_a10eebfa6e5f74657845c7b0055a4f215}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the \doxylink{class_plant}{Plant} structure on the city map. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_plant_ad024abac35f26cf2e2a2e3ffde4f879e}{get\+Plant\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the plant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_industrial_building}{Industrial\+Building}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_industrial_building_aa0b4dd5b14602e0b9fc55b3e253d05d3}{\texorpdfstring{$\sim$}{\string~}\+Industrial\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_industrial_building}{Industrial\+Building} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_industrial_building_a3ba027280ed0575596d49dc6f3b81ed3}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the industrial building structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_acd664d9e4363c5724cc95be693d126db}{remove\+Structure}} ()
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_plant_ad17258913df011b10830100d184d0afb}\label{class_plant_ad17258913df011b10830100d184d0afb} 
+int {\bfseries radius\+Of\+Effect}
+\item 
+\Hypertarget{class_plant_abb561785fb0b0ed3d9d6e383ab8c8f95}\label{class_plant_abb561785fb0b0ed3d9d6e383ab8c8f95} 
+string {\bfseries plant\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_plant_ad024abac35f26cf2e2a2e3ffde4f879e}\index{Plant@{Plant}!getPlantType@{getPlantType}}
+\index{getPlantType@{getPlantType}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getPlantType()}{getPlantType()}}
+{\footnotesize\ttfamily \label{class_plant_ad024abac35f26cf2e2a2e3ffde4f879e} 
+string Plant\+::get\+Plant\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the type of the plant. 
+
+\begin{DoxyReturn}{Returns}
+The type of the plant as a string. 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_plant_decorator_a5b4fc1cb138ea9ff0007b8ae9efde26d}{Plant\+Decorator}}, \mbox{\hyperlink{class_power_plant_adb4e5a5f6127112b05677bdb64978782}{Power\+Plant}}, \mbox{\hyperlink{class_sewage_plant_aa90b499477b31ea015a1eb0d9ddd3f77}{Sewage\+Plant}}, \mbox{\hyperlink{class_waste_plant_a9603905cd27766a06d6ec33e8f4a523b}{Waste\+Plant}}, and \mbox{\hyperlink{class_water_plant_a0aa3b4b2e63157ab3e082a4a1dce7254}{Water\+Plant}}.
+
+\Hypertarget{class_plant_a19cbec934f9fa37f105f463d84d122dd}\index{Plant@{Plant}!getRadiusOfEffect@{getRadiusOfEffect}}
+\index{getRadiusOfEffect@{getRadiusOfEffect}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{getRadiusOfEffect()}{getRadiusOfEffect()}}
+{\footnotesize\ttfamily \label{class_plant_a19cbec934f9fa37f105f463d84d122dd} 
+int Plant\+::get\+Radius\+Of\+Effect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the radius of effect of the plant. 
+
+\begin{DoxyReturn}{Returns}
+The radius of effect as an integer. 
+\end{DoxyReturn}
+\Hypertarget{class_plant_a10eebfa6e5f74657845c7b0055a4f215}\index{Plant@{Plant}!placeStructure@{placeStructure}}
+\index{placeStructure@{placeStructure}!Plant@{Plant}}
+\doxysubsubsection{\texorpdfstring{placeStructure()}{placeStructure()}}
+{\footnotesize\ttfamily \label{class_plant_a10eebfa6e5f74657845c7b0055a4f215} 
+bool Plant\+::place\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}}]{city\+Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Places the \doxylink{class_plant}{Plant} structure on the city map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate on the city map. \\
+\hline
+{\em y} & The y-\/coordinate on the city map. \\
+\hline
+{\em city\+Map} & Pointer to the \doxylink{class_city_map}{City\+Map} object where the structure is to be placed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the structure was successfully placed, otherwise false. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_industrial_building_a43c47f592be1183c07546caa4c1bb64c}{Industrial\+Building}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_plant_decorator_a19bda3ccd2416d70665903d26aebd6ba}{Plant\+Decorator}}, \mbox{\hyperlink{class_power_plant_a84f59b2c24a99c47510fde9c197ab78b}{Power\+Plant}}, \mbox{\hyperlink{class_sewage_plant_ac23cd80dce43d7714eef32af417d4704}{Sewage\+Plant}}, \mbox{\hyperlink{class_waste_plant_aec5ba2cf855b4a5145ab4c7c3a896092}{Waste\+Plant}}, and \mbox{\hyperlink{class_water_plant_a211adb3284f66780a032da9f9149f191}{Water\+Plant}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Plant.\+h\item 
+Plant.\+cpp\end{DoxyCompactItemize}

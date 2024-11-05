@@ -1,0 +1,129 @@
+\doxysection{Townhouse Class Reference}
+\hypertarget{class_townhouse}{}\label{class_townhouse}\index{Townhouse@{Townhouse}}
+
+
+Represents a type of residential building with specific capacity and resource costs.  
+
+
+Inheritance diagram for Townhouse\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_townhouse}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_townhouse_ae95cfcbba3b301297e23aacfeda535b1}{Townhouse}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_townhouse}{Townhouse} object with default costs and capacity. \end{DoxyCompactList}\item 
+\Hypertarget{class_townhouse_a64c693b4df34808f701f2f0874284431}\label{class_townhouse_a64c693b4df34808f701f2f0874284431} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Townhouse} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_townhouse}{Townhouse} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_townhouse_a5dc9bcfa783024df3c47682997359c63}{get\+Residential\+Building\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the specific type of residential building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_residential_building}{Residential\+Building}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_residential_building_a3d49adc21132fb559c6b65ba5834ec6b}{Residential\+Building}} (int capacity)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_residential_building}{Residential\+Building} with a specified capacity. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Residential\+Building} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_residential_building}{Residential\+Building} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_residential_building_adb677c5ff126435aa4fbcc9277499fb4}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the type of structure for a residential building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_residential_building_a37a4ba42d0d3c87fe87407536abdae06}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Attempts to place the residential building on the map, returning false for individual structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_residential_building_aea665b83c6892f94eef2031e8be62887}{remove\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Attempts to remove the residential building, returning false as it cannot be removed individually. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_building_a3366ab094bbb6038393b5160eaa559b8}{get\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the capacity of the residential building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_building_a66b140e347bb7b24a5071c476176bb5d}{calculate\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Calculates and retrieves the capacity of the residential building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_building_a4a87493780a4a974fe666e3b84f00317}{get\+Cost}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the cost of the residential building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_residential_component}{Residential\+Component}}}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_residential_building}{Residential\+Building}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries capacity}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a type of residential building with specific capacity and resource costs. 
+
+The {\ttfamily \doxylink{class_townhouse}{Townhouse}} class inherits from {\ttfamily \doxylink{class_residential_building}{Residential\+Building}} and defines a townhouse-\/specific configuration with preset costs for construction resources. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_townhouse_ae95cfcbba3b301297e23aacfeda535b1}\index{Townhouse@{Townhouse}!Townhouse@{Townhouse}}
+\index{Townhouse@{Townhouse}!Townhouse@{Townhouse}}
+\doxysubsubsection{\texorpdfstring{Townhouse()}{Townhouse()}}
+{\footnotesize\ttfamily \label{class_townhouse_ae95cfcbba3b301297e23aacfeda535b1} 
+Townhouse\+::\+Townhouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_townhouse}{Townhouse} object with default costs and capacity. 
+
+Initializes a townhouse with default values for cost, wood, steel, and concrete requirements. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_townhouse_a5dc9bcfa783024df3c47682997359c63}\index{Townhouse@{Townhouse}!getResidentialBuildingType@{getResidentialBuildingType}}
+\index{getResidentialBuildingType@{getResidentialBuildingType}!Townhouse@{Townhouse}}
+\doxysubsubsection{\texorpdfstring{getResidentialBuildingType()}{getResidentialBuildingType()}}
+{\footnotesize\ttfamily \label{class_townhouse_a5dc9bcfa783024df3c47682997359c63} 
+std\+::string Townhouse\+::get\+Residential\+Building\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the specific type of residential building. 
+
+\begin{DoxyReturn}{Returns}
+A string representing "{}\+Townhouse"{} as the residential building type. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Townhouse.\+h\item 
+Townhouse.\+cpp\end{DoxyCompactItemize}

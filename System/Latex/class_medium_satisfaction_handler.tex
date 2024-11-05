@@ -1,0 +1,164 @@
+\doxysection{Medium\+Satisfaction\+Handler Class Reference}
+\hypertarget{class_medium_satisfaction_handler}{}\label{class_medium_satisfaction_handler}\index{MediumSatisfactionHandler@{MediumSatisfactionHandler}}
+
+
+Handles population and tax adjustments for medium satisfaction levels.  
+
+
+
+
+{\ttfamily \#include $<$Medium\+Satisfaction\+Handler.\+h$>$}
+
+Inheritance diagram for Medium\+Satisfaction\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_medium_satisfaction_handler}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_medium_satisfaction_handler_a3253aac4912e73f864913c3c206ef859}{Medium\+Satisfaction\+Handler}} (\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_satisfaction_handler_a1c335a8b3fed440b4c2b68edf95cdccd}{next\+Handler}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_medium_satisfaction_handler}{Medium\+Satisfaction\+Handler}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_medium_satisfaction_handler_ad3bf3a03db1202b156071b3943690cf3}{handle\+Population}} (int cur\+Satisfaction, \mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}city\+Hall)
+\begin{DoxyCompactList}\small\item\em Handles population changes based on current satisfaction levels. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_medium_satisfaction_handler_a8755f16443c59e3c86c785f4ab41c650}{handle\+Tax}} (int cur\+Satisfaction, \mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}city\+Hall)
+\begin{DoxyCompactList}\small\item\em Calculates the tax amount based on satisfaction and other parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Satisfaction\+Handler} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_satisfaction_handler}{Satisfaction\+Handler}. Initializes the next handler pointer to nullptr. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Satisfaction\+Handler} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_satisfaction_handler_a235c43cd3035c1e7e9a432062b32bc48}{add\+Handler}} (\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_satisfaction_handler_a1c335a8b3fed440b4c2b68edf95cdccd}{next\+Handler}})
+\begin{DoxyCompactList}\small\item\em Adds a next handler to the chain for processing satisfaction-\/related requests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*} {\bfseries next\+Handler}
+\begin{DoxyCompactList}\small\item\em Pointer to the next handler in the chain. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles population and tax adjustments for medium satisfaction levels. 
+
+Interface for handling medium satisfaction levels in the population.
+
+This class is responsible for managing changes in the population and tax rates when the satisfaction level is between 60 and 80. It employs randomness to determine the frequency and type of population changes, such as births, deaths, immigration, and emigration.
+
+This class extends the \doxylink{class_satisfaction_handler}{Satisfaction\+Handler} to implement population and tax handling specifically for medium satisfaction levels. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_medium_satisfaction_handler_a3253aac4912e73f864913c3c206ef859}\index{MediumSatisfactionHandler@{MediumSatisfactionHandler}!MediumSatisfactionHandler@{MediumSatisfactionHandler}}
+\index{MediumSatisfactionHandler@{MediumSatisfactionHandler}!MediumSatisfactionHandler@{MediumSatisfactionHandler}}
+\doxysubsubsection{\texorpdfstring{MediumSatisfactionHandler()}{MediumSatisfactionHandler()}}
+{\footnotesize\ttfamily \label{class_medium_satisfaction_handler_a3253aac4912e73f864913c3c206ef859} 
+Medium\+Satisfaction\+Handler\+::\+Medium\+Satisfaction\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_satisfaction_handler}{Satisfaction\+Handler}} \texorpdfstring{$\ast$}{*}}]{next\+Handler}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_medium_satisfaction_handler}{Medium\+Satisfaction\+Handler}. 
+
+Initializes the handler with the next handler in the chain and sets default values for chance\+Of\+Population\+Change and income\+Affection\+Rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Handler} & Pointer to the next \doxylink{class_satisfaction_handler}{Satisfaction\+Handler} in the chain.\\
+\hline
+\end{DoxyParams}
+Initializes the handler with a pointer to the next handler in the chain and sets default values for chance\+Of\+Population\+Change and income\+Affection\+Rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Handler} & Pointer to the next \doxylink{class_satisfaction_handler}{Satisfaction\+Handler} in the chain. \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} Assign the next handler for processing.
+
+\texorpdfstring{$<$}{<} Default chance of population change (5\%).
+
+\texorpdfstring{$<$}{<} Default income affection rate (80\%).
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_medium_satisfaction_handler_ad3bf3a03db1202b156071b3943690cf3}\index{MediumSatisfactionHandler@{MediumSatisfactionHandler}!handlePopulation@{handlePopulation}}
+\index{handlePopulation@{handlePopulation}!MediumSatisfactionHandler@{MediumSatisfactionHandler}}
+\doxysubsubsection{\texorpdfstring{handlePopulation()}{handlePopulation()}}
+{\footnotesize\ttfamily \label{class_medium_satisfaction_handler_ad3bf3a03db1202b156071b3943690cf3} 
+void Medium\+Satisfaction\+Handler\+::handle\+Population (\begin{DoxyParamCaption}\item[{int}]{cur\+Satisfaction}{, }\item[{\mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}}]{city\+Hall}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles population changes based on current satisfaction levels. 
+
+Handles population adjustments based on current satisfaction levels.
+
+The function modifies the population by executing births, immigration, deaths, or emigration based on random chance and current satisfaction levels.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level of the population. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object for population management.\\
+\hline
+\end{DoxyParams}
+If satisfaction is lower than 60, this method passes the request to the next handler in the chain. Otherwise, it randomly determines if the population should change and performs the corresponding actions (birth, immigration, death, emigration).
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level of the population. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object for population management. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_satisfaction_handler_a3258a43753a268d20551913201d36439}{Satisfaction\+Handler}}.
+
+\Hypertarget{class_medium_satisfaction_handler_a8755f16443c59e3c86c785f4ab41c650}\index{MediumSatisfactionHandler@{MediumSatisfactionHandler}!handleTax@{handleTax}}
+\index{handleTax@{handleTax}!MediumSatisfactionHandler@{MediumSatisfactionHandler}}
+\doxysubsubsection{\texorpdfstring{handleTax()}{handleTax()}}
+{\footnotesize\ttfamily \label{class_medium_satisfaction_handler_a8755f16443c59e3c86c785f4ab41c650} 
+float Medium\+Satisfaction\+Handler\+::handle\+Tax (\begin{DoxyParamCaption}\item[{int}]{cur\+Satisfaction}{, }\item[{\mbox{\hyperlink{class_city_hall}{City\+Hall}} \texorpdfstring{$\ast$}{*}}]{city\+Hall}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculates the tax amount based on satisfaction and other parameters. 
+
+Handles tax calculations based on current satisfaction levels.
+
+The method adjusts the income affection rate randomly and calculates the tax based on the current tax rate and number of citizens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level of the population. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object for tax rate retrieval. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated tax amount.
+\end{DoxyReturn}
+If the satisfaction level is lower than 60, the tax calculation request is passed to the next handler. Otherwise, it randomly adjusts the income affection rate and calculates the tax based on the residential tax rate and the number of citizens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Satisfaction} & The current satisfaction level of the population. \\
+\hline
+{\em city\+Hall} & Pointer to the \doxylink{class_city_hall}{City\+Hall} object for tax rate retrieval. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated tax amount based on the adjusted income affection rate. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_satisfaction_handler_abb441f2ba8406a85b1335a89ca9cc09c}{Satisfaction\+Handler}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Medium\+Satisfaction\+Handler.\+h\item 
+Medium\+Satisfaction\+Handler.\+cpp\end{DoxyCompactItemize}

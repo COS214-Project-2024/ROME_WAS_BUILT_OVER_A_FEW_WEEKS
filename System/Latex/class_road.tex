@@ -1,0 +1,220 @@
+\doxysection{Road Class Reference}
+\hypertarget{class_road}{}\label{class_road}\index{Road@{Road}}
+
+
+Represents a road structure on a city map, capable of determining its traffic state based on surrounding buildings.  
+
+
+Inheritance diagram for Road\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_road}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_road_a90bb6be2a5c3b6997849a915e2af0cf0}\label{class_road_a90bb6be2a5c3b6997849a915e2af0cf0} 
+{\bfseries Road} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_road}{Road} with default cost and initial traffic state set to low. \end{DoxyCompactList}\item 
+\Hypertarget{class_road_a3fa0feda8a96c3763d5f5a1f06f2972e}\label{class_road_a3fa0feda8a96c3763d5f5a1f06f2972e} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Road} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_road}{Road} class, cleaning up the traffic state and city map resources. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_road_a57177ba86064163718da77544507f36e}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the type of structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_a769fba0c7a47f495cf0561f30f7b675b}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the road on the city map at specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_a2d9edde9d4d4e77a9af75aeb49d03d92}{new\+Building\+Was\+Added}} ()
+\begin{DoxyCompactList}\small\item\em Notifies the road when a new building has been added nearby. \end{DoxyCompactList}\item 
+\Hypertarget{class_road_a91e961e89ff4f2a4e8d0c7b09a32ecaa}\label{class_road_a91e961e89ff4f2a4e8d0c7b09a32ecaa} 
+bool {\bfseries was\+Placed} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\item 
+void \mbox{\hyperlink{class_road_ae642168ecf09731a9b0ae9bde35f40e7}{remove\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Removes the road from the city map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_a99c184a193c82f9b846112b8e8fc82d7}{building\+Was\+Removed}} ()
+\begin{DoxyCompactList}\small\item\em Notifies the road that a building has been removed from the vicinity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_afd52a69d585f96d697f62ab18ae2de96}{calculate\+Traffic}} ()
+\begin{DoxyCompactList}\small\item\em Calculates and updates the traffic level of the road based on surrounding structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_a3c8344cd41c85d3e1c71a34f210ef3fb}{set\+Traffic\+State}} (\mbox{\hyperlink{class_traffic_state}{Traffic\+State}} \texorpdfstring{$\ast$}{*}traffic\+State)
+\begin{DoxyCompactList}\small\item\em Sets the traffic state of the road. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_road_a318b2e8bbbbcde1cda9e69e70928208c}{get\+Traffic\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current traffic level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a road structure on a city map, capable of determining its traffic state based on surrounding buildings. 
+
+The {\ttfamily \doxylink{class_road}{Road}} class manages its placement on a {\ttfamily \doxylink{class_city_map}{City\+Map}}, adjusts its traffic level based on neighboring structures, and transitions between different traffic states (low, medium, high) depending on conditions. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_road_a99c184a193c82f9b846112b8e8fc82d7}\index{Road@{Road}!buildingWasRemoved@{buildingWasRemoved}}
+\index{buildingWasRemoved@{buildingWasRemoved}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{buildingWasRemoved()}{buildingWasRemoved()}}
+{\footnotesize\ttfamily \label{class_road_a99c184a193c82f9b846112b8e8fc82d7} 
+void Road\+::building\+Was\+Removed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Notifies the road that a building has been removed from the vicinity. 
+
+Recalculates the traffic level to reflect the current state of nearby structures. 
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_road_afd52a69d585f96d697f62ab18ae2de96}\index{Road@{Road}!calculateTraffic@{calculateTraffic}}
+\index{calculateTraffic@{calculateTraffic}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{calculateTraffic()}{calculateTraffic()}}
+{\footnotesize\ttfamily \label{class_road_afd52a69d585f96d697f62ab18ae2de96} 
+void Road\+::calculate\+Traffic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Calculates and updates the traffic level of the road based on surrounding structures. 
+
+The method counts the number of non-\/road structures surrounding the road\textquotesingle{}s coordinates and updates the traffic state (low, medium, high) accordingly. \Hypertarget{class_road_a57177ba86064163718da77544507f36e}\index{Road@{Road}!getStructureType@{getStructureType}}
+\index{getStructureType@{getStructureType}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{getStructureType()}{getStructureType()}}
+{\footnotesize\ttfamily \label{class_road_a57177ba86064163718da77544507f36e} 
+std\+::string Road\+::get\+Structure\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Retrieves the type of structure. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the structure type ("{}\+Road"{}). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_road_a318b2e8bbbbcde1cda9e69e70928208c}\index{Road@{Road}!getTrafficLevel@{getTrafficLevel}}
+\index{getTrafficLevel@{getTrafficLevel}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{getTrafficLevel()}{getTrafficLevel()}}
+{\footnotesize\ttfamily \label{class_road_a318b2e8bbbbcde1cda9e69e70928208c} 
+int Road\+::get\+Traffic\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current traffic level. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the current traffic level based on the traffic state. 
+\end{DoxyReturn}
+\Hypertarget{class_road_a2d9edde9d4d4e77a9af75aeb49d03d92}\index{Road@{Road}!newBuildingWasAdded@{newBuildingWasAdded}}
+\index{newBuildingWasAdded@{newBuildingWasAdded}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{newBuildingWasAdded()}{newBuildingWasAdded()}}
+{\footnotesize\ttfamily \label{class_road_a2d9edde9d4d4e77a9af75aeb49d03d92} 
+void Road\+::new\+Building\+Was\+Added (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Notifies the road when a new building has been added nearby. 
+
+Recalculates the traffic level based on the updated surroundings. 
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_road_a769fba0c7a47f495cf0561f30f7b675b}\index{Road@{Road}!placeStructure@{placeStructure}}
+\index{placeStructure@{placeStructure}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{placeStructure()}{placeStructure()}}
+{\footnotesize\ttfamily \label{class_road_a769fba0c7a47f495cf0561f30f7b675b} 
+bool Road\+::place\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}}]{city\+Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Places the road on the city map at specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate on the map. \\
+\hline
+{\em y} & The y-\/coordinate on the map. \\
+\hline
+{\em city\+Map} & Pointer to the {\ttfamily \doxylink{class_city_map}{City\+Map}} where the road will be placed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the road was successfully placed; false otherwise.
+\end{DoxyReturn}
+If placement is successful, calculates the traffic based on surrounding structures and adds the road to the city map\textquotesingle{}s road registry. 
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_road_ae642168ecf09731a9b0ae9bde35f40e7}\index{Road@{Road}!removeStructure@{removeStructure}}
+\index{removeStructure@{removeStructure}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{removeStructure()}{removeStructure()}}
+{\footnotesize\ttfamily \label{class_road_ae642168ecf09731a9b0ae9bde35f40e7} 
+bool Road\+::remove\+Structure (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Removes the road from the city map. 
+
+\begin{DoxyReturn}{Returns}
+True if the road was successfully removed; false otherwise.
+\end{DoxyReturn}
+Also removes the road from the city map\textquotesingle{}s list of roads. 
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_road_a3c8344cd41c85d3e1c71a34f210ef3fb}\index{Road@{Road}!setTrafficState@{setTrafficState}}
+\index{setTrafficState@{setTrafficState}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{setTrafficState()}{setTrafficState()}}
+{\footnotesize\ttfamily \label{class_road_a3c8344cd41c85d3e1c71a34f210ef3fb} 
+void Road\+::set\+Traffic\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_traffic_state}{Traffic\+State}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Sets the traffic state of the road. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to a new {\ttfamily \doxylink{class_traffic_state}{Traffic\+State}} object representing the current traffic level.\\
+\hline
+\end{DoxyParams}
+Deletes the previous traffic state to avoid memory leaks. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Road.\+h\item 
+Road.\+cpp\end{DoxyCompactItemize}

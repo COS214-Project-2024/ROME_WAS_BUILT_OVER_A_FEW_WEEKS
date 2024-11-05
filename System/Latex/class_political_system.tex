@@ -1,0 +1,156 @@
+\doxysection{Political\+System Class Reference}
+\hypertarget{class_political_system}{}\label{class_political_system}\index{PoliticalSystem@{PoliticalSystem}}
+
+
+An abstract class representing a political system.  
+
+
+
+
+{\ttfamily \#include $<$Political\+System.\+h$>$}
+
+Inheritance diagram for Political\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_political_system}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_political_system_a7ff2deaaa0133bb68d96f77fda39d8eb}{Political\+System}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_political_system}{Political\+System}. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_political_system_aa83a3fa0d8851dae18d5c49c07b8cf42}{get\+Tax\+Rate\+Residential}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the residential tax rate. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_political_system_a7f7b932adf9e612200a329ad150d1ebb}{get\+Tax\+Rate\+Commercial}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the commercial tax rate. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_political_system_ab1d3effdd0541fc1c621b02ff1f9d72c}{get\+Tax\+Rate\+Industrial}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the industrial tax rate. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_political_system_a879afdc4bd57508cc9d6850d003844d2}{get\+Budget\+Split}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the budget split for public services. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_political_system_ae216faa9d600b2f95801284a43846e07}{get\+Citizen\+Satisfaction\+Impact}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the impact on citizen satisfaction. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_political_system_a78f7f220d36676f02be77f625e26b539}{\texorpdfstring{$\sim$}{\string~}\+Political\+System}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_political_system}{Political\+System}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class representing a political system. 
+
+This class serves as the base for other specific political system types, providing a common interface for economic policies. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_political_system_a7ff2deaaa0133bb68d96f77fda39d8eb}\index{PoliticalSystem@{PoliticalSystem}!PoliticalSystem@{PoliticalSystem}}
+\index{PoliticalSystem@{PoliticalSystem}!PoliticalSystem@{PoliticalSystem}}
+\doxysubsubsection{\texorpdfstring{PoliticalSystem()}{PoliticalSystem()}}
+{\footnotesize\ttfamily \label{class_political_system_a7ff2deaaa0133bb68d96f77fda39d8eb} 
+Political\+System\+::\+Political\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_political_system}{Political\+System}. 
+
+Constructor for the \doxylink{class_political_system}{Political\+System} class. \Hypertarget{class_political_system_a78f7f220d36676f02be77f625e26b539}\index{PoliticalSystem@{PoliticalSystem}!````~PoliticalSystem@{\texorpdfstring{$\sim$}{\string~}PoliticalSystem}}
+\index{````~PoliticalSystem@{\texorpdfstring{$\sim$}{\string~}PoliticalSystem}!PoliticalSystem@{PoliticalSystem}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PoliticalSystem()}{\string~PoliticalSystem()}}
+{\footnotesize\ttfamily \label{class_political_system_a78f7f220d36676f02be77f625e26b539} 
+Political\+System\+::\texorpdfstring{$\sim$}{\string~}\+Political\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor for \doxylink{class_political_system}{Political\+System}. 
+
+Destructor for the \doxylink{class_political_system}{Political\+System} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_political_system_a879afdc4bd57508cc9d6850d003844d2}\index{PoliticalSystem@{PoliticalSystem}!getBudgetSplit@{getBudgetSplit}}
+\index{getBudgetSplit@{getBudgetSplit}!PoliticalSystem@{PoliticalSystem}}
+\doxysubsubsection{\texorpdfstring{getBudgetSplit()}{getBudgetSplit()}}
+{\footnotesize\ttfamily \label{class_political_system_a879afdc4bd57508cc9d6850d003844d2} 
+virtual double Political\+System\+::get\+Budget\+Split (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the budget split for public services. 
+
+\begin{DoxyReturn}{Returns}
+The budget allocation proportion as a double. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_authoritarianism_aab08bac17914c8e4ea53de7c51301005}{Authoritarianism}}, \mbox{\hyperlink{class_communsim_a98f778868058a9d4231f9355db1dc0cc}{Communsim}}, and \mbox{\hyperlink{class_democracy_ac720aa8c3cfaaadfe60fdcfe0d671b2e}{Democracy}}.
+
+\Hypertarget{class_political_system_ae216faa9d600b2f95801284a43846e07}\index{PoliticalSystem@{PoliticalSystem}!getCitizenSatisfactionImpact@{getCitizenSatisfactionImpact}}
+\index{getCitizenSatisfactionImpact@{getCitizenSatisfactionImpact}!PoliticalSystem@{PoliticalSystem}}
+\doxysubsubsection{\texorpdfstring{getCitizenSatisfactionImpact()}{getCitizenSatisfactionImpact()}}
+{\footnotesize\ttfamily \label{class_political_system_ae216faa9d600b2f95801284a43846e07} 
+virtual int Political\+System\+::get\+Citizen\+Satisfaction\+Impact (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the impact on citizen satisfaction. 
+
+\begin{DoxyReturn}{Returns}
+The calculated impact on citizen satisfaction as an integer. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_authoritarianism_ae7cbb40a673c171fde65fa838c760043}{Authoritarianism}}, \mbox{\hyperlink{class_communsim_aa1a2b527ddeb03dbd3c0260a248005c1}{Communsim}}, and \mbox{\hyperlink{class_democracy_af816da9c05366a553676f016b0502d6c}{Democracy}}.
+
+\Hypertarget{class_political_system_a7f7b932adf9e612200a329ad150d1ebb}\index{PoliticalSystem@{PoliticalSystem}!getTaxRateCommercial@{getTaxRateCommercial}}
+\index{getTaxRateCommercial@{getTaxRateCommercial}!PoliticalSystem@{PoliticalSystem}}
+\doxysubsubsection{\texorpdfstring{getTaxRateCommercial()}{getTaxRateCommercial()}}
+{\footnotesize\ttfamily \label{class_political_system_a7f7b932adf9e612200a329ad150d1ebb} 
+virtual int Political\+System\+::get\+Tax\+Rate\+Commercial (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the commercial tax rate. 
+
+\begin{DoxyReturn}{Returns}
+The tax rate for commercial zones as an integer percentage. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_authoritarianism_a9ffc4144cd03a44c69bbc18f41109a28}{Authoritarianism}}, \mbox{\hyperlink{class_communsim_a4c159d687c2b28f1f91d98de70160d30}{Communsim}}, and \mbox{\hyperlink{class_democracy_a7b630ca66b27a8a66ec08fce452dec35}{Democracy}}.
+
+\Hypertarget{class_political_system_ab1d3effdd0541fc1c621b02ff1f9d72c}\index{PoliticalSystem@{PoliticalSystem}!getTaxRateIndustrial@{getTaxRateIndustrial}}
+\index{getTaxRateIndustrial@{getTaxRateIndustrial}!PoliticalSystem@{PoliticalSystem}}
+\doxysubsubsection{\texorpdfstring{getTaxRateIndustrial()}{getTaxRateIndustrial()}}
+{\footnotesize\ttfamily \label{class_political_system_ab1d3effdd0541fc1c621b02ff1f9d72c} 
+virtual int Political\+System\+::get\+Tax\+Rate\+Industrial (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the industrial tax rate. 
+
+\begin{DoxyReturn}{Returns}
+The tax rate for industrial zones as an integer percentage. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_authoritarianism_a72f1775c286a8cfc205299c7340d3871}{Authoritarianism}}, \mbox{\hyperlink{class_communsim_a965c9540d8590820fa7939524a54da52}{Communsim}}, and \mbox{\hyperlink{class_democracy_aee60b0bbcf5ec000f59a28ef898a9241}{Democracy}}.
+
+\Hypertarget{class_political_system_aa83a3fa0d8851dae18d5c49c07b8cf42}\index{PoliticalSystem@{PoliticalSystem}!getTaxRateResidential@{getTaxRateResidential}}
+\index{getTaxRateResidential@{getTaxRateResidential}!PoliticalSystem@{PoliticalSystem}}
+\doxysubsubsection{\texorpdfstring{getTaxRateResidential()}{getTaxRateResidential()}}
+{\footnotesize\ttfamily \label{class_political_system_aa83a3fa0d8851dae18d5c49c07b8cf42} 
+virtual int Political\+System\+::get\+Tax\+Rate\+Residential (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the residential tax rate. 
+
+\begin{DoxyReturn}{Returns}
+The tax rate for residential zones as an integer percentage. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_authoritarianism_a6cd8ad2e58c80bc55eed1b3b27c934c9}{Authoritarianism}}, \mbox{\hyperlink{class_communsim_ae5e5d7e69356893cca56c30b10db66b8}{Communsim}}, and \mbox{\hyperlink{class_democracy_a8b6572a3c0eb3514ebeef9a7c6e9f1cc}{Democracy}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_political_system_8h}{Political\+System.\+h}}\item 
+\mbox{\hyperlink{_political_system_8cpp}{Political\+System.\+cpp}}\end{DoxyCompactItemize}

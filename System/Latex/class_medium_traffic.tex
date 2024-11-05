@@ -1,0 +1,71 @@
+\doxysection{Medium\+Traffic Class Reference}
+\hypertarget{class_medium_traffic}{}\label{class_medium_traffic}\index{MediumTraffic@{MediumTraffic}}
+
+
+Represents a medium traffic state for a road structure.  
+
+
+Inheritance diagram for Medium\+Traffic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_medium_traffic}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_medium_traffic_aba6aac31b1d95a31fd473314c97c3693}{adjust\+Traffic\+Impact}} (\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}road) override
+\begin{DoxyCompactList}\small\item\em Outputs a message indicating medium traffic in surrounding structures. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_medium_traffic_a8463e638fb4e0b1407361770fa5cb43f}{get\+Traffic\+Level}} () const override
+\begin{DoxyCompactList}\small\item\em Retrieves the traffic level for medium traffic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}}
+
+
+\doxysubsection{Detailed Description}
+Represents a medium traffic state for a road structure. 
+
+The {\ttfamily \doxylink{class_medium_traffic}{Medium\+Traffic}} class implements methods that define medium traffic characteristics and behavior for roads, such as indicating medium traffic impact. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_medium_traffic_aba6aac31b1d95a31fd473314c97c3693}\index{MediumTraffic@{MediumTraffic}!adjustTrafficImpact@{adjustTrafficImpact}}
+\index{adjustTrafficImpact@{adjustTrafficImpact}!MediumTraffic@{MediumTraffic}}
+\doxysubsubsection{\texorpdfstring{adjustTrafficImpact()}{adjustTrafficImpact()}}
+{\footnotesize\ttfamily \label{class_medium_traffic_aba6aac31b1d95a31fd473314c97c3693} 
+void Medium\+Traffic\+::adjust\+Traffic\+Impact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road}{Road}} \texorpdfstring{$\ast$}{*}}]{road}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Outputs a message indicating medium traffic in surrounding structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road} & Pointer to the {\ttfamily \doxylink{class_road}{Road}} object for which the traffic impact is being adjusted. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}.
+
+\Hypertarget{class_medium_traffic_a8463e638fb4e0b1407361770fa5cb43f}\index{MediumTraffic@{MediumTraffic}!getTrafficLevel@{getTrafficLevel}}
+\index{getTrafficLevel@{getTrafficLevel}!MediumTraffic@{MediumTraffic}}
+\doxysubsubsection{\texorpdfstring{getTrafficLevel()}{getTrafficLevel()}}
+{\footnotesize\ttfamily \label{class_medium_traffic_a8463e638fb4e0b1407361770fa5cb43f} 
+int Medium\+Traffic\+::get\+Traffic\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the traffic level for medium traffic. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing medium traffic level, which is 2. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_traffic_state}{Traffic\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Medium\+Traffic.\+h\item 
+Medium\+Traffic.\+cpp\end{DoxyCompactItemize}

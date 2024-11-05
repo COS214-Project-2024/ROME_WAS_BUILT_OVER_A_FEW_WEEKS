@@ -1,0 +1,223 @@
+\doxysection{Residential\+Building Class Reference}
+\hypertarget{class_residential_building}{}\label{class_residential_building}\index{ResidentialBuilding@{ResidentialBuilding}}
+
+
+Represents a base class for different types of residential buildings.  
+
+
+Inheritance diagram for Residential\+Building\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.888889cm]{class_residential_building}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_residential_building_a3d49adc21132fb559c6b65ba5834ec6b}{Residential\+Building}} (int capacity)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_residential_building}{Residential\+Building} with a specified capacity. \end{DoxyCompactList}\item 
+\Hypertarget{class_residential_building_a9232b6754a2ce20bc48d425aa4df703b}\label{class_residential_building_a9232b6754a2ce20bc48d425aa4df703b} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Residential\+Building} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_residential_building}{Residential\+Building} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_residential_building_adb677c5ff126435aa4fbcc9277499fb4}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the type of structure for a residential building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_residential_building_a37a4ba42d0d3c87fe87407536abdae06}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Attempts to place the residential building on the map, returning false for individual structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_residential_building_aea665b83c6892f94eef2031e8be62887}{remove\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Attempts to remove the residential building, returning false as it cannot be removed individually. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_building_a3366ab094bbb6038393b5160eaa559b8}{get\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the capacity of the residential building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_building_a66b140e347bb7b24a5071c476176bb5d}{calculate\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Calculates and retrieves the capacity of the residential building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_building_a4a87493780a4a974fe666e3b84f00317}{get\+Cost}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the cost of the residential building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_residential_component}{Residential\+Component}}}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_residential_building_a5a96a6a10da11b24be5336c719a28df6}\label{class_residential_building_a5a96a6a10da11b24be5336c719a28df6} 
+int {\bfseries capacity}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a base class for different types of residential buildings. 
+
+The {\ttfamily \doxylink{class_residential_building}{Residential\+Building}} class defines common functionality and properties for residential buildings, including capacity, cost, and the ability to place and remove structures. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_residential_building_a3d49adc21132fb559c6b65ba5834ec6b}\index{ResidentialBuilding@{ResidentialBuilding}!ResidentialBuilding@{ResidentialBuilding}}
+\index{ResidentialBuilding@{ResidentialBuilding}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{ResidentialBuilding()}{ResidentialBuilding()}}
+{\footnotesize\ttfamily \label{class_residential_building_a3d49adc21132fb559c6b65ba5834ec6b} 
+Residential\+Building\+::\+Residential\+Building (\begin{DoxyParamCaption}\item[{int}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_residential_building}{Residential\+Building} with a specified capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The capacity of the residential building. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_residential_building_a66b140e347bb7b24a5071c476176bb5d}\index{ResidentialBuilding@{ResidentialBuilding}!calculateCapacity@{calculateCapacity}}
+\index{calculateCapacity@{calculateCapacity}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{calculateCapacity()}{calculateCapacity()}}
+{\footnotesize\ttfamily \label{class_residential_building_a66b140e347bb7b24a5071c476176bb5d} 
+int Residential\+Building\+::calculate\+Capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculates and retrieves the capacity of the residential building. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the calculated capacity of the building. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_building_a3366ab094bbb6038393b5160eaa559b8}\index{ResidentialBuilding@{ResidentialBuilding}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily \label{class_residential_building_a3366ab094bbb6038393b5160eaa559b8} 
+int Residential\+Building\+::get\+Capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Retrieves the capacity of the residential building. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the building\textquotesingle{}s capacity. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_building_a4a87493780a4a974fe666e3b84f00317}\index{ResidentialBuilding@{ResidentialBuilding}!getCost@{getCost}}
+\index{getCost@{getCost}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{getCost()}{getCost()}}
+{\footnotesize\ttfamily \label{class_residential_building_a4a87493780a4a974fe666e3b84f00317} 
+int Residential\+Building\+::get\+Cost (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Retrieves the cost of the residential building. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing the building\textquotesingle{}s cost. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_building_adb677c5ff126435aa4fbcc9277499fb4}\index{ResidentialBuilding@{ResidentialBuilding}!getStructureType@{getStructureType}}
+\index{getStructureType@{getStructureType}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{getStructureType()}{getStructureType()}}
+{\footnotesize\ttfamily \label{class_residential_building_adb677c5ff126435aa4fbcc9277499fb4} 
+std\+::string Residential\+Building\+::get\+Structure\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Retrieves the type of structure for a residential building. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the structure type as "{}\+Residential"{}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_building_a37a4ba42d0d3c87fe87407536abdae06}\index{ResidentialBuilding@{ResidentialBuilding}!placeStructure@{placeStructure}}
+\index{placeStructure@{placeStructure}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{placeStructure()}{placeStructure()}}
+{\footnotesize\ttfamily \label{class_residential_building_a37a4ba42d0d3c87fe87407536abdae06} 
+bool Residential\+Building\+::place\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}}]{city\+Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempts to place the residential building on the map, returning false for individual structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate on the map. \\
+\hline
+{\em y} & The y-\/coordinate on the map. \\
+\hline
+{\em city\+Map} & Pointer to the \doxylink{class_city_map}{City\+Map} in which to place the building. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always returns false, as individual residential buildings cannot be placed alone. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_building_aea665b83c6892f94eef2031e8be62887}\index{ResidentialBuilding@{ResidentialBuilding}!removeStructure@{removeStructure}}
+\index{removeStructure@{removeStructure}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{removeStructure()}{removeStructure()}}
+{\footnotesize\ttfamily \label{class_residential_building_aea665b83c6892f94eef2031e8be62887} 
+bool Residential\+Building\+::remove\+Structure (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Attempts to remove the residential building, returning false as it cannot be removed individually. 
+
+\begin{DoxyReturn}{Returns}
+Always returns false, as individual residential buildings cannot be removed alone. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Residential\+Building.\+h\item 
+Residential\+Building.\+cpp\end{DoxyCompactItemize}

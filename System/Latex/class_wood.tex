@@ -1,0 +1,90 @@
+\doxysection{Wood Class Reference}
+\hypertarget{class_wood}{}\label{class_wood}\index{Wood@{Wood}}
+
+
+Represents wood as a material.  
+
+
+Inheritance diagram for Wood\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_wood}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wood_aecfa3bde0418c77b2535b0347506b800}{\texorpdfstring{$\sim$}{\string~}\+Wood}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_wood}{Wood} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_wood_aa9c2c9d87c8987dd3324d694aff45658}{get\+Production\+Time\+In\+Minutes}} ()
+\begin{DoxyCompactList}\small\item\em Gets the production time for wood in minutes. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_wood_a388f35283df63307940e7c53ecfaf694}{get\+Material\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_material}{Material}}}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_material}{Material}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries production\+Time\+In\+Minutes}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents wood as a material. 
+
+The \doxylink{class_wood}{Wood} class encapsulates properties and methods related to wood production. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_wood_aecfa3bde0418c77b2535b0347506b800}\index{Wood@{Wood}!````~Wood@{\texorpdfstring{$\sim$}{\string~}Wood}}
+\index{````~Wood@{\texorpdfstring{$\sim$}{\string~}Wood}!Wood@{Wood}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Wood()}{\string~Wood()}}
+{\footnotesize\ttfamily \label{class_wood_aecfa3bde0418c77b2535b0347506b800} 
+Wood\+::\texorpdfstring{$\sim$}{\string~}\+Wood (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor for the \doxylink{class_wood}{Wood} class. 
+
+Cleans up resources used by the \doxylink{class_wood}{Wood} instance and outputs a destruction message. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_wood_a388f35283df63307940e7c53ecfaf694}\index{Wood@{Wood}!getMaterialName@{getMaterialName}}
+\index{getMaterialName@{getMaterialName}!Wood@{Wood}}
+\doxysubsubsection{\texorpdfstring{getMaterialName()}{getMaterialName()}}
+{\footnotesize\ttfamily \label{class_wood_a388f35283df63307940e7c53ecfaf694} 
+std\+::string Wood\+::get\+Material\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the name of the material. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the name of the material, which is "{}\+Wood"{}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_material}{Material}}.
+
+\Hypertarget{class_wood_aa9c2c9d87c8987dd3324d694aff45658}\index{Wood@{Wood}!getProductionTimeInMinutes@{getProductionTimeInMinutes}}
+\index{getProductionTimeInMinutes@{getProductionTimeInMinutes}!Wood@{Wood}}
+\doxysubsubsection{\texorpdfstring{getProductionTimeInMinutes()}{getProductionTimeInMinutes()}}
+{\footnotesize\ttfamily \label{class_wood_aa9c2c9d87c8987dd3324d694aff45658} 
+int Wood\+::get\+Production\+Time\+In\+Minutes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the production time for wood in minutes. 
+
+\begin{DoxyReturn}{Returns}
+The production time as an integer, which is set to 5 minutes. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_material}{Material}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_wood_8h}{Wood.\+h}}\item 
+Wood.\+cpp\end{DoxyCompactItemize}

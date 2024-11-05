@@ -1,0 +1,90 @@
+\doxysection{Steel Class Reference}
+\hypertarget{class_steel}{}\label{class_steel}\index{Steel@{Steel}}
+
+
+Represents steel as a material.  
+
+
+Inheritance diagram for Steel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_steel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_steel_ab16c1b75e9ed1a4610deda0950de7ca1}{\texorpdfstring{$\sim$}{\string~}\+Steel}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_steel}{Steel} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_steel_a7afa2409f00449e67bce5185b130dee1}{get\+Production\+Time\+In\+Minutes}} ()
+\begin{DoxyCompactList}\small\item\em Gets the production time for steel in minutes. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_steel_a23d12fd89d39ad1d4c5479c7a4b31aaf}{get\+Material\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_material}{Material}}}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_material}{Material}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries production\+Time\+In\+Minutes}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents steel as a material. 
+
+The \doxylink{class_steel}{Steel} class encapsulates properties and methods related to steel production. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_steel_ab16c1b75e9ed1a4610deda0950de7ca1}\index{Steel@{Steel}!````~Steel@{\texorpdfstring{$\sim$}{\string~}Steel}}
+\index{````~Steel@{\texorpdfstring{$\sim$}{\string~}Steel}!Steel@{Steel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Steel()}{\string~Steel()}}
+{\footnotesize\ttfamily \label{class_steel_ab16c1b75e9ed1a4610deda0950de7ca1} 
+Steel\+::\texorpdfstring{$\sim$}{\string~}\+Steel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor for the \doxylink{class_steel}{Steel} class. 
+
+Cleans up resources used by the \doxylink{class_steel}{Steel} instance and outputs a destruction message. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_steel_a23d12fd89d39ad1d4c5479c7a4b31aaf}\index{Steel@{Steel}!getMaterialName@{getMaterialName}}
+\index{getMaterialName@{getMaterialName}!Steel@{Steel}}
+\doxysubsubsection{\texorpdfstring{getMaterialName()}{getMaterialName()}}
+{\footnotesize\ttfamily \label{class_steel_a23d12fd89d39ad1d4c5479c7a4b31aaf} 
+std\+::string Steel\+::get\+Material\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the name of the material. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the name of the material, which is "{}\+Steel"{}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_material}{Material}}.
+
+\Hypertarget{class_steel_a7afa2409f00449e67bce5185b130dee1}\index{Steel@{Steel}!getProductionTimeInMinutes@{getProductionTimeInMinutes}}
+\index{getProductionTimeInMinutes@{getProductionTimeInMinutes}!Steel@{Steel}}
+\doxysubsubsection{\texorpdfstring{getProductionTimeInMinutes()}{getProductionTimeInMinutes()}}
+{\footnotesize\ttfamily \label{class_steel_a7afa2409f00449e67bce5185b130dee1} 
+int Steel\+::get\+Production\+Time\+In\+Minutes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the production time for steel in minutes. 
+
+\begin{DoxyReturn}{Returns}
+The production time as an integer, which is set to 10 minutes. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_material}{Material}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_steel_8h}{Steel.\+h}}\item 
+Steel.\+cpp\end{DoxyCompactItemize}

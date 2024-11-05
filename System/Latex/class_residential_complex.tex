@@ -1,0 +1,235 @@
+\doxysection{Residential\+Complex Class Reference}
+\hypertarget{class_residential_complex}{}\label{class_residential_complex}\index{ResidentialComplex@{ResidentialComplex}}
+Inheritance diagram for Residential\+Complex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_residential_complex}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_residential_complex_a53f4a3c1cfaf118f4a12a74e1ff93241}\label{class_residential_complex_a53f4a3c1cfaf118f4a12a74e1ff93241} 
+{\bfseries Residential\+Complex} (\mbox{\hyperlink{class_residential_component}{Residential\+Component}} \texorpdfstring{$\ast$}{*}residential)
+\item 
+std\+::string \mbox{\hyperlink{class_residential_complex_aaef26948e26843f7b6fcbaa501bb4d9d}{get\+Structure\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_abf5931a4863130526b22c786afc61924}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\item 
+void \mbox{\hyperlink{class_residential_complex_af7431b8a74cd6e44d024467a5eb09741}{new\+Road\+Was\+Added}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_a92d2170c6e5712564e2e8261729588a9}{new\+Commercial\+Building\+Was\+Added}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_a13a3b54774b2caaf97a6c9f26a2a88cd}{new\+Industrial\+Building\+Was\+Added}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_afb2e45fb3a6c60b513e12770ce2c84bb}{new\+Landmark\+Was\+Added}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_a72fe732771b28d08451c1372c5d9af77}{remove\+Structure}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_a3f6e69f88e24793ce9fc948750b6a46f}{road\+Was\+Removed}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_a803ba126ac86d0544fbdc58cf057b930}{commercial\+Building\+Was\+Removed}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_a2feee20e890b0839ebdb96ecdf669119}{industrial\+Building\+Was\+Removed}} ()
+\item 
+void \mbox{\hyperlink{class_residential_complex_a0147b903ab1fc4e2a243487c77ef1c16}{landmark\+Was\+Removed}} ()
+\item 
+int \mbox{\hyperlink{class_residential_complex_a08421760440cf28b20b1c6e2821e9ffb}{get\+Capacity}} ()
+\item 
+\Hypertarget{class_residential_complex_af6bc9becd386786c684ad9d3de5e6d9d}\label{class_residential_complex_af6bc9becd386786c684ad9d3de5e6d9d} 
+void {\bfseries add\+Residential\+Component} (\mbox{\hyperlink{class_residential_component}{Residential\+Component}} \texorpdfstring{$\ast$}{*}residential)
+\item 
+\Hypertarget{class_residential_complex_a1aa977f21ff0be0b0ab867a78838801f}\label{class_residential_complex_a1aa977f21ff0be0b0ab867a78838801f} 
+void {\bfseries remove\+Residential\+Component} (\mbox{\hyperlink{class_residential_component}{Residential\+Component}} \texorpdfstring{$\ast$}{*}residential)
+\item 
+int \mbox{\hyperlink{class_residential_complex_a603dc2fd5b9aa68e62c5d70f845ec9b6}{calculate\+Capacity}} ()
+\item 
+int \mbox{\hyperlink{class_residential_complex_a4d5b20f486560a2fd45b5e19aa17b03b}{get\+Cost}} ()
+\item 
+\Hypertarget{class_residential_complex_acec64bcac5e523f1f6d9203eac19d6ef}\label{class_residential_complex_acec64bcac5e523f1f6d9203eac19d6ef} 
+int {\bfseries calculate\+Traffic\+Satisfaction} ()
+\item 
+\Hypertarget{class_residential_complex_aef4c30244a32acb311862b83b17b8f08}\label{class_residential_complex_aef4c30244a32acb311862b83b17b8f08} 
+int {\bfseries calculate\+Satisfaction} ()
+\item 
+\Hypertarget{class_residential_complex_af73de626bcb09c64d3e42d8e470c1a1d}\label{class_residential_complex_af73de626bcb09c64d3e42d8e470c1a1d} 
+void {\bfseries print\+Residential\+Complex\+State} ()
+\item 
+\Hypertarget{class_residential_complex_a0cea364b58a743e9164e392af9a43fbb}\label{class_residential_complex_a0cea364b58a743e9164e392af9a43fbb} 
+bool {\bfseries was\+Placed} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_residential_component}{Residential\+Component}}}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_residential_complex_a603dc2fd5b9aa68e62c5d70f845ec9b6}\index{ResidentialComplex@{ResidentialComplex}!calculateCapacity@{calculateCapacity}}
+\index{calculateCapacity@{calculateCapacity}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{calculateCapacity()}{calculateCapacity()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a603dc2fd5b9aa68e62c5d70f845ec9b6} 
+int Residential\+Complex\+::calculate\+Capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_complex_a803ba126ac86d0544fbdc58cf057b930}\index{ResidentialComplex@{ResidentialComplex}!commercialBuildingWasRemoved@{commercialBuildingWasRemoved}}
+\index{commercialBuildingWasRemoved@{commercialBuildingWasRemoved}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{commercialBuildingWasRemoved()}{commercialBuildingWasRemoved()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a803ba126ac86d0544fbdc58cf057b930} 
+void Residential\+Complex\+::commercial\+Building\+Was\+Removed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_residential_complex_a08421760440cf28b20b1c6e2821e9ffb}\index{ResidentialComplex@{ResidentialComplex}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a08421760440cf28b20b1c6e2821e9ffb} 
+int Residential\+Complex\+::get\+Capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_complex_a4d5b20f486560a2fd45b5e19aa17b03b}\index{ResidentialComplex@{ResidentialComplex}!getCost@{getCost}}
+\index{getCost@{getCost}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{getCost()}{getCost()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a4d5b20f486560a2fd45b5e19aa17b03b} 
+int Residential\+Complex\+::get\+Cost (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_complex_aaef26948e26843f7b6fcbaa501bb4d9d}\index{ResidentialComplex@{ResidentialComplex}!getStructureType@{getStructureType}}
+\index{getStructureType@{getStructureType}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{getStructureType()}{getStructureType()}}
+{\footnotesize\ttfamily \label{class_residential_complex_aaef26948e26843f7b6fcbaa501bb4d9d} 
+std\+::string Residential\+Complex\+::get\+Structure\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_complex_a2feee20e890b0839ebdb96ecdf669119}\index{ResidentialComplex@{ResidentialComplex}!industrialBuildingWasRemoved@{industrialBuildingWasRemoved}}
+\index{industrialBuildingWasRemoved@{industrialBuildingWasRemoved}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{industrialBuildingWasRemoved()}{industrialBuildingWasRemoved()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a2feee20e890b0839ebdb96ecdf669119} 
+void Residential\+Complex\+::industrial\+Building\+Was\+Removed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_residential_complex_a0147b903ab1fc4e2a243487c77ef1c16}\index{ResidentialComplex@{ResidentialComplex}!landmarkWasRemoved@{landmarkWasRemoved}}
+\index{landmarkWasRemoved@{landmarkWasRemoved}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{landmarkWasRemoved()}{landmarkWasRemoved()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a0147b903ab1fc4e2a243487c77ef1c16} 
+void Residential\+Complex\+::landmark\+Was\+Removed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_residential_complex_a92d2170c6e5712564e2e8261729588a9}\index{ResidentialComplex@{ResidentialComplex}!newCommercialBuildingWasAdded@{newCommercialBuildingWasAdded}}
+\index{newCommercialBuildingWasAdded@{newCommercialBuildingWasAdded}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{newCommercialBuildingWasAdded()}{newCommercialBuildingWasAdded()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a92d2170c6e5712564e2e8261729588a9} 
+void Residential\+Complex\+::new\+Commercial\+Building\+Was\+Added (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_residential_complex_a13a3b54774b2caaf97a6c9f26a2a88cd}\index{ResidentialComplex@{ResidentialComplex}!newIndustrialBuildingWasAdded@{newIndustrialBuildingWasAdded}}
+\index{newIndustrialBuildingWasAdded@{newIndustrialBuildingWasAdded}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{newIndustrialBuildingWasAdded()}{newIndustrialBuildingWasAdded()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a13a3b54774b2caaf97a6c9f26a2a88cd} 
+void Residential\+Complex\+::new\+Industrial\+Building\+Was\+Added (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_residential_complex_afb2e45fb3a6c60b513e12770ce2c84bb}\index{ResidentialComplex@{ResidentialComplex}!newLandmarkWasAdded@{newLandmarkWasAdded}}
+\index{newLandmarkWasAdded@{newLandmarkWasAdded}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{newLandmarkWasAdded()}{newLandmarkWasAdded()}}
+{\footnotesize\ttfamily \label{class_residential_complex_afb2e45fb3a6c60b513e12770ce2c84bb} 
+void Residential\+Complex\+::new\+Landmark\+Was\+Added (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_residential_complex_af7431b8a74cd6e44d024467a5eb09741}\index{ResidentialComplex@{ResidentialComplex}!newRoadWasAdded@{newRoadWasAdded}}
+\index{newRoadWasAdded@{newRoadWasAdded}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{newRoadWasAdded()}{newRoadWasAdded()}}
+{\footnotesize\ttfamily \label{class_residential_complex_af7431b8a74cd6e44d024467a5eb09741} 
+void Residential\+Complex\+::new\+Road\+Was\+Added (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+\Hypertarget{class_residential_complex_abf5931a4863130526b22c786afc61924}\index{ResidentialComplex@{ResidentialComplex}!placeStructure@{placeStructure}}
+\index{placeStructure@{placeStructure}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{placeStructure()}{placeStructure()}}
+{\footnotesize\ttfamily \label{class_residential_complex_abf5931a4863130526b22c786afc61924} 
+void Residential\+Complex\+::place\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}}]{city\+Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_complex_a72fe732771b28d08451c1372c5d9af77}\index{ResidentialComplex@{ResidentialComplex}!removeStructure@{removeStructure}}
+\index{removeStructure@{removeStructure}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{removeStructure()}{removeStructure()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a72fe732771b28d08451c1372c5d9af77} 
+void Residential\+Complex\+::remove\+Structure (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_residential_component}{Residential\+Component}}.
+
+\Hypertarget{class_residential_complex_a3f6e69f88e24793ce9fc948750b6a46f}\index{ResidentialComplex@{ResidentialComplex}!roadWasRemoved@{roadWasRemoved}}
+\index{roadWasRemoved@{roadWasRemoved}!ResidentialComplex@{ResidentialComplex}}
+\doxysubsubsection{\texorpdfstring{roadWasRemoved()}{roadWasRemoved()}}
+{\footnotesize\ttfamily \label{class_residential_complex_a3f6e69f88e24793ce9fc948750b6a46f} 
+void Residential\+Complex\+::road\+Was\+Removed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_city_structure}{City\+Structure}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Residential\+Complex.\+h\item 
+Residential\+Complex.\+cpp\end{DoxyCompactItemize}

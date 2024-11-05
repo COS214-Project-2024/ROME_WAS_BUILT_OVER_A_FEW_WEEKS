@@ -1,0 +1,209 @@
+\doxysection{Sewage\+Plant Class Reference}
+\hypertarget{class_sewage_plant}{}\label{class_sewage_plant}\index{SewagePlant@{SewagePlant}}
+
+
+Represents a sewage plant in the city.  
+
+
+Inheritance diagram for Sewage\+Plant\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_sewage_plant}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sewage_plant_a3d5979e22e877ae52e5d8b9fed21027a}\label{class_sewage_plant_a3d5979e22e877ae52e5d8b9fed21027a} 
+{\bfseries Sewage\+Plant} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant)
+\item 
+virtual \mbox{\hyperlink{class_sewage_plant_ae593e4780a01511cdb87cc3836c68fea}{\texorpdfstring{$\sim$}{\string~}\+Sewage\+Plant}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_sewage_plant}{Sewage\+Plant} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sewage_plant_ab4e71566c742a49f6b33d1341b0f7262}{get\+Radius\+Of\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Gets the radius of effect for the sewage plant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sewage_plant_ac23cd80dce43d7714eef32af417d4704}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the sewage plant structure on the city map at the specified coordinates. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sewage_plant_aa90b499477b31ea015a1eb0d9ddd3f77}{get\+Plant\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of plant represented by the sewage plant. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_sewage_plant_ab1e08b4d1b079be02fa027dfe0fa4b05}{set\+Sewage\+Plant}} ()
+\begin{DoxyCompactList}\small\item\em Sets the sewage plant type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_plant_decorator}{Plant\+Decorator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_plant_decorator_add4f563db3c24b75e1db728b498cd3df}{Plant\+Decorator}} (\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*}plant)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_plant_decorator}{Plant\+Decorator} with a given plant. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_plant_decorator_ac96952357f89417896bcc022c9c968de}{\texorpdfstring{$\sim$}{\string~}\+Plant\+Decorator}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_plant_decorator}{Plant\+Decorator} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_plant_decorator_ad3abe276acc4a645ede89b0a4aafa3b7}{get\+Radius\+Of\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Gets the radius of effect of the decorated plant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_plant}{Plant}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Plant} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_plant}{Plant} class. Initializes the radius of effect and sets the costs for construction materials. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Plant} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_plant}{Plant} class, releasing resources. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_plant_a19cbec934f9fa37f105f463d84d122dd}{get\+Radius\+Of\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Gets the radius of effect of the plant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_industrial_building}{Industrial\+Building}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_industrial_building_aa0b4dd5b14602e0b9fc55b3e253d05d3}{\texorpdfstring{$\sim$}{\string~}\+Industrial\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_industrial_building}{Industrial\+Building} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_industrial_building_a3ba027280ed0575596d49dc6f3b81ed3}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the industrial building structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_acd664d9e4363c5724cc95be693d126db}{remove\+Structure}} ()
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a9ea1959f5ec68373c9e464d23c71e728}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_plant_decorator}{Plant\+Decorator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_plant}{Plant}} \texorpdfstring{$\ast$}{*} {\bfseries plant}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_plant}{Plant}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries radius\+Of\+Effect}
+\item 
+string {\bfseries plant\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a sewage plant in the city. 
+
+The \doxylink{class_sewage_plant}{Sewage\+Plant} class decorates a base plant and manages its interactions with residential complexes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sewage_plant_ae593e4780a01511cdb87cc3836c68fea}\index{SewagePlant@{SewagePlant}!````~SewagePlant@{\texorpdfstring{$\sim$}{\string~}SewagePlant}}
+\index{````~SewagePlant@{\texorpdfstring{$\sim$}{\string~}SewagePlant}!SewagePlant@{SewagePlant}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SewagePlant()}{\string~SewagePlant()}}
+{\footnotesize\ttfamily \label{class_sewage_plant_ae593e4780a01511cdb87cc3836c68fea} 
+Sewage\+Plant\+::\texorpdfstring{$\sim$}{\string~}\+Sewage\+Plant (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor for the \doxylink{class_sewage_plant}{Sewage\+Plant} class. 
+
+Cleans up resources used by the \doxylink{class_sewage_plant}{Sewage\+Plant} instance and deletes the associated plant. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sewage_plant_aa90b499477b31ea015a1eb0d9ddd3f77}\index{SewagePlant@{SewagePlant}!getPlantType@{getPlantType}}
+\index{getPlantType@{getPlantType}!SewagePlant@{SewagePlant}}
+\doxysubsubsection{\texorpdfstring{getPlantType()}{getPlantType()}}
+{\footnotesize\ttfamily \label{class_sewage_plant_aa90b499477b31ea015a1eb0d9ddd3f77} 
+string Sewage\+Plant\+::get\+Plant\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the type of plant represented by the sewage plant. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the plant type, including the sewage plant designation. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_plant_decorator_a5b4fc1cb138ea9ff0007b8ae9efde26d}{Plant\+Decorator}}.
+
+\Hypertarget{class_sewage_plant_ab4e71566c742a49f6b33d1341b0f7262}\index{SewagePlant@{SewagePlant}!getRadiusOfEffect@{getRadiusOfEffect}}
+\index{getRadiusOfEffect@{getRadiusOfEffect}!SewagePlant@{SewagePlant}}
+\doxysubsubsection{\texorpdfstring{getRadiusOfEffect()}{getRadiusOfEffect()}}
+{\footnotesize\ttfamily \label{class_sewage_plant_ab4e71566c742a49f6b33d1341b0f7262} 
+int Sewage\+Plant\+::get\+Radius\+Of\+Effect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the radius of effect for the sewage plant. 
+
+\begin{DoxyReturn}{Returns}
+The radius of effect as an integer. 
+\end{DoxyReturn}
+\Hypertarget{class_sewage_plant_ac23cd80dce43d7714eef32af417d4704}\index{SewagePlant@{SewagePlant}!placeStructure@{placeStructure}}
+\index{placeStructure@{placeStructure}!SewagePlant@{SewagePlant}}
+\doxysubsubsection{\texorpdfstring{placeStructure()}{placeStructure()}}
+{\footnotesize\ttfamily \label{class_sewage_plant_ac23cd80dce43d7714eef32af417d4704} 
+bool Sewage\+Plant\+::place\+Structure (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}}]{city\+Map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Places the sewage plant structure on the city map at the specified coordinates. 
+
+This function attempts to place the sewage plant structure and, if successful, adds it to the city map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate to place the sewage plant. \\
+\hline
+{\em y} & The y-\/coordinate to place the sewage plant. \\
+\hline
+{\em city\+Map} & A pointer to the city map where the sewage plant will be placed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the structure was successfully placed; false otherwise. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_plant_decorator_a19bda3ccd2416d70665903d26aebd6ba}{Plant\+Decorator}}.
+
+\Hypertarget{class_sewage_plant_ab1e08b4d1b079be02fa027dfe0fa4b05}\index{SewagePlant@{SewagePlant}!setSewagePlant@{setSewagePlant}}
+\index{setSewagePlant@{setSewagePlant}!SewagePlant@{SewagePlant}}
+\doxysubsubsection{\texorpdfstring{setSewagePlant()}{setSewagePlant()}}
+{\footnotesize\ttfamily \label{class_sewage_plant_ab1e08b4d1b079be02fa027dfe0fa4b05} 
+string Sewage\+Plant\+::set\+Sewage\+Plant (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets the sewage plant type. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the sewage plant type concatenated with the base plant type. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_sewage_plant_8h}{Sewage\+Plant.\+h}}\item 
+Sewage\+Plant.\+cpp\end{DoxyCompactItemize}

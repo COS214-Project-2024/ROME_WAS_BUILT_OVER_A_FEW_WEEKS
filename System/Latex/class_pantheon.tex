@@ -1,0 +1,112 @@
+\doxysection{Pantheon Class Reference}
+\hypertarget{class_pantheon}{}\label{class_pantheon}\index{Pantheon@{Pantheon}}
+
+
+Represents a pantheon landmark.  
+
+
+Inheritance diagram for Pantheon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_pantheon}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_pantheon_aac1687d27dd832c8c9e8d92ed41e60ca}\label{class_pantheon_aac1687d27dd832c8c9e8d92ed41e60ca} 
+{\bfseries Pantheon} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_pantheon}{Pantheon}. Initializes the pantheon with default radius and cost values. \end{DoxyCompactList}\item 
+\Hypertarget{class_pantheon_a6a75406ffdee488cdf2ea1ac3c750f63}\label{class_pantheon_a6a75406ffdee488cdf2ea1ac3c750f63} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Pantheon} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_pantheon}{Pantheon}. Cleans up any resources used by the \doxylink{class_pantheon}{Pantheon} instance. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_pantheon_acb773446365d3d48df649ad96e5e2b0c}{get\+Landmark\+Type}} () override
+\begin{DoxyCompactList}\small\item\em Get the type of landmark. \end{DoxyCompactList}\item 
+\Hypertarget{class_pantheon_a0bcc19e0cc460ea4bbdb90f644735f5e}\label{class_pantheon_a0bcc19e0cc460ea4bbdb90f644735f5e} 
+std\+::string {\bfseries get\+Landmark\+Type} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_landmark}{Landmark}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Landmark} (int radius\+Of\+Effect)
+\item 
+virtual \mbox{\hyperlink{class_landmark_add8b834269cebb84cc638c183ff83208}{\texorpdfstring{$\sim$}{\string~}\+Landmark}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_landmark}{Landmark} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_landmark_a80bead4f90ecb05788cc06e11bada830}{get\+Radius\+Of\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em Gets the radius of effect of the landmark. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_landmark_ad1b49c991f6b253bcdc263ed72c61042}{place\+Structure}} (int x, int y, \mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*}city\+Map)
+\begin{DoxyCompactList}\small\item\em Places the landmark structure on the city map at the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_landmark_aca8365fe1cde5b9cdde8b35f2a3a9f80}{remove\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Removes the landmark structure from the city map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_landmark_ad8a44836ec1752c84df02fec293bec73}{new\+Residential\+Complex\+Was\+Added}} (\mbox{\hyperlink{class_residential_complex}{Residential\+Complex}} \texorpdfstring{$\ast$}{*}complex)
+\begin{DoxyCompactList}\small\item\em Notifies the landmark that a new residential complex has been added. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_landmark_ad1a80d6e37d4aaa613008bf377409379}{get\+Structure\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of structure represented by the landmark. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries new\+Road\+Was\+Added} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_aba2f0938a652514a24e77d9bc26437b5}{new\+Building\+Was\+Added}} ()
+\item 
+virtual void {\bfseries new\+Commercial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Industrial\+Building\+Was\+Added} ()
+\item 
+virtual void {\bfseries new\+Landmark\+Was\+Added} ()
+\item 
+virtual void {\bfseries road\+Was\+Removed} ()
+\item 
+virtual void \mbox{\hyperlink{class_city_structure_a5dac32692c25539f15b0fe5fd385a337}{building\+Was\+Removed}} ()
+\item 
+virtual void {\bfseries commercial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries industrial\+Building\+Was\+Removed} ()
+\item 
+virtual void {\bfseries landmark\+Was\+Removed} ()
+\item 
+int {\bfseries getX} ()
+\item 
+int {\bfseries getY} ()
+\item 
+virtual int \mbox{\hyperlink{class_city_structure_a39db9fe10c8e9aca4a8f7e70698401ed}{get\+Cost}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_city_structure}{City\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x}
+\item 
+int {\bfseries y}
+\item 
+\mbox{\hyperlink{class_city_map}{City\+Map}} \texorpdfstring{$\ast$}{*} {\bfseries city\+Map}
+\item 
+int {\bfseries cost}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a pantheon landmark. 
+
+The \doxylink{class_pantheon}{Pantheon} class is a derived class from the \doxylink{class_landmark}{Landmark} base class. It defines specific properties for a pantheon, such as cost and resource requirements. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pantheon_acb773446365d3d48df649ad96e5e2b0c}\index{Pantheon@{Pantheon}!getLandmarkType@{getLandmarkType}}
+\index{getLandmarkType@{getLandmarkType}!Pantheon@{Pantheon}}
+\doxysubsubsection{\texorpdfstring{getLandmarkType()}{getLandmarkType()}}
+{\footnotesize\ttfamily \label{class_pantheon_acb773446365d3d48df649ad96e5e2b0c} 
+std\+::string Pantheon\+::get\+Landmark\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Get the type of landmark. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the type of the landmark (i.\+e., "{}\+Pantheon"{}). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Pantheon.\+cpp\item 
+Pantheon.\+h\end{DoxyCompactItemize}
